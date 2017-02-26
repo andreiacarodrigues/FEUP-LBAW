@@ -35,14 +35,14 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(../img/intro.jpg) no-repeat;/*center center;*/
     background-size: cover;
 }
 
 .intro-message {
     position: relative;
-    padding-top: 10%;
-    padding-bottom: 20%;
+    padding-top: 15%;
+    padding-bottom: 13%;
 }
 
 .intro-message > h1 {
@@ -70,98 +70,13 @@ h6 {
         font-size: 3em;
     }
 
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
-
     .intro-divider {
         width: 100%;
     }
 }
 
-.network-name {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-
-.content-section-a {
-    padding: 50px 0;
-    background-color: #f8f8f8;
-}
-
-.content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
-}
-
-.banner {
-    padding: 100px 0;
-    color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
-    background-size: cover;
-}
-
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-}
-
-.banner ul {
-    margin-bottom: 0;
-}
-
-.banner-social-buttons {
-    float: right;
-    margin-top: 0;
-}
-
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
-    }
-
-    ul.banner-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
-}
-
 footer {
-    padding: 50px 0;
+    padding: 20px 0;
     background-color: #f8f8f8;
 }
 
@@ -170,11 +85,11 @@ p.copyright {
 }
 
 /*-------------------------------------------------*/
-.left-searchBar{
+#searchForm .left-searchBar{
     width:40%;
 }
 
-.right-searchBar{
+#searchForm .right-searchBar{
     width:25%;
 }
 
@@ -184,9 +99,59 @@ p.copyright {
 }
 
 #searchForm input[type="text"], #searchForm input[type="date"], #searchForm input[type="time"], #searchForm select{
-    background-color: #f9f8f4;
+    background-color: #fdfcf8;
 }
 
 #searchForm input[type="submit"]{
+    background-color: #f9f8f4;
+    color: #4d4c48;
+    border-color: #9d9c98;
+    border-size:1px;
+    padding-rigth:1em;
+    padding-left:1em;
 
+    -webkit-transition-property: background, color;
+    -moz-transition-property: background, color;
+    -o-transition-property: background, color;
+    transition-property: background, color;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+#searchForm input[type="submit"]:hover{
+    /*background-color: #757470;
+    border-color: #8f8e8a;
+    color: #f9f8f4;*/
+    background-color: #dad9d5;
+    color: #3e3d39;
+}
+
+#searchForm span{
+    background-color: #deddd9;
+}
+
+/*----------------------------- */
+
+#loginForm{
+    padding-top: 2%;
+    padding-left:0%; /* não sei se ito funciona direito no telemovel lel */
+}
+
+.form_center{
+   text-align: center;
+    width:80%;
+    padding-left:20%;
+    display:block;
+}
+#loginForm input[type="text"], #loginForm input[type="email"],#loginForm input[type="password"], #loginForm input[type="tel"]{
+    background-color: #fdfcf8;
+}
+
+#loginForm span{
+    background-color: #deddd9;
 }
