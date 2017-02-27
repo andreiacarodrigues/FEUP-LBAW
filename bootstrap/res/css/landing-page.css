@@ -35,7 +35,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro.jpg) no-repeat;/*center center;*/
+    background: url(../img/intro.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -82,6 +82,11 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.content-section {
+    padding-bottom: 10%;
+    background-color: #9e9d99;
 }
 
 /*-------------------------------------------------*/
@@ -155,3 +160,27 @@ p.copyright {
 #loginForm span{
     background-color: #deddd9;
 }
+
+/*----------------------------- */
+
+.profile {
+    position: relative;
+    padding-top: 15%;
+
+}
+
+.profile > h1 {
+    margin: 0;
+    color: #efefef;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.profile .btn-group {
+    margin-left: 1em;
+}
+
+.intro-header, .profile{
+    min-height: 100%;
+}
+
