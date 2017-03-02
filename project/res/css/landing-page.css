@@ -40,12 +40,21 @@ h6 {
     min-height: 85%;
 }
 
-.profile , .searchResults{
+.profile {
      margin-top: 13%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
      margin-bottom: 10%;
      min-height: 85%;
  }
 
+#searchForm{
+    margin-top: 8%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+}
+
+ .searchResults{
+    margin-top: 4%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    margin-bottom: 10%;
+    min-height: 85%;
+}
 .sportComplex{
     margin-top: 5%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     margin-bottom: 5%;
@@ -194,4 +203,14 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.form-inline > * {
+    margin: 10px 10px;
+}
+
+
+#searchForm{
+    padding-left:5%;
+    padding-right:5%;
 }

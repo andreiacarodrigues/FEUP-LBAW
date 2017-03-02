@@ -11,7 +11,7 @@
                     <h3>Your favorite place to rent sports complexes!</h3>
                     <hr class="intro-divider">
 
-                    <form id="searchForm" action=" " method="post" autocomplete="on">
+                    <form id="searchForm" action="searchResults.php" method="post" autocomplete="on">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group">

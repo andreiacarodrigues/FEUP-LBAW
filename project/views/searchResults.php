@@ -1,6 +1,88 @@
 <?php
 include('../templates/headerRegistered.php');
 ?>
+
+    <div id="searchForm">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Name</span>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Location</span>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Sport</span>
+                    <select class="form-control" title="">
+                        <option value="" disabled selected></option>
+                        <option>Football</option>
+                        <option>Basketball</option>
+                        <option>Tenis</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Date</span>
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Starting Time</span>
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Finishing Time</span>
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+           <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Surface</span>
+                    <select class="form-control" title="">
+                        <option value="" disabled selected></option>
+                        <option>Football</option>
+                        <option>Basketball</option>
+                        <option>Tenis</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Coverage</span>
+                    <select class="form-control" title="">
+                        <option value="" disabled selected></option>
+                        <option>Football</option>
+                        <option>Basketball</option>
+                        <option>Tenis</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon primary">Dimensions</span>
+                    <select class="form-control" title="">
+                        <option value="" disabled selected></option>
+                        <option>Football</option>
+                        <option>Basketball</option>
+                        <option>Tenis</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+            <input type="submit" class="btn btn-md btn-info" value="Search"/>
+            </div>
+        </form>
+    </div>
 <div class="searchResults">
     <div class="container">
         <h1 class="page-header">Search Results: <small> 2 complexes found </small></h1>
@@ -23,7 +105,6 @@ include('../templates/headerRegistered.php');
         </div>
     </div>
     <!-- /.row -->
-
     <hr>
 
         <div class="row">
