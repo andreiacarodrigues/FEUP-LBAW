@@ -51,7 +51,7 @@
                                 </div>
                                <div class="form-group">
                                  <div class="input-group">
-                                       <span class="input-group-addon primary">Finishing Time</span>
+                                       <span class="input-group-addon primary">Duration</span>
                                        <input type="time" class="form-control">
                                    </div>
                                </div>
