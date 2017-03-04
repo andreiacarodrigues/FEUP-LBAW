@@ -47,7 +47,7 @@ h6 {
      min-height: 85%;
  }
 
-.userRentals {
+.userRentals, .manageComplexes {
     /*padding-top: 13%;*/
     margin-top: 8%;
     margin-bottom: 10%;
@@ -113,6 +113,10 @@ h6 {
         padding-bottom: 15%;
     }
 
+    .manageComplexes {
+        padding-left:20%;
+        padding-right:20%;
+    }
     .userRentals, .sportComplex {
         padding-top: 10%;
         padding-bottom: 15%;
@@ -276,6 +280,14 @@ td input{
     text-align:right;
 }
 
+
+.manageComplexes button{
+    font-size: 1em;
+}
+
+.manageComplexes .btn-group-vertical{
+    margin-top:3%;
+}
 
 /* -------------- */
 

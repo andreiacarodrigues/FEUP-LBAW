@@ -50,7 +50,7 @@
                     <a href="profile.php">Profile</a>
                 </li>
                 <li>
-                    <a href="rentals.php">Manage Rentals</a>
+                    <a href="manageRentals.php">Manage Rentals</a>
                 </li>
                 <li>
                     <a href="manageComplexes.php">Manage Complexes</a>
