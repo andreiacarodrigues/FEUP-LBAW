@@ -5,7 +5,7 @@ include('../templates/headerRegistered.php');
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sport Complex </h1>
+            <h1 class="page-header">Space 1 </h1>
         </div>
     </div>
 
@@ -13,7 +13,6 @@ include('../templates/headerRegistered.php');
         <div class="col-md-4">
             <img class="img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
         </div>
-
         <div class="col-md-8">
             <h3>Informations:</h3>
             <ul class="list-group">
@@ -27,18 +26,46 @@ include('../templates/headerRegistered.php');
 <br>
     <div class="container">
         <hr>
-        <form id="loginForm" action="home.php" method="post" autocomplete="on">
-        <table class="table table-striped table-responsive table-sm" >
-            <thead class="thead-default">
-            <tr>
-                <th><h4>Item</h4></th>
-                <th><h4>Name</h4></th>
-                <th><h4>Quantity To Rent</h4></th>
-                <th><h4>Stock</h4></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
+        <form id="rentForm" action="home.php" method="post" autocomplete="on">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon primary">Date</span>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon primary">Starting Time</span>
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon primary">Duration</span>
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+             <table class="table table-striped table-responsive table-sm" >
+                <thead class="thead-default">
+                <tr>
+                   <th><h4>Item</h4></th>
+                   <th><h4>Name</h4></th>
+                   <th><h4>Quantity To Rent</h4></th>
+                   <th><h4>Stock</h4></th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
                 <td class="centered">
                    <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt="">
                 </td>

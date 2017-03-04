@@ -6,9 +6,12 @@ include('../templates/headerRegistered.php');
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
+                    <div class="col-md-2">
+                        <h4>Rental #<span>1</span></h4>
+                    </div>
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>1</span></h4>
+                            <p> Rental Information: </p>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/02 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
@@ -17,7 +20,7 @@ include('../templates/headerRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-4 col-md-offset-2">
                         <div class="totheright">
                             <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                         </div>

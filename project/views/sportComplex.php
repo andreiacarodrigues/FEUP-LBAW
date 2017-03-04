@@ -10,11 +10,11 @@ include('../templates/headerRegistered.php');
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <img class="img-responsive" style="width:500px" src="http://placehold.it/750x500" alt="">
+        <div class="col-md-4">
+            <br>
+            <img class="img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
         </div>
-
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h3>Informations:</h3>
             <ul class="list-group">
                 <li class="list-group-item"> <i class="fa fa-users fa"></i> Here goes the name </li>
@@ -22,14 +22,12 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
                 <li class="list-group-item"> Description </li>
-                <li class="list-group-item"><a href="#" ><i class="glyphicons glyphicons-home"></i> Check Spaces Available </a></li>
             </ul>
         </div>
     </div>
 </div>
 <br>
     <div class="container">
-
         <hr>
     <div class="row">
         <div class="col-md-4">
@@ -45,13 +43,12 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                 <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
             </ul>
-            <a class="btn btn-primary btn-info" href="#">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary btn-info" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     <!-- /.row -->
 
     <hr>
-
         <div class="row">
             <div class="col-md-4">
                 <br>
@@ -66,7 +63,7 @@ include('../templates/headerRegistered.php');
                     <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                     <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
                 </ul>
-                <a class="btn btn-primary btn-info" href="#">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary btn-info" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
 
