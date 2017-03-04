@@ -6,21 +6,18 @@ include('../templates/headerRegistered.php');
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
-                    <div class="col-md-2">
-                        <h4>Rental #<span>1</span></h4>
-                    </div>
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <p> Rental Information: </p>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/02 </span></label></li>
+                            <h4>Rental #<span>2</span></h4>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-md-offset-2">
+                    <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
                             <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                         </div>
@@ -62,7 +59,7 @@ include('../templates/headerRegistered.php');
                                 <input class="star star-1" id="star-1" type="radio" name="star"/>
                                 <label class="star star-1" for="star-1"></label>
                         </div>
-<br>
+                        <br>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue </button>
                         </div>
                     </div>
@@ -92,25 +89,49 @@ include('../templates/headerRegistered.php');
                         <form action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
+
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Subject</span>
                                             <input type="text" class="form-control">
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon primary">To</span>
+                                            <select class="form-control" title="">
+                                                <option value="" disabled selected></option>
+                                                <option>Sport's Complex Manager</option>
+                                                <option>Website Administrator</option>
+                                                <option>Both</option>
+                                            </select>
+                                        </div>
+
+
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon primary">Category</span>
+                                            <select class="form-control" title="">
+                                                <option value="" disabled selected></option>
+                                                <option>Football</option>
+                                                <option>Basketball</option>
+                                                <option>Tenis</option>
+                                            </select>
+                                        </div>
+
+
+
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Description</span>
                                             <textarea class="form-control" rows="5" id="comment"></textarea>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-default">Submit</button>
-                                        </div>
+
                                     </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                        </div>
+
                                 </div>
                             </div>
                         </form>
@@ -118,6 +139,8 @@ include('../templates/headerRegistered.php');
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
 

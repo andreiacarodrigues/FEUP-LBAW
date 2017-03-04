@@ -4,7 +4,7 @@ include('../templates/headerRegistered.php');
 
 <div class="manageComplexes">
     <div class="container">
-        <button type="button" class="btn btn-danger">Add Complex <i class="fa fa-plus-circle" aria-hidden="true"></i> </button>
+        <a href="addComplex.php" class="btn btn-danger">Add Complex <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         <div class="row">
             <div class="col-md-4">
@@ -16,9 +16,9 @@ include('../templates/headerRegistered.php');
                             <h5>Complex 1</h5>
                             <div class="row">
                                 <div class="col-md-6 btn-group-vertical">
-                                    <a href="#" class="btn btn-info">Edit Information  </a>
+                                    <a href="editComplex.php" class="btn btn-info">Edit Information  </a>
                                     <a href="manageRentalsManager.php" class="btn btn-info">Manage Rentals </a>
-                                    <a href="#" class="btn btn-info">Manage Spaces  </a>
+                                    <a href="manageSpaces.php" class="btn btn-info">Manage Spaces  </a>
                                 </div>
                                 <div class="col-md-6 btn-group-vertical">
                                     <a href="#" class="btn btn-info">Manage Equipment  </a>

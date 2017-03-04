@@ -47,10 +47,10 @@ h6 {
      min-height: 85%;
  }
 
-.userRentals, .manageComplexes {
+.userRentals, .manageComplexes, .manageSpaces, .manageEquipment {
     /*padding-top: 13%;*/
     margin-top: 8%;
-    margin-bottom: 10%;
+    margin-bottom: 8%;
     min-height: 85%;
     font-size:0.95em;
 }
@@ -87,13 +87,23 @@ h6 {
     position: relative;
     padding-top: 8%;
     padding-bottom: 10%;
+}
 
+.addComplex, .addSpace{
+    padding-top: 10%;
+    padding-bottom: 8%;
 }
 
 .intro-message > h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 5em;
+}
+
+.intro-add-complex > h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
 }
 
 .intro-divider {
@@ -113,7 +123,7 @@ h6 {
         padding-bottom: 15%;
     }
 
-    .manageComplexes {
+    .manageComplexes, .manageSpaces {
         padding-left:20%;
         padding-right:20%;
     }
@@ -125,6 +135,12 @@ h6 {
 
     .intro-message > h1 {
         font-size: 3em;
+    }
+
+    .intro-add-complex > h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 2em;
     }
 
     .profile .btn-group{
@@ -289,6 +305,23 @@ td input{
     margin-top:3%;
 }
 
+.deleteComplex{
+    padding-top: 10%;
+}
+
+.editComplex{
+    padding-top: 10%;
+    padding-bottom: 2%;
+}
+
+.manageSpaces .input-group, .userRentals .modal-body .input-group, .manageEquipment #equipmentModal .modal-body .input-group{
+    margin:1%;
+}
+
+.manageSpaces span, .manageSpaces select{
+    font-size: 0.9em;
+    height:75%;
+}
 /* -------------- */
 
 .modal-body .form-horizontal .col-sm-2,
@@ -339,3 +372,7 @@ label.star:before {
     content: '\f006';
     font-family: FontAwesome;
 }
+
+/* ------------ */
+
+.material-icons.md-18 { font-size: 18px; }
