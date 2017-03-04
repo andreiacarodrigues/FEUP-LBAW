@@ -9,9 +9,9 @@ include('../templates/headerUnregistered.php');
             <div class="intro-message">
                 <h1>SignUp</h1>
                 <hr class="intro-divider">
-                <form id="loginForm" action="home.php" method="post" autocomplete="on">
+                <form id="searchForm" action="home.php" method="post" autocomplete="on">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3 left-searchBar">
+                        <div class="col-md-6 col-md-offset-3">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>

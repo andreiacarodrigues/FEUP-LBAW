@@ -2,7 +2,7 @@
 include('../templates/headerRegistered.php');
 ?>
 
-    <div id="searchForm">
+    <div id="searchResultsForm">
         <form class="form-inline" role="form">
             <div class="form-group">
                 <div class="input-group">
