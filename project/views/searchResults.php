@@ -101,7 +101,7 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
                 <li class="list-group-item"> Description </li>
             </ul>
-            <a class="btn btn-primary btn-info" href="#">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary btn-info" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     <!-- /.row -->
@@ -122,7 +122,7 @@ include('../templates/headerRegistered.php');
                     <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
                     <li class="list-group-item"> Description </li>
                 </ul>
-                <a class="btn btn-primary btn-info" href="#">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary btn-info" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
 

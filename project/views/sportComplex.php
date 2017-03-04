@@ -41,9 +41,9 @@ include('../templates/headerRegistered.php');
         <div class="col-md-8">
             <h4> Space 1</h4>
             <ul class="list-group">
-                <li class="list-group-item"> <i class="glyphicons glyphicons-forest"></i> Here goes the cover </li>
-                <li class="list-group-item"><i class="glyphicons glyphicons-shoes"></i> Here goes the surface </li>
-                <li class="list-group-item"> <i class="glyphicons glyphicons-home"></i> Here goes the dimensions </li>
+                <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
+                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
+                <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
             </ul>
             <a class="btn btn-primary btn-info" href="#">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
@@ -62,9 +62,9 @@ include('../templates/headerRegistered.php');
             <div class="col-md-8">
                 <h4> Space 2</h4>
                 <ul class="list-group">
-                    <li class="list-group-item"> <i class="glyphicons glyphicons-forest"></i> Here goes the cover </li>
-                    <li class="list-group-item"><i class="glyphicons glyphicons-shoes"></i> Here goes the surface </li>
-                    <li class="list-group-item"> <i class="glyphicons glyphicons-home"></i> Here goes the dimensions </li>
+                    <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
+                    <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
+                    <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
                 </ul>
                 <a class="btn btn-primary btn-info" href="#">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
