@@ -3,7 +3,7 @@ include('../templates/headerRegistered.php');
 ?>
 <div class="userRentals">
     <div class="container">
-        <a href="sportComplex.php" class="btn btn-info">Add Rental <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
+        <a href="sportComplex.php" class="btn btn-primary gradient-blue">Add Rental <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
 
         <hr>
         <div class="rental well well-sm">
@@ -33,7 +33,7 @@ include('../templates/headerRegistered.php');
 
                     <div class="col-md-2">
                         <div class="totheright">
-                            <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ include('../templates/headerRegistered.php');
 
                     <div class="col-md-2">
                         <div class="totheright">
-                            <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
                         </div>
                     </div>
                 </div>

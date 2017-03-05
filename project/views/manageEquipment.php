@@ -21,7 +21,7 @@ include('../templates/headerRegistered.php');
               <tr>
                 <td class="centered">
                     <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                    <input type="submit" class="btn btn-md btn-warning btn-primary" value="Change representative picture"/>
+                    <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
                 </td>
                 <td>
                     <div class="form-group">
@@ -56,13 +56,13 @@ include('../templates/headerRegistered.php');
 
                 </td>
                   <td>
-                      <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
+                      <a href="#" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
                   </td>
             </tr>
               <tr>
                   <td class="centered">
                       <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                      <input type="submit" class="btn btn-md btn-warning btn-primary" value="Change representative picture"/>
+                      <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
                   </td>
                   <td>
                       <div class="form-group">
@@ -97,13 +97,13 @@ include('../templates/headerRegistered.php');
 
                   </td>
                   <td>
-                      <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
+                      <a href="#" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
                   </td>
               </tr>
               <tr>
                   <td class="centered">
                       <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                      <input type="submit" class="btn btn-md btn-warning btn-primary" value="Change representative picture"/>
+                      <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
                   </td>
                   <td>
                       <div class="form-group">
@@ -138,7 +138,7 @@ include('../templates/headerRegistered.php');
 
                   </td>
                   <td>
-                      <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
+                      <a href="#" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>
                   </td>
               </tr>
             </tbody>
@@ -147,12 +147,12 @@ include('../templates/headerRegistered.php');
             <br><br>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-ban"> </i>Add New Equipment </button>
+                    <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-ban"> </i>Add New Equipment </button>
                 </div>
                 <div class="col-md-6">
                     <div class="text-right">
-                        <input type="submit" class="btn btn-md btn-info btn-primary" value="Save"/>
-                        <input type="submit" class="btn btn-md btn-danger btn-primary" value="Cancel"/>
+                        <input type="submit" class="btn btn-primary gradient-blue" value="Save"/>
+                        <input type="submit" class="btn btn-primary gradient-red" value="Cancel"/>
                     </div>
                 </div>
             </div>

@@ -122,7 +122,7 @@ include('../templates/headerRegistered.php');
             </tbody>
         </table>
             <div class="text-right">
-                <input type="submit" class="btn btn-md btn-info btn-primary" value="Rent Items"/>
+                <input type="submit" class="btn btn-primary gradient-blue" value="Rent Items"/>
             </div>
         </form>
     </div>

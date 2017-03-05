@@ -1,7 +1,6 @@
 <?php
     include('../templates/headerUnregistered.php');
 ?>
-
    <a name="about"></a>
     <div class="intro-header">
         <div class="container">
@@ -10,7 +9,7 @@
                     <h1>Sports Complex Rental</h1>
                     <h3>Your favorite place to rent sports complexes!</h3>
                     <hr class="intro-divider">
-                    <form id="searchForm" action="searchResults.php" method="post" autocomplete="on">
+                    <form class="searchForm" action="searchResults.php" method="post" autocomplete="on">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group">
@@ -56,7 +55,7 @@
                                </div>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-md btn-info" value="Search"/>
+                        <input type="submit" class="btn btn-primary btn-lg gradient-blue" value="Search"/>
                     </form>
                 </div>
             </div>

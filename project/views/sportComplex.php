@@ -43,7 +43,7 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                 <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
             </ul>
-            <a class="btn btn-primary btn-info" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     <!-- /.row -->
@@ -63,7 +63,7 @@ include('../templates/headerRegistered.php');
                     <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                     <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
                 </ul>
-                <a class="btn btn-primary btn-info" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
 

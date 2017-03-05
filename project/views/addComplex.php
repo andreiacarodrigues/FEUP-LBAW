@@ -47,12 +47,12 @@ include('../templates/headerRegistered.php');
                             </div>
                         </div>
 
-                        <input type="submit" class="btn btn-md btn-info btn-primary" value="Upload representative picture"/>
+                        <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                         <br><br>
                         <div style="text-align: center;">
-                            <input type="submit" class="btn btn-md btn-info btn-primary" value="Register Complex"/>
-                            <input type="submit" class="btn btn-md btn-info btn-primary" value="Cancel"/>
+                            <input type="submit" class="btn btn-primary gradient-blue" value="Register Complex"/>
+                            <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                         </div>
                     </div>
                 </div>

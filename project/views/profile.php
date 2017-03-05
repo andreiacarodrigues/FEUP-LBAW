@@ -3,7 +3,6 @@ include('../templates/headerRegistered.php');
 ?>
 <a name="about"></a>
 <div class="profile">
-    <div class="container">
         <div class="container">
           <div class="row">
                    <div class="col-xs-12 col-sm-6 col-md-6">
@@ -22,8 +21,8 @@ include('../templates/headerRegistered.php');
                                 </p>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button type="button" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button type="button" class="btn btn-primary gradient-yellow"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i></button>
                             </div>
                         </div>
                    </div>
@@ -71,10 +70,13 @@ include('../templates/headerRegistered.php');
                                 <input type="text" class="form-control" name="location" id="location"  placeholder="Chamusca, Portugal"/>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                          <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
+                          <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+                        </div>
                         <div style="text-align: center;">
-                            <input type="submit" class="btn btn-md btn-info btn-primary" value="Submit"/>
-                            <input type="submit" class="btn btn-md btn-info btn-primary" value="Cancel"/>
+                            <input type="submit" class="btn btn-primary gradient-blue" value="Submit"/>
+                            <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                         </div>
                     </div>
                 </div>
@@ -107,8 +109,8 @@ include('../templates/headerRegistered.php');
                         </div>
 
                    <div style="text-align: center;">
-                       <input type="submit" class="btn btn-md btn-info btn-primary" value="Change Password"/>
-                       <input type="submit" class="btn btn-md btn-info btn-primary" value="Cancel"/>
+                       <input type="submit" class="btn btn-primary gradient-blue" value="Change Password"/>
+                       <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                    </div>
                 </div>
             </form>

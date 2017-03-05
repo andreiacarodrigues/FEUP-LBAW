@@ -79,7 +79,7 @@ include('../templates/headerRegistered.php');
                 </div>
             </div>
             <div class="form-group">
-            <input type="submit" class="btn btn-md btn-info" value="Search"/>
+            <input type="submit" class="btn btn-primary btn-lg gradient-blue" value="Search"/>
             </div>
         </form>
     </div>
@@ -101,7 +101,7 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
                 <li class="list-group-item"> Description </li>
             </ul>
-            <a class="btn btn-primary btn-info" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     <!-- /.row -->
@@ -122,7 +122,7 @@ include('../templates/headerRegistered.php');
                     <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
                     <li class="list-group-item"> Description </li>
                 </ul>
-                <a class="btn btn-primary btn-info" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
 
