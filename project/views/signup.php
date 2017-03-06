@@ -7,7 +7,7 @@ include('../templates/headerUnregistered.php');
     <div class="container">
         <div class="row">
             <div class="intro-message">
-                <h1>SignUp</h1>
+                <h1>Sign Up</h1>
                 <hr class="intro-divider">
                 <form class="searchForm" action="home.php" method="post" autocomplete="on">
                     <div class="row">

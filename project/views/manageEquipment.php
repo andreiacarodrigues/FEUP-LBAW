@@ -147,7 +147,7 @@ include('../templates/headerRegistered.php');
             <br><br>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-ban"> </i>Add New Equipment </button>
+                    <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment </button>
                 </div>
                 <div class="col-md-6">
                     <div class="text-right">
@@ -204,12 +204,13 @@ include('../templates/headerRegistered.php');
                                 </div>
 
                                 <div class="input-group">
-                                    <input type="submit" class="btn btn-md btn-default btn-primary" value="Upload representative picture"/>
-                                 </div>
+                                    <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
+                                    <img class="img-responsive" src="http://placehold.it/400x400" style="width:200px" alt=""><br>
+                                </div>
                             </div>
                             <br>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-info">Submit</button>
+                                <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
                             </div>
                         </div>
 

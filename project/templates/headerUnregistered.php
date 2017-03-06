@@ -9,15 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sport Complexes Rental</title>
+    <title>Sports R Us</title>
 
-    <!-- Bootstrap Core CSS -->
+
     <link href="../res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../res/css/custom.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../res/css/landing-page.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -33,7 +30,6 @@
 </head>
 
 <body>
-<!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
         <div class="navbar-header">
@@ -43,7 +39,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--<a class="navbar-brand topnav" href="home.php">Sport Complexes Rental</a>-->
             <a class="navbar-brand topnav" href="home.php"> <img src="../res/img/logo.png" style="width:350px"></a>
         </div>
 

@@ -9,15 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sport Complexes Rental</title>
+    <title>Sports R US</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="../res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../res/css/custom.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../res/css/landing-page.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="../res/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -33,7 +29,6 @@
 </head>
 
 <body>
-<!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
         <div class="navbar-header">
@@ -45,7 +40,6 @@
             </button>
             <a class="navbar-brand topnav" href="home.php"> <img src="../res/img/logo.png" style="width:350px"></a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -58,11 +52,9 @@
                     <a href="manageComplexes.php">Manage Complexes</a>
                 </li>
                 <li>
-                    <a href="logout.php">Logout</a>
+                    <a href="home.php">Logout</a>
                 </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
