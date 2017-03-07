@@ -50,9 +50,9 @@ include('../templates/headerRegistered.php');
                     <span class="input-group-addon primary">Surface</span>
                     <select class="form-control" title="">
                         <option value="" disabled selected></option>
-                        <option>Football</option>
-                        <option>Basketball</option>
-                        <option>Tenis</option>
+                        <option>Grass</option>
+                        <option>Syntetic Grass</option>
+                        <option>Dirt</option>
                     </select>
                 </div>
             </div>
@@ -61,9 +61,9 @@ include('../templates/headerRegistered.php');
                     <span class="input-group-addon primary">Coverage</span>
                     <select class="form-control" title="">
                         <option value="" disabled selected></option>
-                        <option>Football</option>
-                        <option>Basketball</option>
-                        <option>Tenis</option>
+                        <option>Covered</option>
+                        <option>Uncovered</option>
+                        <option>Indiferent</option>
                     </select>
                 </div>
             </div>
@@ -72,9 +72,10 @@ include('../templates/headerRegistered.php');
                     <span class="input-group-addon primary">Dimensions</span>
                     <select class="form-control" title="">
                         <option value="" disabled selected></option>
-                        <option>Football</option>
-                        <option>Basketball</option>
-                        <option>Tenis</option>
+                        <option>Big</option>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Indiferent</option>
                     </select>
                 </div>
             </div>

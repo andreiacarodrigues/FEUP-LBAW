@@ -11,7 +11,7 @@ include('../templates/headerRegistered.php');
 
     <div class="row">
         <div class="col-md-4">
-            <br>
+            <br><br><br>
             <img class="img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
         </div>
         <div class="col-md-8">
@@ -21,6 +21,7 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
+                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Here goes the opening/closing hours </li>
                 <li class="list-group-item"> Description </li>
             </ul>
         </div>
