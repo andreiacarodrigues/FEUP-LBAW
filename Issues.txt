@@ -1,0 +1,9 @@
+Issues
+
+Admin:
+
+Admin View não tem nada
+Admin Rentals, estados que não existem (Not Finished)
+Admin Rentals, estados que não existem, o admin pode suspender, remover ou dar por concluído (não pode cancelar, por concluir)
+Admin Users, mudar de delete para block
+Admin Statistics, já está a especificar o tempo (mais específico que o A1 e o A2)
