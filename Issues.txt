@@ -1,9 +1,35 @@
 Issues
 
-Admin:
+----- User -----
+
+Filtros em search results para coverage e dimensions errados, deveria ser (coberto, incoberto, indiferente para coverage e pequeno, médio, grande, indiferente para dimension)
+Search Results, faltam as opening hours nos complexos
+Sports complex, o mesmo que acima
+
+----- Unregistered User -----
+
+Nada a apontar
+
+----- Registered User -----
+
+Manage Rentals, estados que não existem
+Categoria do report
+(Sugestão) implementar já o popup para pagar as reservas
+
+Verificado até RU06 
+
+----- Manager -----
+
+Por verificar
+
+----- Admin -----
 
 Admin View não tem nada
 Admin Rentals, estados que não existem (Not Finished)
 Admin Rentals, estados que não existem, o admin pode suspender, remover ou dar por concluído (não pode cancelar, por concluir)
 Admin Users, mudar de delete para block
 Admin Statistics, já está a especificar o tempo (mais específico que o A1 e o A2)
+
+------ Notas -----
+
+A única maneira neste momento de ver as coisas do registered user é clicando em search, o login podia já ir para um home registado (não sei se é relevante para esta entrega)
