@@ -14,7 +14,7 @@ include('../templates/headerRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -41,7 +41,7 @@ include('../templates/headerRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Concluded </span></label></li>
                         </ul>
                     </div>
 
@@ -113,9 +113,9 @@ include('../templates/headerRegistered.php');
                                             <span class="input-group-addon primary">Category</span>
                                             <select class="form-control" title="">
                                                 <option value="" disabled selected></option>
-                                                <option>Football</option>
-                                                <option>Basketball</option>
-                                                <option>Tenis</option>
+                                                <option>Category 1</option>
+                                                <option>Category 2</option>
+                                                <option>Category 3</option>
                                             </select>
                                         </div>
 

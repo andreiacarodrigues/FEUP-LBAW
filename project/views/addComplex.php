@@ -46,6 +46,19 @@ include('../templates/headerRegistered.php');
                                 <textarea class="form-control" rows="2" id="comment" placeholder="Enter a brief description of the sports complex services"></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                <input type="tel" class="form-control" name="tel" id="tel"  placeholder="Enter the sports complex opening and closing hours"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+                                <input type="tel" class="form-control" name="tel" id="tel"  placeholder="Enter the sports complex paypal account"/>
+                            </div>
+                        </div>
 
                         <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
