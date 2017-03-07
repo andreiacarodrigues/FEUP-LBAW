@@ -21,7 +21,7 @@ include('../templates/headerRegistered.php');
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
-                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ include('../templates/headerRegistered.php');
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
-                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                         </div>
                     </div>
                 </div>
@@ -87,9 +87,9 @@ include('../templates/headerRegistered.php');
                                             <span class="input-group-addon primary">Category</span>
                                             <select class="form-control" title="">
                                                 <option value="" disabled selected></option>
-                                                <option>Football</option>
-                                                <option>Basketball</option>
-                                                <option>Tenis</option>
+                                                <option>Category 1</option>
+                                                <option>Category 2</option>
+                                                <option>Category 3</option>
                                             </select>
                                         </div>
 

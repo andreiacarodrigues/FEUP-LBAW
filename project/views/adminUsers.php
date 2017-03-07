@@ -18,7 +18,7 @@ include('../templates/adminHeaderRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary gradient-red">Delete</button>
+                                <button type="button" class="btn btn-primary gradient-red">Block</button>
 
                             </div>
                         </div>
@@ -37,7 +37,7 @@ include('../templates/adminHeaderRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary gradient-red">Delete</button>
+                                <button type="button" class="btn btn-primary gradient-red">Block</button>
 
                             </div>
                         </div>
@@ -56,7 +56,7 @@ include('../templates/adminHeaderRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary gradient-red">Delete</button>
+                                <button type="button" class="btn btn-primary gradient-red">Block</button>
 
                             </div>
                         </div>
@@ -74,7 +74,7 @@ include('../templates/adminHeaderRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary gradient-red">Delete</button>
+                                <button type="button" class="btn btn-primary gradient-red">Block</button>
 
                             </div>
                         </div>

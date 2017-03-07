@@ -48,9 +48,7 @@ include('../templates/headerRegistered.php');
                 <td>
                     <div class="form-group">
                         <div class="input-group">
-                            <div class="checkbox checkbox-info">
-                                <label><input type="checkbox" value=""></label>
-                            </div>
+                            <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
                         </div>
                     </div>
 
@@ -89,9 +87,7 @@ include('../templates/headerRegistered.php');
                   <td>
                       <div class="form-group">
                           <div class="input-group">
-                              <div class="checkbox checkbox-info">
-                                  <label><input type="checkbox" value=""></label>
-                              </div>
+                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
                           </div>
                       </div>
 
@@ -130,9 +126,7 @@ include('../templates/headerRegistered.php');
                   <td>
                       <div class="form-group">
                           <div class="input-group">
-                              <div class="checkbox checkbox-info">
-                                  <label><input type="checkbox" value=""></label>
-                              </div>
+                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
                           </div>
                       </div>
 

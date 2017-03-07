@@ -33,15 +33,15 @@ include('../templates/adminHeaderRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
                             <br>
                             <button type="button" class="btn btn-primary gradient-yellow">Suspend</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-blue">Remove</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-red">Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red">Remove</button><br><br>
+                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
                         </div>
                     </div>
                 </div>
@@ -64,15 +64,15 @@ include('../templates/adminHeaderRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
                             <br>
                             <button type="button" class="btn btn-primary gradient-yellow">Suspend</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-blue">Remove</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-red">Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red">Remove</button><br><br>
+                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
                         </div>
                     </div>
                 </div>
@@ -95,15 +95,15 @@ include('../templates/adminHeaderRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Complete </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
                             <br>
                             <button type="button" class="btn btn-primary gradient-yellow">Suspend</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-blue">Remove</button><br><br>
-                            <button type="button" class="btn btn-primary gradient-red">Cancel</button>
+                            <button type="button" class="btn btn-primary gradient-red">Remove</button><br><br>
+                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
                         </div>
                     </div>
                 </div>

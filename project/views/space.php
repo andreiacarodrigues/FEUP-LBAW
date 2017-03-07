@@ -61,7 +61,7 @@ include('../templates/headerRegistered.php');
                    <th><h4>Item</h4></th>
                    <th><h4>Name</h4></th>
                    <th><h4>Quantity To Rent</h4></th>
-                   <th><h4>Stock</h4></th>
+                   <th><h4>Available</h4></th>
                 </tr>
               </thead>
               <tbody>
