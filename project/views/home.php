@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="intro-message">
-                    <h1>Sports Complex Rental</h1>
+                    <h1>Sports R Us</h1>
                     <h3>Your favorite place to rent sports complexes!</h3>
                     <hr class="intro-divider">
                     <form class="searchForm" action="searchResults.php" method="post" autocomplete="on">
