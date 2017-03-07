@@ -15,12 +15,17 @@ Nada a apontar
 Manage Rentals, estados que não existem
 Categoria do report
 (Sugestão) implementar já o popup para pagar as reservas
-
-Verificado até RU06 
+Add complex falta opening hours e paypal account
 
 ----- Manager -----
 
-Por verificar
+Add manager e remove manager em falta
+Perfil complexo, opening hour e paypal em falta
+Unavailable devia ser numérico em vez de checkbox
+Edit spaces mudar os dropdowns
+Rate User
+Add issue dropdown
+Não se cancela um issue, remove-se
 
 ----- Admin -----
 
