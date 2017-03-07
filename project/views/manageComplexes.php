@@ -112,7 +112,7 @@ include('../templates/headerRegistered.php');
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                     </a>
                     <div class="caption text-center">
-                        <h5>Complex 6</h5>
+                        <h5>Complex 5</h5>
                         <div class="row">
                             <div class="col-md-6 btn-group-vertical">
                                 <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>

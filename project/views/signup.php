@@ -2,7 +2,6 @@
 include('../templates/headerUnregistered.php');
 ?>
 
-<a name="about"></a>
 <div class="intro-header">
     <div class="container">
         <div class="row">

@@ -1,7 +1,7 @@
 <?php
 include('../templates/adminHeaderUnregistered.php');
 ?>
-    <a name="about"></a>
+
     <div class="admin-intro-header">
         <div class="container">
             <div class="row">

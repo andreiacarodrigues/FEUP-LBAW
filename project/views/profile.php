@@ -1,7 +1,7 @@
 <?php
 include('../templates/headerRegistered.php');
 ?>
-<a name="about"></a>
+
 <div class="profile">
         <div class="container">
           <div class="row">

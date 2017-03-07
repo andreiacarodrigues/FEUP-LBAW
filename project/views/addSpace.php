@@ -1,7 +1,7 @@
 <?php
 include('../templates/headerRegistered.php');
 ?>
-<a name="about"></a>
+
 <div class="addSpace">
     <div class="container">
         <div class="intro-add-complex text-center">
