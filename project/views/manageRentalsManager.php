@@ -27,7 +27,7 @@ include('../templates/headerRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
 
@@ -62,7 +62,7 @@ include('../templates/headerRegistered.php');
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Not Finished </span></label></li>
+                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
 

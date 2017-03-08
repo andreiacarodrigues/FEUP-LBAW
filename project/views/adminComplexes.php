@@ -29,7 +29,7 @@ include('../templates/adminHeaderRegistered.php');
                             <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                         </a>
                         <div class="caption">
-                            <h5 class="text-center">Complex 1</h5><br>
+                            <h5 class="text-center">Complex 2</h5><br>
 
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
@@ -48,7 +48,7 @@ include('../templates/adminHeaderRegistered.php');
                             <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                         </a>
                         <div class="caption">
-                            <h5 class="text-center">Complex 1</h5><br>
+                            <h5 class="text-center">Complex 3</h5><br>
 
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
@@ -66,7 +66,7 @@ include('../templates/adminHeaderRegistered.php');
                             <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                         </a>
                         <div class="caption">
-                            <h5 class="text-center">Complex 1</h5><br>
+                            <h5 class="text-center">Complex 4</h5><br>
 
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
