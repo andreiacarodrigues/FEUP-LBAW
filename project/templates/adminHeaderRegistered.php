@@ -55,7 +55,7 @@
                     <a href="adminStatistics.php">Statistics</a>
                 </li>
                 <li>
-                    <a href="admin.php">Logout</a>
+                    <a href="admin.php">Log out</a>
                 </li>
             </ul>
         </div>

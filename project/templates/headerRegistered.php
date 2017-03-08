@@ -52,7 +52,7 @@
                     <a href="manageComplexes.php">Manage Complexes</a>
                 </li>
                 <li>
-                    <a href="home.php">Logout</a>
+                    <a href="home.php">Log out</a>
                 </li>
             </ul>
         </div>
