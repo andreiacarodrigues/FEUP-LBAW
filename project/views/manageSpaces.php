@@ -37,7 +37,7 @@ include('../templates/headerRegistered.php');
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                     </a>
                     <div class="caption ">
-                        <h5 class="text-center">Space 1</h5><br>
+                        <h5 class="text-center">Space 2</h5><br>
                         <div class="row">
                             <div class="col-md-7">
                                 <ul class="list-unstyled">
