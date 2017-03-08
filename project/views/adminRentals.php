@@ -39,6 +39,7 @@ include('../templates/adminHeaderRegistered.php');
                     <div class="col-md-4 col-md-offset-4">
                         <div class="totheright">
                             <br>
+                            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issuesModal">Issue</button><br><br>
                             <button type="button" class="btn btn-primary gradient-yellow">Suspend</button><br><br>
                             <button type="button" class="btn btn-primary gradient-red">Remove</button><br><br>
                             <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
@@ -112,6 +113,43 @@ include('../templates/adminHeaderRegistered.php');
 
 
 </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="issuesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title text-center" id="myModalLabel">
+                            Issue
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="rental">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-4">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
+                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Subject: <span> Equipment </span></label></li>
+                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Category: <span> Others </span></label></li>
+                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Description: <span> O relvado estava em mau estado </span></label></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

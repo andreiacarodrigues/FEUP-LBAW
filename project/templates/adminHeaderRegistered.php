@@ -52,9 +52,6 @@
                     <a href="adminRentals.php">Rentals</a>
                 </li>
                 <li>
-                    <a href="adminIssues.php">Reports</a>
-                </li>
-                <li>
                     <a href="adminStatistics.php">Statistics</a>
                 </li>
                 <li>

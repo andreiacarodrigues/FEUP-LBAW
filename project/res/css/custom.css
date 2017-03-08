@@ -491,6 +491,10 @@ td input{
     background-color: #ececec;
 }
 
+.admin .modal {
+    color: #414141;
+}
+
 .admin .input-group .checkbox label {
     font-size: 1.3em;
     color: white;
