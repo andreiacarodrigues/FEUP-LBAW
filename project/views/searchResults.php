@@ -95,7 +95,7 @@ include('../templates/headerRegistered.php');
             </a>
         </div>
         <div class="col-md-8">
-            <h4> Complex 1</h4>
+            <h4> Complex 1 ⭐⭐⭐⭐</h4>
             <ul class="list-group">
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
@@ -116,7 +116,7 @@ include('../templates/headerRegistered.php');
                 </a>
             </div>
             <div class="col-md-8">
-                <h4> Complex 2 </h4>
+                <h4> Complex 2 ⭐⭐⭐ </h4>
                 <ul class="list-group">
                     <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
                     <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
