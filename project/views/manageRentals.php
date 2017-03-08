@@ -8,7 +8,7 @@ include('../templates/headerRegistered.php');
                 <div class="container">
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>2</span></h4>
+                            <h4>Rental #<span>1</span></h4>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
                             <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
