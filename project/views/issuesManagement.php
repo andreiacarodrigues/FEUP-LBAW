@@ -12,11 +12,11 @@ include('../templates/headerRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <h4>Issue #<span>1</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Subject: <span> Equipment </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Category: <span> Others </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Description: <span> O relvado estava em mau estado </span></label></li>
+                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Subject: <span> Equipment </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> Others </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Description: <span> O relvado estava em mau estado </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -34,12 +34,12 @@ include('../templates/headerRegistered.php');
                 <div class="container">
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <h4>Issue #<span>2</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Subject: <span> Equipment </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Category: <span> Others </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Description: <span> O relvado estava em mau estado </span></label></li>
+                            <h4>Issue #<span>1</span></h4>
+                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Subject: <span> Equipment </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> Others </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Description: <span> O relvado estava em mau estado </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -57,14 +57,13 @@ include('../templates/headerRegistered.php');
         <!------------------------>
 
         <!-- Modal -->
-        <div class="modal fade" id="issueModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div  class="modal fade" id="issueModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title text-center" id="myModalLabel">
                             New Issue
@@ -73,7 +72,7 @@ include('../templates/headerRegistered.php');
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                        <form id="issueForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
 

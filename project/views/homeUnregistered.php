@@ -1,5 +1,5 @@
 <?php
-    include('../templates/headerRegistered.php');
+    include('../templates/headerUnregistered.php');
 ?>
    
     <div class="intro-header">
@@ -13,7 +13,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <form class="searchForm" action="searchResults.php" method="post" autocomplete="on">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
@@ -64,49 +64,11 @@
                     </form>
                 </div>
 
-
-                <div class="col-md-6">
-                        <div class="row">
-                            <div id="lastVisited">
-                            <div class="col-md-8 col-md-offset-2" id="scrollable">
-                                <h1> Last Visited </h1> <hr>
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-10  col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                                <br><div class="row">
-                                    <div class="col-md-10  col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                </div>
             </div>
-
         </div>
-
     </div>
+
+
     <div class="content-section-b">
         <div class="container">
             <div class="row">

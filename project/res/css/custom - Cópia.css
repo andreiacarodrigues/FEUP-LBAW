@@ -60,7 +60,6 @@ h6 {
     min-height: 85%;
 }
 
-
 .profile {
     margin-top: 13%;
      margin-bottom: 10%;
@@ -174,19 +173,9 @@ h6 {
         padding-bottom: 10%;
     }
 
-    .manageComplexes, .manageSpaces, .manageEquipment {
-        padding-top:15%;
-        padding-left:2%;
-        padding-right:2%;
-    }
-
-    .addComplex, .addSpace, .editComplex {
-        padding-top:25%;
-    }
-
-
-    .manageComplexes a{
-        font-size: 0.9em;
+    .manageComplexes, .manageSpaces {
+        padding-left:20%;
+        padding-right:20%;
     }
 
     .intro-header thumbnail {
@@ -194,12 +183,7 @@ h6 {
         padding-right:10%;
     }
 
-    .userRentals {
-        padding-top: 15%;
-        padding-bottom: 15%;
-    }
-
-    .sportComplex {
+    .userRentals, .sportComplex {
         padding-top: 10%;
         padding-bottom: 15%;
     }
@@ -212,7 +196,7 @@ h6 {
     .intro-add-complex > h2 {
         margin: 0;
         text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     .profile .btn-group{
@@ -236,18 +220,7 @@ h6 {
     #scrollable{
         width:100%;
     }
-
-    #lastVisited{
-        padding-top:10%;
-        padding-left:5%;
-        padding-right:5%;
-    }
-
-    .ratingNum{
-        padding-right:8%;
-    }
 }
-
 
 .network-name {
     text-transform: uppercase;
@@ -262,14 +235,13 @@ h6 {
 }
 
 .content-section-b {
-    padding: 25px 0;
+    padding: 50px 0;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
 }
 
 .section-heading {
-    margin-bottom: 10px;
-    margin-left:10px;
+    margin-bottom: 30px;
 }
 
 .section-heading-spacer {
@@ -323,16 +295,6 @@ h6 {
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
     }
-
-    #searchResultsForm{
-        /*position:relative;
-        left: 100px;
-        top: 120px;
-       width:30%;*/
-        padding-top:25%;
-        width:100%;
-    }
-
 }
 
 footer {
@@ -348,7 +310,7 @@ p.copyright {
     margin: 10px 10px;
 }
 
- .searchResults, .sportComplex, .userRentals, #loginForm, #signupForm{
+ .searchResults, .sportComplex, .userRentals{
     padding-left:6%;
     padding-right:6%;
 }
@@ -357,9 +319,16 @@ p.copyright {
     padding-bottom:2%;
 }
 
+#searchResultsForm{
+    position:fixed;
+    left: 100px;
+    top: 100px;
+   width:30%;
+}
 
 .searchResultsComplexes{
- padding-top:12%;
+    margin-left:40%;
+   width:60%;
 }
 
 .table td, .table th{
@@ -406,7 +375,8 @@ td input{
 }
 
 .editComplex{
-    padding-bottom: 10%;
+    padding-top: 10%;
+    padding-bottom: 2%;
 }
 
 .manageSpaces .input-group, .userRentals .modal-body .input-group, .manageEquipment #equipmentModal .modal-body .input-group, #issueModal  .modal-body .input-group{
@@ -675,20 +645,6 @@ label.star:before {
         content:url("../img/logo.png");
         width:350px;
     }
-
-    #searchResultsForm{
-        /*position:relative;
-        left: 100px;
-        top: 120px;
-       width:30%;*/
-        padding-top:40%;
-        width:85%;
-    }
-
-    .sportComplex .complexImg{
-        padding-top:15%;
-    }
-
 }
 
 .intro-header #scrollable h1{
@@ -701,19 +657,5 @@ label.star:before {
 .intro-header #scrollable{
     padding-top:10px;
     padding-bottom:10px;
-}
-
-#searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
-#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon{
-    min-width:100px;
-}
-
-#equipmentForm .input-group-addon{
-    min-width: 70px;
-}
-
-#loginForm .input-group-addon, #signupForm .input-group-addon, #editForm .input-group-addon, #newPasswordForm .input-group-addon,
-#addComplexForm .input-group-addon{
-    min-width:50px;
 }
 

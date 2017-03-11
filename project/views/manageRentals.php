@@ -9,12 +9,12 @@ include('../templates/headerRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <h4>Rental #<span>1</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/01 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> Space 2 </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> 12:05 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -26,22 +26,18 @@ include('../templates/headerRegistered.php');
             </div>
         </div>
 
-
-
-
-
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>2</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Concluded </span></label></li>
+                            <h4>Rental #<span>1</span></h4>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/01 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> Space 2 </span></label></li>
+                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> 12:05 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
 
@@ -77,7 +73,6 @@ include('../templates/headerRegistered.php');
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title text-center" id="myModalLabel">
                             Report
@@ -86,7 +81,7 @@ include('../templates/headerRegistered.php');
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                        <form id="reportForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
 

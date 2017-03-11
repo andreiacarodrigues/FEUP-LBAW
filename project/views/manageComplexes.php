@@ -15,13 +15,13 @@ include('../templates/headerRegistered.php');
                         <div class="caption text-center">
                             <h5>Complex 1</h5>
                             <div class="row">
-                                <div class="col-md-6 btn-group-vertical">
+                                <div class="col-6 btn-group-vertical">
                                     <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>
                                     <a href="editComplex.php" class="btn btn-primary gradient-blue">Edit Information  </a>
                                     <a href="manageRentalsManager.php" class="btn btn-primary gradient-blue">Manage Rentals </a>
                                     <a href="manageSpaces.php" class="btn btn-primary gradient-blue">Manage Spaces  </a>
                                 </div>
-                                <div class="col-md-6 btn-group-vertical">
+                                <div class="col-6 btn-group-vertical">
                                     <a href="manageEquipment.php" class="btn btn-primary gradient-blue">Manage Equipment  </a>
                                     <a href="issuesManagement.php" class="btn btn-primary gradient-blue">Issue Reports  </a>
                                     <a href="complexManagers.php" class="btn btn-primary gradient-blue">Manage Managers  </a>
@@ -39,13 +39,13 @@ include('../templates/headerRegistered.php');
                     <div class="caption text-center">
                         <h5>Complex 2</h5>
                         <div class="row">
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>
                                 <a href="editComplex.php" class="btn btn-primary gradient-blue">Edit Information  </a>
                                 <a href="manageRentalsManager.php" class="btn btn-primary gradient-blue">Manage Rentals </a>
                                 <a href="manageSpaces.php" class="btn btn-primary gradient-blue">Manage Spaces  </a>
                             </div>
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="manageEquipment.php" class="btn btn-primary gradient-blue">Manage Equipment  </a>
                                 <a href="issuesManagement.php" class="btn btn-primary gradient-blue">Issue Reports  </a>
                                 <a href="complexManagers.php" class="btn btn-primary gradient-blue">Manage Managers  </a>
@@ -63,13 +63,13 @@ include('../templates/headerRegistered.php');
                     <div class="caption text-center">
                         <h5>Complex 3</h5>
                         <div class="row">
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>
                                 <a href="editComplex.php" class="btn btn-primary gradient-blue">Edit Information  </a>
                                 <a href="manageRentalsManager.php" class="btn btn-primary gradient-blue">Manage Rentals </a>
                                 <a href="manageSpaces.php" class="btn btn-primary gradient-blue">Manage Spaces  </a>
                             </div>
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="manageEquipment.php" class="btn btn-primary gradient-blue">Manage Equipment  </a>
                                 <a href="issuesManagement.php" class="btn btn-primary gradient-blue">Issue Reports  </a>
                                 <a href="complexManagers.php" class="btn btn-primary gradient-blue">Manage Managers  </a>
@@ -90,13 +90,13 @@ include('../templates/headerRegistered.php');
                     <div class="caption text-center">
                         <h5>Complex 4</h5>
                         <div class="row">
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>
                                 <a href="editComplex.php" class="btn btn-primary gradient-blue">Edit Information  </a>
                                 <a href="manageRentalsManager.php" class="btn btn-primary gradient-blue">Manage Rentals </a>
                                 <a href="manageSpaces.php" class="btn btn-primary gradient-blue">Manage Spaces  </a>
                             </div>
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="manageEquipment.php" class="btn btn-primary gradient-blue">Manage Equipment  </a>
                                 <a href="issuesManagement.php" class="btn btn-primary gradient-blue">Issue Reports  </a>
                                 <a href="complexManagers.php" class="btn btn-primary gradient-blue">Manage Managers  </a>
@@ -114,13 +114,13 @@ include('../templates/headerRegistered.php');
                     <div class="caption text-center">
                         <h5>Complex 5</h5>
                         <div class="row">
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="sportComplex.php" class="btn btn-primary gradient-blue">View Information  </a>
                                 <a href="editComplex.php" class="btn btn-primary gradient-blue">Edit Information  </a>
                                 <a href="manageRentalsManager.php" class="btn btn-primary gradient-blue">Manage Rentals </a>
                                 <a href="manageSpaces.php" class="btn btn-primary gradient-blue">Manage Spaces  </a>
                             </div>
-                            <div class="col-md-6 btn-group-vertical">
+                            <div class="col-6 btn-group-vertical">
                                 <a href="manageEquipment.php" class="btn btn-primary gradient-blue">Manage Equipment  </a>
                                 <a href="issuesManagement.php" class="btn btn-primary gradient-blue">Issue Reports  </a>
                                 <a href="complexManagers.php" class="btn btn-primary gradient-blue">Manage Managers  </a>

@@ -9,7 +9,7 @@ include('../templates/headerRegistered.php');
             <br>
         </div>
         <hr class="divider"><br>
-            <form id="addComplexForm" action="sportComplex.php" method="post" autocomplete="on">
+            <form id="addSpaceForm" action="sportComplex.php" method="post" autocomplete="on">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="form-group">

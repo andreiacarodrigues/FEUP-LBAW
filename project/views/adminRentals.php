@@ -23,17 +23,17 @@ include('../templates/adminHeaderRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <h4>Rental #<span>1</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Contact: <span> 912345678 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -55,17 +55,17 @@ include('../templates/adminHeaderRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <h4>Rental #<span>2</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Contact: <span> 912345678 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -86,17 +86,17 @@ include('../templates/adminHeaderRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <h4>Rental #<span>3</span></h4>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Contact: <span> 912345678 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 2 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Complete </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
@@ -122,7 +122,6 @@ include('../templates/adminHeaderRegistered.php');
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title text-center" id="myModalLabel">
                             Issue
@@ -136,10 +135,10 @@ include('../templates/adminHeaderRegistered.php');
                                 <div class="container">
                                     <div class="col-md-4">
                                         <ul class="list-unstyled">
-                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/01 </span></label></li>
-                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Subject: <span> Equipment </span></label></li>
-                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Category: <span> Others </span></label></li>
-                                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Description: <span> O relvado estava em mau estado </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Subject: <span> Equipment </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> Others </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Description: <span> O relvado estava em mau estado </span></label></li>
                                         </ul>
                                     </div>
 

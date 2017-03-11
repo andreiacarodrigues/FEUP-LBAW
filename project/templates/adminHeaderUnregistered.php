@@ -38,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="home.php"> <img src="../res/img/logo.png" style="width:350px"></a>
+            <a class="navbar-brand topnav" href="home.php"> <img src="../res/img/logo.png" ></a>
         </div>
     </div>
 </nav>

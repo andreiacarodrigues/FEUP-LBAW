@@ -23,7 +23,7 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
-                            <div class="totheright col-md-4"><br><br><br>
+                            <div class="totheright col-md-4">
                                 <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit Information</button>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
-                            <div class="totheright col-md-4"><br><br><br>
+                            <div class="totheright col-md-4">
                                 <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit Information</button>
                             </div>
                         </div>
@@ -67,7 +67,6 @@ include('../templates/headerRegistered.php');
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title text-center" id="myModalLabel">
                             Edit Space 1
@@ -76,7 +75,7 @@ include('../templates/headerRegistered.php');
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                        <form id="editSpaceForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="form-group">

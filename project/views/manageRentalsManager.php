@@ -15,19 +15,19 @@ include('../templates/headerRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <p> User Information: </p>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User: <span> xCutePsycho </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Contact: <span> 912345678 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User: <span> xCutePsycho </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <p> Reservation Information: </p>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/02 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/02 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Time of Start: <span> 12:05 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration: <span> 00:30 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
 
@@ -49,20 +49,19 @@ include('../templates/headerRegistered.php');
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <p> User Information: </p>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User: <span> xCutePsycho </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> User Contact: <span> 912345678 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User: <span> xCutePsycho </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Name: <span> Andreia Cristina de Almeida Rodrigues </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <ul class="list-unstyled">
                             <p> Reservation Information: </p>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Date: <span> 2017/01/02 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Space: <span> Space 1 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Time of Start: <span> 12:05 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Duration: <span> 00:30 </span></label></li>
-                            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> State: <span> Reserved </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/02 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 1 </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Time of Start: <span> 12:05 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration: <span> 00:30 </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
 

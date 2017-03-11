@@ -1,9 +1,7 @@
 <?php
 include('../templates/headerRegistered.php');
 ?>
-<div class="container">
-<div class="row">
-    <div class="col-md-4">
+
     <div id="searchResultsForm">
         <form role="form">
             <div class="form-group">
@@ -85,11 +83,11 @@ include('../templates/headerRegistered.php');
             <input type="submit" class="btn btn-primary btn-lg gradient-blue" value="Search"/>
             </div>
         </form>
-        </div>
     </div>
+        </div>
 
-    <div class="col-md-8">
 <div class="searchResults">
+    <div class="container">
         <div class="searchResultsComplexes">
         <h1 class="page-header">Search Results: <small> 2 complexes found </small></h1>
     <div class="row">
@@ -113,6 +111,7 @@ include('../templates/headerRegistered.php');
 
     <!-- /.row -->
     <hr>
+
         <div class="row">
             <div class="col-md-4">
                 <br>
@@ -131,12 +130,9 @@ include('../templates/headerRegistered.php');
                 <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
+        </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-
 
     <?php
 include('../templates/footer.php');

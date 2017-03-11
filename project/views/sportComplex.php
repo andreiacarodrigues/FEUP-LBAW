@@ -11,8 +11,7 @@ include('../templates/headerRegistered.php');
 
     <div class="row">
         <div class="col-md-4">
-            <br><br><br>
-            <img class="img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
+            <img class="complexImg img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
         </div>
         <div class="col-md-5">
             <h3>Informations:</h3>
@@ -29,6 +28,7 @@ include('../templates/headerRegistered.php');
         <div class="col-md-3">
             <br><br>
                 <div class="row">
+                    <div class="ratingNum">
                     <div class="text-center">
                         <h1 class="rating-num">4.0</h1>
                         <div class="rating">
@@ -96,6 +96,7 @@ include('../templates/headerRegistered.php');
                             </div>
                         </div>
                 </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -111,7 +112,7 @@ include('../templates/headerRegistered.php');
             </a>
         </div>
         <div class="col-md-8">
-            <h4> Space 1</h4>
+            <h4> Space 1 ⭐⭐</h4>
             <ul class="list-group">
                 <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
                 <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
@@ -130,7 +131,7 @@ include('../templates/headerRegistered.php');
                 </a>
             </div>
             <div class="col-md-8">
-                <h4> Space 2</h4>
+                <h4> Space 2 ⭐⭐⭐⭐⭐</h4>
                 <ul class="list-group">
                     <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
                     <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>

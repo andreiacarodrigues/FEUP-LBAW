@@ -2,18 +2,17 @@
 include('../templates/headerRegistered.php');
 ?>
 <div class="manageEquipment">
-
     <div class="container">
         <form id="equipmentForm" action="home.php" method="post" autocomplete="on">
-
-             <table class="table table-striped table-responsive table-sm" >
-                <thead class="thead-default">
+            <div class="table-responsive">
+            <table class="table table-striped table-sm" >
+               <thead class="thead-default">
                 <tr>
                    <th><h4>Item</h4></th>
                    <th><h4>Name</h4></th>
                    <th><h4>Stock</h4></th>
                     <th><h4>Details</h4></th>
-                   <th><h4>Unavailable</h4></th>
+                    <th><h4>Unavailable</h4></th>
                     <th><h4>Remove</h4></th>
                 </tr>
               </thead>
@@ -137,21 +136,22 @@ include('../templates/headerRegistered.php');
               </tr>
             </tbody>
         </table>
+            </div>
 
             <br><br>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-6">
                     <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment </button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-6">
                     <div class="text-right">
                         <input type="submit" class="btn btn-primary gradient-blue" value="Save"/>
                         <input type="submit" class="btn btn-primary gradient-red" value="Cancel"/>
                     </div>
                 </div>
             </div>
-
         </form>
+
     </div>
     <!-- /.row -->
 
@@ -168,7 +168,6 @@ include('../templates/headerRegistered.php');
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title text-center" id="myModalLabel">
                     New Equipment
@@ -177,7 +176,7 @@ include('../templates/headerRegistered.php');
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <form action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                <form id="equipmentForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
 
@@ -215,8 +214,9 @@ include('../templates/headerRegistered.php');
     </div>
 </div>
 
-</div>
 
+
+</div>
 
     <?php
 include('../templates/footer.php');
