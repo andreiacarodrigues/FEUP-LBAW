@@ -8,7 +8,7 @@ include('../templates/headerUnregistered.php');
                 <div class="intro-message">
                     <h1>Login</h1>
                     <hr class="intro-divider">
-                    <form id="loginForm" class="searchForm" action="home.php" method="post" autocomplete="on">
+                    <form id="loginForm" class="searchForm" action="homeRegistered.php" method="post" autocomplete="on">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group">

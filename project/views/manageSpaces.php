@@ -20,6 +20,8 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Covered: <span> Yes </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Surface: <span> Syntetic grass </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Dimensions: <span> Normal </span></label></li>
+                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Price / hour: <span> 36€ </span></label></li>
+                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports: <span> Tenis, Basketball </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
@@ -44,6 +46,8 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Covered: <span> Yes </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Surface: <span> Syntetic grass </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Dimensions: <span> Normal </span></label></li>
+                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Price / hour: <span> 36€ </span></label></li>
+                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports: <span> Tenis, Basketball </span></label></li>
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
@@ -108,6 +112,11 @@ include('../templates/headerRegistered.php');
                                             </select>
                                         </div>
 
+                                            <div class="input-group">
+                                                <span class="input-group-addon primary">Price / hour</span>
+                                                <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                                            </div>
+
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Availability</span>
                                             <select class="form-control" title="">
@@ -116,6 +125,15 @@ include('../templates/headerRegistered.php');
                                                 <option>Unavailable</option>
                                             </select>
                                         </div>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon primary">Sports</span>
+                                                <select class="form-control" name="sports" multiple>
+                                                    <option value="football">Football</option>
+                                                    <option value="basketball">Basketball</option>
+                                                    <option value="tenis">Tenis</option>
+                                                </select>
+                                            </div>
 
 
                                         <div class="input-group">
@@ -150,3 +168,44 @@ include('../templates/headerRegistered.php');
     <?php
 include('../templates/footer.php');
 ?>
+<link rel="stylesheet" href="../js/bootstrap-multiselect.css" />
+<script src="../js/bootstrap-multiselect.js"></script>
+
+<script>
+    $(document).ready(function() {
+        alert('hey');
+        $('#editSpaceForm')
+            .find('[name="sports"]')
+            .multiselect({
+                includeSelectAllOption: true,
+                onChange: function(element, checked) {
+                    adjustByScrollHeight();
+                },
+                onDropdownShown: function(e) {
+                    adjustByScrollHeight();
+                },
+                onDropdownHidden: function(e) {
+                    adjustByHeight();
+                }
+            })
+            .end();
+
+        function adjustByHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when hiding the picker
+                $iframe.height($body.height());
+            }
+        }
+
+        function adjustByScrollHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when showing the picker
+                $iframe.height($body.get(0).scrollHeight);
+            }
+        }
+    });
+</script>

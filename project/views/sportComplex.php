@@ -117,6 +117,7 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
                 <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                 <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
+                <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
             </ul>
             <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
@@ -136,6 +137,7 @@ include('../templates/headerRegistered.php');
                     <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
                     <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
                     <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
+                    <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
                 </ul>
                 <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>

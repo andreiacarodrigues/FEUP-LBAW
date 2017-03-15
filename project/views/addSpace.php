@@ -45,9 +45,26 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Dimensions</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option>Football</option>
+                                    <option >Football</option>
                                     <option>Basketball</option>
                                     <option>Tenis</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon primary">Price / hour</span>
+                                <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon primary">Sports</span>
+                                <select class="form-control" name="sports" multiple>
+                                    <option value="football">Football</option>
+                                    <option value="basketball">Basketball</option>
+                                    <option value="tenis">Tenis</option>
                                 </select>
                             </div>
                         </div>
@@ -71,3 +88,44 @@ include('../templates/headerRegistered.php');
 <?php
 include('../templates/footer.php');
 ?>
+
+<link rel="stylesheet" href="../js/bootstrap-multiselect.css" />
+<script src="../js/bootstrap-multiselect.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#addSpaceForm')
+            .find('[name="sports"]')
+            .multiselect({
+                includeSelectAllOption: true,
+                onChange: function(element, checked) {
+                    adjustByScrollHeight();
+                },
+                onDropdownShown: function(e) {
+                    adjustByScrollHeight();
+                },
+                onDropdownHidden: function(e) {
+                    adjustByHeight();
+                }
+            })
+            .end();
+
+        function adjustByHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when hiding the picker
+                $iframe.height($body.height());
+            }
+        }
+
+        function adjustByScrollHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when showing the picker
+                $iframe.height($body.get(0).scrollHeight);
+            }
+        }
+    });
+</script>

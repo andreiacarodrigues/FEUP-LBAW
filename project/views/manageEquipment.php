@@ -11,7 +11,9 @@ include('../templates/headerRegistered.php');
                    <th><h4>Item</h4></th>
                    <th><h4>Name</h4></th>
                    <th><h4>Stock</h4></th>
+                    <th><h4>Price/h(€)</h4></th>
                     <th><h4>Details</h4></th>
+                    <th><h4>Sports</h4></th>
                     <th><h4>Unavailable</h4></th>
                     <th><h4>Remove</h4></th>
                 </tr>
@@ -36,6 +38,14 @@ include('../templates/headerRegistered.php');
                         </div>
                     </div>
                 </td>
+
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
+                          </div>
+                      </div>
+                  </td>
                   <td>
                       <div class="form-group">
                           <div class="input-group">
@@ -43,6 +53,17 @@ include('../templates/headerRegistered.php');
                           </div>
                       </div>
 
+                  </td>
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <select class="form-control" name="sports" multiple>
+                                  <option value="football">Football</option>
+                                  <option value="basketball">Basketball</option>
+                                  <option value="tenis">Tenis</option>
+                              </select>
+                          </div>
+                      </div>
                   </td>
                 <td>
                     <div class="form-group">
@@ -78,10 +99,28 @@ include('../templates/headerRegistered.php');
                   <td>
                       <div class="form-group">
                           <div class="input-group">
+                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
                               <textarea class="form-control" rows="5" id="comment"></textarea>
                           </div>
                       </div>
 
+                  </td>
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <select class="form-control" name="sports" multiple>
+                                  <option value="football">Football</option>
+                                  <option value="basketball">Basketball</option>
+                                  <option value="tenis">Tenis</option>
+                              </select>
+                          </div>
+                      </div>
                   </td>
                   <td>
                       <div class="form-group">
@@ -117,10 +156,28 @@ include('../templates/headerRegistered.php');
                   <td>
                       <div class="form-group">
                           <div class="input-group">
+                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
                               <textarea class="form-control" rows="5" id="comment"></textarea>
                           </div>
                       </div>
 
+                  </td>
+                  <td>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <select class="form-control" name="sports" multiple>
+                                  <option value="football">Football</option>
+                                  <option value="basketball">Basketball</option>
+                                  <option value="tenis">Tenis</option>
+                              </select>
+                          </div>
+                      </div>
                   </td>
                   <td>
                       <div class="form-group">
@@ -196,6 +253,25 @@ include('../templates/headerRegistered.php');
                                     <textarea class="form-control" rows="5" id="comment"></textarea>
                                 </div>
 
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon primary">Price/h</span>
+                                        <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                                    </div>
+
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon primary">Sports</span>
+                                        <select class="form-control" name="sports" multiple>
+                                            <option value="football">Football</option>
+                                            <option value="basketball">Basketball</option>
+                                            <option value="tenis">Tenis</option>
+                                        </select>
+                                    </div>
+
+
+
                                 <div class="input-group">
                                     <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                                     <img class="img-responsive" src="http://placehold.it/400x400" style="width:200px" alt=""><br>
@@ -221,3 +297,79 @@ include('../templates/headerRegistered.php');
     <?php
 include('../templates/footer.php');
 ?>
+
+
+
+<link rel="stylesheet" href="../js/bootstrap-multiselect.css" />
+<script src="../js/bootstrap-multiselect.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.modal-body #equipmentForm')
+            .find('[name="sports"]')
+            .multiselect({
+                includeSelectAllOption: true,
+                onChange: function(element, checked) {
+                    adjustByScrollHeight();
+                },
+                onDropdownShown: function(e) {
+                    adjustByScrollHeight();
+                },
+                onDropdownHidden: function(e) {
+                    adjustByHeight();
+                }
+            })
+            .end();
+
+        function adjustByHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when hiding the picker
+                $iframe.height($body.height());
+            }
+        }
+
+        function adjustByScrollHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when showing the picker
+                $iframe.height($body.get(0).scrollHeight);
+            }
+        }
+        $('#equipmentForm')
+            .find('[name="sports"]')
+            .multiselect({
+                includeSelectAllOption: true,
+                onChange: function(element, checked) {
+                    adjustByScrollHeight();
+                },
+                onDropdownShown: function(e) {
+                    adjustByScrollHeight();
+                },
+                onDropdownHidden: function(e) {
+                    adjustByHeight();
+                }
+            })
+            .end();
+
+        function adjustByHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when hiding the picker
+                $iframe.height($body.height());
+            }
+        }
+
+        function adjustByScrollHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when showing the picker
+                $iframe.height($body.get(0).scrollHeight);
+            }
+        }
+    });
+</script>

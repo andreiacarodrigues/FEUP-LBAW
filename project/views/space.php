@@ -34,6 +34,8 @@ include('../templates/headerRegistered.php');
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
+                <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
+                <li class="list-group-item"> <i class="fa fa-futbol-o"></i> Here goes the sports</li>
                 <li class="list-group-item"> <i class="fa fa-clock-o"></i> Here goes the opening/closing hours </li>
                 <li class="list-group-item"> Description </li>
             </ul>
@@ -153,6 +155,7 @@ include('../templates/headerRegistered.php');
                    <th><h4>Name</h4></th>
                    <th><h4>Quantity To Rent</h4></th>
                    <th><h4>Available</h4></th>
+                    <th><h4>Price / hour (€)</h4></th>
                 </tr>
               </thead>
               <tbody>
@@ -173,6 +176,9 @@ include('../templates/headerRegistered.php');
                 <td>
                    <h5> 20 </h5>
                 </td>
+                  <td>
+                      <h5> 2 </h5>
+                  </td>
             </tr>
             <tr>
                 <td class="centered">
@@ -190,6 +196,9 @@ include('../templates/headerRegistered.php');
                 </td>
                 <td>
                     <h5> 10 </h5>
+                </td>
+                <td>
+                    <h5> 2 </h5>
                 </td>
             </tr>
             <tr>
@@ -209,19 +218,26 @@ include('../templates/headerRegistered.php');
                 <td>
                     <h5> 50 </h5>
                 </td>
+                <td>
+                    <h5> 1 </h5>
+                </td>
             </tr>
             </tbody>
         </table>
 </div>
 
     <div class="text-right">
+        <h4> Total(€): 36 </h4>
                 <input type="submit" class="btn btn-primary gradient-blue" value="Rent Items"/>
             </div>
         </form>
+
     </div>
     <!-- /.row -->
 
     </div>
+
+
 </div>
 
 
