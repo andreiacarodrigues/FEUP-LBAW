@@ -23,9 +23,10 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Surface</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option>Football</option>
-                                    <option>Basketball</option>
-                                    <option>Tenis</option>
+                                    <option>Artificial Grass</option>
+                                    <option>Carpet</option>
+                                    <option>Asphalt</option>
+                                    <option>Acrylic</option>
                                 </select>
                             </div>
                         </div>
@@ -34,9 +35,8 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Coverage</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option>Football</option>
-                                    <option>Basketball</option>
-                                    <option>Tenis</option>
+                                    <option>Covered</option>
+                                    <option>Uncovered</option>
                                 </select>
                             </div>
                         </div>
@@ -45,9 +45,9 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Dimensions</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option >Football</option>
-                                    <option>Basketball</option>
-                                    <option>Tenis</option>
+                                    <option >Small</option>
+                                    <option>Normal</option>
+                                    <option>Big</option>
                                 </select>
                             </div>
                         </div>
