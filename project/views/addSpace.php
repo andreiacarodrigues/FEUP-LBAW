@@ -5,7 +5,7 @@ include('../templates/headerRegistered.php');
 <div class="addSpace">
     <div class="container">
         <div class="intro-add-complex text-center">
-            <h2>Add Space to: MaxiSports<span>  </span></h2>
+            <h2>Add Space to: Complex<span> 1 </span></h2>
             <br>
         </div>
         <hr class="divider"><br>
@@ -23,10 +23,9 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Surface</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option>Artificial Grass</option>
-                                    <option>Carpet</option>
-                                    <option>Asphalt</option>
-                                    <option>Acrylic</option>
+                                    <option>Football</option>
+                                    <option>Basketball</option>
+                                    <option>Tenis</option>
                                 </select>
                             </div>
                         </div>
@@ -35,8 +34,9 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Coverage</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option>Covered</option>
-                                    <option>Uncovered</option>
+                                    <option>Football</option>
+                                    <option>Basketball</option>
+                                    <option>Tenis</option>
                                 </select>
                             </div>
                         </div>
@@ -45,9 +45,9 @@ include('../templates/headerRegistered.php');
                                 <span class="input-group-addon primary">Dimensions</span>
                                 <select class="form-control" title="">
                                     <option value="" disabled selected></option>
-                                    <option >Small</option>
-                                    <option>Normal</option>
-                                    <option>Big</option>
+                                    <option >Football</option>
+                                    <option>Basketball</option>
+                                    <option>Tenis</option>
                                 </select>
                             </div>
                         </div>
