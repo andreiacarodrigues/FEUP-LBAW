@@ -173,7 +173,7 @@ include('../templates/footer.php');
 
 <script>
     $(document).ready(function() {
-        alert('hey');
+      
         $('#editSpaceForm')
             .find('[name="sports"]')
             .multiselect({

@@ -246,6 +246,9 @@ h6 {
     .ratingNum{
         padding-right:8%;
     }
+    .statistics, .admin-statistics-header{
+        padding-top:25%;
+    }
 }
 
 

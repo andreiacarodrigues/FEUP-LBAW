@@ -13,11 +13,11 @@ include('../templates/adminHeaderRegistered.php');
         </div>
         <div class="thumbnail">
         <ul class="list-unstyled list-statistics">
-            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Total users registered over the current month: <span>100</span> users</label></li>
-            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Total users registered over the current year: <span>200</span> users</label></li>
-            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Total users registered: <span>300</span> users</label></li>
-            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Total complexes registered: <span>50</span></label></li>
-            <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Total reservations made: <span>550</span></label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered over the current month: <span>100</span> users</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered over the current year: <span>200</span> users</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered: <span>300</span> users</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total complexes registered: <span>50</span></label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total reservations made: <span>550</span></label></li>
 
         </ul>
         </div>
