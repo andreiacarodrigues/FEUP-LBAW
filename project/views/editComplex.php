@@ -60,19 +60,25 @@ include('../templates/headerRegistered.php');
                                 <input type="tel" class="form-control" name="tel" id="tel"  placeholder="Enter the sports complex paypal account"/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
+                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+                            </div>
+                            <br>
+                            <div class="col-md-6 mobileFixButtons">
+                                <a href="#" class="btn btn-primary gradient-red">Set as Inactive <i class="glyphicon glyphicon-remove"></i></a>
+                            </div>
+                        </div>
 
-                        <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-                        <br><br>
+                       <br><br>
                         <div style="text-align: center;">
                             <input type="submit" class="btn btn-primary gradient-blue" value="Submit"/>
                             <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                         </div>
 
-                        <div class="totheright deleteComplex">
-                            <a href="#" class="btn btn-primary gradient-red ">Delete Complex</a>
-                        </div>
                     </div>
+
                 </div>
             </form>
         </div>

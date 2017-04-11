@@ -41,6 +41,7 @@
             <a class="navbar-brand topnav" href="home.php"> <img src="../res/img/logo.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="profile.php">Profile</a>
@@ -54,7 +55,9 @@
                 <li>
                     <a href="home.php">Log out</a>
                 </li>
+
             </ul>
+
         </div>
     </div>
 </nav>

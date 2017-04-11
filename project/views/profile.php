@@ -5,13 +5,13 @@ include('../templates/headerRegistered.php');
 <div class="profile">
         <div class="container">
           <div class="row">
-                   <div class="col-xs-12 col-sm-6 col-md-6">
+                   <div class="col-md-12">
                           <div class="row">
-                               <div class="col-sm-6 col-md-4">
+                               <div class="col-md-offset-1 col-sm-6 col-md-2">
                                <!-- <img src="http://placehold.it/150" alt="" class="img-circle img-responsive" />-->
                                 <img src="../res/img/doge.jpeg" alt="" class="img-circle img-responsive"  style="width:150px;height:150px;" />
                             </div>
-                            <div class="col-sm-6 col-md-8">
+                            <div class="col-sm-6 col-md-9">
                                 <h4><i class="fa fa-user fa" aria-hidden="true"></i> <strong>Andreia Cristina de Almeida Rodrigues</strong></h4>
                                 <p>
                                     <i class="fa fa-users fa"></i> xCutePsycho <br />
@@ -21,8 +21,9 @@ include('../templates/headerRegistered.php');
                                 </p>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary gradient-yellow"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i></button>
+                              <!--  <button type="button" class="btn btn-primary gradient-yellow">Edit Profile <i class="glyphicon glyphicon-edit"></i></button>
+                                <br><br>-->
+                                <button type="button" class="btn btn-primary gradient-red">Set as Inactive <i class="glyphicon glyphicon-remove"></i></button>
                             </div>
                         </div>
                    </div>
@@ -31,6 +32,8 @@ include('../templates/headerRegistered.php');
 
 
         <br><br>
+
+
         <div class="container">
         <hr class="divider"><br>
             <form id="editForm" action=" " method="post" autocomplete="on">
@@ -74,6 +77,8 @@ include('../templates/headerRegistered.php');
                           <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
                           <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                         </div>
+                        <br><br>
+
                         <div style="text-align: center;">
                             <input type="submit" class="btn btn-primary gradient-blue" value="Submit"/>
                             <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
@@ -84,9 +89,10 @@ include('../templates/headerRegistered.php');
             <br>
             <a href="#newPasswordForm" style="display:block;text-align:center;">Change Password</a>
         </div>
+</div>
 
 
-        <div class="container">
+       <!-- <div class="container">
             <hr class="divider">
             <br>
 

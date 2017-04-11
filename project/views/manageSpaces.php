@@ -25,8 +25,8 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
-                            <div class="totheright col-md-4">
-                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit Information</button>
+                            <div class="mobileFixButtons col-md-5">
+                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
                             </div>
                         </div>
                     </div>
@@ -51,8 +51,8 @@ include('../templates/headerRegistered.php');
                                     <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
                                 </ul>
                             </div>
-                            <div class="totheright col-md-4">
-                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit Information</button>
+                            <div class="mobileFixButtons col-md-5">
+                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ include('../templates/footer.php');
 
 <script>
     $(document).ready(function() {
-      
+
         $('#editSpaceForm')
             .find('[name="sports"]')
             .multiselect({

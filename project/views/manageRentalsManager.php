@@ -31,10 +31,10 @@ include('../templates/headerRegistered.php');
                         </ul>
                     </div>
 
-                    <div class="col-md-2">
-                        <div class="totheright">
+                    <div class="col-md-2 mobileFixButtons">
+
                             <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -65,10 +65,10 @@ include('../templates/headerRegistered.php');
                         </ul>
                     </div>
 
-                    <div class="col-md-2">
-                        <div class="totheright">
+                    <div class="col-md-2 mobileFixButtons">
+
                             <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i>Cancel</button>
-                        </div>
+
                     </div>
                 </div>
             </div>

@@ -6,9 +6,9 @@ include('../templates/headerRegistered.php');
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>1</span></h4>
+                            <h4 class="mobileFixText">Rental #<span>1</span></h4>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/01 </span></label></li>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> Space 2 </span></label></li>
@@ -17,10 +17,8 @@ include('../templates/headerRegistered.php');
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="totheright">
+                    <div class="col-md-4 mobileFixButtons">
                             <button type="button" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -29,9 +27,9 @@ include('../templates/headerRegistered.php');
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>1</span></h4>
+                            <h4 class="mobileFixText">Rental #<span>1</span></h4>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> 2017/01/01 </span></label></li>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> Space 2 </span></label></li>
@@ -41,8 +39,8 @@ include('../templates/headerRegistered.php');
                         </ul>
                     </div>
 
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="totheright">
+                    <div class="col-md-4 mobileFixButtons">
+
                         <div class="stars">
                                 <input class="star star-5" id="star-5" type="radio" name="star"/>
                                 <label class="star star-5" for="star-5"></label>

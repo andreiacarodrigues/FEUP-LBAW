@@ -94,7 +94,6 @@ include('../templates/headerRegistered.php');
         <h1 class="page-header">Search Results: <small> 2 complexes found </small></h1>
     <div class="row">
         <div class="col-md-4">
-            <br>
             <a href="#">
                 <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
             </a>
@@ -115,7 +114,6 @@ include('../templates/headerRegistered.php');
     <hr>
         <div class="row">
             <div class="col-md-4">
-                <br>
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                 </a>

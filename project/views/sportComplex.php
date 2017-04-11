@@ -11,9 +11,10 @@ include('../templates/headerRegistered.php');
 
     <div class="row">
         <div class="col-md-4">
-            <img class="complexImg img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
+            <img class="img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
         </div>
         <div class="col-md-5">
+
             <h3>Informations:</h3>
             <ul class="list-group">
                 <li class="list-group-item"> <i class="fa fa-users fa"></i> Here goes the name </li>
@@ -26,7 +27,6 @@ include('../templates/headerRegistered.php');
         </div>
 
         <div class="col-md-3">
-            <br><br>
                 <div class="row">
                     <div class="ratingNum">
                     <div class="text-center">
@@ -105,13 +105,12 @@ include('../templates/headerRegistered.php');
     <div class="container">
         <hr>
     <div class="row">
-        <div class="col-md-4">
-            <br>
+        <div class="col-md-3">
             <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" style="width:400px" alt="">
+                <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
             </a>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <h4> Space 1 ⭐⭐</h4>
             <ul class="list-group">
                 <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
@@ -125,13 +124,12 @@ include('../templates/headerRegistered.php');
 
     <hr>
         <div class="row">
-            <div class="col-md-4">
-                <br>
+            <div class="col-md-3">
                 <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" style="width:400px" alt="">
+                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
                 </a>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <h4> Space 2 ⭐⭐⭐⭐⭐</h4>
                 <ul class="list-group">
                     <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>

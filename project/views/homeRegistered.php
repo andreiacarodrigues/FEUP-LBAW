@@ -9,8 +9,10 @@
                     <h1>Sports R Us</h1>
                     <h3>Your favorite place to rent sports complexes!</h3>
                     <hr class="intro-divider">
+                    <h4>Here you can find the space you needed to practice your favorite sport. Its just one click away!</h4>
                 </div>
             </div>
+            <br><br>
 
             <div class="row">
                 <div class="col-md-6">
@@ -76,7 +78,7 @@
                                             <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
                                         </a>
                                         <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
                                 <br>
@@ -86,7 +88,7 @@
                                             <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
                                         </a>
                                         <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
                                 <br><div class="row">
@@ -95,7 +97,7 @@
                                             <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
                                         </a>
                                         <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +122,7 @@
                                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                     </a>
                                     <div class="caption">
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
+                                        <h5> Complex 1 ⭐⭐⭐⭐</h5>
                                         <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
@@ -131,7 +133,7 @@
                                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                     </a>
                                     <div class="caption">
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
+                                        <h5> Complex 1 ⭐⭐⭐⭐</h5>
                                         <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
@@ -143,7 +145,7 @@
                                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                     </a>
                                     <div class="caption">
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
+                                        <h5> Complex 1 ⭐⭐⭐⭐</h5>
                                         <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>
@@ -154,7 +156,7 @@
                                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                     </a>
                                     <div class="caption">
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
+                                        <h5> Complex 1 ⭐⭐⭐⭐</h5>
                                         <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                     </div>
                                 </div>

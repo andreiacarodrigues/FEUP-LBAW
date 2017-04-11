@@ -1,9 +1,4 @@
-/*
-/*
- * Start Bootstrap - Landing Page (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Alternates);
 
 body,
 html {
@@ -18,12 +13,16 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Montserrat Alternates',"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
 
 .topnav {
     font-size: 14px;
+}
+
+input[type=button]{
+    cursor: pointer;
 }
 
 .lead {
@@ -114,7 +113,7 @@ h6 {
     padding-bottom: 2%;
 }
 
-.addComplex, .addSpace, .statistics{
+.addComplex, .addSpace, .statistics, .editComplex{
     padding-top: 10%;
     padding-bottom: 8%;
 }
@@ -126,8 +125,8 @@ h6 {
 
 .intro-message > h1, .intro-message-home > h1 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
-    font-size: 5em;
+    text-shadow: 2px 2px 3px rgb(0, 0, 0);
+    font-size: 5.2em;
 }
 
 .intro-message > h2, .intro-message-home > h2 {
@@ -148,8 +147,8 @@ h6 {
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-.intro-message > h3, .intro-message-home > h3 {
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
+.intro-message > h3, .intro-message-home > h3, .intro-message > h4, .intro-message-home > h4 {
+    text-shadow: 2px 2px 3px rgba(75, 75, 75, 0.81);
 }
 
 @media(max-width:769px) {
@@ -334,6 +333,9 @@ h6 {
        width:30%;*/
         padding-top:25%;
         width:100%;
+    }
+    .mobileFixButtons, .mobileFixText{
+        text-align:center;
     }
 
 }
@@ -537,11 +539,18 @@ td input{
     font-size:0.9em;
 }
 
-.profile img{
+.profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img{
     border: 2px;
     padding:5px;
     border-style: double;
     border-color: #cecdd2;
+}
+.withPadding{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.inactiveBtn{
+   margin-left:100px;
 }
 
 .list-statistics li label{
@@ -670,6 +679,10 @@ label.star:before {
 }
 
 @media (min-width: 770px){
+
+    .mobileFixButtons{
+        text-align:right;
+    }
     #scrollable {
         width:400px;
         overflow-y: scroll;
@@ -688,27 +701,31 @@ label.star:before {
         width:85%;
     }
 
-    .sportComplex .complexImg{
-        padding-top:15%;
-    }
+
+
 
 }
 
+.intro-header #scrollable{
+    border-radius:10px;
+}
 .intro-header #scrollable h1{
     margin: 0;
-    text-shadow: 2px 2px 3px rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px rgb(0, 0, 0);
     font-size: 2.5em;
-    color: #000000;
+    color: #fafafa;
+
 }
 
 .intro-header #scrollable{
     padding-top:10px;
     padding-bottom:10px;
+    text-align:center;
 }
 
 #searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
 #addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon{
-    min-width:100px;
+    min-width:112px;
 }
 
 #equipmentForm .input-group-addon{
@@ -720,4 +737,20 @@ label.star:before {
     min-width:50px;
 }
 
+.navbar-default  .nav>li>a:hover {
+    color: #31a3da !important;
+    background-color: #e8e8e8;
+}
 
+.navbar-default  .nav>li>a{
+    transition: .3s background-color;
+}
+
+.list-group .list-group-item{
+    padding:0 !important;
+    padding-bottom:5px !important;
+}
+
+.list-group-item{
+    border:0; !important;
+}

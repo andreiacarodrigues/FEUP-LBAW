@@ -25,7 +25,7 @@ include('../templates/headerRegistered.php');
 
     <div class="row">
         <div class="col-md-4">
-            <img class="complexImg img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
+            <img class="complexImg img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
         </div>
         <div class="col-md-5">
             <h3>Informations:</h3>
@@ -42,7 +42,6 @@ include('../templates/headerRegistered.php');
         </div>
 
         <div class="col-md-3">
-            <br><br>
             <div class="row">
                 <div class="ratingNum">
                 <div class="text-center">

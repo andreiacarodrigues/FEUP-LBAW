@@ -196,7 +196,7 @@ include('../templates/headerRegistered.php');
             </div>
 
             <br><br>
-            <div class="row">
+            <div class="row withPadding">
                 <div class="col-6">
                     <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment </button>
                 </div>
