@@ -1,0 +1,845 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Alternates);
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat Alternates',"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.topnav {
+    font-size: 14px;
+}
+
+input[type=button]{
+    cursor: pointer;
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: rgb(252, 252, 252);
+    background: url(../img/intro.jpg) no-repeat top center;
+    background-size: cover;
+    min-height: 85%;
+}
+
+.admin-intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: rgb(252, 252, 252);
+    background-color: #545454;
+    background-size: cover;
+    min-height: 85%;
+}
+
+.admin-statistics-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    color: rgb(252, 252, 252);
+    background-color: #545454;
+    background-size: cover;
+    min-height: 85%;
+}
+
+
+.profile {
+    margin-top: 13%;
+     margin-bottom: 10%;
+     min-height: 85%;
+ }
+
+.userRentals, .manageComplexes, .manageSpaces, .manageEquipment {
+    margin-top: 8%;
+    margin-bottom: 8%;
+    min-height: 85%;
+    font-size:0.95em;
+}
+
+.userRentals h4{
+    font-size:1.4em;
+    color:black;
+}
+
+.userRentals button{
+    font-size:0.95em;
+}
+
+ .searchResults{
+    margin-top: 3%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    margin-bottom: 10%;
+    min-height: 85%;
+}
+.sportComplex{
+    margin-top: 5%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    margin-bottom: 5%;
+    min-height: 85%;
+}
+
+.profile .btn-group{
+    margin-left:2%;
+}
+
+.intro-header .searchForm span,.intro-header .searchForm input, .intro-header .searchForm select,
+#addComplexForm span, #addComplexForm input, #addComplexForm select, #addComplexForm textarea,
+#addSpaceForm span, #addSpaceForm input, #addSpaceForm select,
+#editForm span, #editForm input, #editForm select,
+#newPasswordForm span, #newPasswordForm input, #newPasswordForm select,
+.searchResults .btn,
+.sportComplex .btn,
+#rentForm span, #rentForm input, #rentForm select,
+.manageComplexes a,
+#editSpaceForm input, #editSpaceForm btn,
+#equipmentForm input, #equipmentForm textarea, #equipmentForm select, #equipmentForm .btn,
+#equipmentModal input, #equipmentModal textarea, #equipmentModal select, #equipmentModal .btn, #equipmentModal span,
+#issueModalinput, #issueModal span, #issueModal textarea, #issueModal select, #issueModal .btn,
+.admin .btn
+{
+    font-size: 13px;
+}
+
+#rentForm input[type="submit"]
+{
+    font-size: 14px;
+}
+
+.manageComplexes .addComplexBtn, #equipmentForm .subBtn{
+    font-size:14px;
+}
+
+
+.intro-message {
+    position: relative;
+    padding-top: 8%;
+    padding-bottom: 10%;
+}
+
+.intro-message-home {
+    position: relative;
+    padding-top: 8%;
+    padding-bottom: 2%;
+}
+
+#registerWaiting{
+    padding-top:120px;
+}
+.addComplex, .addSpace, .statistics, .editComplex{
+    padding-top: 10%;
+    padding-bottom: 8%;
+}
+
+.admin, .admin-statistics{
+    padding-top: 6%;
+    padding-bottom: 2%;
+}
+
+.intro-message > h1, .intro-message-home > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgb(0, 0, 0);
+    font-size: 5.2em;
+}
+
+.intro-message > h2, .intro-message-home > h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
+    font-size: 3em;
+}
+
+.intro-add-complex > h2 {
+    margin: 0;
+    text-shadow:  2px 2px 3px rgba(0, 0, 0, 0.81);
+    font-size: 3em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3, .intro-message-home > h3, .intro-message > h4, .intro-message-home > h4 {
+    text-shadow: 2px 2px 3px rgba(75, 75, 75, 0.81);
+}
+@media(min-width:320px){
+    .manageComplexes .caption a
+    {
+        font-size: 10px;
+    }
+    .adminRentals .btn{
+        font-size: 10px;
+        width: auto !important;
+        margin-right: auto !important;
+        margin-bottom:auto !important;
+    }
+
+}
+
+@media(min-width:375px){
+
+    .adminRentals .btn{
+        font-size: 12px;
+        width: auto !important;
+        margin-right: auto !important;
+        margin-bottom:auto !important;
+    }
+
+}
+
+@media(max-width:1025px){
+    .manageComplexes .caption a
+    {
+        font-size: 12px;
+    }
+
+
+}
+
+
+@media(max-width:769px) {
+
+    #registerWaiting{
+        padding-top:90px;
+    }
+
+    .intro-message{
+        padding-top: 15%;
+        padding-bottom: 15%;
+    }
+
+    .intro-message-home{
+        padding-top: 15%;
+
+    }
+
+    .navbar-brand img{
+        width:210px;
+        content:url("../img/logoMobile.png");
+    }
+
+    .profile {
+         padding-top: 7%;
+        padding-bottom: 10%;
+    }
+
+    .manageComplexes, .manageSpaces, .manageEquipment {
+        padding-top:15%;
+        padding-left:2%;
+        padding-right:2%;
+    }
+
+    .addComplex, .addSpace, .editComplex {
+        padding-top:25%;
+    }
+
+
+    .manageComplexes a{
+        font-size: 0.9em;
+    }
+
+    .intro-header thumbnail {
+        padding-left:10%;
+        padding-right:10%;
+    }
+
+    .userRentals {
+        padding-top: 15%;
+        padding-bottom: 15%;
+    }
+
+    .sportComplex {
+        padding-top: 10%;
+        padding-bottom: 15%;
+    }
+
+
+    .intro-message > h1, .intro-message-home > h1 {
+        font-size: 4em;
+    }
+
+    .intro-add-complex > h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
+        font-size: 2.5em;
+    }
+
+    .profile .btn-group{
+        margin-left:5%;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+
+    #scrollable{
+        width:100%;
+    }
+
+    #lastVisited{
+        padding-top:10%;
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .ratingNum{
+        padding-right:4%;
+
+    }
+    .statistics, .admin-statistics-header{
+        padding-top:25%;
+    }
+
+}
+
+@media(min-width:760px) {
+
+.adminRentals .btn{
+    margin-right: 20px !important;
+    margin-bottom: 20px !important;
+    width:100px !important;
+}
+.adminRentals .rentalTabletBtns{
+    text-align:center; !important;
+}
+
+}
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.content-section-b {
+    padding: 25px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 10px;
+    margin-left:10px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 3em;
+    }
+
+    ul.banner-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    #searchResultsForm{
+        /*position:relative;
+        left: 100px;
+        top: 120px;
+       width:30%;*/
+        padding-top:25%;
+        width:100%;
+    }
+    .mobileFixButtons, .mobileFixText{
+        text-align:center;
+    }
+
+
+
+}
+
+footer {
+    padding: 30px 0;
+    background-color: #f8f8f8;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+
+.form-inline > * {
+    margin: 10px 10px;
+}
+
+ .searchResults, .sportComplex, .userRentals, #loginForm, #signupForm{
+    padding-left:6%;
+    padding-right:6%;
+}
+
+.searchResults, .sportComplex{
+    padding-bottom:2%;
+}
+
+
+.searchResultsComplexes{
+ padding-top:12%;
+}
+
+.table td, .table th{
+    text-align: center;
+}
+
+.centered {
+    vertical-align:middle;
+    text-align:center;
+}
+.centered img {
+    display:block;
+    margin:0 auto;
+}
+
+td .input-group{
+    margin: 0 auto;
+    float: none;
+}
+
+td input{
+    text-align:center;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.totheright{
+    text-align:right;
+}
+
+
+.manageComplexes button{
+    font-size: 1em;
+}
+
+.manageComplexes .btn-group-vertical{
+    margin-top:3%;
+}
+
+.deleteComplex{
+    padding-top: 10%;
+}
+
+.editComplex{
+    padding-bottom: 10%;
+}
+
+.manageSpaces .input-group, .userRentals .modal-body .input-group, .manageEquipment #equipmentModal .modal-body .input-group, #issueModal  .modal-body .input-group{
+    margin:1%;
+}
+
+.manageSpaces span, .manageSpaces select{
+    font-size: 0.9em;
+    height:75%;
+}
+
+.btn-primary.gradient-blue {
+    border-color: #34abd2;
+    background: -moz-linear-gradient(top, #34b5dc 50%, #00a3d6 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#34b5dc), color-stop(50%,#00a3d6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #34b5dc 50%,#00a3d6 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #34b5dc 50%,#00a3d6 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #34b5dc 50%,#00a3d6 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #34b5dc 50%,#00a3d6 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34b5dc', endColorstr='#00a3d6',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-blue:hover, .btn-primary.gradient-blue:focus, .btn-primary.gradient-blue:active, .btn-primary.gradient-blue.active, .open > .dropdown-toggle.btn-primary {
+    background: -moz-linear-gradient(top, #77c6e0 50%, #34b3da 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#77c6e0), color-stop(50%,#34b3da)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #77c6e0 50%,#34b3da 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #77c6e0 50%,#34b3da 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #77c6e0 50%,#34b3da 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #77c6e0 50%,#34b3da 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c6e0', endColorstr='#34b3da',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-blue:active, .btn-primary.gradient-blue.active {
+    background: -moz-linear-gradient(top,  #267c99 50%, #007299 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#267c99), color-stop(50%,#007299)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #267c99 50%,#007299 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-yellow {
+    border-color: #ffb738;
+    background: -moz-linear-gradient(top, #fba723 50%, #f98515 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#fba723), color-stop(50%,#f98515)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fba723 50%,#f98515 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fba723 50%,#f98515 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fba723 50%,#f98515 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fba723 50%,#f98515 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba723', endColorstr='#f98515',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-yellow:hover, .btn-primary.gradient-yellow:focus, .btn-primary.gradient-yellow:active, .btn-primary.gradient-yellow.active, .open > .dropdown-toggle.btn-primary {
+    background: -moz-linear-gradient(top, #fbc245 50%, #f9a140 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#fbc245), color-stop(50%,#f9a140)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fbc245 50%,#f9a140 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fbc245 50%,#f9a140 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fbc245 50%,#f9a140 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fbc245 50%,#f9a140 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbc245', endColorstr='#f9a140',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-yellow:active, .btn-primary.gradient-yellow.active {
+    background: -moz-linear-gradient(top, #d5a719 50%, #b1730d 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#d5a719), color-stop(50%,#b1730d)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #d5a719 50%,#b1730d 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5a719', endColorstr='#b1730d',GradientType=0 ); /* IE6-9 */
+}
+
+
+.btn-primary.gradient-red {
+    border-color: #d23211;
+    background: -moz-linear-gradient(top, #f83527 50%, #e20215 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#f83527), color-stop(50%,#e20215)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f83527 50%,#e20215 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f83527 50%,#e20215 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f83527 50%,#e20215 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #f83527 50%,#e20215 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f83527', endColorstr='#e20215',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-red:hover, .btn-primary.gradient-red:focus, .btn-primary.gradient-red:active, .btn-primary.gradient-red.active, .open > .dropdown-toggle.btn-primary {
+    background: -moz-linear-gradient(top, #ff5c52 50%, #e9423f 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#ff5c52), color-stop(50%,#e9423f)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ff5c52 50%,#e9423f 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ff5c52 50%,#e9423f 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ff5c52 50%,#e9423f 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ff5c52 50%,#e9423f 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5c52', endColorstr='#e9423f',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient-red:active, .btn-primary.gradient-red.active {
+    background: -moz-linear-gradient(top, #ce2d20 50%, #b20211 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#ce2d20), color-stop(50%,#b20211)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ce2d20 50%,#b20211 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ce2d20 50%,#b20211 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ce2d20 50%,#b20211 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ce2d20 50%,#b20211 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce2d20', endColorstr='#b20211',GradientType=0 ); /* IE6-9 */
+}
+
+
+.searchForm input[type="submit"], #searchResultsForm input[type="submit"], .searchResults a, .sportComplex a, .sportComplex input[type="submit"]{
+    font-size: 1.1em;
+    color: #ffffff;
+}
+
+.profile input[type="submit"]{
+    font-size: 1em;
+    color: #ffffff;
+}
+#searchResultsForm input[type="submit"],  .searchResults a, .sportComplex a{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+#searchResultsForm input, #searchResultsForm span, #searchResultsForm input[type='submit']{
+    font-size:0.9em;
+    font-size:0.9em;
+}
+
+.profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img, #editSpaceForm img{
+    border: 2px;
+    padding:5px;
+    border-style: double;
+    border-color: #cecdd2;
+}
+.withPadding{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.inactiveBtn{
+   margin-left:100px;
+}
+
+.list-statistics li label{
+    font-size:1.2em;
+}
+.list-statistics li{
+    padding:10px;
+}
+
+.admin .thumbnail {
+    color: #414141;
+    background-color: #ececec;
+}
+
+.admin .modal {
+    color: #414141;
+}
+
+.admin .input-group .checkbox label {
+    font-size: 1.3em;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
+
+
+}
+
+.admin .input-group .checkbox span {
+    padding-left: 10px;}
+
+
+
+.admin .input-group .checkbox input[type="checkbox"]{
+   font-size: 2.5em;
+    width: 19px;
+    height: 19px;
+
+}
+    /* -------------- */
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+
+
+/* ------------- */
+
+div.stars {
+    display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+    float: right;
+    padding: 5px;
+    font-size: 25px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+    color: #FD4;
+    text-shadow: 0 0 10px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+}
+
+/* ------------ */
+
+.material-icons.md-18 { font-size: 18px; }
+
+
+.rating_div{
+    width:50%;
+}
+
+.rating .glyphicon {font-size: 22px;}
+.rating-num { margin-top:0px;font-size: 54px; }
+.progress { margin-bottom: 5px; width:90%;}
+.progress-bar { text-align: left; }
+.rating-desc .col-md-3 {padding-right: 0px;}
+.sr-only { margin-left: 5px;overflow: visible;clip: auto; }
+
+
+
+/*--------------*/
+
+#scrollable {
+    overflow: hidden;
+    height:300px;
+
+    overflow-y:scroll;
+
+}
+.intro-header #scrollable{
+    padding-left:2%;
+    padding-right:2%;
+    background-color: rgba(249, 249, 249, 0.48);
+}
+.intro-header #scrollable h4 {
+    color: #292929;
+    font-size: 1em;
+}
+
+@media (min-width: 770px){
+
+    .mobileFixButtons{
+        text-align:right;
+    }
+    #scrollable {
+        width:400px;
+        overflow-y: scroll;
+    }
+    .navbar-brand img{
+        content:url("../img/logo.png");
+        width:350px;
+    }
+
+    #searchResultsForm{
+        /*position:relative;
+        left: 100px;
+        top: 120px;
+       width:30%;*/
+        padding-top:40%;
+        width:85%;
+    }
+
+    .adminRentals .btn{
+        margin-right: 20px;
+        margin-bottom: 20px;
+        font-size:13px;
+        width:100px;
+    }
+
+
+}
+
+.intro-header #scrollable{
+    border-radius:10px;
+}
+.intro-header #scrollable h1{
+    margin: 0;
+    text-shadow: 1px 1px 10px rgb(0, 0, 0);
+    font-size: 2.5em;
+    color: #fafafa;
+
+}
+
+.intro-header #scrollable{
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:center;
+}
+
+#searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
+#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon{
+    min-width:112px;
+}
+
+#equipmentForm .input-group-addon{
+    min-width: 70px;
+}
+
+#loginForm .input-group-addon, #signupForm .input-group-addon, #editForm .input-group-addon, #newPasswordForm .input-group-addon
+{
+    min-width:50px;
+}
+
+#addComplexForm .input-group-addon{
+      min-width:152px;
+  }
+
+.navbar-default  .nav>li>a:hover {
+    color: #31a3da !important;
+    background-color: #e8e8e8;
+}
+
+.navbar-default  .nav>li>a{
+    transition: .3s background-color;
+}
+
+.list-group .list-group-item{
+    padding:0 !important;
+    padding-bottom:5px !important;
+}
+
+.list-group-item{
+    border:0; !important;
+}
