@@ -1,7 +1,7 @@
 <?php
     include_once('../../config/init.php');
-    include_once($BASE_DIR."database/complexes.php");
-    include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR . "database/complexes.php");
+    include_once($BASE_DIR . "database/users.php");
 
     $name = $_POST['name'];
     $location = $_POST['location'];
@@ -16,9 +16,9 @@
 
     $required = [$name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
 
-    foreach($required as $item)
+    foreach ($required as $item)
     {
-        if(empty($item))
+        if (empty($item))
         {
             $_SESSION['error_messages'][] = "Required field wasn't filled.";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -26,8 +26,10 @@
         }
     }
 
-    if(empty($description))
+    if (empty($description))
+    {
         $description = '';
+    }
 
     try
     {

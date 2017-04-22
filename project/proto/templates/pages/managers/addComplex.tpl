@@ -72,10 +72,8 @@
                             <div class="input-group">
                                 <span class="input-group-addon primary"> Open on Weekends </span>
                                 <select class="form-control"  name="openOnWeekends"  title="">
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                    <option>Only Saturday</option>
-                                    <option>Only Sunday</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
                                 </select>
                             </div>
                         </div>
