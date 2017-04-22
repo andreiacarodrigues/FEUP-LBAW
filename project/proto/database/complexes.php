@@ -18,7 +18,7 @@
         return $stmt;
     }
 
-    function addComplex($name, $location, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal)
+    function addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal)
     {
         global $conn;
 
@@ -28,7 +28,7 @@
         VALUES (?,?,?,?,?,?,?,?,?,?)
         RETURNING "complexID";');
 
-        $stmt->execute(array($name, $location, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, 1));
+        $stmt->execute(array($name, $location, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $municipality));
         return $stmt->fetch()['complexID'];
     }
 

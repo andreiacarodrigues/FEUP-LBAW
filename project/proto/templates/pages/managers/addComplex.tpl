@@ -17,10 +17,20 @@
                                 <input type="text" class="form-control" name="name"  placeholder="Enter the sports complex name"/>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Location </span>
                                 <input type="text" class="form-control" name="location"   placeholder="Enter the sports complex location"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Municipality </span>
+                                <select class="form-control"  name="municipality"  title="">
+                                    {html_options values=$municipalityIDs output=$municipalityNames selected="1"}
+                                </select>
                             </div>
                         </div>
 

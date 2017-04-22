@@ -5,6 +5,7 @@
 
     $name = $_POST['name'];
     $location = $_POST['location'];
+    $municipality = $_POST['municipality'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     $description = $_POST['description'];
@@ -13,7 +14,7 @@
     $openOnWeekends = $_POST['openOnWeekends'];
     $paypal = $_POST['paypal'];
 
-    $required = [$name, $location, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
+    $required = [$name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
 
     foreach($required as $item)
     {
@@ -31,12 +32,12 @@
     try
     {
         $username = $_SESSION['username'];
-        if ($complexID = addComplex($name, $location, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal))
+        if ($complexID = addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal))
         {
             $userID = getUserID($username);
             addManager($complexID, $userID);
             $_SESSION['success_messages'][] = "Complex registry successful";
-           // header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         else
         {
@@ -46,8 +47,6 @@
     }
     catch (PDOException $e)
     {
-        /*echo $e->getCode();
         $_SESSION['error_messages'][] = "Unknown error occurred;";
-        header('Location: ' . $_SERVER['HTTP_REFERER']);*/
-        throw $e;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
