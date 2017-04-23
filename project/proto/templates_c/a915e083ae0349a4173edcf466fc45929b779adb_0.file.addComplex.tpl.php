@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-20 10:28:35
+/* Smarty version 3.1.30, created on 2017-04-23 15:57:31
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/addComplex.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f87f430e1aa0_55436535',
+  'unifunc' => 'content_58fcc0db3ab804_01374575',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a915e083ae0349a4173edcf466fc45929b779adb' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/addComplex.tpl',
-      1 => 1492676920,
+      1 => 1492955140,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_58f87f430e1aa0_55436535 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fcc0db3ab804_01374575 (Smarty_Internal_Template $_smarty_tpl) {
+if (!is_callable('smarty_function_html_options')) require_once '/opt/lbaw/lbaw1653/public_html/proto/lib/smarty/plugins/function.html_options.php';
 $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -45,10 +46,21 @@ actions/managers/addComplex.php" method="post" autocomplete="on">
                                 <input type="text" class="form-control" name="name"  placeholder="Enter the sports complex name"/>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Location </span>
                                 <input type="text" class="form-control" name="location"   placeholder="Enter the sports complex location"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Municipality </span>
+                                <select class="form-control"  name="municipality"  title="">
+                                    <?php echo smarty_function_html_options(array('values'=>$_smarty_tpl->tpl_vars['municipalityIDs']->value,'output'=>$_smarty_tpl->tpl_vars['municipalityNames']->value,'selected'=>"1"),$_smarty_tpl);?>
+
+                                </select>
                             </div>
                         </div>
 
@@ -90,10 +102,8 @@ actions/managers/addComplex.php" method="post" autocomplete="on">
                             <div class="input-group">
                                 <span class="input-group-addon primary"> Open on Weekends </span>
                                 <select class="form-control"  name="openOnWeekends"  title="">
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                    <option>Only Saturday</option>
-                                    <option>Only Sunday</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
                                 </select>
                             </div>
                         </div>

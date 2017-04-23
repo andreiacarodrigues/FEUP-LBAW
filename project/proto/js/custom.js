@@ -1,0 +1,23 @@
+function is_contact(element) {
+    return /^\d{9}|\d{3}-\d{3}-\d{3}$/.test(element);
+}
+
+function is_email(element) {
+    return '^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'.test(element);
+}
+
+function is_location(element) {
+    return '^[- a-zA-Z0-9º._]+$'.test(element);
+}
+
+function is_password(element) {
+    return /^[a-zA-Z0-9]{6,}$/.test(element);
+}
+
+function is_name(element) {
+    return /^[^0-9\\|!&;@#£$§%&/()=?{[\]}'«»*+]+$/.test(element);
+}
+
+function is_username(element) {
+    return /^[a-zA-Z][\w]{3,20}[a-zA-Z]$/.test(element);
+}

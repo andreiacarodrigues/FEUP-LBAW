@@ -56,7 +56,7 @@
                     <div class="row errorMessage">
                         <span>
                             {foreach $ERROR_MESSAGES as $error}
-                                <div class="error">{$error}<a class="close" href="#">X</a></div>
+                                <div class="error">{$error}</div>
                             {/foreach}
                         </span>
                     </div>
