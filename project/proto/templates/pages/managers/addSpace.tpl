@@ -9,6 +9,7 @@
         </div>
         <hr class="divider"><br>
             <form id="addSpaceForm" action="{$BASE_URL}actions/managers/addSpace.php" method="post" autocomplete="on">
+                <input type="hidden" name="complexID" value="{$complexID}">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="form-group">
@@ -22,10 +23,10 @@
                                 <span class="input-group-addon primary">Surface</span>
                                 <select class="form-control" title="" name="surface">
                                     <option value="" disabled selected></option>
-                                    <option>Artificial Grass</option>
-                                    <option>Carpet</option>
-                                    <option>Asphalt</option>
-                                    <option>Acrylic</option>
+                                    <option>Synthetic</option>
+                                    <option>Dirt</option>
+                                    <option>Indoors</option>
+                                    <option>Other</option>
                                 </select>
                             </div>
                         </div>
@@ -50,9 +51,20 @@
                             <div class="input-group">
                                 <span class="input-group-addon primary">Sports</span>
                                 <select class="form-control" name="sports[]" multiple>
-                                    <option value="football">Football</option>
-                                    <option value="basketball">Basketball</option>
-                                    <option value="tenis">Tenis</option>
+                                    <option value="1">Badminton</option>
+                                    <option value="2">Volleyball</option>
+                                    <option value="3">Basketball</option>
+                                    <option value="4">Baseball</option>
+                                    <option value="5">Boxing</option>
+                                    <option value="6">Eskrima</option>
+                                    <option value="7">Football</option>
+                                    <option value="8">American football</option>
+                                    <option value="9">Rugby football</option>
+                                    <option value="10">Golf</option>
+                                    <option value="11">Gymnastics</option>
+                                    <option value="12">Handball</option>
+                                    <option value="13">Hockey</option>
+                                    <option value="14">Tenis</option>
                                 </select>
                             </div>
                         </div>

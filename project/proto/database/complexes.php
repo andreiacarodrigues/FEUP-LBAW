@@ -106,23 +106,26 @@
 
     function addSpace($complexID, $name, $surface, $coverage, $price, $sports)
     {
-        global $conn;
+         global $conn;
 
-        $stmt = $conn->prepare('
-            INSERT INTO
-            "Space"("spaceName","spaceSurfaceType","spaceIsCovered", "spaceIsAvailable", "spacePrice", "spaceComplexID")
-            VALUES (?,?,?,?)
-            RETURNING "spaceID";');
+          $stmt = $conn->prepare('
+              INSERT INTO
+              "Space"("spaceName","spaceSurfaceType","spaceIsCovered", "spaceIsAvailable", "spacePrice", "spaceComplexID")
+              VALUES (?,?,?,?,?,?)
+              RETURNING "spaceID";');
 
-        $spaceID = $stmt->execute(array($name, $surface, $coverage, true, $price, $complexID));
+          $stmt->execute(array($name, $surface, $coverage, "true", $price, $complexID));
+          $spaceID = $stmt->fetch()['spaceID'];
 
-        foreach ($sports as $sport)
-        {
-            $stmt = $conn->prepare('
-            INSERT INTO
-            "SpaceSports"("spaceSportsSpaceID","spaceSportsSportID")
-            VALUES (?,?);');
+          foreach ($sports as $sport)
+          {
+              echo $spaceID . " " . $sport;
+             /* $stmt = $conn->prepare('
+              INSERT INTO
+              "SpaceSports"("spaceSportsSpaceID","spaceSportsSportID")
+              VALUES (?,?);');
 
-            $stmt->execute(array($spaceID, $sport));
-        }
+              $stmt->execute(array($spaceID, $sport));*/
+          }
+          return $spaceID;
     }
