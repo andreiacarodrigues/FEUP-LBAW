@@ -2,18 +2,10 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/municipalities.php");
 
-    $municipalityIDs = [];
-    $municipalityNames = [];
+    $municipalities = getMunicipalitiesList();
 
-    $stmt = getMunicipalities();
-    while($row = $stmt->fetch())
-    {
-        $municipalityIDs[] = $row['municipalityID'];
-        $municipalityNames[] = $row['municipalityName'];
-    }
-
-    $smarty->assign('municipalityIDs',$municipalityIDs);
-    $smarty->assign('municipalityNames',$municipalityNames);
+    $smarty->assign('municipalityIDs',$municipalities[0]);
+    $smarty->assign('municipalityNames',$municipalities[1]);
 
     $smarty->display('pages/managers/addComplex.tpl');
 ?>

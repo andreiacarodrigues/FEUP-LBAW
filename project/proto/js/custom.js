@@ -3,11 +3,11 @@ function is_contact(element) {
 }
 
 function is_email(element) {
-    return '^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'.test(element);
+    var re =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(element);
 }
-
 function is_location(element) {
-    return '^[- a-zA-Z0-9º._]+$'.test(element);
+    return /^[\w',-\\/.\sº]+$/.test(element);
 }
 
 function is_password(element) {

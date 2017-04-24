@@ -7,7 +7,7 @@
     $confirm = $_POST['confirm'];
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
+    $contact = $_POST['contact'];
     $municipality = $_POST['municipality'];
 
     $required = [$username, $password, $name, $email];
@@ -51,10 +51,10 @@
             die();
         }
 
-        if (registerUser($username, $password, $name, $email, $phone, $municipality))
+        if (registerUser($username, $password, $name, $email, $contact, $municipality))
         {
             $_SESSION['success_messages'][] = "Sign up successful";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header("Location: ".$BASE_URL."pages/users/home.php");
         }
         else
         {

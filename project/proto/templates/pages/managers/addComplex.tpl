@@ -14,7 +14,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Complex Name </span>
-                                <input type="text" class="form-control" name="name" placeholder="Enter the sports complex name"/>
+                                <input type="text" class="form-control" name="name"/>
                             </div>
                         </div>
                         <div class="innerErrorMessage">
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Location </span>
-                                <input type="text" class="form-control" name="location"   placeholder="Enter the sports complex location"/>
+                                <input type="text" class="form-control" name="location"/>
                             </div>
                         </div>
                         <div class="innerErrorMessage">
@@ -35,16 +35,20 @@
                             <div class="input-group">
                                 <span class="input-group-addon"> Municipality </span>
                                 <select class="form-control"  name="municipality"  title="">
-                                    {html_options values=$municipalityIDs output=$municipalityNames selected="1"}
+                                    <option value="" name="disabled" disabled selected></option>
+                                    {html_options values=$municipalityIDs output=$municipalityNames}
                                 </select>
                             </div>
                         </div>
 
+                        <div class="innerErrorMessage">
+                            <span id="invalidMunicipality"></span>
+                        </div>
 
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Email </span>
-                                <input type="text" class="form-control" name="email"  placeholder="Enter the sports complex email"/>
+                                <input type="text" class="form-control" name="email"/>
                             </div>
                         </div>
                         <div class="innerErrorMessage">
@@ -54,7 +58,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Contact </span>
-                                <input type="text" class="form-control" name="contact"  placeholder="Enter the sports complex contact"/>
+                                <input type="text" class="form-control" name="contact"/>
                             </div>
                         </div>
                         <div class="innerErrorMessage">
@@ -63,7 +67,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary"> Description </span>
-                                <textarea class="form-control" rows="2" name="description" placeholder="Enter a brief description of the sports complex services"></textarea>
+                                <textarea class="form-control" rows="2" name="description" placeholder="Describe what services your complex provides."></textarea>
                             </div>
                         </div>
 
@@ -97,7 +101,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"> Paypal Account Nr </span>
-                                <input type="text" class="form-control" name="paypal" placeholder="Enter the sports complex paypal account"/>
+                                <input type="text" class="form-control" name="paypal"/>
                             </div>
                         </div>
                         <div class="innerErrorMessage">
@@ -132,34 +136,51 @@
 <script>
     $(function(){
         $('form').submit(function(){
-            // prevents from submiting
+
+            // Prevents from submiting
+
            var error = false;
 
-           // variables
+
+           // Variables
+
            var name = $("input[name='name']").val();
            var location = $("input[name='location']").val();
            var email = $("input[name='email']").val();
            var contact = $("input[name='contact']").val();
+           var municipality = $("select[name='municipality']").val();
            var openingHour = $("input[name='openingHour']").val();
            var closingHour = $("input[name='closingHour']").val();
            var paypal = $("input[name='paypal']").val();
 
-           // error check
+           // Error Check
+
+           if(name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
+               $('#invalidName').text("");
+               $('#invalidEmail').text("");
+               $('#invalidLocation').text("");
+               $('#invalidContact').text("");
+               $('#invalidHours').text("");
+               $('#invalidPaypal').text("");
+
+               $('.errorMessage').text("Required field wasn't filled.");
+                return false;
+           }
+
+            $('.errorMessage').text("");
+
            if(openingHour > closingHour) {
                error = true;
                $('#invalidHours').text("Invalid hours. Closing time must be after opening time.");
            }
-
-            {literal}
-
            if(!is_name(name)) {
                error = true;
                $('#invalidName').text("Invalid name.");
            }
-            alert('oh hiiiii1');
+
             if(!is_location(location)) {
-                error = true;
-                $('#invalidLocation').text("Invalid location.");
+               error = true;
+               $('#invalidLocation').text("Invalid location.");
             }
 
             if(!is_email(email)){
@@ -177,12 +198,9 @@
                 $('#invalidPaypal').text("Invalid paypal email. Should be in the form xxx@yyy.zzz.");
             }
 
-            {/literal}
+            if(error)
+                return false;
 
-            alert('oh hiiiii');
-
-
-               return false;
         });
     });
 

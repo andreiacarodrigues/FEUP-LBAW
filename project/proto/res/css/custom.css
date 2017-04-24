@@ -845,3 +845,17 @@ label.star:before {
 .errorMessage{
     margin-bottom: 20px;
 }
+
+.innerErrorMessage{
+    margin-bottom: 20px;
+    padding-left: 5px;
+    color: red;
+}
+
+.outerErrorMessage{
+    margin-bottom: 20px;
+    padding-left: 5px;
+    color: #b80000;
+    background-color: rgba(249, 249, 249, 0.45);
+
+}

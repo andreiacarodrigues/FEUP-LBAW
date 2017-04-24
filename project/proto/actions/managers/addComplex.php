@@ -39,7 +39,7 @@
             $userID = getUserID($username);
             addManager($complexID, $userID);
             $_SESSION['success_messages'][] = "Complex registry successful";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header("Location: ".$BASE_URL."pages/managers/manageComplexes.php");
         }
         else
         {

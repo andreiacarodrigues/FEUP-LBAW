@@ -145,3 +145,8 @@
 </div>
 
 {include file='common/footer.tpl'}
+
+
+<script>
+
+</script>
