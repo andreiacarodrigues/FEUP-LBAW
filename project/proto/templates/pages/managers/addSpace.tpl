@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Sports</span>
-                                <select class="form-control" name="sports" multiple>
+                                <select class="form-control" name="sports[]" multiple>
                                     <option value="football">Football</option>
                                     <option value="basketball">Basketball</option>
                                     <option value="tenis">Tenis</option>
@@ -79,7 +79,7 @@
 <script>
     $(document).ready(function() {
         $('#addSpaceForm')
-            .find('[name="sports"]')
+            .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
                 onChange: function(element, checked) {

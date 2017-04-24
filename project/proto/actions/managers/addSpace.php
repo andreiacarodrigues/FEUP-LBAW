@@ -3,6 +3,9 @@
     include_once($BASE_DIR . "database/complexes.php");
     include_once($BASE_DIR . "database/users.php");
 
+    var_dump($_POST['sports']);
+    die();
+
     $name = $_POST['name'];
     $surface = $_POST['surface'];
     $coverage = $_POST['coverage'];
