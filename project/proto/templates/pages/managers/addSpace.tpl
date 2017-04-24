@@ -84,8 +84,8 @@
 	
 {include file='common/footer.tpl'}
 
-<link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
-<script src="../../js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="{$BASE_URL}js/bootstrap-multiselect.css" />
+<script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>
 
 <script>
     $(document).ready(function() {
