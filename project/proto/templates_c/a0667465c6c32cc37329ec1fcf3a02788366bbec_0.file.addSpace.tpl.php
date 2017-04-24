@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 12:46:10
+/* Smarty version 3.1.30, created on 2017-04-24 18:40:51
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/addSpace.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5fc82f0a695_79924914',
+  'unifunc' => 'content_58fe38a33f9080_92222715',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0667465c6c32cc37329ec1fcf3a02788366bbec' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/addSpace.tpl',
-      1 => 1492515899,
+      1 => 1493055402,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_58f5fc82f0a695_79924914 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe38a33f9080_92222715 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -113,11 +113,11 @@ $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cac
 ?>
 
 
-
-
-<link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
+<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/bootstrap-multiselect.css" />
 <?php echo '<script'; ?>
- src="../../js/bootstrap-multiselect.js"><?php echo '</script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/bootstrap-multiselect.js"><?php echo '</script'; ?>
 >
 
 <?php echo '<script'; ?>
@@ -149,7 +149,7 @@ $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cac
         }
 
         function adjustByScrollHeight() {
-            var $body   = $('body'),
+            var $body  = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when showing the picker

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-18 12:46:51
+/* Smarty version 3.1.30, created on 2017-04-24 18:40:47
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/manageSpaces.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f5fcab41d307_39407895',
+  'unifunc' => 'content_58fe389fb18c75_55080548',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a99cf13a77c5a40f13c56dbb3140a96e44428c53' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/pages/managers/manageSpaces.tpl',
-      1 => 1492515899,
+      1 => 1493055408,
       2 => 'file',
     ),
   ),
@@ -22,14 +22,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_58f5fcab41d307_39407895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe389fb18c75_55080548 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 
 <div class="manageSpaces">
     <div class="container">
-        <a href="addSpace.php" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a href="../addSpace.php/?complexID=<?php echo $_smarty_tpl->tpl_vars['complexID']->value;?>
+" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         <div class="row">
             <div class="col-md-4">
@@ -187,5 +188,50 @@ $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cac
 ?>
 
 
-<?php }
+
+<link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
+<?php echo '<script'; ?>
+ src="../../js/bootstrap-multiselect.js"><?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
+>
+    $(document).ready(function() {
+
+        $('#editSpaceForm')
+            .find('[name="sports"]')
+            .multiselect({
+                includeSelectAllOption: true,
+                onChange: function(element, checked) {
+                    adjustByScrollHeight();
+                },
+                onDropdownShown: function(e) {
+                    adjustByScrollHeight();
+                },
+                onDropdownHidden: function(e) {
+                    adjustByHeight();
+                }
+            })
+            .end();
+
+        function adjustByHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when hiding the picker
+                $iframe.height($body.height());
+            }
+        }
+
+        function adjustByScrollHeight() {
+            var $body   = $('body'),
+                $iframe = $body.data('iframe.fv');
+            if ($iframe) {
+                // Adjust the height of iframe when showing the picker
+                $iframe.height($body.get(0).scrollHeight);
+            }
+        }
+    });
+<?php echo '</script'; ?>
+><?php }
 }

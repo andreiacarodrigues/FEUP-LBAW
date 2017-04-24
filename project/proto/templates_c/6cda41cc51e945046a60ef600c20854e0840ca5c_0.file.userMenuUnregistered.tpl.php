@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 15:57:00
+/* Smarty version 3.1.30, created on 2017-04-24 18:39:43
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/common/userMenuUnregistered.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fcc0bcedc650_64367717',
+  'unifunc' => 'content_58fe385fb54a35_49917735',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6cda41cc51e945046a60ef600c20854e0840ca5c' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/common/userMenuUnregistered.tpl',
-      1 => 1492955126,
+      1 => 1493055390,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58fcc0bcedc650_64367717 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe385fb54a35_49917735 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">

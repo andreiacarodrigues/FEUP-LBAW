@@ -51,6 +51,14 @@
         return $complex ? true : false;
     }
 
+    function getComplexName($complexID){
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "complexName" FROM "SportsComplex" WHERE "complexID" = ?');
+        $stmt->execute(array($complexID));
+        return $complex = $stmt->fetch();
+    }
+
     function getComplexInfo($complexID)
     {
         global $conn;
@@ -85,7 +93,6 @@
         return $stmt->fetch();
     }
 
-
     function getComplexSpaces($complexID)
     {
         global $conn;
@@ -97,3 +104,25 @@
         return $spaces = $stmt->fetchAll();
     }
 
+    function addSpace($complexID, $name, $surface, $coverage, $price, $sports)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            INSERT INTO
+            "Space"("spaceName","spaceSurfaceType","spaceIsCovered", "spaceIsAvailable", "spacePrice", "spaceComplexID")
+            VALUES (?,?,?,?)
+            RETURNING "spaceID";');
+
+        $spaceID = $stmt->execute(array($name, $surface, $coverage, true, $price, $complexID));
+
+        foreach ($sports as $sport)
+        {
+            $stmt = $conn->prepare('
+            INSERT INTO
+            "SpaceSports"("spaceSportsSpaceID","spaceSportsSportID")
+            VALUES (?,?);');
+
+            $stmt->execute(array($spaceID, $sport));
+        }
+    }

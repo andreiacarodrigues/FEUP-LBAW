@@ -1,6 +1,6 @@
 {include file='common/header.tpl'}
-<!--{if $USERNAME}-->
+{if $USERNAME}
 {include file='common/adminMenuRegistered.tpl'}
-<!--{else}
+{else}
 {include file='common/adminMenuUnregistered.tpl'}
-{/if}-->
+{/if}

@@ -8,7 +8,7 @@
             <br>
         </div>
         <hr class="divider"><br>
-            <form id="addSpaceForm" action="../users/sportComplex.php" method="post" autocomplete="on">
+            <form id="addSpaceForm" action="{$BASE_URL}actions/managers/addSpace.php" method="post" autocomplete="on">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="form-group">
@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Surface</span>
-                                <select class="form-control" title="">
+                                <select class="form-control" title="" name="surface">
                                     <option value="" disabled selected></option>
                                     <option>Artificial Grass</option>
                                     <option>Carpet</option>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Coverage</span>
-                                <select class="form-control" title="">
+                                <select class="form-control" title="" name="coverage">
                                     <option value="" disabled selected></option>
                                     <option>Covered</option>
                                     <option>Uncovered</option>
@@ -41,26 +41,15 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon primary">Dimensions</span>
-                                <select class="form-control" title="">
-                                    <option value="" disabled selected></option>
-                                    <option >Small</option>
-                                    <option>Normal</option>
-                                    <option>Big</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
                                 <span class="input-group-addon primary">Price / hour</span>
-                                <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                                <input class="form-control" type="number" name="price" min="0" max="20" step="1" value="0">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Sports</span>
-                                <select class="form-control" name="sports" multiple>
+                                <select class="form-control" name="sports[]" multiple>
                                     <option value="football">Football</option>
                                     <option value="basketball">Basketball</option>
                                     <option value="tenis">Tenis</option>

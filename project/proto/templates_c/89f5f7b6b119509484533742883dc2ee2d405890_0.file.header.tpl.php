@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-23 15:58:19
+/* Smarty version 3.1.30, created on 2017-04-24 18:40:51
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58fcc10be2ee95_83955733',
+  'unifunc' => 'content_58fe38a3479e28_43447531',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89f5f7b6b119509484533742883dc2ee2d405890' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/common/header.tpl',
-      1 => 1492955123,
+      1 => 1493055387,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58fcc10be2ee95_83955733 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe38a3479e28_43447531 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,16 +44,23 @@ res/css/custom.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/validations.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+js/pageOnLoad.js"><?php echo '</script'; ?>
+>
+
     <?php echo '<script'; ?>
  src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
  src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"><?php echo '</script'; ?>
 >
-    <![endif]-->
+    
+
 
 </head>
 

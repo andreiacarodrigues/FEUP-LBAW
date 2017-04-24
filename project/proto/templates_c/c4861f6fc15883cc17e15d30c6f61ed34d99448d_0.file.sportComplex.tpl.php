@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-19 21:18:26
+/* Smarty version 3.1.30, created on 2017-04-24 18:39:54
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/pages/users/sportComplex.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f7c6120611e5_67389970',
+  'unifunc' => 'content_58fe386adebdb0_48175306',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c4861f6fc15883cc17e15d30c6f61ed34d99448d' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/pages/users/sportComplex.tpl',
-      1 => 1492517254,
+      1 => 1493055412,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_58f7c6120611e5_67389970 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe386adebdb0_48175306 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -43,13 +43,13 @@ $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cac
 
             <h3>Informations:</h3>
             <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-users fa"></i> Name:  </li>
-                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: </li>
-                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: </li>
-                <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: </li>
-                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Opening - Closing Hours: </li>
-                <li class="list-group-item"> <i class="fa fa-calendar"></i> Open on Weekends? </li>
-                <li class="list-group-item"> Description: </li>
+                <li class="list-group-item"> <i class="fa fa-users fa"></i> Name: <span id="infoName"></span>  </li>
+                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: <span id="infoContact"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Opening - Closing Hours: <span id="infoHours"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-calendar"></i> Open on Weekends? <span id="infoOpenOnWeekends"></span> </li>
+                <li class="list-group-item"> Description: <span id="infoDescription"></span> </li>
             </ul>
         </div>
 
@@ -129,48 +129,28 @@ $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cac
     </div>
 </div>
 <br>
-    <div class="container">
+    <div class="container" id="spaces">
         <hr>
-    <div class="row">
-        <div class="col-md-3">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
-            </a>
-        </div>
-        <div class="col-md-9">
-            <h4> Space 1 ⭐⭐</h4>
-            <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
-                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
-                <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
-                <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
-            </ul>
-            <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-
-    <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
-                </a>
-            </div>
-            <div class="col-md-9">
-                <h4> Space 2 ⭐⭐⭐⭐⭐</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
-                    <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
-                    <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
-                    <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
-                </ul>
-                <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-
     </div>
 </div>
 
 <?php $_smarty_tpl->_subTemplateRender("file:common/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+
+<?php echo '<script'; ?>
+>
+    $(function(){
+        var urlInfo = '<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/users/sportComplex.php';
+        var urlInfoSpaces = '<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+actions/users/complexSpaces.php';
+        var id = <?php echo $_smarty_tpl->tpl_vars['complexID']->value;?>
+;
+        complexInfo(urlInfo, id);
+        complexSpacesInfo(urlInfoSpaces, id);
+    });
+<?php echo '</script'; ?>
+><?php }
 }

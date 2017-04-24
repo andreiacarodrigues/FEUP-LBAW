@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-20 10:21:13
+/* Smarty version 3.1.30, created on 2017-04-24 18:39:51
   from "/opt/lbaw/lbaw1653/public_html/proto/templates/pages/users/manageRentals.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f87d89ec6303_75060370',
+  'unifunc' => 'content_58fe386714cdd8_10112586',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ab5c9fc63499afdfbd8834a4d7d700485338da82' => 
     array (
       0 => '/opt/lbaw/lbaw1653/public_html/proto/templates/pages/users/manageRentals.tpl',
-      1 => 1492525591,
+      1 => 1493055410,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/footer.tpl' => 1,
   ),
 ),false)) {
-function content_58f87d89ec6303_75060370 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58fe386714cdd8_10112586 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/opt/lbaw/lbaw1653/public_html/proto/lib/smarty/plugins/modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:common/userHeader.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
