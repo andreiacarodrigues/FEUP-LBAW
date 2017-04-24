@@ -39,3 +39,61 @@
         $stmt = $conn->prepare('INSERT INTO "Manager"("managerComplexID", "managerID") VALUES (?,?)');
         return $stmt->execute(array($complexID, $userID));
     }
+
+    function complexExists($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "complexName" FROM "SportsComplex" WHERE "complexID" = ?');
+        $stmt->execute(array($complexID));
+        $complex = $stmt->fetch();
+
+        return $complex ? true : false;
+    }
+
+    function getComplexInfo($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT * FROM "SportsComplex" WHERE "complexID" = ?');
+        $stmt->execute(array($complexID));
+        return $complex = $stmt->fetch();
+    }
+
+    function getSpaceRating($spaceID){
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT AVG("rentalRating")
+        FROM "Rental" 
+        WHERE "rentalSpaceID" = ?');
+        $stmt->execute(array($spaceID));
+        return $stmt->fetch();
+    }
+
+    function getComplexRating($complexID){
+        global $conn;
+
+        $stmt = $conn->prepare('
+           SELECT AVG("rentalRating")
+           FROM "Rental"
+           JOIN "Space"
+           ON "rentalSpaceID" = "spaceID"
+           WHERE
+           "spaceComplexID" = ?');
+        $stmt->execute(array($complexID));
+        return $stmt->fetch();
+    }
+
+
+    function getComplexSpaces($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "spaceID", "spaceName", "spaceIsCovered", "spaceSurfaceType", "spacePrice" FROM "Space" 
+        WHERE "spaceComplexID" = ? AND "spaceIsAvailable" = true;');
+        $stmt->execute(array($complexID));
+        return $spaces = $stmt->fetchAll();
+    }
+

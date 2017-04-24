@@ -141,7 +141,6 @@
 
            var error = false;
 
-
            // Variables
 
            var name = $("input[name='name']").val();

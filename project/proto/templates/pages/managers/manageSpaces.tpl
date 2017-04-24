@@ -2,7 +2,7 @@
 
 <div class="manageSpaces">
     <div class="container">
-        <a href="addSpace.php" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a href="../addSpace.php/?complexID={$complexID}" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         <div class="row">
             <div class="col-md-4">

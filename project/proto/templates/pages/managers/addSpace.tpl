@@ -84,8 +84,6 @@
 	
 {include file='common/footer.tpl'}
 
-
-
 <link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
 <script src="../../js/bootstrap-multiselect.js"></script>
 
@@ -117,7 +115,7 @@
         }
 
         function adjustByScrollHeight() {
-            var $body   = $('body'),
+            var $body  = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when showing the picker

@@ -16,13 +16,13 @@
 
             <h3>Informations:</h3>
             <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-users fa"></i> Name:  </li>
-                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: </li>
-                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: </li>
-                <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: </li>
-                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Opening - Closing Hours: </li>
-                <li class="list-group-item"> <i class="fa fa-calendar"></i> Open on Weekends? </li>
-                <li class="list-group-item"> Description: </li>
+                <li class="list-group-item"> <i class="fa fa-users fa"></i> Name: <span id="infoName"></span>  </li>
+                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: <span id="infoContact"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Opening - Closing Hours: <span id="infoHours"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-calendar"></i> Open on Weekends? <span id="infoOpenOnWeekends"></span> </li>
+                <li class="list-group-item"> Description: <span id="infoDescription"></span> </li>
             </ul>
         </div>
 
@@ -102,45 +102,8 @@
     </div>
 </div>
 <br>
-    <div class="container">
+    <div class="container" id="spaces">
         <hr>
-    <div class="row">
-        <div class="col-md-3">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
-            </a>
-        </div>
-        <div class="col-md-9">
-            <h4> Space 1 ⭐⭐</h4>
-            <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
-                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
-                <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
-                <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
-            </ul>
-            <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-
-    <hr>
-        <div class="row">
-            <div class="col-md-3">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">
-                </a>
-            </div>
-            <div class="col-md-9">
-                <h4> Space 2 ⭐⭐⭐⭐⭐</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
-                    <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
-                    <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
-                    <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
-                </ul>
-                <a class="btn btn-primary btn-lg gradient-blue" href="space.php">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -148,5 +111,11 @@
 
 
 <script>
-
+    $(function(){
+        var urlInfo = '{$BASE_URL}actions/users/sportComplex.php';
+        var urlInfoSpaces = '{$BASE_URL}actions/users/complexSpaces.php';
+        var id = {$complexID};
+        complexInfo(urlInfo, id);
+        complexSpacesInfo(urlInfoSpaces, id);
+    });
 </script>

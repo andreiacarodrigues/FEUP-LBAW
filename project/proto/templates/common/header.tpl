@@ -19,14 +19,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
-    <script src="{$BASE_URL}js/custom.js">
-
+    <script src="{$BASE_URL}js/validations.js"></script>
+    <script src="{$BASE_URL}js/pageOnLoad.js"></script>
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-
-
+    
 
 
 </head>

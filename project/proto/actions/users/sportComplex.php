@@ -1,6 +1,6 @@
 <?php
     include_once('../../config/init.php');
-    include_once($BASE_DIR."database/sports.php");
+    include_once($BASE_DIR . "database/complexes.php");
 
     if (isset ($_GET["complexID"] ))
          $complexID = trim(strip_tags($_GET['complexID']));
@@ -20,19 +20,17 @@
     {
         $complexInfo = getComplexInfo($complexID);
 
-        if(!empty($info))
+        if(!empty($complexInfo))
         {
             $infoArray = array(
-                0 => $info['complexName'],
-                1 => $info['complexLocation'],
-                2 => $info['complexOpenOnWeekends'],
-                3 => $info['complexEmail'],
-                4 => $info['complexPhone'],
-                5 => $info['complexPaypal'],
-                6 => $info['complexDescription'],
-                7 => $info['complexOpeningHour'],
-                8 => $info['complexClosingHour'],
-                9 => $info['complexMunicipalityID']
+                'name' => $complexInfo['complexName'],
+                'location' => $complexInfo['complexLocation'],
+                'openOnWeekends' => $complexInfo['complexOpenOnWeekends'],
+                'email' => $complexInfo['complexEmail'],
+                'contact' => $complexInfo['complexPhone'],
+                'description' => $complexInfo['complexDescription'],
+                'openingHour' => $complexInfo['complexOpeningHour'],
+                'closingHour' => $complexInfo['complexClosingHour']
             );
             echo json_encode($infoArray);
             $_SESSION['success_messages'] = "Complex page sucessfully loaded.";
