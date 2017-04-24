@@ -163,40 +163,7 @@
 <script src="../../js/bootstrap-multiselect.js"></script>
 
 <script>
-    $(document).ready(function() {
-
-        $('#editSpaceForm')
-            .find('[name="sports"]')
-            .multiselect({
-                includeSelectAllOption: true,
-                onChange: function(element, checked) {
-                    adjustByScrollHeight();
-                },
-                onDropdownShown: function(e) {
-                    adjustByScrollHeight();
-                },
-                onDropdownHidden: function(e) {
-                    adjustByHeight();
-                }
-            })
-            .end();
-
-        function adjustByHeight() {
-            var $body   = $('body'),
-                $iframe = $body.data('iframe.fv');
-            if ($iframe) {
-                // Adjust the height of iframe when hiding the picker
-                $iframe.height($body.height());
-            }
-        }
-
-        function adjustByScrollHeight() {
-            var $body   = $('body'),
-                $iframe = $body.data('iframe.fv');
-            if ($iframe) {
-                // Adjust the height of iframe when showing the picker
-                $iframe.height($body.get(0).scrollHeight);
-            }
-        }
+    $(function(){
+        manageSpaces();
     });
 </script>

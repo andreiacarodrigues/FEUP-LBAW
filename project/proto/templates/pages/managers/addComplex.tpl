@@ -135,72 +135,7 @@
 
 <script>
     $(function(){
-        $('form').submit(function(){
-
-            // Prevents from submiting
-
-           var error = false;
-
-           // Variables
-
-           var name = $("input[name='name']").val();
-           var location = $("input[name='location']").val();
-           var email = $("input[name='email']").val();
-           var contact = $("input[name='contact']").val();
-           var municipality = $("select[name='municipality']").val();
-           var openingHour = $("input[name='openingHour']").val();
-           var closingHour = $("input[name='closingHour']").val();
-           var paypal = $("input[name='paypal']").val();
-
-           // Error Check
-
-           if(name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
-               $('#invalidName').text("");
-               $('#invalidEmail').text("");
-               $('#invalidLocation').text("");
-               $('#invalidContact').text("");
-               $('#invalidHours').text("");
-               $('#invalidPaypal').text("");
-
-               $('.errorMessage').text("Required field wasn't filled.");
-                return false;
-           }
-
-            $('.errorMessage').text("");
-
-           if(openingHour > closingHour) {
-               error = true;
-               $('#invalidHours').text("Invalid hours. Closing time must be after opening time.");
-           }
-           if(!is_name(name)) {
-               error = true;
-               $('#invalidName').text("Invalid name.");
-           }
-
-            if(!is_location(location)) {
-               error = true;
-               $('#invalidLocation').text("Invalid location.");
-            }
-
-            if(!is_email(email)){
-                error = true;
-                $('#invalidEmail').text("Invalid email. Should be in the form xxx@yyy.zzz.");
-            }
-
-            if(!is_contact(contact)){
-                error = true;
-                $('#invalidContact').text("Invalid phone number. It should be 9 digits in the form xxxxxxxxx or xxx-xxx-xxx.");
-            }
-
-            if(!is_email(paypal)){
-                error = true;
-                $('#invalidPaypal').text("Invalid paypal email. Should be in the form xxx@yyy.zzz.");
-            }
-
-            if(error)
-                return false;
-
-        });
+        addComplex();
     });
 
 </script>

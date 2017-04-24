@@ -18,6 +18,9 @@
                                 <input type="text" class="form-control" name="name" id="name"  placeholder=""/>
                             </div>
                         </div>
+                        <div class="innerErrorMessage">
+                            <span id="invalidName"></span>
+                        </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Surface</span>
@@ -68,10 +71,16 @@
                                 </select>
                             </div>
                         </div>
-
                         <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                         <br><br>
+                        <div class="row errorMessage text-center">
+                        <span>
+                            {foreach $ERROR_MESSAGES as $error}
+                                <div class="error">{$error}</div>
+                            {/foreach}
+                        </span>
+                        </div>
                         <div style="text-align: center;">
                             <input type="submit" class="btn btn-primary gradient-blue" value="Register Space"/>
                             <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
@@ -89,39 +98,7 @@
 <script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#addSpaceForm')
-            .find('[name="sports[]"]')
-            .multiselect({
-                includeSelectAllOption: true,
-                onChange: function(element, checked) {
-                    adjustByScrollHeight();
-                },
-                onDropdownShown: function(e) {
-                    adjustByScrollHeight();
-                },
-                onDropdownHidden: function(e) {
-                    adjustByHeight();
-                }
-            })
-            .end();
-
-        function adjustByHeight() {
-            var $body   = $('body'),
-                $iframe = $body.data('iframe.fv');
-            if ($iframe) {
-                // Adjust the height of iframe when hiding the picker
-                $iframe.height($body.height());
-            }
-        }
-
-        function adjustByScrollHeight() {
-            var $body  = $('body'),
-                $iframe = $body.data('iframe.fv');
-            if ($iframe) {
-                // Adjust the height of iframe when showing the picker
-                $iframe.height($body.get(0).scrollHeight);
-            }
-        }
+    $(function(){
+        addSpace();
     });
 </script>

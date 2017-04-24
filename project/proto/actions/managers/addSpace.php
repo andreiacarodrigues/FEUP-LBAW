@@ -7,14 +7,14 @@
     $name = $_POST['name'];
     $surface = $_POST['surface'];
     $coverage = true;
+
     if($_POST['coverage'] == "Uncovered")
         $coverage = false;
+
     $price = $_POST['price'];
-    if(empty($price))
-        $price = 0;
     $sports = $_POST['sports'];
 
-    $required = [$name, $surface, $coverage, $sports];
+    $required = [$name, $surface, $coverage, $sports, $price];
 
     foreach ($required as $item)
     {
@@ -30,21 +30,17 @@
     {
         if ($spaceID = addSpace($complexID, $name, $surface, $coverage, $price, $sports))
         {
-            echo $spaceID;
             $_SESSION['success_messages'][] = "Space registry successful";
-            //header("Location: ".$BASE_URL."pages/users/space.php/?spaceID=".$spaceID);
+            header("Location: ".$BASE_URL."pages/users/space.php/?spaceID=".$spaceID);
         }
         else
         {
-            echo "deu merda";
             $_SESSION['error_messages'][] = "Unknown error occurred;";
-           // header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
     catch (PDOException $e)
     {
-        echo "deu merda2";
-        throw $e;
         $_SESSION['error_messages'][] = "Unknown error occurred;";
-        //header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

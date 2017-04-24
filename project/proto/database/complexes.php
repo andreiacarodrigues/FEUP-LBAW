@@ -119,13 +119,12 @@
 
           foreach ($sports as $sport)
           {
-              echo $spaceID . " " . $sport;
-             /* $stmt = $conn->prepare('
+              $stmt = $conn->prepare('
               INSERT INTO
               "SpaceSports"("spaceSportsSpaceID","spaceSportsSportID")
               VALUES (?,?);');
 
-              $stmt->execute(array($spaceID, $sport));*/
+              $stmt->execute(array($spaceID, $sport));
           }
           return $spaceID;
     }
