@@ -189,7 +189,7 @@ function addComplex(){
 
 function manageSpaces(){
     $('#editSpaceForm')
-        .find('[name="sports"]')
+        .find('[name="sports[]"]')
         .multiselect({
             includeSelectAllOption: true,
             onChange: function(element, checked) {

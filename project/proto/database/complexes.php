@@ -101,7 +101,31 @@
         SELECT "spaceID", "spaceName", "spaceIsCovered", "spaceSurfaceType", "spacePrice" FROM "Space" 
         WHERE "spaceComplexID" = ? AND "spaceIsAvailable" = true;');
         $stmt->execute(array($complexID));
-        return $spaces = $stmt->fetchAll();
+        return $stmt->fetchAll();
+    }
+
+    function getComplexSpacesInfo($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "spaceID", "spaceName", "spaceIsCovered", "spaceSurfaceType", "spacePrice", "spaceIsAvailable" 
+        FROM "Space" 
+        WHERE "spaceComplexID" = ?');
+        $stmt->execute(array($complexID));
+        return $stmt->fetchAll();
+    }
+
+    function getSpaceSports($spaceID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "sportName"
+        FROM "SpaceSports" JOIN "Sport" ON "sportID" = "spaceSportsSportID" 
+        WHERE "spaceSportsSpaceID" = ?');
+        $stmt->execute(array($spaceID));
+        return $stmt->fetchAll();
     }
 
     function addSpace($complexID, $name, $surface, $coverage, $price, $sports)
