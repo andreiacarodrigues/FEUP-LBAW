@@ -6,20 +6,23 @@
     $complexID = $_POST['complexID'];
     $name = $_POST['name'];
     $surface = $_POST['surface'];
-    $coverage = true;
+    $coverage = "true";
 
     if($_POST['coverage'] == "Uncovered")
-        $coverage = false;
+        $coverage = "false";
 
     $price = $_POST['price'];
     $sports = $_POST['sports'];
 
-    $required = [$name, $surface, $coverage, $sports, $price];
+
+    $required = [$name, $surface, $_POST['coverage'], $sports, $price];
 
     foreach ($required as $item)
     {
+        var_dump($item);
         if (empty($item))
         {
+            var_dump($item);
             $_SESSION['error_messages'][] = "Required field wasn't filled.";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             die();
@@ -31,7 +34,8 @@
         if ($spaceID = addSpace($complexID, $name, $surface, $coverage, $price, $sports))
         {
             $_SESSION['success_messages'][] = "Space registry successful";
-            header("Location: ".$BASE_URL."pages/users/space.php/?spaceID=".$spaceID);
+
+            header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
         }
         else
         {
@@ -41,6 +45,7 @@
     }
     catch (PDOException $e)
     {
+        throw $e;
         $_SESSION['error_messages'][] = "Unknown error occurred;";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

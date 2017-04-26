@@ -23,9 +23,9 @@
             $defaultable = empty($defaultable) ? "DEFAULT" : $defaultable;
         }
 
-        $stmt = $conn->prepare('INSERT INTO "User"("userUsername","userPassword","userName","userEmail","userPhone") VALUES (?,?,?,?,?)');
+        $stmt = $conn->prepare('INSERT INTO "User"("userUsername","userPassword","userName","userEmail","userPhone", "userMunicipalityID") VALUES (?,?,?,?,?,?)');
 
-        return $stmt->execute(array($username, $password, $name, $email, $phone));
+        return $stmt->execute(array($username, $password, $name, $email, $phone, $municipality));
     }
 
     function userExists($username)

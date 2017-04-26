@@ -100,7 +100,7 @@
 
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"> Paypal Account Nr </span>
+                                <span class="input-group-addon"> Paypal Account </span>
                                 <input type="text" class="form-control" name="paypal"/>
                             </div>
                         </div>

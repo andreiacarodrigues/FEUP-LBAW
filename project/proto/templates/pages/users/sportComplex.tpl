@@ -3,8 +3,26 @@
 <div class="sportComplex">
 <div class="container">
     <div class="row">
+        {if $SUCCESS_MESSAGES != ""}
+            {foreach $SUCCESS_MESSAGES as $message}
+                <div class="alert alert-info alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{$message}</strong>
+                </div>
+            {/foreach}
+        {/if}
+        {if $ERROR_MESSAGES != ""}
+            {foreach $ERROR_MESSAGES as $message}
+                <div class="alert alert-danger alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{$message}</strong>
+                </div>
+            {/foreach}
+        {/if}
+    </div>
+    <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sport Complex </h1>
+            <h1 class="page-header"><span id="infoName"></span> </h1>
         </div>
     </div>
 
@@ -16,7 +34,6 @@
 
             <h3>Informations:</h3>
             <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-users fa"></i> Name: <span id="infoName"></span>  </li>
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: <span id="infoContact"></span> </li>

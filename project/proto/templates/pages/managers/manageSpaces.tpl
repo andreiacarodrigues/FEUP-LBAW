@@ -2,9 +2,28 @@
 
 <div class="manageSpaces">
     <div class="container">
+        <div class="row">
+            {if $SUCCESS_MESSAGES != ""}
+                {foreach $SUCCESS_MESSAGES as $message}
+                    <div class="alert alert-info alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+            {if $ERROR_MESSAGES != ""}
+                {foreach $ERROR_MESSAGES as $message}
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+        </div>
+        <div class="row">
         <a href="../addSpace.php/?complexID={$complexID}" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
-
+        </div>
         {$ROW_COUNT = 0}
 
         {foreach $SPACES as $SPACE}
@@ -17,7 +36,7 @@
                 {$ROW_COUNT = $ROW_COUNT + 1}
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <a href="#">
+                                <a href="{$BASE_URL}pages/users/space.php/?spaceID={$SPACE.spaceID}">
                                     <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                 </a>
                                 <div class="caption ">
@@ -25,14 +44,11 @@
                                     <div class="row">
                                         <div class="col-md-7">
                                             <ul class="list-unstyled">
-                                                <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Covered: <span> {$SPACE.spaceIsCovered} </span></label></li>
-                                                <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Surface: <span> {$SPACE.spaceSurfaceType} </span></label></li>
-                                                <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Price / hour: <span> {$SPACE.spacePrice}€ </span></label></li>
-                                                <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports: <span> {$SPACE.sports} </span></label></li>
-
-
-
-                                                <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> {$SPACE.spaceIsAvailable} </span></label></li>
+                                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Covered: <span> {$SPACE.spaceIsCovered} </span></label></li>
+                                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Surface: <span> {$SPACE.spaceSurfaceType} </span></label></li>
+                                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Price / hour: <span> {$SPACE.spacePrice}€ </span></label></li>
+                                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports: <span> {$SPACE.sports} </span></label></li>
+                                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Available: <span> {$SPACE.spaceIsAvailable} </span></label></li>
                                             </ul>
                                         </div>
                                         <div class="mobileFixButtons col-md-5">
@@ -51,65 +67,7 @@
                 {$VALUE = $VALUE + 1}
             {/strip}
         {/foreach}
-
-
-<!--
-        <div class="row">
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                    </a>
-                    <div class="caption ">
-                        <h5 class="text-center">Space 1</h5><br>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Covered: <span> Yes </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Surface: <span> Syntetic grass </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Dimensions: <span> Normal </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Price / hour: <span> 36€ </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports: <span> Tenis, Basketball </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
-                                </ul>
-                            </div>
-                            <div class="mobileFixButtons col-md-5">
-                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                    </a>
-                    <div class="caption ">
-                        <h5 class="text-center">Space 2</h5><br>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Covered: <span> Yes </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Surface: <span> Syntetic grass </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Dimensions: <span> Normal </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Price / hour: <span> 36€ </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Sports: <span> Tenis, Basketball </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Available: <span> Yes </span></label></li>
-                                </ul>
-                            </div>
-                            <div class="mobileFixButtons col-md-5">
-                                <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
--->
+    </div>
 
         <!-- Modal -->
         <div class="modal fade" id="editSpaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -209,8 +167,8 @@
 {include file='common/footer.tpl'}
 
 
-<link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
-<script src="../../js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="{$BASE_URL}js/bootstrap-multiselect.css" />
+<script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>
 
 <script>
     $(function(){

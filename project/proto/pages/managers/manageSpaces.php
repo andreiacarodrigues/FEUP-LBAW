@@ -2,7 +2,7 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
 
-    if (isset ($_GET["complexID"] ))
+    if (isset ($_GET['complexID'] ))
         $complexID = trim(strip_tags($_GET['complexID']));
     else
     {

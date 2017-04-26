@@ -94,74 +94,8 @@
 {include file='common/footer.tpl'}
 
 
-
 <script>
     $(function(){
-        $('form').submit(function(){
-
-            // Prevents from submiting
-
-            var error = false;
-
-
-            // Variables
-
-            var name = $("input[name='name']").val();
-            var email = $("input[name='email']").val();
-            var username = $("input[name='username']").val();
-            var contact = $("input[name='contact']").val();
-            var municipality = $("select[name='municipality']").val();
-            var password = $("input[name='password']").val();
-            var confirm = $("input[name='confirm']").val();
-
-            // Error Check
-
-            if(name == "" || email == "" || username == "" || contact == "" || municipality == null || password == "" || confirm == "") {
-                $('#invalidName').text("");
-                $('#invalidEmail').text("");
-                $('#invalidUsername').text("");
-                $('#invalidContact').text("");
-                $('#invalidPassword').text("");
-                $('#invalidConfirmation').text("");
-                $('.errorMessage').text("Required field wasn't filled.");
-                return false;
-            }
-
-            $('.errorMessage').text("");
-
-            if(!is_name(name)) {
-                error = true;
-                $('#invalidName').text("Invalid name.");
-            }
-
-            if(!is_email(email)){
-                error = true;
-                $('#invalidEmail').text("Invalid email. Should be in the form xxx@yyy.zzz.");
-            }
-
-            if(!is_username(username)) {
-                error = true;
-                $('#invalidUsername').text("Invalid username.");
-            }
-
-            if(!is_contact(contact)){
-                error = true;
-                $('#invalidContact').text("Invalid phone number. It should be 9 digits in the form xxxxxxxxx or xxx-xxx-xxx.");
-            }
-
-            if(!is_password(password)){
-                error = true;
-                $('#invalidPassword').text("Invalid password. Should have more than 6 characters.");
-            }
-            else if(password != confirm){
-                error = true;
-                $('#invalidConfirmation').text("Passwords do not match.");
-            }
-
-            alert(error);
-            if(error)
-                return false;
-
-        });
+        signUp();
     });
 </script>

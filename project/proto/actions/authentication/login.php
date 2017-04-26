@@ -28,4 +28,4 @@
 
 
 
-    $_SESSION['success_messages'] = "Login complete.";
+    $_SESSION['success_messages'] = "Login successful.";

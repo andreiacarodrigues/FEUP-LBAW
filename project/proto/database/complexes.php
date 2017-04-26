@@ -56,7 +56,8 @@
 
         $stmt = $conn->prepare('SELECT "complexName" FROM "SportsComplex" WHERE "complexID" = ?');
         $stmt->execute(array($complexID));
-        return $complex = $stmt->fetch();
+        $complex = $stmt->fetch();
+        return $complex['complexName'];
     }
 
     function getComplexInfo($complexID)

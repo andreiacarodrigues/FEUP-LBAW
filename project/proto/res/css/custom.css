@@ -787,6 +787,11 @@ label.star:before {
     }
 
 
+    .backToComplex{
+        float:right;
+    }
+
+
 }
 
 .intro-header #scrollable{
@@ -858,4 +863,12 @@ label.star:before {
     color: #b80000;
     background-color: rgba(249, 249, 249, 0.45);
 
+}
+
+.spaceImg{
+    margin-top:25px;
+}
+
+.backToComplex{
+    margin-top: 30px;
 }

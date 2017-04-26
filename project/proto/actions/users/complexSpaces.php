@@ -34,7 +34,7 @@ else
             );
         }
         echo json_encode($infoArray);
-        $_SESSION['success_messages'] = "Complex spaces sucessfully loaded.";
+        //$_SESSION['success_messages'] = "Complex spaces sucessfully loaded.";
     }
     else
         echo 'ERROR';

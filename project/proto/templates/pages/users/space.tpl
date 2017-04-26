@@ -3,40 +3,33 @@
 <div class="sportComplex">
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Space 1 </h1>
+        <div class="col-md-10">
+            <h1>Space 1 </h1>
+        </div>
+        <div class="col-md-2">
+            <a href="#" class="backToComplex btn btn-primary gradient-yellow">Back To Complex</a>
         </div>
     </div>
-
-   <!-- <div class="row">
-        <div class="col-md-4">
-            <img class="img-responsive" style="width:400px" src="http://placehold.it/750x500" alt="">
-        </div>
-        <div class="col-md-8">
-            <h3>Informations:</h3>
-            <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-cloud"></i> Here goes the cover </li>
-                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface </li>
-                <li class="list-group-item"> <i class="fa fa-home"></i> Here goes the dimensions </li>
-            </ul>
-        </div>
-    </div>-->
+    <div class="row">
+        <hr>
+    </div>
 
     <div class="row">
         <div class="col-md-4">
-            <img class="complexImg img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
+            <img class="spaceImg img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
         </div>
         <div class="col-md-5">
             <h3>Informations:</h3>
             <ul class="list-group">
                 <li class="list-group-item"> <i class="fa fa-users fa"></i> Here goes the name </li>
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
-                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
+                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the com </li>
                 <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
+                <li class="list-group-item"><i class="fa fa-cloud"></i> Here goes the coverage <span>  </span></li>
+                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface <span> </span></li>
                 <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
                 <li class="list-group-item"> <i class="fa fa-futbol-o"></i> Here goes the sports</li>
                 <li class="list-group-item"> <i class="fa fa-clock-o"></i> Here goes the opening/closing hours </li>
-                <li class="list-group-item"> Description </li>
             </ul>
         </div>
 
