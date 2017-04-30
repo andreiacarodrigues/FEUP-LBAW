@@ -3,8 +3,26 @@
 <div class="sportComplex">
 <div class="container">
     <div class="row">
+        {if $SUCCESS_MESSAGES != ""}
+            {foreach $SUCCESS_MESSAGES as $message}
+                <div class="alert alert-info alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{$message}</strong>
+                </div>
+            {/foreach}
+        {/if}
+        {if $ERROR_MESSAGES != ""}
+            {foreach $ERROR_MESSAGES as $message}
+                <div class="alert alert-danger alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{$message}</strong>
+                </div>
+            {/foreach}
+        {/if}
+    </div>
+    <div class="row">
         <div class="col-md-10">
-            <h1>Space 1 </h1>
+            <h1><span id="infoName"></span></h1>
         </div>
         <div class="col-md-2">
             <a href="#" class="backToComplex btn btn-primary gradient-yellow">Back To Complex</a>
@@ -21,15 +39,15 @@
         <div class="col-md-5">
             <h3>Informations:</h3>
             <ul class="list-group">
-                <li class="list-group-item"> <i class="fa fa-users fa"></i> Here goes the name </li>
-                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
-                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the com </li>
-                <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
-                <li class="list-group-item"><i class="fa fa-cloud"></i> Here goes the coverage <span>  </span></li>
-                <li class="list-group-item"><i class="fa fa-tree"></i> Here goes the surface <span> </span></li>
-                <li class="list-group-item"> <i class="fa fa-eur"></i> Here goes the price <span> per hour </span></li>
-                <li class="list-group-item"> <i class="fa fa-futbol-o"></i> Here goes the sports</li>
-                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Here goes the opening/closing hours </li>
+                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-phone"></i> Contact: <span id="infoContact"></span> </li>
+                <li class="list-group-item"><i class="fa fa-cloud"></i> Coverage: <span id="infoCoverage"></span></li>
+                <li class="list-group-item"><i class="fa fa-tree"></i> Surface: <span id="infoSurface"></span></li>
+                <li class="list-group-item"> <i class="fa fa-eur"></i> Price: <span id="infoPrice"></span> <span> per hour </span></li>
+                <li class="list-group-item"> <i class="fa fa-futbol-o"></i> Sports: <span id="infoSports"></span></li>
+                <li class="list-group-item"> <i class="fa fa-clock-o"></i> Opening - Closing Hours: <span id="infoHours"></span> </li>
+                <li class="list-group-item"> <i class="fa fa-calendar"></i> Open on Weekends? <span id="infoOpenOnWeekends"></span> </li>
             </ul>
         </div>
 
@@ -233,3 +251,12 @@
 
 
 {include file='common/footer.tpl'}
+
+<script>
+    $(function(){
+        var urlInfo = '{$BASE_URL}actions/users/space.php';
+        var urlRedirect = '{$BASE_URL}pages/users/sportComplex.php';
+        var id = {$spaceID};
+        spaceInfo(urlInfo, urlRedirect, id);
+    });
+</script>

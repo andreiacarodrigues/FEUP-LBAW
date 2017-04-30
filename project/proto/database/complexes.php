@@ -51,6 +51,17 @@
         return $complex ? true : false;
     }
 
+    function spaceExists($spaceID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "spaceName" FROM "Space" WHERE "spaceID" = ?');
+        $stmt->execute(array($spaceID));
+        $space = $stmt->fetch();
+
+        return $space ? true : false;
+    }
+
     function getComplexName($complexID){
         global $conn;
 
@@ -127,6 +138,19 @@
         WHERE "spaceSportsSpaceID" = ?');
         $stmt->execute(array($spaceID));
         return $stmt->fetchAll();
+    }
+
+    function getSpaceInfo($spaceID){
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "spaceName", "spaceIsCovered", "spaceSurfaceType", "spacePrice", "spaceComplexID", "complexName", "complexLocation", "complexEmail", "complexPhone", "complexOpeningHour",
+        "complexClosingHour", "complexOpenOnWeekends"
+        FROM "Space"
+        JOIN "SportsComplex" ON "spaceComplexID" = "complexID"
+        WHERE "spaceID" = ?;');
+        $stmt->execute(array($spaceID));
+        return $stmt->fetch();
     }
 
     function addSpace($complexID, $name, $surface, $coverage, $price, $sports)

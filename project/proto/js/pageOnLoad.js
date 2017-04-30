@@ -288,3 +288,32 @@ function signUp(){
 
     });
 }
+
+function spaceInfo(urlInfo, urlRedirect, spaceID){
+
+    $.getJSON(urlInfo,  {spaceID: spaceID} ,
+        function(data){
+            $('#infoName').text(data['spaceName']);
+            $('#infoLocation').text(data['complexLocation']);
+
+            var openOnWeekends = "yes";
+            if(data['complexOpenOnWeekends'] == "false")
+                openOnWeekends = "no";
+
+            $('#infoOpenOnWeekends').text(openOnWeekends);
+
+            var covered = "yes";
+            if(data['spaceIsCovered'] == "false")
+                covered = "no";
+
+            $('#infoCoverage').text(data['spaceIsCovered']);
+            $('#infoSports').text(data['spaceSports']);
+            $('#infoSurface').text(data['spaceSurfaceType']);
+            $('#infoPrice').text(data['spacePrice']);
+            $('#infoEmail').text(data['complexEmail']);
+            $('#infoContact').text(data['complexPhone']);
+            $('#infoHours').text(data['complexOpeningHour'] + "-" + data['complexClosingHour']);
+
+            $('.backToComplex').attr("href", urlRedirect + '/?complexID=' + data['spaceComplexID']);
+        });
+}
