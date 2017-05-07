@@ -5,9 +5,6 @@
     $username = trim(strip_tags($_POST['username']));
     $password = $_POST['password'];
 
-    echo $username;
-    echo $password;
-
     if(verifyUser($username, $password))
     {
         $_SESSION['username'] = $username;

@@ -32,12 +32,49 @@
         return $stmt->fetch()['complexID'];
     }
 
+    function getManagersInformation($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "managerID", "userName", "userEmail", "userPhone"
+            FROM "Manager"
+            JOIN "User"
+            ON "userID" = "managerID"
+            WHERE "managerComplexID" = ?
+            LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($complexID, 0));
+
+        return $stmt->fetchAll();
+    }
+
     function addManager($complexID, $userID)
     {
         global $conn;
 
         $stmt = $conn->prepare('INSERT INTO "Manager"("managerComplexID", "managerID") VALUES (?,?)');
         return $stmt->execute(array($complexID, $userID));
+    }
+
+    function removeManager($complexID, $managerID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            DELETE FROM "Manager"
+            WHERE "managerID" = ?
+            AND "managerComplexID" = ?;');
+        return $stmt->execute(array($managerID, $complexID));
+    }
+
+    function isComplexManager($complexID, $userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT exists(SELECT FROM "Manager" WHERE "managerComplexID" = ? AND "managerID" = ?);');
+        $stmt->execute(array($complexID, $userID));
+
+        return $stmt->fetch()['exists'];
     }
 
     function complexExists($complexID)

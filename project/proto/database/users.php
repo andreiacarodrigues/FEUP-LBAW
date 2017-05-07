@@ -7,8 +7,6 @@
         $stmt->execute(array($username));
         $user = $stmt->fetch();
 
-        echo $user;
-
         return ($user !== false && $password == $user['userPassword']);
     }
 
@@ -78,6 +76,16 @@
 
         $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userUsername" = ?');
         $stmt->execute(array($username));
+
+        return $stmt->fetch()['userID'];
+    }
+
+    function getUserIDByEmail($userEmail)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userEmail" = ?');
+        $stmt->execute(array($userEmail));
 
         return $stmt->fetch()['userID'];
     }

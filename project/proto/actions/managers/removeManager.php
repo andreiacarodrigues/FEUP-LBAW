@@ -2,8 +2,9 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
 
-    $complexID = $_GET['complexID'];
     $userID = $_SESSION['userID'];
+    $managerID = $_POST['managerID'];
+    $complexID = $_POST['complexID'];
 
     if(!isComplexManager($complexID, $userID))
     {
@@ -11,10 +12,5 @@
         die();
     }
 
-    $managerInformation = getManagersInformation($complexID);
-
-    $smarty->assign('MANAGER_INFORMATION', $managerInformation);
-    $smarty->assign('COMPLEX_ID', $complexID);
-
-    $smarty->display('pages/managers/complexManagers.tpl');
-?>
+    removeManager($complexID, $managerID);
+    header("Location: ".$_SERVER['HTTP_REFERER']);
