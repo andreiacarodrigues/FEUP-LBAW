@@ -26,7 +26,7 @@
     {
         $error = false;
 
-        if (userExists($username))
+        if (userExists($_SESSION['userID']))
         {
             $_SESSION['error_messages'][] = "Username already exists.";
             $error = true;

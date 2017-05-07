@@ -22,14 +22,28 @@
 
     try
     {
-        if (userExists($userID))
+      if (userExists($userID))
         {
             $username = getUsername($userID);
 
             if(verifyUser($username, $password)) {
 
-                $_SESSION['success_messages'][] = "Profile edited sucessfully.";
-                header("Location: " . $BASE_URL . "pages/users/profile.php");
+                if($newPassword != $newPasswordConfirmation)
+                {
+                    $_SESSION['error_messages'][] = "New password and it's confirmation inserted doesn't match;";
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                }
+                else
+                    if(editPassword($userID, $newPassword))
+                    {
+                        $_SESSION['success_messages'][] = "Password changed sucessfully.";
+                        header("Location: " . $BASE_URL . "pages/users/profile.php");
+                    }
+                    else
+                    {
+                        $_SESSION['error_messages'][] = "Error ocurred. Password was not changed.";
+                        header("Location: " . $BASE_URL . "pages/users/profile.php");
+                    }
             }
             else{
                 $_SESSION['error_messages'][] = "Password inserted doesn't match;";
@@ -38,14 +52,14 @@
         }
         else
         {
-            $_SESSION['error_messages'][] = "Unknown error occurred1;";
+            $_SESSION['error_messages'][] = "Unknown error occurred;";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
     catch (PDOException $e)
     {
         echo $e;
-        $_SESSION['error_messages'][] = "Unknown error occurred2;";
+        $_SESSION['error_messages'][] = "Unknown error occurred;";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 

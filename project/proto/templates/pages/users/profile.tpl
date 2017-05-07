@@ -110,7 +110,7 @@
             "<hr class='divider'>" +
             "<br>" +
 
-            "<form id='newPasswordForm' action=' ' method='post' autocomplete='on'>" +
+            "<form id='newPasswordForm' action='{$BASE_URL}actions/users/editPassword.php' method='post' autocomplete='on'>" +
             "<div class='row'>" +
             "<div class='col-md-10 col-md-offset-1'>"+
 

@@ -50,10 +50,20 @@
         "userMunicipalityID" = ?
         WHERE
         "userID" = ?;');
-        $stmt->execute(array($name, $email, $username, $contact, $municipality, $userID));
-        $user = $stmt->fetch();
+        return $stmt->execute(array($name, $email, $username, $contact, $municipality, $userID));
+    }
 
-        return $user ? true : false;
+    function editPassword($userID, $password)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "User"
+            SET
+            "userPassword" = ?
+            WHERE
+            "userID" = ?;');
+        return $stmt->execute(array($password, $userID));
+
     }
 
     function emailExists($email)
