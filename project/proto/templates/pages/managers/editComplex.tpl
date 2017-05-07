@@ -2,8 +2,8 @@
 
 <div class="editComplex">
     <div class="container">
-        <div class="intro-add-complex text-center">
-            <h2>Edit Complex Information</h2>
+        <div class="text-center">
+            <h1>Edit Complex Information</h1>
             <br>
         </div>
 

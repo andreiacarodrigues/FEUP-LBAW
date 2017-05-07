@@ -15,7 +15,7 @@
     {
         if(empty($_POST['username']) || empty($_POST['password']))
             $_SESSION['error_messages'] = "Required field wasn't filled.";
-        else if(!userExists($username))
+        else if(!userExists($_SESSION['userID']))
             $_SESSION['error_messages'] = "Username inserted doesn't exist.";
         else
             $_SESSION['error_messages'] = "Password doesn't match.";

@@ -3,8 +3,8 @@
 
 <div class="addSpace">
     <div class="container">
-        <div class="intro-add-complex text-center">
-            <h2>Add Space to: <span> {$complexName} </span></h2>
+        <div class="text-center">
+            <h1>Add Space to: <span> {$complexName} </span></h1>
             <br>
         </div>
         <hr class="divider"><br>

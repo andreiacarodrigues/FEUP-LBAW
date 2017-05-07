@@ -1,8 +1,8 @@
 {include file='common/userHeader.tpl'}
 <div class="statistics">
     <div class="container">
-        <div class="intro-add-complex text-center">
-            <h2>Statistics for <span> Complex 1 </span></h2>
+        <div class="text-center">
+            <h1>Statistics for <span> Complex 1 </span></h1>
             <br><br><br>
 
         </div>

@@ -2,119 +2,149 @@
 
 <div class="profile">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-				<div class="row">
-					<div class="col-md-offset-1 col-sm-6 col-md-2">
-                        <!-- <img src="http://placehold.it/150" alt="" class="img-circle img-responsive" />-->
-                        <img src="../../res/img/doge.jpeg" alt="" class="img-circle img-responsive" style="width:150px;height:150px;" />
-                     </div>
-                    <div class="col-sm-6 col-md-9">
-                        <h4><i class="fa fa-user fa" aria-hidden="true"></i> <strong>Andreia Cristina de Almeida Rodrigues</strong></h4>
-                        <p>
-                            <i class="fa fa-users fa"></i> xCutePsycho <br />
-                            <i class="fa fa-envelope fa"></i> andreiacarodrigues@gmail.com <br />
-                            <i class="fa fa-phone"></i> 912345678 <br>
-                            <i class="glyphicon glyphicon-globe"></i> Chamusca, Portugal
-                        </p>
-                     </div>
-                     <div class="btn-group">
-                         <!--  <button type="button" class="btn btn-primary gradient-yellow">Edit Profile <i class="glyphicon glyphicon-edit"></i></button>
-                         <br><br>-->
-                         <button type="button" class="btn btn-primary gradient-red">Set as Inactive <i class="glyphicon glyphicon-remove"></i></button>
-                     </div>
-                </div>
-             </div>
-         </div>
+            <div class="row">
+                {if $SUCCESS_MESSAGES != ""}
+                    {foreach $SUCCESS_MESSAGES as $message}
+                        <div class="alert alert-info alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{$message}</strong>
+                        </div>
+                    {/foreach}
+                {/if}
+                {if $ERROR_MESSAGES != ""}
+                    {foreach $ERROR_MESSAGES as $message}
+                        <div class="alert alert-danger alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{$message}</strong>
+                        </div>
+                    {/foreach}
+                {/if}
+            </div>
+        <h1 class="text-center">Profile Information</h1>
      </div>
-	 
-     <br><br>
+
      <div class="container">
         <hr class="divider"><br>
-            <form id="editForm" action=" " method="post" autocomplete="on">
+            <form id="editForm" action="{$BASE_URL}actions/users/editProfile.php" method="post" autocomplete="on">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name"  placeholder="Andreia Cristina de Almeida Rodrigues"/>
+                                <span class="input-group-addon"> Name </span>
+                                <input type="text" class="form-control" name="name"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email"  placeholder="andreiacarodrigues@gmail.com "/>
+                                <span class="input-group-addon"> Email </span>
+                                <input type="text" class="form-control" name="email"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="username" id="username"  placeholder="xCutePsycho"/>
+                                <span class="input-group-addon"> Username </span>
+                                <input type="text" class="form-control" name="username"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                <input type="tel" class="form-control" name="tel" id="tel"  placeholder="912345678"/>
+                                <span class="input-group-addon"> Contact </span>
+                                <input type="tel" class="form-control" name="tel"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"> <i class="glyphicon glyphicon-globe"></i></span>
-                                <input type="text" class="form-control" name="location" id="location"  placeholder="Chamusca, Portugal"/>
+                                <span class="input-group-addon"> Municipality </span>
+                                <select class="form-control"  name="municipality"  title="">
+                                    <option value="" name="disabled" disabled selected></option>
+                                    {html_options values=$municipalityIDs output=$municipalityNames}
+                                </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                          <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                          <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-                        </div>
-                        <br><br>
+                        <br>
                         <div style="text-align: center;">
                             <input type="submit" class="btn btn-primary gradient-blue" value="Submit"/>
-                            <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                         </div>
                     </div>
                 </div>
             </form>
             <br>
-            <a href="#newPasswordForm" style="display:block;text-align:center;">Change Password</a>
+            <a id="changePassword" style="display:block;text-align:center;">Change Password</a>
         </div>
-	</div>
 
+    <div class="container" id="passwordForm">
 
-       <!-- <div class="container">
-            <hr class="divider">
-            <br>
-
-            <form id="newPasswordForm" action=" " method="post" autocomplete="on">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"> <i class="fa fa-lock fa-lg"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-                            </div>
-                        </div>
-
-                       <div class="form-group">
-                           <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                              <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
-                          </div>
-                        </div>
-
-                   <div style="text-align: center;">
-                       <input type="submit" class="btn btn-primary gradient-blue" value="Change Password"/>
-                       <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
-                   </div>
-                </div>
-            </form>
-        </div>
     </div>
+
 </div>
-</div>
--->
 
 
 {include file='common/footer.tpl'}
+
+
+<script>
+    $(function(){
+        var urlInfo = '{$BASE_URL}actions/users/profile.php';
+        $.getJSON(urlInfo ,
+            function(data){
+                $('input[name="name"]').attr("value", data['userName']);
+                $('input[name="username"]').attr("value", data['userUsername']);
+                $('input[name="tel"]').attr("value", data['userPhone']);
+                $('input[name="email"]').attr("value", data['userEmail']);
+                $('select[name="municipality"]').val(data['userMunicipalityID']);
+               /* $('#infoLocation').text(data['location']);
+                var openOnWeekends = "yes";
+                if(data['openOnWeekends'] == "false")
+                    openOnWeekends = "no";
+
+                $('#infoOpenOnWeekends').text(openOnWeekends);
+                $('#infoEmail').text(data['email']);
+                $('#infoContact').text(data['contact']);
+                $('#infoDescription').text(data['description']);
+                $('#infoHours').text(data['openingHour'] + "-" + data['closingHour']);*/
+            });
+    });
+
+    $('#changePassword').click(function(){
+        $('#passwordForm').append(
+            "<hr class='divider'>" +
+            "<br>" +
+
+            "<form id='newPasswordForm' action=' ' method='post' autocomplete='on'>" +
+            "<div class='row'>" +
+            "<div class='col-md-10 col-md-offset-1'>"+
+
+            "<div class='form-group'>"+
+            "<div class='input-group'>"+
+            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>"+
+            "<input type='password' class='form-control' name='password'  placeholder='Enter your Current Password'/>"+
+            "</div>"+
+            "</div>"+
+
+            "<div class='form-group'>"+
+            "<div class='input-group'>"+
+            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>"+
+            "<input type='password' class='form-control' name='newPassword' placeholder='Enter your New Password'/>"+
+            "</div>"+
+            "</div>"+
+
+            "<div class='form-group'>"+
+            "<div class='input-group'>"+
+            "<span class='input-group-addon'><i class='fa fa-lock fa-lg' aria-hidden='true'></i></span>"+
+            "<input type='password' class='form-control' name='newPasswordConfirm'  placeholder='Confirm your New Password'/>"+
+            "</div>"+
+            "</div>"+
+
+            "<div style='text-align: center;'>"+
+            "<br>"+
+            "<input type='submit' class='btn btn-primary gradient-blue' value='Change Password'/>"+
+            "</div>"+
+            "</div>"+
+            "</form>"+
+            "<br>"+"<br>"
+        );
+
+        $('#changePassword').css("visibility", "hidden");
+    });
+
+</script>

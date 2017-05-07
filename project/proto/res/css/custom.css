@@ -61,8 +61,8 @@ input[type=button]{
 
 
 .profile {
-    margin-top: 13%;
-     margin-bottom: 10%;
+    margin-top: 8%;
+     margin-bottom: 3%;
      min-height: 85%;
  }
 
@@ -812,7 +812,7 @@ label.star:before {
 }
 
 #searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
-#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon{
+#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon, #editForm .input-group-addon{
     min-width:112px;
 }
 
@@ -820,7 +820,7 @@ label.star:before {
     min-width: 70px;
 }
 
-#loginForm .input-group-addon, #signupForm .input-group-addon, #editForm .input-group-addon, #newPasswordForm .input-group-addon
+#loginForm .input-group-addon, #signupForm .input-group-addon, #newPasswordForm .input-group-addon
 {
     min-width:50px;
 }

@@ -2,8 +2,8 @@
 
 <div class="addComplex">
     <div class="container">
-        <div class="intro-add-complex text-center">
-            <h2>Add Complex</h2>
+        <div class="text-center">
+            <h1>Add Complex</h1>
             <br>
         </div>
 

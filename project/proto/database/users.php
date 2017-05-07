@@ -26,12 +26,31 @@
         return $stmt->execute(array($username, $password, $name, $email, $phone, $municipality));
     }
 
-    function userExists($username)
+    function userExists($userID)
     {
         global $conn;
 
-        $stmt = $conn->prepare('SELECT "userUsername" FROM "User" WHERE "userUsername" = ?');
-        $stmt->execute(array($username));
+        $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userID" = ?');
+        $stmt->execute(array($userID));
+        $user = $stmt->fetch();
+
+        return $user ? true : false;
+    }
+
+    function editProfile($userID, $name, $username, $municipality, $email, $contact)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "User"
+        SET
+        "userName" = ?,
+        "userEmail" = ?,
+        "userUsername" = ?,
+        "userPhone" = ?,
+        "userMunicipalityID" = ?
+        WHERE
+        "userID" = ?;');
+        $stmt->execute(array($name, $email, $username, $contact, $municipality, $userID));
         $user = $stmt->fetch();
 
         return $user ? true : false;
@@ -78,6 +97,30 @@
         $stmt->execute(array($username));
 
         return $stmt->fetch()['userID'];
+    }
+
+    function getUsername($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "userUsername" FROM "User" WHERE "userID" = ?');
+        $stmt->execute(array($userID));
+
+        return $stmt->fetch()['userUsername'];
+    }
+
+
+    function getUserInfo($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "userName", "userUsername","userEmail", "userPhone", "userMunicipalityID"
+        FROM "User"
+        WHERE "userID" = ?;');
+        $stmt->execute(array($userID));
+
+        return $stmt->fetch();
     }
 
     function getUserIDByEmail($userEmail)
