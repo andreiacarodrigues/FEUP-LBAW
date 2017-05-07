@@ -11,6 +11,7 @@
     if(verifyUser($username, $password))
     {
         $_SESSION['username'] = $username;
+        $_SESSION['userID'] = getUserID($username);
         header("Location: ".$BASE_URL."pages/users/home.php");
     }
     else
