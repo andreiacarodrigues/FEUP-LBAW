@@ -16,6 +16,17 @@ function complexInfo(url, complexID){
         });
 }
 
+function complexManagers()
+{
+    var buttons = $('.remove-button');
+    buttons.each(function()
+    {
+        var id = $(this).attr('id');
+        var result = id.match(/remove-(\d*)/);
+        console.log(result);
+    });
+}
+
 function complexSpacesInfo(url, complexID){
 
     $.getJSON(url,  {complexID: complexID} ,
