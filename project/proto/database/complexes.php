@@ -17,6 +17,27 @@
         $stmt->execute(array($username));
         return $stmt;
     }
+// ACABAR ESTE
+    function getHomePageSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        SELECT "complexID"
+        FROM "SportsComplex"
+        WHERE
+        ($name IS NULL OR "complexName" LIKE ‘%$name%) AND
+        ($municipality IS NULL OR "complexMunicipalityID" = $municipality) AND
+        ($sport IS NULL OR $sport IN
+        (
+        SELECT "spaceSportsSportID"
+        FROM "SpaceSports"
+        JOIN "Space"
+        ON ("spaceID" = "spaceSportsSpaceID" AND "spaceComplexID" = "complexID");
+        ))
+         AND
+        LIMIT 10 OFFSET (10 * $pageNumber);');
+    }
 
     function addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal)
     {

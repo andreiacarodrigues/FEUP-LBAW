@@ -43,18 +43,27 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-addon primary">Location</span>
-                                        <input type="text" class="form-control">
+                                        <span class="input-group-addon"> Municipality </span>
+                                        <select class="form-control"  name="municipality"  title="">
+                                            <option value="" name="disabled" disabled selected></option>
+                                            {html_options values=$municipalityIDs output=$municipalityNames}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-addon primary">Sport</span>
-                                        <select class="form-control" title="">
-                                            <option value="" disabled selected></option>
-                                            <option>Football</option>
-                                            <option>Basketball</option>
-                                            <option>Tenis</option>
+                                        <span class="input-group-addon"> Sport </span>
+                                        <select class="form-control" name="sport">
+                                            <option value="" name="disabled" disabled selected></option>
+                                            {foreach $SPORTS as $SPORT}
+                                                <option value="{$SPORT.sportID}"
+                                                        {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                                            {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                                                selected
+                                                            {/if}
+                                                        {/foreach}
+                                                >{$SPORT.sportName}</option>
+                                            {/foreach}
                                         </select>
                                     </div>
                                 </div>
@@ -131,42 +140,51 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Name</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon primary">Location</span>
-                                    <input type="text" class="form-control">
+                                    <span class="input-group-addon"> Municipality </span>
+                                    <select class="form-control"  name="municipality"  title="">
+                                        <option value="" name="disabled" disabled selected></option>
+                                        {html_options values=$municipalityIDs output=$municipalityNames}
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon primary">Sport</span>
-                                    <select class="form-control" title="">
-                                        <option value="" disabled selected></option>
-                                        <option>Football</option>
-                                        <option>Basketball</option>
-                                        <option>Tenis</option>
+                                    <span class="input-group-addon"> Sport </span>
+                                    <select class="form-control" name="sport">
+                                        <option value="" name="disabled" disabled selected></option>
+                                        {foreach $SPORTS as $SPORT}
+                                            <option value="{$SPORT.sportID}"
+                                                    {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                                        {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                                            selected
+                                                        {/if}
+                                                    {/foreach}
+                                            >{$SPORT.sportName}</option>
+                                        {/foreach}
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Date</span>
-                                    <input type="date" class="form-control">
+                                    <input type="date" name="date" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Starting Time</span>
-                                    <input type="time" class="form-control">
+                                    <input type="time" name="startingTime" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Duration</span>
-                                    <input type="time" class="form-control">
+                                    <input type="time" name="duration" class="form-control">
                                 </div>
                             </div>
                         </div>
