@@ -13,18 +13,27 @@
             </div>
             <div class="form-group">
                 <div class="input-group">
-                    <span class="input-group-addon primary">Location</span>
-                    <input type="text" class="form-control">
+                    <span class="input-group-addon"> Municipality </span>
+                    <select class="form-control"  name="municipality"  title="">
+                        <option value="" name="disabled" disabled selected></option>
+                        {html_options values=$municipalityIDs output=$municipalityNames}
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                    <span class="input-group-addon primary">Sport</span>
-                    <select class="form-control" title="">
-                        <option value="" disabled selected></option>
-                        <option>Football</option>
-                        <option>Basketball</option>
-                        <option>Tenis</option>
+                    <span class="input-group-addon"> Sport </span>
+                    <select class="form-control" name="sport">
+                        <option value="" name="disabled" disabled selected></option>
+                        {foreach $SPORTS as $SPORT}
+                            <option value="{$SPORT.sportID}"
+                                    {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                        {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                            selected
+                                        {/if}
+                                    {/foreach}
+                            >{$SPORT.sportName}</option>
+                        {/foreach}
                     </select>
                 </div>
             </div>
@@ -64,18 +73,6 @@
                         <option value="" disabled selected></option>
                         <option>Covered</option>
                         <option>Uncovered</option>
-                        <option>Indiferent</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon primary">Dimensions</span>
-                    <select class="form-control" title="">
-                        <option value="" disabled selected></option>
-                        <option>Big</option>
-                        <option>Small</option>
-                        <option>Medium</option>
                         <option>Indiferent</option>
                     </select>
                 </div>

@@ -407,7 +407,8 @@ input[type=button]{
         left: 100px;
         top: 120px;
        width:30%;*/
-        padding-top:25%;
+
+        padding-top:20%;
         width:100%;
     }
     .mobileFixButtons, .mobileFixText{
@@ -771,11 +772,7 @@ label.star:before {
     }
 
     #searchResultsForm{
-        /*position:relative;
-        left: 100px;
-        top: 120px;
-       width:30%;*/
-        padding-top:40%;
+        padding-top:45%;
         width:85%;
     }
 
