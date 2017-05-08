@@ -17,7 +17,8 @@
         $stmt->execute(array($username));
         return $stmt;
     }
-// ACABAR ESTE
+
+    // ACABAR ESTE
     function getHomePageSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration)
     {
         global $conn;
@@ -118,6 +119,17 @@
         $space = $stmt->fetch();
 
         return $space ? true : false;
+    }
+
+    function rentalExists($rentalID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "rentalID" FROM "Rental" WHERE "rentalID" = ?');
+        $stmt->execute(array($rentalID));
+        $rental = $stmt->fetch();
+
+        return $rental ? true : false;
     }
 
     function getComplexName($complexID){
@@ -234,4 +246,100 @@
               $stmt->execute(array($spaceID, $sport));
           }
           return $spaceID;
+    }
+
+    function addIssue($rentalID, $subject, $category, $description, $to)
+    {
+        global $conn;
+        $stmt = $conn->beginTransaction();
+        $stmt = $conn->prepare('
+                 INSERT INTO "Issue"("issueRentalID", "issueSubject", "issueCategory", "issueDescription")
+                VALUES(?, ?, ?, ?)
+                 RETURNING "issueID";');
+
+        if($stmt->execute(array($rentalID, $subject, $category, $description))) {
+            $issueID = $stmt->fetch()['issueID'];
+
+            if ($to == "forManager") {
+                $stmt = $conn->prepare('
+                UPDATE "Issue"
+                SET "issueForManager" = true, "issueForAdmin" = false
+                WHERE "issueID" = ?;  ');
+                if(!$stmt->execute(array($issueID))) {
+                    $stmt = $conn->rollBack();
+                    return false;
+                }
+
+            }
+            if ($to == "forManager") {
+                $stmt = $conn->prepare('
+                UPDATE "Issue"
+                SET "issueForAdmin" = true, "issueForManager" = false
+                WHERE "issueID" = ?;  ');
+                if(!$stmt->execute(array($issueID))) {
+                    $stmt = $conn->rollBack();
+                    return false;
+                }
+            }
+            if( $to == "forBoth") {
+                $stmt = $conn->prepare('
+                UPDATE "Issue"
+                SET "issueForAdmin" = true, "issueForManager" = true
+                WHERE "issueID" = ?;  ');
+                if(!$stmt->execute(array($issueID))) {
+                    $stmt = $conn->rollBack();
+                    return false;
+                }
+            }
+
+            $stmt = $conn->prepare('
+                UPDATE "Rental"
+                SET "rentalState" = \'CONCLUDED\'::"rentalState"
+                WHERE "rentalID" = ?;');
+            if(!$stmt->execute(array($rentalID))) {
+                $stmt = $conn->rollBack();
+                return false;
+            }
+        }
+        $stmt = $conn->commit();
+        return true;
+    }
+
+    function cancelRentalByUser($rentalID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                UPDATE "Rental"
+                SET "rentalState" = \'CANCELEDBYUSER\'::"rentalState"
+                WHERE "rentalID" = ?;');
+        if(!$stmt->execute(array($rentalID))) {
+            return false;
+        }
+        return true;
+    }
+
+    function cancelRentalByManager($rentalID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                    UPDATE "Rental"
+                    SET "rentalState" = \'CANCELEDBYMANAGER\'::"rentalState"
+                    WHERE "rentalID" = ?;');
+        if(!$stmt->execute(array($rentalID))) {
+            return false;
+        }
+        return true;
+    }
+
+    function adminSuspendRental($rentalID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                        UPDATE "Rental"
+                        SET "rentalState" = \'SUSPENDEDBYADMIN\'::"rentalState"
+                        WHERE "rentalID" = ?;');
+        if(!$stmt->execute(array($rentalID))) {
+            return false;
+        }
+        return true;
     }
