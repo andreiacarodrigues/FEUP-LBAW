@@ -53,24 +53,20 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Sports</span>
-                                <select class="form-control" name="sports[]" multiple>
-                                    <option value="1">Badminton</option>
-                                    <option value="2">Volleyball</option>
-                                    <option value="3">Basketball</option>
-                                    <option value="4">Baseball</option>
-                                    <option value="5">Boxing</option>
-                                    <option value="6">Eskrima</option>
-                                    <option value="7">Football</option>
-                                    <option value="8">American football</option>
-                                    <option value="9">Rugby football</option>
-                                    <option value="10">Golf</option>
-                                    <option value="11">Gymnastics</option>
-                                    <option value="12">Handball</option>
-                                    <option value="13">Hockey</option>
-                                    <option value="14">Tenis</option>
+                                <select class="form-control " name="sports[]" multiple>
+                                    {foreach $SPORTS as $SPORT}
+                                        <option value="{$SPORT.sportID}"
+                                                {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                                    {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                                        selected
+                                                    {/if}
+                                                {/foreach}
+                                        >{$SPORT.sportName}</option>
+                                    {/foreach}
                                 </select>
                             </div>
                         </div>
+
                         <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                         <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                         <br><br>

@@ -227,13 +227,21 @@
     {
          global $conn;
 
+        if(!$conn->beginTransaction())
+        {
+            return false;
+        }
+
           $stmt = $conn->prepare('
               INSERT INTO
               "Space"("spaceName","spaceSurfaceType","spaceIsCovered", "spaceIsAvailable", "spacePrice", "spaceComplexID")
               VALUES (?,?,?,?,?,?)
               RETURNING "spaceID";');
 
-          $stmt->execute(array($name, $surface, $coverage, "true", $price, $complexID));
+        if(!$stmt->execute(array($name, $surface, $coverage, "true", $price, $complexID))) {
+            $stmt = $conn->rollBack();
+            return false;
+        }
           $spaceID = $stmt->fetch()['spaceID'];
 
           foreach ($sports as $sport)
@@ -243,8 +251,14 @@
               "SpaceSports"("spaceSportsSpaceID","spaceSportsSportID")
               VALUES (?,?);');
 
-              $stmt->execute(array($spaceID, $sport));
+              if(!$stmt->execute(array($spaceID, $sport))) {
+                  $stmt = $conn->rollBack();
+                  return false;
+              }
+
           }
+
+          $stmt = $conn->commit();
           return $spaceID;
     }
 
@@ -359,6 +373,75 @@
         $stmt->execute(array($complexID, 0)); //TODO set pagenumber
         return $stmt->fetchAll();
     }
+
+    function editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports){
+        global $conn;
+
+        if(!$conn->beginTransaction())
+        {
+            return false;
+        }
+        $stmt = $conn->prepare('
+            UPDATE "Space"
+            SET 
+            "spaceName" = ?,
+            "spaceSurfaceType" = ?,
+            "spaceIsCovered" = ?,
+            "spaceIsAvailable" = ?,
+            "spacePrice" = ?
+            WHERE
+            "spaceID" = ?;');
+
+        if(!$stmt->execute(array($name, $surface, $coverage, $isAvailable, $price, $sports, $spaceID)))
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        $spaceOldSports = getSpaceSports($spaceID);
+
+        foreach ($spaceOldSports as $sport)
+        {
+            var_dump($sport);
+            var_dump($sports);
+            if(!in_array($sport, $sports)) /* for each sport to delete */
+            {
+                $stmt = $conn->prepare('
+                DELETE
+                FROM "SpaceSports"
+                WHERE "spaceSportsSpaceID" = ? AND
+                "spaceSportSportID" = ?;');
+
+                if(!$stmt->execute(array($spaceID, $sport))) {
+                    $stmt = $conn->rollBack();
+                    return false;
+                }
+            }
+        }
+
+        foreach ($sports as $sport)
+        {
+            if(!in_array($sport, $spaceOldSports)) /* for each sport to delete */
+            {
+                $stmt = $conn->prepare('
+               INSERT INTO "SpaceSports" VALUES(?, ?);');
+
+                if(!$stmt->execute(array($spaceID, $sport))) {
+                    $stmt = $conn->rollBack();
+                    return false;
+                }
+            }
+        }
+
+        if(!$conn->commit())
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        return true;
+    }
+
 
     function addEquipment($complexID, $name, $quantity, $details, $price, $sports)
     {

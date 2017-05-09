@@ -21,7 +21,7 @@
             {/if}
         </div>
         <div class="row">
-        <a href="../addSpace.php/?complexID={$complexID}" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a href="{$BASE_URL}pages/managers/addSpace.php/?complexID={$complexID}" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         </div>
         {$ROW_COUNT = 0}
@@ -52,7 +52,8 @@
                                             </ul>
                                         </div>
                                         <div class="mobileFixButtons col-md-5">
-                                            <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
+                                            <button type="button" class="btn btn-primary gradient-yellow" onclick="updateEditSpaceInfo({$complexID}, {$SPACE.spaceID}, '{$SPACE.spaceIsCovered}', '{$SPACE.spaceSurfaceType}',{$SPACE.spacePrice}, '{$SPACE.spaceIsAvailable}', '{$SPACE.sports}')"
+                                                    data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,61 +86,55 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form id="editSpaceForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                        <form id="editSpaceForm" action="{$BASE_URL}actions/managers/editSpace.php" method="post" autocomplete="on" class="form-horizontal" role="form">
+                            <input type="hidden" name="complexID" value="{$complexID}"/>
+                            <input type="hidden" name="spaceID"/>
+                            <input type="hidden" name="name"/>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Surface</span>
-                                            <select class="form-control" title="">
+                                            <select class="form-control" title="" name="surface">
                                                 <option value="" disabled selected></option>
-                                                <option>Grass</option>
-                                                <option>Syntetic Grass </option>
+                                                <option>Synthetic</option>
                                                 <option>Dirt</option>
+                                                <option>Indoors</option>
+                                                <option>Other</option>
                                             </select>
                                         </div>
 
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Coverage</span>
-                                            <select class="form-control" title="">
+                                            <select class="form-control" name="coverage" title="">
                                                 <option value="" disabled selected></option>
                                                 <option>Covered</option>
                                                 <option>Uncovered</option>
                                             </select>
                                         </div>
 
-                                        <div class="input-group">
-                                            <span class="input-group-addon primary">Dimensions</span>
-                                            <select class="form-control" title="">
-                                                <option value="" disabled selected></option>
-                                                <option>Big</option>
-                                                <option>Small</option>
-                                                <option>Medium</option>
-                                            </select>
-                                        </div>
-
                                             <div class="input-group">
                                                 <span class="input-group-addon primary">Price / hour</span>
-                                                <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                                                <input class="form-control" type="number" name="price" min="0" max="20" step="1" value="0">
                                             </div>
 
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Availability</span>
-                                            <select class="form-control" title="">
+                                            <select class="form-control" name="availability" title="">
                                                 <option value="" disabled selected></option>
                                                 <option>Available</option>
                                                 <option>Unavailable</option>
                                             </select>
                                         </div>
 
-                                            <div class="input-group">
-                                                <span class="input-group-addon primary">Sports</span>
-                                                <select class="form-control" name="sports[]" multiple>
-                                                    <option value="football">Football</option>
-                                                    <option value="basketball">Basketball</option>
-                                                    <option value="tenis">Tenis</option>
-                                                </select>
-                                            </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon primary">Sports</span>
+                                            <select class="form-control " name="sports[]" multiple>
+                                                {foreach $SPORTS as $SPORT}
+                                                    <option value="{$SPORT.sportID}">{$SPORT.sportName}</option>
+                                                {/foreach}
+                                            </select>
+                                        </div>
 
 
                                         <div class="input-group">
@@ -161,7 +156,7 @@
             </div>
 		</div>
 	</div>
-</div>
+
 
 
 {include file='common/footer.tpl'}
@@ -174,4 +169,30 @@
     $(function(){
         manageSpaces();
     });
+
+    function updateEditSpaceInfo(complexID,spaceID, isCovered, surfaceType, price, isAvailable, sports){
+        $('#editSpaceForm input[name="spaceID"]').val(spaceID);
+        $('#editSpaceForm input[name="complexID"]').val(complexID);
+
+        if(isCovered == "Yes")
+            $('#editSpaceForm select[name="coverage"]').val("Covered").trigger('chosen:updated');
+        else
+            $('#editSpaceForm select[name="coverage"]').val("Uncovered").trigger('chosen:updated');
+
+        $('#editSpaceForm select[name="surface"]').val(surfaceType).trigger('chosen:updated');
+        $('#editSpaceForm input[name="price"]').val(price);
+
+        if(isAvailable == "Yes")
+            $('#editSpaceForm select[name="availability"]').val("Available").trigger('chosen:updated');
+        else
+            $('#editSpaceForm select[name="availability"]').val("Unavailable").trigger('chosen:updated');
+
+
+        var partsOfStr = sports.split(', ');
+
+        for(var i = 0 ; i < partsOfStr.length; i++)
+            $("#editSpaceForm select[name='sports[]'] option:contains(" + partsOfStr[i] +")").attr("selected", true);
+            //$('#editSpaceForm select[name="sports[]"]').find("option[text='" + partsOfStr[i] + "']").attr("selected", true);
+        //$('#editSpaceForm select[name="sports[]"]').val(partsOfStr[i]).trigger('chosen:updated');
+    }
 </script>

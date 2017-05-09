@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
+    include_once($BASE_DIR."database/sports.php");
 
     if (isset ($_GET['complexID'] ))
         $complexID = trim(strip_tags($_GET['complexID']));
@@ -19,6 +20,9 @@
 
     foreach ($spaces as $space) {
         $sports = getSpaceSports($space['spaceID']);
+
+
+        $sportsNames = "";
         $result = "";
 
         foreach ($sports as $sport) {
@@ -42,9 +46,15 @@
             $space['spaceIsAvailable'] = "Yes";
 
         array_push($resultSpaces,$space);
-    }
 
+    }
     $smarty->assign('SPACES', $resultSpaces);
+
+    $sports = getAllSports();
+
+    $smarty->assign('EQUIPMENT_INFORMATION', $parsedInformation);
+    $smarty->assign('SPORTS', $sports);
+
     $smarty->display('pages/managers/manageSpaces.tpl');
 ?>
 
