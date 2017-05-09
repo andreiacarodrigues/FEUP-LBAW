@@ -73,6 +73,24 @@ input[type=button]{
     font-size:0.95em;
 }
 
+.manageEquipment .table input[type="submit"]{
+    font-size: 11px;
+}
+
+.manageEquipment .table img{
+    margin-left:4%;
+}
+
+.manageEquipment .table .saveEquipmentBtn{
+    margin-bottom: 25px;
+}
+
+
+.manageEquipment .table .dropdownSports .btn-group button
+{
+    margin-bottom:22px !important;
+}
+
 .userRentals h4{
     font-size:1.4em;
     color:black;

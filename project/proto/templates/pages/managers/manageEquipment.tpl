@@ -1,3 +1,42 @@
+<style>
+    DIV.table
+    {
+        display:table;
+
+    }
+    FORM.tr, DIV.tr
+    {
+
+        display:table-row;
+    }
+    SPAN.td
+    {
+
+        display:table-cell;
+    }
+
+    DIV.thead
+    {
+        display: table-header-group;
+        background-color: rgba(99, 99, 99, 0.13);
+    }
+
+    DIV.tbody
+    {
+        display: table-row-group;
+
+        background-color: rgba(99, 99, 99, 0.02);
+    }
+    DIV.tbody .td{
+        border-top: solid;
+        border-top-width:thin;
+        border-color: #dedede;
+        padding: 10px;
+    }
+
+</style>
+
+
 {include file='common/userHeader.tpl'}
 
 <div class="manageEquipment">
@@ -12,83 +51,84 @@
         <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
         <br><br><br><br>
-        <form id="equipmentForm" action="../users/home.php" method="post" autocomplete="on">
-            <div class="table-responsive">
-            <table class="table table-striped table-sm" >
-               <thead class="thead-default">
-                <tr>
-                   <th><h4>Item</h4></th>
-                   <th><h4>Name</h4></th>
-                   <th><h4>Stock</h4></th>
-                    <th><h4>Price/h(€)</h4></th>
-                    <th><h4>Details</h4></th>
-                    <th><h4>Sports</h4></th>
-                    <th><h4>Unavailable</h4></th>
-                    <th><h4>Available</h4></th>
-                </tr>
-              </thead>
-              <tbody>
+
+        <div class=" table-responsive ">
+        <div class="table text-center">
+            <div class="thead thead-default">
+                <span class="td"><h4>Item</h4></span>
+                <span class="td"><h4>Name</h4></span>
+                <span class="td"><h4>Stock</h4></span>
+                <span class="td"><h4>Price/h(€)</h4></span>
+                <span class="td"><h4>Details</h4></span>
+                <span class="td"><h4>Sports</h4></span>
+                <span class="td"><h4>Unavailable</h4></span>
+                <span class="td"><h4>Available</h4></span>
+                <span class="td"><h4>  </h4></span>
+            </div>
+            <div class="tbody">
+
               {foreach $EQUIPMENT_INFORMATION as $INFORMATION}
-                  <tr>
-                      <td class="centered">
-                          <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                          <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                      </td>
-                      <td>
-                          <div class="form-group">
-                              <div class="input-group">
-                                  <input class="form-control" type="text" name="itemName" value="{$INFORMATION.name}">
-                              </div>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="form-group">
-                              <div class="input-group">
-                                  <input class="form-control" type="number" name="quantity" min="0" step="1" value="{$INFORMATION.quantity}">
-                              </div>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="form-group">
+
+            <form class="tr equipmentForm" action="../users/home.php" method="post" autocomplete="on">
+                <span class="td">
+                    <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
+                    <input type="submit" class="btn btn-primary gradient-yellow" value="Change picture"/>
+                </span>
+                <span class="td">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="itemName" value="{$INFORMATION.name}">
+                        </div>
+                    </div>
+                </span>
+                <span class="td">
+                     <div class="form-group">
+                         <div class="input-group">
+                             <input class="form-control" type="number" name="quantity" min="0" step="1" value="{$INFORMATION.quantity}">
+                         </div>
+                     </div>
+                </span>
+                <span class="td">
+                     <div class="form-group">
                               <div class="input-group">
                                   <input class="form-control" type="number" name="price" min="0" step="0.01" value="{$INFORMATION.price}">
                               </div>
                           </div>
-                      </td>
-                      <td>
-                          <div class="form-group">
+                </span>
+                <span class="td">
+                     <div class="form-group">
                               <div class="input-group">
                                   <textarea class="form-control" rows="5" name="comment">{$INFORMATION.details}</textarea>
                               </div>
                           </div>
-
-                      </td>
-                      <td>
-                          <div class="form-group">
-                              <div class="input-group">
-                                  <select class="form-control" name="sports[]" multiple>
+                </span>
+                <span class="td">
+                    <div class="form-group ">
+                              <div class="input-group dropdownSports">
+                                  <select class="form-control " name="sports[]" multiple>
                                       {foreach $SPORTS as $SPORT}
-                                        <option value="{$SPORT.sportID}"
-                                                {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
-                                                    {if $EQUIPMENT_SPORT eq $SPORT.sportID}
-                                                        selected
-                                                    {/if}
-                                                {/foreach}
-                                        >{$SPORT.sportName}</option>
+                                          <option value="{$SPORT.sportID}"
+                                                  {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                                      {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                                          selected
+                                                      {/if}
+                                                  {/foreach}
+                                          >{$SPORT.sportName}</option>
                                       {/foreach}
                                   </select>
                               </div>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="form-group">
+                            </div>
+
+                </span>
+                <span class="td">
+                       <div class="form-group">
                               <div class="input-group">
                                   <input class="form-control" type="number" name="points" min="0" step="1" value="{$INFORMATION.quantityUnavailable}">
                               </div>
                           </div>
-                      </td>
-                      <td>
-                          <div class="form-group">
+                </span>
+                <span class="td">
+                      <div class="form-group">
                               <div class="input-group">
                                   <select class="form-control" name="available">
                                       <option value="true">Yes</option>
@@ -96,24 +136,25 @@
                                   </select>
                               </div>
                           </div>
-                      </td>
-                  </tr>
+                </span>
+                <span class="td">
+
+                       <input type="submit" class="saveEquipmentBtn subBtn btn btn-primary gradient-blue" value="Save"/>
+
+                </span>
+            </form>
+
+
+
               {/foreach}
-            </tbody>
-        </table>
             </div>
 
-            <br><br>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-right">
-                        <input type="submit" class="subBtn btn btn-primary gradient-blue" value="Save"/>
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div></div>
 
-    </div>
+            </div>
+
+
+
     <!-- /.row -->
 
 
@@ -242,7 +283,7 @@
                 $iframe.height($body.get(0).scrollHeight);
             }
         }
-        $('#equipmentForm')
+        $('.equipmentForm')
             .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
