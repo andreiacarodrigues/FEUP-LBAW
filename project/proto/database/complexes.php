@@ -343,3 +343,68 @@
         }
         return true;
     }
+
+    function getComplexEquipmentInfo($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "equipmentID", "equipmentName", "equipmentQuantity", "equipmentPrice", 
+            "equipmentDetails", "equipmentQuantityUnavailable", "equipmentInactive", "equipmentSportsSportID"
+            FROM "Equipment"
+            JOIN "EquipmentSports"
+            ON "equipmentSportsEquipmentID" = "equipmentID"
+            WHERE "equipmentComplexID" = ?
+            LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($complexID, 0)); //TODO set pagenumber
+        return $stmt->fetchAll();
+    }
+
+    function addEquipment($complexID, $name, $quantity, $details, $price, $sports)
+    {
+        global $conn;
+
+        if(!$conn->beginTransaction())
+        {
+            return false;
+        }
+
+        if(!$conn->query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;'))
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        $stmt = $conn->prepare('
+            INSERT INTO "Equipment" ("equipmentComplexID", "equipmentName", "equipmentQuantity", "equipmentDetails", "equipmentPrice")
+            VALUES (?,?,?,?,?)
+            RETURNING "equipmentID";
+        ');
+        if(!$stmt->execute(array($complexID, $name, $quantity, $details, $price)))
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        $equipmentID = $stmt->fetch()['equipmentID'];
+
+        foreach($sports as $sport)
+        {
+            $stmt = $conn->prepare('
+                INSERT INTO "EquipmentSports" ("equipmentSportsEquipmentID", "equipmentSportsSportID") 
+                VALUES (?, ?);');
+            if(!$stmt->execute(array($equipmentID, $sport)))
+            {
+                $conn->rollBack();
+                return false;
+            }
+        }
+
+        if(!$conn->commit())
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        return true;
+    }

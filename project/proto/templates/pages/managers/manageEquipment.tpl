@@ -2,6 +2,13 @@
 
 <div class="manageEquipment">
     <div class="container">
+        <div class="row errorMessage">
+                        <span>
+                            {foreach $ERROR_MESSAGES as $error}
+                                <div class="error">{$error}</div>
+                            {/foreach}
+                        </span>
+        </div>
         <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
         <br><br><br><br>
@@ -21,199 +28,77 @@
                 </tr>
               </thead>
               <tbody>
-              <tr>
-                <td class="centered">
-                    <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                    <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                </td>
-                <td>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control" type="text" name="itemName" placeholder="Item 1" value="Item 1">
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="20" value="20">
-                        </div>
-                    </div>
-                </td>
+              {foreach $EQUIPMENT_INFORMATION as $INFORMATION}
+                  <tr>
+                      <td class="centered">
+                          <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
+                          <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <input class="form-control" type="text" name="itemName" value="{$INFORMATION.name}">
+                              </div>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <input class="form-control" type="number" name="quantity" min="0" step="1" value="{$INFORMATION.quantity}">
+                              </div>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <input class="form-control" type="number" name="price" min="0" step="0.01" value="{$INFORMATION.price}">
+                              </div>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <textarea class="form-control" rows="5" name="comment">{$INFORMATION.details}</textarea>
+                              </div>
+                          </div>
 
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <select class="form-control" name="sports[]" multiple>
+                                      {foreach $SPORTS as $SPORT}
+                                        <option value="{$SPORT.sportID}"
+                                                {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
+                                                    {if $EQUIPMENT_SPORT eq $SPORT.sportID}
+                                                        selected
+                                                    {/if}
+                                                {/foreach}
+                                        >{$SPORT.sportName}</option>
+                                      {/foreach}
+                                  </select>
+                              </div>
                           </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <textarea class="form-control" rows="5" id="comment"></textarea>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <input class="form-control" type="number" name="points" min="0" step="1" value="{$INFORMATION.quantityUnavailable}">
+                              </div>
                           </div>
-                      </div>
-
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <select class="form-control" name="sports" multiple>
-                                  <option value="football">Football</option>
-                                  <option value="basketball">Basketball</option>
-                                  <option value="tenis">Tenis</option>
-                              </select>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <select class="form-control" name="available">
+                                      <option value="true">Yes</option>
+                                      <option value="false">No</option>
+                                  </select>
+                              </div>
                           </div>
-                      </div>
-                  </td>
-                <td>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
-                        </div>
-                    </div>
-
-                </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                             <select class="form-control" title="">
-                          <option>Yes</option>
-                          <option>No</option>
-                      </select>
-                          </div>
-                      </div>
-                  </td>
-            </tr>
-              <tr>
-                  <td class="centered">
-                      <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                      <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="text" name="itemName" placeholder="Item 1" value="Item 1">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="20" value="20">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <textarea class="form-control" rows="5" id="comment"></textarea>
-                          </div>
-                      </div>
-
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <select class="form-control" name="sports" multiple>
-                                  <option value="football">Football</option>
-                                  <option value="basketball">Basketball</option>
-                                  <option value="tenis">Tenis</option>
-                              </select>
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
-                          </div>
-                      </div>
-
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <select class="form-control" title="">
-                                  <option>Yes</option>
-                                  <option>No</option>
-                              </select>
-                          </div>
-                      </div>
-                  </td>
-              </tr>
-              <tr>
-                  <td class="centered">
-                      <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
-                      <input type="submit" class="btn btn-primary gradient-yellow" value="Change representative picture"/>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="text" name="itemName" placeholder="Item 1" value="Item 1">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="20" value="20">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="100" step="1" placeholder="0" value="0">
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <textarea class="form-control" rows="5" id="comment"></textarea>
-                          </div>
-                      </div>
-
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <select class="form-control" name="sports" multiple>
-                                  <option value="football">Football</option>
-                                  <option value="basketball">Basketball</option>
-                                  <option value="tenis">Tenis</option>
-                              </select>
-                          </div>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input class="form-control" type="number" name="points" min="0" max="20" step="1" placeholder="0" value="0">
-                          </div>
-                      </div>
-
-                  </td>
-                  <td>
-                      <div class="form-group">
-                          <div class="input-group">
-                              <select class="form-control" title="">
-                                  <option>Yes</option>
-                                  <option>No</option>
-                              </select>
-                          </div>
-                      </div>
-                  </td>
-              </tr>
+                      </td>
+                  </tr>
+              {/foreach}
             </tbody>
         </table>
             </div>
@@ -223,7 +108,6 @@
                 <div class="col-md-12">
                     <div class="text-right">
                         <input type="submit" class="subBtn btn btn-primary gradient-blue" value="Save"/>
-                        <input type="submit" class="subBtn btn btn-primary gradient-red" value="Cancel"/>
                     </div>
                 </div>
             </div>
@@ -253,40 +137,41 @@
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <form id="equipmentForm" action="#" method="post" autocomplete="on" class="form-horizontal" role="form">
+                <form id="equipmentForm" action="{$BASE_URL}actions/managers/addEquipment.php" method="post" autocomplete="on" class="form-horizontal" role="form">
+                    <input type="hidden" name="complexID" value="{$COMPLEX_ID}">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
 
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Name</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
 
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Stock</span>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="quantity">
                                 </div>
 
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Details</span>
-                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                    <textarea class="form-control" rows="5" id="comment" name="details"></textarea>
                                 </div>
 
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Price/h</span>
-                                        <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
+                                        <input class="form-control" type="number" name="price" min="0" step="0.01" value="0">
                                     </div>
 
 
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Sports</span>
-                                        <select class="form-control" name="sports" multiple>
-                                            <option value="football">Football</option>
-                                            <option value="basketball">Basketball</option>
-                                            <option value="tenis">Tenis</option>
+                                        <select class="form-control" name="sports[]" multiple>
+                                            {foreach $SPORTS as $SPORT}
+                                                <option value="{$SPORT.sportID}">{$SPORT.sportName}</option>
+                                            {/foreach}
                                         </select>
                                     </div>
 
@@ -325,7 +210,7 @@
 <script>
     $(document).ready(function() {
         $('.modal-body #equipmentForm')
-            .find('[name="sports"]')
+            .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
                 onChange: function(element, checked) {
@@ -358,7 +243,7 @@
             }
         }
         $('#equipmentForm')
-            .find('[name="sports"]')
+            .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
                 onChange: function(element, checked) {
