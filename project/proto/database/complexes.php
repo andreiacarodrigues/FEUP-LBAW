@@ -157,6 +157,24 @@
         return $rental ? true : false;
     }
 
+    function getComplexRentals($complexID){
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "userUsername", "userName", "userPhone", "userEmail", "rentalDate", 
+             "spaceName", "rentalStartTime", "rentalDurationInMinutes", "rentalState", "rentalID"
+            FROM "Rental"
+            JOIN "Space"
+            ON "spaceID" = "rentalSpaceID"
+            JOIN "SportsComplex"
+            ON "complexID" = "spaceComplexID"
+            JOIN "User"
+            ON "userID" = "rentalUserID"
+            WHERE "complexID" = ?;');
+        $stmt->execute(array($complexID));
+        return $stmt->fetchAll();
+    }
+
     function getComplexName($complexID){
         global $conn;
 
@@ -481,7 +499,6 @@
 
         return true;
     }
-
 
     function addEquipment($complexID, $name, $quantity, $details, $price, $sports)
     {

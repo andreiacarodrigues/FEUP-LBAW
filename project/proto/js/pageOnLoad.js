@@ -201,7 +201,6 @@ function addComplex(){
 
 function complexValidations(){
     $('form').submit(function(){
-    alert('ola');
         // Prevents from submiting
 
         var error = false;
