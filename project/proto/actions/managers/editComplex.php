@@ -1,8 +1,8 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/complexes.php");
-    include_once($BASE_DIR . "database/users.php");
 
+    $complexID = $_POST['complexID'];
     $name = $_POST['name'];
     $location = $_POST['location'];
     $municipality = $_POST['municipality'];
@@ -11,10 +11,12 @@
     $description = $_POST['description'];
     $openingHour = $_POST['openingHour'];
     $closingHour = $_POST['closingHour'];
-    $openOnWeekends = $_POST['openOnWeekends'];
-    $paypal = $_POST['paypal'];
 
-    $required = [$name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
+    $openOnWeekends = "true";
+    $paypal = $_POST['paypal'];
+    $inactive = "false";
+
+    $required = [$complexID, $name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $_POST['openOnWeekends'], $paypal, $_POST['active']];
 
     foreach ($required as $item)
     {
@@ -26,24 +28,30 @@
         }
     }
 
-    if (empty($description))
+    if($_POST['active'] == "No")
+        $inactive = "true";
+
+    if($_POST['openOnWeekends'] == "No")
+        $openOnWeekends = "false";
+
+    $openingHour = $openingHour . ':00';
+    $closingHour = $closingHour . ':00';
+if (empty($description))
     {
         $description = '';
     }
 
     try
     {
-        $userID = $_SESSION['userID'];
-        if ($complexID = addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal))
+        if (editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive))
         {
-            addManager($complexID, $userID);
-            $_SESSION['success_messages'][] = "Complex registry successful";
-            header("Location: ".$BASE_URL."pages/managers/manageComplexes.php");
+            $_SESSION['success_messages'][] = "Complex edited successfully";
+           header("Location: ".$BASE_URL."pages/managers/manageComplexes.php");
         }
         else
         {
             $_SESSION['error_messages'][] = "Unknown error occurred;";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+           header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
     catch (PDOException $e)

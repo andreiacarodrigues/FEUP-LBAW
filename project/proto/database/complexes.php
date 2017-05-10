@@ -54,6 +54,31 @@
         return $stmt->fetch()['complexID'];
     }
 
+    function editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            UPDATE "SportsComplex"
+            SET
+            "complexName" = ?,
+            "complexLocation" = ?,
+            "complexMunicipalityID" = ?,
+            "complexEmail" = ?,
+            "complexPhone" = ?,
+            "complexDescription" = ?,
+            "complexOpeningHour" = ?,
+            "complexClosingHour" = ?,
+            "complexOpenOnWeekends" = ?,
+            "complexPaypal" = ?,
+            "complexInactive"= ?
+            WHERE
+            "complexID" = ?;');
+
+        return $stmt->execute(array($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive, $complexID));
+
+       }
+
     function getManagersInformation($complexID)
     {
         global $conn;

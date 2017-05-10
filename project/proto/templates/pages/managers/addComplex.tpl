@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="innerErrorMessage">
-                            <span id="invalidPaypal"></span> <!-- closing < que openning-->
+                            <span id="invalidPaypal"></span>
                         </div>
 
                         <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
@@ -135,7 +135,7 @@
 
 <script>
     $(function(){
-        addComplex();
+        complexValidations();
     });
 
 </script>

@@ -1,5 +1,5 @@
 function is_contact(element) {
-    return /^\d{9}|\d{3}-\d{3}-\d{3}$/.test(element);
+    return /^(\d{9}|\d{3}-\d{3}-\d{3})$/.test(element);
 }
 
 function is_email(element) {

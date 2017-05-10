@@ -146,7 +146,7 @@
                                             <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
                                     </div>
@@ -169,10 +169,6 @@
 <script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>-->
 
 <script>
-    $(function(){
-        //  manageSpaces();
-    });
-
     function updateEditSpaceInfo(complexID,spaceID, spaceName, isCovered, surfaceType, price, isAvailable, sports){
         $('#editSpaceForm input[name="spaceID"]').val(spaceID);
         $('#editSpaceForm input[name="complexID"]').val(complexID);
