@@ -52,7 +52,7 @@
                                             </ul>
                                         </div>
                                         <div class="mobileFixButtons col-md-5">
-                                            <button type="button" class="btn btn-primary gradient-yellow" onclick="updateEditSpaceInfo({$complexID}, {$SPACE.spaceID}, '{$SPACE.spaceIsCovered}', '{$SPACE.spaceSurfaceType}',{$SPACE.spacePrice}, '{$SPACE.spaceIsAvailable}', '{$SPACE.sports}')"
+                                            <button type="button" class="btn btn-primary gradient-yellow" onclick="updateEditSpaceInfo({$complexID}, {$SPACE.spaceID}, '{$SPACE.spaceName}', '{$SPACE.spaceIsCovered}', '{$SPACE.spaceSurfaceType}',{$SPACE.spacePrice}, '{$SPACE.spaceIsAvailable}', '{$SPACE.sports}')"
                                                     data-toggle="modal" data-target="#editSpaceModal">Edit<br>Information</button>
                                         </div>
                                     </div>
@@ -69,6 +69,7 @@
             {/strip}
         {/foreach}
     </div>
+</div>
 
         <!-- Modal -->
         <div class="modal fade" id="editSpaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -80,7 +81,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h4 class="modal-title text-center" id="myModalLabel">
-                            Edit Space 1
+                            Edit Space <span id="spaceName"></span>
                         </h4>
                     </div>
 
@@ -129,21 +130,23 @@
 
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Sports</span>
-                                            <select class="form-control " name="sports[]" multiple>
+                                            <select id="sportsSelect" class="form-control " name="sports[]" multiple>
                                                 {foreach $SPORTS as $SPORT}
                                                     <option value="{$SPORT.sportID}">{$SPORT.sportName}</option>
                                                 {/foreach}
                                             </select>
-                                        </div>
 
+                                        </div>
+                                        <div class="input-group">
+                                            <span>Hold CTRL key and click on the sports you wish to be added to your space.</span>
+                                        </div>
 
                                         <div class="input-group">
                                             <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
                                             <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
                                         </div>
                                     </div>
-
-
+                                    
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
                                     </div>
@@ -162,17 +165,21 @@
 {include file='common/footer.tpl'}
 
 
-<link rel="stylesheet" href="{$BASE_URL}js/bootstrap-multiselect.css" />
-<script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>
+<!--<link rel="stylesheet" href="{$BASE_URL}js/bootstrap-multiselect.css" />
+<script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>-->
 
 <script>
     $(function(){
-        manageSpaces();
+        //  manageSpaces();
     });
 
-    function updateEditSpaceInfo(complexID,spaceID, isCovered, surfaceType, price, isAvailable, sports){
+    function updateEditSpaceInfo(complexID,spaceID, spaceName, isCovered, surfaceType, price, isAvailable, sports){
         $('#editSpaceForm input[name="spaceID"]').val(spaceID);
         $('#editSpaceForm input[name="complexID"]').val(complexID);
+
+        $('#editSpaceForm input[name="name"]').val(spaceName);
+
+        $('#spaceName').text(spaceName);
 
         if(isCovered == "Yes")
             $('#editSpaceForm select[name="coverage"]').val("Covered").trigger('chosen:updated');
@@ -188,11 +195,14 @@
             $('#editSpaceForm select[name="availability"]').val("Unavailable").trigger('chosen:updated');
 
 
-        var partsOfStr = sports.split(', ');
+        $("#sportsSelect").val([]); // clean the previous selected options
 
-        for(var i = 0 ; i < partsOfStr.length; i++)
-            $("#editSpaceForm select[name='sports[]'] option:contains(" + partsOfStr[i] +")").attr("selected", true);
-            //$('#editSpaceForm select[name="sports[]"]').find("option[text='" + partsOfStr[i] + "']").attr("selected", true);
-        //$('#editSpaceForm select[name="sports[]"]').val(partsOfStr[i]).trigger('chosen:updated');
+        var partsOfStr = sports.split(', ');
+        var values = [];
+        for(var i = 0 ; i < partsOfStr.length; i++) {
+            values.push($('#sportsSelect option').filter(function () { return $(this).html() == partsOfStr[i]; }).val());
+        }
+
+        $("#sportsSelect").val(values); // new options
     }
 </script>

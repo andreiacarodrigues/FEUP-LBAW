@@ -10,19 +10,11 @@
     $coverage = "true";
     $price = $_POST['price'];
     $isAvailable = "true";
-
-    echo $complexID . ' ' . $spaceID . ' ' . $name . ' ' . $surface . ' ' . $_POST['coverage'] . ' ' . $price . ' ' .$_POST['isAvailable'] ;
-
-die();
-    if($_POST['isAvailable']=="No")
-        $isAvailable = "false";
-
-    if($_POST['coverage'] == "Uncovered")
-        $coverage = "false";
-
     $sports = $_POST['sports'];
 
-    $required = [$complexID, $spaceID, $name, $surface, $_POST['coverage'], $_POST['isAvailable'], $sports, $price];
+    //echo $complexID . ' ' . $spaceID . ' ' . $name . ' ' . $surface . ' ' . $_POST['coverage'] . ' ' . $price . ' ' .$_POST['availability'] . ' ' . var_dump($_POST['sports']) ;
+
+    $required = [$complexID, $spaceID, $name, $surface, $_POST['coverage'], $_POST['availability'], $price];
 
     foreach ($required as $item)
     {
@@ -35,6 +27,12 @@ die();
             die();
         }
     }
+
+    if($_POST['isAvailable']=="Unavailable")
+        $isAvailable = "false";
+
+    if($_POST['coverage'] == "Uncovered")
+        $coverage = "false";
 
     try
     {

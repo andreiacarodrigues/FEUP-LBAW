@@ -210,6 +210,18 @@
         return $stmt->fetchAll();
     }
 
+    function getSpaceSportsID($spaceID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "sportID"
+            FROM "SpaceSports" JOIN "Sport" ON "sportID" = "spaceSportsSportID" 
+            WHERE "spaceSportsSpaceID" = ?');
+        $stmt->execute(array($spaceID));
+        return $stmt->fetchAll();
+    }
+
     function getSpaceInfo($spaceID){
         global $conn;
 
@@ -375,53 +387,56 @@
     }
 
     function editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports){
-        global $conn;
+
+         global $conn;
 
         if(!$conn->beginTransaction())
-        {
-            return false;
-        }
-        $stmt = $conn->prepare('
-            UPDATE "Space"
-            SET 
-            "spaceName" = ?,
-            "spaceSurfaceType" = ?,
-            "spaceIsCovered" = ?,
-            "spaceIsAvailable" = ?,
-            "spacePrice" = ?
-            WHERE
-            "spaceID" = ?;');
+         {
+             return false;
+         }
+         $stmt = $conn->prepare('
+             UPDATE "Space"
+             SET
+             "spaceName" = ?,
+             "spaceSurfaceType" = ?,
+             "spaceIsCovered" = ?,
+             "spaceIsAvailable" = ?,
+             "spacePrice" = ?
+             WHERE
+             "spaceID" = ?;');
 
-        if(!$stmt->execute(array($name, $surface, $coverage, $isAvailable, $price, $sports, $spaceID)))
-        {
-            $conn->rollBack();
-            return false;
-        }
+         if(!$stmt->execute(array($name, $surface, $coverage, $isAvailable, $price, $spaceID)))
+         {
+             $conn->rollBack();
+             return false;
+         }
 
-        $spaceOldSports = getSpaceSports($spaceID);
+         $spaceOldSports = getSpaceSportsID($spaceID);
+        $newSpaceOldSports = array();
 
-        foreach ($spaceOldSports as $sport)
-        {
-            var_dump($sport);
-            var_dump($sports);
-            if(!in_array($sport, $sports)) /* for each sport to delete */
+         foreach ($spaceOldSports as $sport)
+         {
+             $newSpaceOldSports[] = $sport['sportID'] . '';
+             if(!in_array($sport['sportID'] . '', $sports)) /* for each sport to delete */
             {
                 $stmt = $conn->prepare('
                 DELETE
                 FROM "SpaceSports"
                 WHERE "spaceSportsSpaceID" = ? AND
-                "spaceSportSportID" = ?;');
+                "spaceSportsSportID" = ?;');
 
-                if(!$stmt->execute(array($spaceID, $sport))) {
+                if(!$stmt->execute(array($spaceID, $sport['sportID']))) {
                     $stmt = $conn->rollBack();
                     return false;
                 }
             }
         }
 
-        foreach ($sports as $sport)
+
+
+       foreach ($sports as $sport)
         {
-            if(!in_array($sport, $spaceOldSports)) /* for each sport to delete */
+            if(!in_array($sport, $newSpaceOldSports)) /* for each sport to delete */
             {
                 $stmt = $conn->prepare('
                INSERT INTO "SpaceSports" VALUES(?, ?);');
