@@ -29,15 +29,19 @@
         }
         else
         {
-            if (cancelRentalByManager($rentalID))
-            {
-                $_SESSION['success_messages'][] = "Rental cancelled successfully";
-                header("Location: " . $BASE_URL . "pages/managers/manageRentalsManager.php?complexID=" . $complexID);
+            if (rentalExists($rentalID)) {
+                if (cancelRentalByManager($rentalID)) {
+                    $_SESSION['success_messages'][] = "Rental cancelled successfully";
+                    header("Location: " . $BASE_URL . "pages/managers/manageRentalsManager.php?complexID=" . $complexID);
+                } else {
+                    $_SESSION['error_messages'][] = "Error cancelling the rental.";
+                    header("Location: " . $BASE_URL . "pages/managers/manageRentalsManager.php?complexID=" . $complexID);
+                }
             }
             else
             {
-                $_SESSION['error_messages'][] = "Error cancelling the rental.";
-                header("Location: " . $BASE_URL . "pages/managers/manageRentalsManager.php?complexID=" . $complexID);
+                $_SESSION['error_messages'][] = "Rental doesn't exist;";
+                header("Location: " . $BASE_URL . "pages/users/home.php");
             }
         }
     }

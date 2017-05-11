@@ -128,11 +128,13 @@
 <br>
     <div class="container">
         <hr>
-        <form id="rentForm" action="home.php" method="post" autocomplete="on">
+        <form id="rentForm" action='{$BASE_URL}actions/managers/makeRental.php' method="post" autocomplete="on">
+            <input name="spaceID" type="hidden" value="{$spaceID}">
+            <input name="userID" type="hidden" value="{$userID}">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group checkInput">
                             <span class="input-group-addon primary">Date</span>
                             <input name="date" type="date" class="form-control">
                         </div>
@@ -140,7 +142,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group checkInput">
                             <span class="input-group-addon primary">Starting Time</span>
                             <input name="startingTime" type="time" class="form-control">
                         </div>
@@ -148,7 +150,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group checkInput">
                             <span class="input-group-addon primary">Duration</span>
                             <input name="duration" type="time" class="form-control">
                         </div>
@@ -161,12 +163,9 @@
         </form>
 
     </div>
-    <!-- /.row -->
 </div>
 
     </div>
-
-
 
 
 
@@ -174,140 +173,7 @@
 
 <script>
     $(function(){
-        var urlInfo = '{$BASE_URL}actions/users/space.php';
-        var urlRedirect = '{$BASE_URL}pages/users/sportComplex.php';
-        var id = {$spaceID};
-        spaceInfo(urlInfo, urlRedirect, id);
-
-        $("input[name='date']").blur(function(){
-            var val1 = Date.parse($("input[name='date']").val());
-            var val2 = new Date($("input[name='startingTime']").val());
-            var val3 = new Date($("input[name='duration']").val());
-
-            var todayDate = Date.parse(new Date().getDate());
-            var todayTime = Date.parse(new Date().getTime());
-
-            console.log(val2);
-            console.log(val3);
-
-           /* console.log(val1 >= todayDate);
-            console.log(val2 >= todayTime);
-
-            console.log(val3 > val2);*/
-
-            if((val1 != "") && (val2 != "") && (val3 != "")){
-                if(!$.trim($('#rentalInfo').html()).length)
-                $('#rentalInfo').append(
-                    "<div class='table-responsive'>"+
-                    "<table class='table table-striped table-sm'>" +
-                    "<thead class='thead-default'>" +
-                    "<tr>" +
-                    "<th><h4>Item</h4></th>" +
-                    "<th><h4>Name</h4></th>" +
-                    "<th><h4>Quantity To Rent</h4></th>" +
-                    "<th><h4>Available</h4></th>" +
-                    "<th><h4>Price / hour (€)</h4></th>" +
-                    "</tr>" +
-                    "</thead>" +
-                    "<tbody id='equipmentList'>"+
-                    " </tbody>"+
-                    "</table>"+
-                    "</div>"+
-                    "<div class='text-right'>" +
-                    "<h4> Total(€): <span id='totalRentalCost'></span> </h4>"+
-                    "<input type='submit' class='btn btn-primary gradient-blue' value='Rent Items'/>" +
-                    "</div>"
-                );
-            }
-        });
+        spacePage('{$BASE_URL}', {$spaceID});
     });
 </script>
 
-
-
-<!--
-<div class="table-responsive">
-<table class="table table-striped table-sm" >
-<thead class="thead-default">
-<tr>
-   <th><h4>Item</h4></th>
-   <th><h4>Name</h4></th>
-   <th><h4>Quantity To Rent</h4></th>
-   <th><h4>Available</h4></th>
-    <th><h4>Price / hour (€)</h4></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="centered">
-   <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt="">
-</td>
-<td>
-    <h5> Item 1</h5>
-</td>
-<td>
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
-        </div>
-    </div>
-</td>
-<td>
-   <h5> 20 </h5>
-</td>
-  <td>
-      <h5> 2 </h5>
-  </td>
-</tr>
-<tr>
-<td class="centered">
-    <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt="">
-</td>
-<td>
-    <h5> Item 2</h5>
-</td>
-<td>
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
-        </div>
-    </div>
-</td>
-<td>
-    <h5> 10 </h5>
-</td>
-<td>
-    <h5> 2 </h5>
-</td>
-</tr>
-<tr>
-<td class="centered">
-    <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt="">
-</td>
-<td>
-    <h5> Item 2</h5>
-</td>
-<td>
-    <div class="form-group">
-        <div class="input-group">
-            <input class="form-control" type="number" name="points" min="0" max="20" step="1" value="0">
-        </div>
-    </div>
-</td>
-<td>
-    <h5> 50 </h5>
-</td>
-<td>
-    <h5> 1 </h5>
-</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="text-right">
-<h4> Total(€): 36 </h4>
-<input type="submit" class="btn btn-primary gradient-blue" value="Rent Items"/>
-</div>
--->

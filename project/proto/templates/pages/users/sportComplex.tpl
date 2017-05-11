@@ -126,13 +126,8 @@
 
 {include file='common/footer.tpl'}
 
-
 <script>
     $(function(){
-        var urlInfo = '{$BASE_URL}actions/users/sportComplex.php';
-        var urlInfoSpaces = '{$BASE_URL}actions/users/complexSpaces.php';
-        var id = {$complexID};
-        complexInfo(urlInfo, id);
-        complexSpacesInfo(urlInfoSpaces, id);
+        sportComplexPage('{$BASE_URL}', {$complexID});
     });
 </script>

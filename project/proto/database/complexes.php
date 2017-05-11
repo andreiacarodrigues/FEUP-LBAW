@@ -241,6 +241,45 @@
         return $stmt->fetchAll();
     }
 
+    function getEquipment($spaceID, $date, $startTime, $duration)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "equipmentID", "equipmentName", "equipmentQuantity", "equipmentQuantityUnavailable", "equipmentPrice", 
+            sum("rentalEquipmentQuantity") AS "rentalQuantity"
+            FROM "Space"
+            JOIN "SportsComplex" ON "spaceComplexID" = "complexID"
+            JOIN "Equipment" ON "complexID" = "equipmentComplexID"
+            JOIN "EquipmentSports" ON "equipmentID" = "equipmentSportsEquipmentID"
+            JOIN "Sport" ON "equipmentSportsSportID" = "sportID"
+            LEFT JOIN "RentalEquipment" ON "equipmentID" = "rentalEquipmentEquipmentID"
+            LEFT JOIN "Rental" ON "rentalEquipmentRentalID" = "rentalID"
+            WHERE
+            "spaceID" = ? AND
+            "sportName" IN (SELECT "sportName"
+                            FROM "SpaceSports" JOIN "Sport" ON "sportID" = "spaceSportsSportID" 
+                            WHERE "spaceSportsSpaceID" = ?) AND
+            "equipmentInactive" = FALSE
+            AND
+            ((
+            NOT("rentalDate" + "rentalStartTime" = (?::date + ?::time ))
+            AND NOT(
+            ("rentalDate" + "rentalStartTime" < (?::date + ?::time)) AND 
+            ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" > (?::date + ?::time)))
+            AND NOT(
+            ("rentalDate" + "rentalStartTime" > (?::date + ?::time)) AND 
+            ("rentalDate" + "rentalStartTime" < (?::date + ?::time + ?::interval)))
+            /* Não - começa depois, mas antes da outra terminar */
+            )
+            OR ("rentalEquipmentQuantity" IS NULL)
+            )
+            GROUP BY "equipmentID"
+            ;');
+        $stmt->execute(array($spaceID, $spaceID, $date, $startTime, $date, $startTime, $date, $startTime, $date, $startTime, $date, $startTime, $duration));
+        return $stmt->fetchAll();
+    }
+
     function getSpaceSports($spaceID)
     {
         global $conn;
@@ -534,6 +573,54 @@
                 INSERT INTO "EquipmentSports" ("equipmentSportsEquipmentID", "equipmentSportsSportID") 
                 VALUES (?, ?);');
             if(!$stmt->execute(array($equipmentID, $sport)))
+            {
+                $conn->rollBack();
+                return false;
+            }
+        }
+
+        if(!$conn->commit())
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        return true;
+    }
+
+    function makeRental($spaceID, $userID, $date, $startTime, $duration, $equipmentArray){
+        global $conn;
+
+        if(!$conn->beginTransaction())
+        {
+            return false;
+        }
+
+        if(!$conn->query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;'))
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        $stmt = $conn->prepare('
+           INSERT INTO "Rental" ("rentalUserID", "rentalSpaceID", "rentalDate", "rentalStartTime", "rentalDurationInMinutes", "rentalState") 
+          VALUES (?, ?, ?, ?, ?,?)
+          RETURNING "rentalID";
+        ');
+        if(!$stmt->execute(array($userID, $spaceID, $date, $startTime, $duration, "RESERVED")))
+        {
+            $conn->rollBack();
+            return false;
+        }
+
+        $rentalID = $stmt->fetch()['rentalID'];
+
+        foreach($equipmentArray as $equipment)
+        {
+            $stmt = $conn->prepare('
+               INSERT INTO "RentalEquipment" 
+                VALUES (?, ?, ?);');
+            if(!$stmt->execute(array($rentalID, intval($equipment['equipmentID']), intval($equipment['equipmentQuantity']))))
             {
                 $conn->rollBack();
                 return false;

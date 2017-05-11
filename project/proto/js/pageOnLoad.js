@@ -1,6 +1,12 @@
+function sportComplexPage(url, complexID){
+    complexInfo(url, complexID);
+    complexSpacesInfo(url, complexID);
+}
+
 function complexInfo(url, complexID){
 
-    $.getJSON(url,  {complexID: complexID} ,
+    var ajaxURL = url + 'actions/users/sportComplex.php';
+    $.getJSON(ajaxURL,  {complexID: complexID} ,
         function(data){
             $('#infoName').text(data['name']);
             $('#infoLocation').text(data['location']);
@@ -17,8 +23,7 @@ function complexInfo(url, complexID){
         });
 }
 
-function complexManagers()
-{
+function complexManagers() {
     var buttons = $('.remove-button');
     buttons.each(function()
     {
@@ -29,8 +34,9 @@ function complexManagers()
 }
 
 function complexSpacesInfo(url, complexID){
+    var ajaxURL = url + 'actions/users/complexSpaces.php';
 
-    $.getJSON(url,  {complexID: complexID} ,
+    $.getJSON(ajaxURL,  {complexID: complexID} ,
         function(data){
             for(var j = 0; j < data.length; j++)
             {
@@ -61,7 +67,7 @@ function complexSpacesInfo(url, complexID){
                                 '<li class="list-group-item"><i class="fa fa-tree"></i> ' + space['surfaceType'] + ' </li>'+
                                 '<li class="list-group-item"> <i class="fa fa-eur"></i> ' + space['price'] + ' <span> per hour </span></li>'+
                             '</ul>'+
-                            '<a class="btn btn-primary btn-lg gradient-blue" href="../space.php/?spaceID=' + space['id'] + '">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>'+
+                            '<a class="btn btn-primary btn-lg gradient-blue" href="' + url + 'pages/users/space.php/?spaceID=' + space['id'] + '">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>'+
                         '</div>'+
                     '</div>' +
                     '<hr>'
@@ -197,7 +203,6 @@ function addComplex(){
 
     });
 }
-
 
 function complexValidations(){
     $('form').submit(function(){
@@ -396,5 +401,114 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
             $('#infoHours').text(data['complexOpeningHour'] + "-" + data['complexClosingHour']);
 
             $('.backToComplex').attr("href", urlRedirect + '/?complexID=' + data['spaceComplexID']);
+        });
+}
+
+function spacePage(url, spaceID){
+
+    var urlInfo = url + 'actions/users/space.php';
+    var urlRedirect = url +'pages/users/sportComplex.php';
+    spaceInfo(urlInfo, urlRedirect, spaceID);
+
+
+    $(".checkInput input").blur(function(){
+        var date = $("input[name='date']").val();
+        var startTime = $("input[name='startingTime']").val();
+        var duration = $("input[name='duration']").val();
+
+        // Date comparisons
+        var val1 = Date.parse(date);
+        var val2 = date + "T" + startTime + ":00Z";
+        var val3 = date + "T" + duration + ":00Z";
+        val2 =  Date.parse(val2);
+        val3 =  Date.parse(val3);
+
+        var today = Date.parse(new Date());
+        var todayDate = Date.parse(new Date().getDate());
+
+        if((val1 != "") && (val2 != "") && (val3 != "")) {
+            if ((val1 >= todayDate) && (val2 >= today)) {
+                if (!$.trim($('#rentalInfo').html()).length)
+                    $('#rentalInfo').append(
+                        "<div class='table-responsive'>" +
+                        "<table class='table table-striped table-sm'>" +
+                        "<thead class='thead-default'>" +
+                        "<tr>" +
+                        "<th><h4>Item</h4></th>" +
+                        "<th><h4>Name</h4></th>" +
+                        "<th><h4>Quantity To Rent</h4></th>" +
+                        "<th><h4>Available</h4></th>" +
+                        "<th><h4>Price / hour (€)</h4></th>" +
+                        "</tr>" +
+                        "</thead>" +
+                        '<input type="hidden" name="IDs" id="IDs"/>'+
+                        "<tbody id='equipmentList'>" +
+                        " </tbody>" +
+                        "</table>" +
+                        "</div>" +
+                        "<div class='text-right'>" +
+                        "<h4> Total(€): <span id='totalRentalCost'> 0 </span> </h4>" +
+                        "<input type='submit' class='btn btn-primary gradient-blue' value='Rent Items'/>" +
+                        "</div>"
+                    );
+
+                // faz chamada ajax
+                equipmentInfo(url + 'actions/managers/getEquipment.php',spaceID, date, startTime, duration);
+            }
+
+        }
+    });
+
+
+}
+
+function equipmentInfo(url, spaceID, date, startTime, duration){
+
+    $('#IDs').val("");
+
+    $('#equipmentList').empty();
+
+    $.getJSON(url, {spaceID: spaceID, date: date, startTime: startTime, duration: duration} ,
+        function(data){
+            for(var j = 0; j < data.length; j++)
+            {
+                var equipment = data[j];
+                $('#equipmentList').append(
+                    "<tr>" +
+                    "<td class='centered'>"+
+                    "<img class='img-responsive' src='http://placehold.it/200x200' style='width:100px' alt=''>"+
+                    "</td>" +
+                    "<td>" +
+                    "<h5>" + equipment['equipmentName'] + "</h5>" +
+                    "</td>" +
+                    "<td>" +
+                    "<div class='form-group'>" +
+                    "<div class='input-group'>" +
+                    "<input class='form-control quantity' type='number' name='quantity" + equipment['equipmentID'] + "' min='0' max='" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable'])) + "' step='1' value='0'>" +
+                    "</div>"+
+                    "</div>"+
+                    "</td>" +
+                    "<td>" +
+                    "<h5>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - parseInt(equipment['rentalQuantity'])) + "</h5>" +
+                    "</td>" +
+                    "<td>" +
+                    "<h5 class='price'>" + equipment['equipmentPrice'] + "</h5>" +
+                    "</td>" +
+                    "</tr>"
+                );
+
+                var currentIDs = $('#IDs').val();
+                $('#IDs').val(currentIDs + ';' + equipment['equipmentID']);
+
+            }
+
+            $(".quantity").blur(function(){
+                var total = 0;
+                $('#equipmentList tr').each(function(){
+                    total += (parseInt($(this).find('.quantity').val()) * (parseInt($(this).find('.price').text())));
+                });
+                $('#totalRentalCost').text(total);
+            });
+
         });
 }
