@@ -96,6 +96,23 @@
         ');
 
         $stmt->execute(array($username));
+
+       // $rentals = $stmt->fetchAll();
+        /*$rentalsID = $stmt->fetchAll()['rentalID'];
+        foreach ($rentalsID as $ID) {
+            $stmt = $conn->prepare('
+            Select "equipmentName", "rentalEquipmentQuantity"
+            From "Rental"
+            JOIN "RentalEquipment" ON "rentalID" = "rentalEquipmentRentalID"
+            JOIN "Equipment" ON "rentalEquipmentEquipmentID" = "equipmentID"
+            Where
+            "rentalID" = ?;
+            ');
+            $stmt->execute(array($ID));
+        }
+*/
+
+
         return $stmt;
     }
 

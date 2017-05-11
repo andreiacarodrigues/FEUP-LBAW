@@ -263,14 +263,13 @@
             "equipmentInactive" = FALSE
             AND
             ((
-            NOT("rentalDate" + "rentalStartTime" = (?::date + ?::time ))
-            AND NOT(
-            ("rentalDate" + "rentalStartTime" < (?::date + ?::time)) AND 
-            ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" > (?::date + ?::time)))
-            AND NOT(
-            ("rentalDate" + "rentalStartTime" > (?::date + ?::time)) AND 
-            ("rentalDate" + "rentalStartTime" < (?::date + ?::time + ?::interval)))
-            /* Não - começa depois, mas antes da outra terminar */
+            ("rentalDate" + "rentalStartTime" = (?::date + ?::time ))
+            OR (
+            ("rentalDate" + "rentalStartTime" <= (?::date + ?::time)) AND 
+            ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" >= (?::date + ?::time)))
+            OR (
+            ("rentalDate" + "rentalStartTime" >= (?::date + ?::time)) AND 
+            ("rentalDate" + "rentalStartTime" <= (?::date + ?::time + ?::time)))
             )
             OR ("rentalEquipmentQuantity" IS NULL)
             )

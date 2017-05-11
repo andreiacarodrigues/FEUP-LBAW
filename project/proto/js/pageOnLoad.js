@@ -470,9 +470,14 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
 
     $.getJSON(url, {spaceID: spaceID, date: date, startTime: startTime, duration: duration} ,
         function(data){
+
             for(var j = 0; j < data.length; j++)
             {
                 var equipment = data[j];
+                var rentalQuantity = 0;
+
+                if(equipment['rentalQuantity'] != null)
+                    rentalQuantity = parseInt(equipment['rentalQuantity']);
                 $('#equipmentList').append(
                     "<tr>" +
                     "<td class='centered'>"+
@@ -484,12 +489,12 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                     "<td>" +
                     "<div class='form-group'>" +
                     "<div class='input-group'>" +
-                    "<input class='form-control quantity' type='number' name='quantity" + equipment['equipmentID'] + "' min='0' max='" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable'])) + "' step='1' value='0'>" +
+                    "<input class='form-control quantity' type='number' name='quantity" + equipment['equipmentID'] + "' min='0' max='" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "' step='1' value='0'>" +
                     "</div>"+
                     "</div>"+
                     "</td>" +
                     "<td>" +
-                    "<h5>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - parseInt(equipment['rentalQuantity'])) + "</h5>" +
+                    "<h5>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "</h5>" +
                     "</td>" +
                     "<td>" +
                     "<h5 class='price'>" + equipment['equipmentPrice'] + "</h5>" +
@@ -507,8 +512,21 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                 $('#equipmentList tr').each(function(){
                     total += (parseInt($(this).find('.quantity').val()) * (parseInt($(this).find('.price').text())));
                 });
-                $('#totalRentalCost').text(total);
+                var hoursMinutes = duration.split(":");
+                total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+                $('#totalRentalCost').text(total.toFixed(2));
             });
 
         });
+
+
+    $("input[name='duration']").blur(function(){
+        var total = 0;
+        var hoursMinutes = $(this).val().split(":");
+        console.log(hoursMinutes);
+        console.log(parseInt($('#infoPrice').text()));
+        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+        $('#totalRentalCost').text(total.toFixed(2));
+    });
+
 }
