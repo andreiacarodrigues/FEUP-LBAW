@@ -669,12 +669,12 @@
         return true;
     }
 
-    function getComplexIssuesManager($complexID) // PARA O MANAGER
+    function getComplexIssues($complexID) // PARA O MANAGER
     {
         global $conn;
 
         $stmt = $conn->prepare('
-            SELECT "userName", "userPhone", "userEmail", "rentalDate", "rentalState", "issueSubject", "issueCategory", "issueDescription", "issueResolved", "spaceName", "rentalStartTime", "issueComplexID"
+            SELECT "userName", "userPhone", "userEmail", "rentalDate", "rentalState", "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved", "spaceName", "rentalStartTime"
             FROM "Issue"
             JOIN "Rental"
             ON "rentalID" = "issueRentalID"
@@ -688,4 +688,33 @@
             LIMIT 10 OFFSET (10 * ?);');
         $stmt->execute(array($complexID, 0)); //TODO set pagenumber
         return $stmt->fetchAll();
+    }
+
+    function getComplexIssuesManager($complexID) // PARA O MANAGER
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                SELECT "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved"
+                FROM "Issue"
+                WHERE 
+                "issueComplexID" = ?
+                AND "issueForManager" = TRUE
+                LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($complexID, 0)); //TODO set pagenumber
+        return $stmt->fetchAll();
+    }
+
+
+    function resolveIssue($issueID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                        UPDATE "Issue"
+                        SET "issueResolved" = TRUE
+                        WHERE "issueID" = ?;');
+        if(!$stmt->execute(array($issueID))) {
+            return false;
+        }
+        return true;
     }

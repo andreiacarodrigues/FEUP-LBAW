@@ -13,7 +13,8 @@
     if(complexExists($complexID)) {
         $smarty->assign('complexID', $complexID);
 
-        $smarty->assign('ISSUES', getComplexIssuesManager($complexID));
+        $smarty->assign('ISSUES1', getComplexIssues($complexID));
+        $smarty->assign('ISSUES2', getComplexIssuesManager($complexID));
 
         $smarty->display('pages/managers/issuesManagement.tpl');
     }

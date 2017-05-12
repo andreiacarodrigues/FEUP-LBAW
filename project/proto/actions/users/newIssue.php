@@ -3,6 +3,7 @@
     include_once($BASE_DIR . "database/users.php");
     include_once($BASE_DIR . "database/complexes.php");
 
+
     $rentalID = null; // rental related issue
     $complexID = null; // complex manager related issue
 
@@ -74,16 +75,16 @@
                     if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
 
                         $_SESSION['success_messages'][] = "Issue sent sucessfully.";
-                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                        header("Location: " . $BASE_URL . "pages/managers/issuesManagement.php?complexID=" . $complexID);
                     } else {
                         $_SESSION['error_messages'][] = "Error sending issue;";
-                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                        header("Location: " . $BASE_URL . "pages/managers/issuesManagement.php?complexID=" . $complexID);
                     }
                 }
                 else
                 {
                     $_SESSION['error_messages'][] = "Complex doesn't exist;";
-                    header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                    header("Location: " . $BASE_URL . "pages/managers/issuesManagement.php?complexID=" . $complexID);
                 }
             }
 
@@ -92,7 +93,12 @@
         {
             echo $e;
             $_SESSION['error_messages'][] = "Unknown error occurred;";
-            // header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+            if($complexID != null)
+                header("Location: " . $BASE_URL . "pages/managers/issuesManagement.php?complexID=" . $complexID);
+            else if($rentalID != null)
+                header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+            else
+                header("Location: " . $BASE_URL . "pages/users/home.php");
         }
 
 
