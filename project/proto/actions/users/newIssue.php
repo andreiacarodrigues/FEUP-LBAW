@@ -3,52 +3,105 @@
     include_once($BASE_DIR . "database/users.php");
     include_once($BASE_DIR . "database/complexes.php");
 
+    $rentalID = null; // rental related issue
+    $complexID = null; // complex manager related issue
 
-    $rentalID =  $_POST['id'];
+    $condition1 = isset($_POST['id']);
+    $condition2 = isset($_POST['complexID']);
 
-    $subject = $_POST['subject'];
-    $to = $_POST['to'];
-    $category = $_POST['category'];
-    $description = $_POST['description'];
-
-    $required = [$rentalID, $subject, $to, $category, $description];
-
-    foreach ($required as $item)
+    if($condition1 || $condition2)
     {
-        if (empty($item))
+        if($condition1)
         {
-            $_SESSION['error_messages'][] = "Required field wasn't filled.";
-            header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
-            die();
+            $rentalID = $_POST['id'];
         }
-    }
-
-    try
-    {
-      if (rentalExists($rentalID))
+        else if($condition2)
         {
-            if(addIssue($rentalID, $subject, $category, $description, $to))
+            $complexID = $_POST['complexID'];
+        }
+
+        $condition3 = isset($_POST['subject']);
+        $condition4 = isset($_POST['to']);
+        $condition5= isset($_POST['category']);
+        $condition6 = isset($_POST['description']);
+
+        if(!$condition3 || !$condition4 || !$condition5 || !$condition6)
+        {
+            $_SESSION['error_messages'][] = "Required field is empty.";
+            header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+        }
+
+        $subject = $_POST['subject'];
+        $to = $_POST['to'];
+        $category = $_POST['category'];
+        $description = $_POST['description'];
+
+        $required = [$subject, $to, $category, $description];
+
+        foreach ($required as $item)
+        {
+            if (empty($item))
             {
+                $_SESSION['error_messages'][] = "Required field wasn't filled.";
+                header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                die();
+            }
+        }
 
-                $_SESSION['success_messages'][] = "Issue sent sucessfully.";
-                header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
-            }
-            else{
-                $_SESSION['error_messages'][] = "Error sending issue;";
-                header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
-            }
-        }
-        else
+        try
         {
-            $_SESSION['error_messages'][] = "Rental doesn't exist;";
-            header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+            if ($rentalID != null) {
+                if (rentalExists($rentalID)) {
+                    if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
+
+                        $_SESSION['success_messages'][] = "Issue sent sucessfully.";
+                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                    } else {
+                        $_SESSION['error_messages'][] = "Error sending issue;";
+                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                    }
+                }
+                else
+                {
+                    $_SESSION['error_messages'][] = "Rental doesn't exist;";
+                    header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                }
+            }
+            else if($complexID != null)
+            {
+                if(complexExists($complexID))
+                {
+                    if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
+
+                        $_SESSION['success_messages'][] = "Issue sent sucessfully.";
+                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                    } else {
+                        $_SESSION['error_messages'][] = "Error sending issue;";
+                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                    }
+                }
+                else
+                {
+                    $_SESSION['error_messages'][] = "Complex doesn't exist;";
+                    header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                }
+            }
+
         }
+        catch (PDOException $e)
+        {
+            echo $e;
+            $_SESSION['error_messages'][] = "Unknown error occurred;";
+            // header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+        }
+
+
+
     }
-    catch (PDOException $e)
+    else
     {
-        echo $e;
-        $_SESSION['error_messages'][] = "Unknown error occurred;";
-       // header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+        $_SESSION['error_messages'][] = "Rental id or complex id must be specified;";
+        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
     }
 
 

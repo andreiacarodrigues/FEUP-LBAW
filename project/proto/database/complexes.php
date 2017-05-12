@@ -246,36 +246,69 @@
         global $conn;
 
         $stmt = $conn->prepare('
-            SELECT "equipmentID", "equipmentName", "equipmentQuantity", "equipmentQuantityUnavailable", "equipmentPrice", 
-            sum("rentalEquipmentQuantity") AS "rentalQuantity"
-            FROM "Space"
-            JOIN "SportsComplex" ON "spaceComplexID" = "complexID"
-            JOIN "Equipment" ON "complexID" = "equipmentComplexID"
-            JOIN "EquipmentSports" ON "equipmentID" = "equipmentSportsEquipmentID"
-            JOIN "Sport" ON "equipmentSportsSportID" = "sportID"
-            LEFT JOIN "RentalEquipment" ON "equipmentID" = "rentalEquipmentEquipmentID"
-            LEFT JOIN "Rental" ON "rentalEquipmentRentalID" = "rentalID"
-            WHERE
-            "spaceID" = ? AND
-            "sportName" IN (SELECT "sportName"
-                            FROM "SpaceSports" JOIN "Sport" ON "sportID" = "spaceSportsSportID" 
-                            WHERE "spaceSportsSpaceID" = ?) AND
-            "equipmentInactive" = FALSE
-            AND
-            ((
-            ("rentalDate" + "rentalStartTime" = (?::date + ?::time ))
-            OR (
-            ("rentalDate" + "rentalStartTime" <= (?::date + ?::time)) AND 
-            ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" >= (?::date + ?::time)))
-            OR (
-            ("rentalDate" + "rentalStartTime" >= (?::date + ?::time)) AND 
-            ("rentalDate" + "rentalStartTime" <= (?::date + ?::time + ?::time)))
-            )
-            OR ("rentalEquipmentQuantity" IS NULL)
-            )
+        SELECT
+        "equipmentID"
+        ,"equipmentName"
+        ,"equipmentQuantity"
+        ,"equipmentQuantityUnavailable"
+        ,"equipmentPrice"
+        , SUM(CASE WHEN "rentalEquipmentQuantity" IS NULL THEN 0 ELSE "rentalEquipmentQuantity" END) As "rentalQuantity"
+        
+        FROM "Space"
+        JOIN "SportsComplex" ON "spaceComplexID" = "complexID"
+        JOIN "Equipment" ON "complexID" = "equipmentComplexID"
+        JOIN "EquipmentSports" ON "equipmentID" = "equipmentSportsEquipmentID"
+        JOIN "Sport" ON "equipmentSportsSportID" = "sportID"
+        
+        LEFT JOIN
+        (
+        SELECT "equipmentID" as "cenas"
+            ,"rentalEquipmentQuantity"
+        FROM "Space"
+        JOIN "SportsComplex" ON "spaceComplexID" = "complexID"
+        JOIN "Equipment" ON "complexID" = "equipmentComplexID"
+        JOIN "EquipmentSports" ON "equipmentID" = "equipmentSportsEquipmentID"
+        JOIN "Sport" ON "equipmentSportsSportID" = "sportID"
+        LEFT JOIN "RentalEquipment" ON "equipmentID" = "rentalEquipmentEquipmentID"
+        LEFT JOIN "Rental" ON "rentalEquipmentRentalID" = "rentalID"
+        WHERE "spaceID" = ?
+            AND "sportName" IN (
+                SELECT "sportName"
+                FROM "SpaceSports"
+                JOIN "Sport" ON "sportID" = "spaceSportsSportID"
+                WHERE "spaceSportsSpaceID" = ?
+                )
+            AND "equipmentInactive" = FALSE
+                AND "rentalState" = \'RESERVED\'::"rentalState"
+            AND (
+                (
+                    ("rentalDate" + "rentalStartTime" = (?::DATE + ?::TIME))
+                    OR (
+                        ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME))
+                        AND ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" > (?::DATE + ?::TIME))
+                        )
+                    OR (
+                        ("rentalDate" + "rentalStartTime" > (?::DATE + ?::TIME))
+                        AND ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME + ?::TIME))
+                        )
+                )
+                OR ("rentalEquipmentQuantity" IS NULL)
+                )
+        ) As "xxx"
+        ON "equipmentID" = "cenas"
+        
+        WHERE "spaceID" = ?
+            AND "sportName" IN (
+                SELECT "sportName"
+                FROM "SpaceSports"
+                JOIN "Sport" ON "sportID" = "spaceSportsSportID"
+                WHERE "spaceSportsSpaceID" = ?
+                )
+            AND "equipmentInactive" = FALSE
+            
             GROUP BY "equipmentID"
-            ;');
-        $stmt->execute(array($spaceID, $spaceID, $date, $startTime, $date, $startTime, $date, $startTime, $date, $startTime, $date, $startTime, $duration));
+        ;');
+        $stmt->execute(array($spaceID, $spaceID, $date, $startTime, $date, $startTime,  $date, $startTime, $date, $startTime, $date, $startTime, $duration, $spaceID, $spaceID));
         return $stmt->fetchAll();
     }
 
@@ -355,22 +388,23 @@
           return $spaceID;
     }
 
-    function addIssue($rentalID, $subject, $category, $description, $to)
+    // rentalID pode ser null caso seja um manager a colocar uma issue
+    function addIssue($rentalID, $subject, $category, $description, $to, $complexID)
     {
         global $conn;
         $stmt = $conn->beginTransaction();
         $stmt = $conn->prepare('
-                 INSERT INTO "Issue"("issueRentalID", "issueSubject", "issueCategory", "issueDescription")
-                VALUES(?, ?, ?, ?)
+                 INSERT INTO "Issue"("issueRentalID", "issueSubject", "issueCategory", "issueDescription", "issueComplexID")
+                VALUES(?, ?, ?, ?, ?)
                  RETURNING "issueID";');
 
-        if($stmt->execute(array($rentalID, $subject, $category, $description))) {
+        if($stmt->execute(array($rentalID, $subject, $category, $description, $complexID))) {
             $issueID = $stmt->fetch()['issueID'];
 
             if ($to == "forManager") {
                 $stmt = $conn->prepare('
                 UPDATE "Issue"
-                SET "issueForManager" = true, "issueForAdmin" = false
+                SET "issueForManager" = TRUE, "issueForAdmin" = FALSE
                 WHERE "issueID" = ?;  ');
                 if(!$stmt->execute(array($issueID))) {
                     $stmt = $conn->rollBack();
@@ -378,10 +412,10 @@
                 }
 
             }
-            if ($to == "forManager") {
+            if ($to == "forAdmin") {
                 $stmt = $conn->prepare('
                 UPDATE "Issue"
-                SET "issueForAdmin" = true, "issueForManager" = false
+                SET "issueForAdmin" = TRUE, "issueForManager" = FALSE
                 WHERE "issueID" = ?;  ');
                 if(!$stmt->execute(array($issueID))) {
                     $stmt = $conn->rollBack();
@@ -391,7 +425,7 @@
             if( $to == "forBoth") {
                 $stmt = $conn->prepare('
                 UPDATE "Issue"
-                SET "issueForAdmin" = true, "issueForManager" = true
+                SET "issueForAdmin" = TRUE, "issueForManager" = TRUE
                 WHERE "issueID" = ?;  ');
                 if(!$stmt->execute(array($issueID))) {
                     $stmt = $conn->rollBack();
@@ -633,4 +667,25 @@
         }
 
         return true;
+    }
+
+    function getComplexIssuesManager($complexID) // PARA O MANAGER
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "userName", "userPhone", "userEmail", "rentalDate", "rentalState", "issueSubject", "issueCategory", "issueDescription", "issueResolved", "spaceName", "rentalStartTime", "issueComplexID"
+            FROM "Issue"
+            JOIN "Rental"
+            ON "rentalID" = "issueRentalID"
+            JOIN "User"
+            ON "rentalUserID" = "userID"
+            JOIN "Space"
+            ON "spaceID" = "rentalSpaceID"
+            WHERE 
+            "spaceComplexID" = ?
+            AND "issueForManager" = TRUE
+            LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($complexID, 0)); //TODO set pagenumber
+        return $stmt->fetchAll();
     }
