@@ -376,7 +376,6 @@ function signUp(){
 }
 
 function spaceInfo(urlInfo, urlRedirect, spaceID){
-
     $.getJSON(urlInfo,  {spaceID: spaceID} ,
         function(data){
             $('#infoName').text(data['spaceName']);
@@ -401,6 +400,7 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
             $('#infoHours').text(data['complexOpeningHour'] + "-" + data['complexClosingHour']);
 
             $('.backToComplex').attr("href", urlRedirect + '/?complexID=' + data['spaceComplexID']);
+
         });
 }
 
@@ -410,12 +410,10 @@ function spacePage(url, spaceID){
     var urlRedirect = url +'pages/users/sportComplex.php';
     spaceInfo(urlInfo, urlRedirect, spaceID);
 
-
     $(".checkInput input").blur(function(){
         var date = $("input[name='date']").val();
         var startTime = $("input[name='startingTime']").val();
         var duration = $("input[name='duration']").val();
-
         // Date comparisons
         var val1 = Date.parse(date);
         var val2 = date + "T" + startTime + ":00Z";
@@ -424,10 +422,26 @@ function spacePage(url, spaceID){
         val3 =  Date.parse(val3);
 
         var today = Date.parse(new Date());
-        var todayDate = Date.parse(new Date().getDate());
 
-        if((val1 != "") && (val2 != "") && (val3 != "")) {
+        var todayDate = new Date();
+        todayDate.setHours(0, 0, 0, 0);
+
+        todayDate = Date.parse(todayDate);
+
+        $('#rentalInfo').empty();
+
+        if((val1 != "") && (val2 != "") && (val3 != "") && (val2 != '00:00:00') && (val3 != '00:00:00')) {
             if ((val1 >= todayDate) && (val2 >= today)) {
+
+                var spaceHours = $('#infoHours').text();
+                spaceHours = spaceHours.split("-");
+
+                /*if((val2 < Date.parse(spaceHours[0]))||((val2 + val3) > Date.parse(spaceHours[1])))
+                {
+                    $('#rentalInfo').append('<p> The time are invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
+                    return;
+                }*/
+
                 if (!$.trim($('#rentalInfo').html()).length)
                     $('#rentalInfo').append(
                         "<div class='table-responsive'>" +
@@ -451,9 +465,13 @@ function spacePage(url, spaceID){
                         "<input type='submit' class='btn btn-primary gradient-blue' value='Rent Items'/>" +
                         "</div>"
                     );
-
                 // faz chamada ajax
                 equipmentInfo(url + 'actions/managers/getEquipment.php',spaceID, date, startTime, duration);
+            }
+            else
+            {
+                $('#rentalInfo').append('<p> The date and time are invalid, they must be set in the future. Please enter valid information. </p>');
+                return;
             }
 
         }
@@ -523,10 +541,54 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
     $("input[name='duration']").blur(function(){
         var total = 0;
         var hoursMinutes = $(this).val().split(":");
-        console.log(hoursMinutes);
-        console.log(parseInt($('#infoPrice').text()));
         total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
         $('#totalRentalCost').text(total.toFixed(2));
     });
 
+}
+
+
+function adminSignUp(){
+    $('form').submit(function(){
+
+        // Prevents from submiting
+
+        var error = false;
+
+        // Variables
+
+        var username = $("input[name='username']").val();
+        var password = $("input[name='password']").val();
+        var confirm = $("input[name='confirm']").val();
+
+        // Error Check
+
+        $('#invalidUsername').text("");
+        $('#invalidPassword').text("");
+        $('#invalidConfirmation').text("");
+        $('.errorMessage').text("");
+
+        if(username == "" || password == "" || confirm == "") {
+            $('.errorMessage').text("Required field wasn't filled.");
+            return false;
+        }
+
+        if(!is_username(username)) {
+            error = true;
+            $('#invalidUsername').text("Invalid username.");
+        }
+
+        if(!is_password(password)){
+            error = true;
+            $('#invalidPassword').text("Invalid password. Should have more than 6 characters.");
+        }
+        else if(password != confirm){
+            error = true;
+            $('#invalidConfirmation').text("Passwords do not match.");
+        }
+
+        if(error)
+            return false;
+
+    });
 }

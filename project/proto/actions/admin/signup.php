@@ -5,12 +5,8 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $municipality = $_POST['municipality'];
 
-    $required = [$username, $password, $name, $email];
+    $required = [$username, $password, $confirm];
 
     foreach($required as $item)
     {
@@ -26,7 +22,7 @@
     {
         $error = false;
 
-        if (userUsernameExists($username))
+        if (adminUsernameExists($username))
         {
             $_SESSION['error_messages'][] = "Username already exists.";
             $error = true;
@@ -51,10 +47,11 @@
             die();
         }
 
-        if (registerUser($username, $password, $name, $email, $contact, $municipality))
+        if (registerAdmin($username, $password))
         {
-            $_SESSION['success_messages'][] = "Sign up successful";
-            header("Location: ".$BASE_URL."pages/users/home.php");
+            $_SESSION['success_messages'][] = "Your register was sent sucessfully. An already registered admin will check on your request to register and you will have access to the administration of the
+                    website once you are accepted.";
+            header("Location: ".$BASE_URL."pages/admin/adminSignup.php");
         }
         else
         {

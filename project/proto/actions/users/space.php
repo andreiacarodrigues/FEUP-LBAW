@@ -36,7 +36,6 @@ else
         $spaceInfo['spaceSports'] = $result;
 
         echo json_encode($spaceInfo);
-        //$_SESSION['success_messages'] = "Complex spaces sucessfully loaded.";
     }
     else
         echo 'ERROR';

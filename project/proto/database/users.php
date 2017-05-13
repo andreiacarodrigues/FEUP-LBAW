@@ -10,6 +10,28 @@
         return ($user !== false && $password == $user['userPassword']);
     }
 
+    function verifyAdmin($username, $password)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "adminPassword" FROM "Admin" WHERE "adminUsername" = ?');
+        $stmt->execute(array($username));
+        $admin = $stmt->fetch();
+
+        return ($admin !== false && $password == $admin['adminPassword']);
+    }
+
+    function adminAccepted($username, $password)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "adminPassword" FROM "Admin" WHERE "adminUsername" = ? AND "adminAccepted" = TRUE');
+        $stmt->execute(array($username));
+        $admin = $stmt->fetch();
+
+        return ($admin !== false && $password == $admin['adminPassword']);
+    }
+
     function registerUser($username, $password, $name, $email, $phone, $municipality)
     {
         global $conn;
@@ -26,12 +48,43 @@
         return $stmt->execute(array($username, $password, $name, $email, $phone, $municipality));
     }
 
+    function registerAdmin($username, $password, $name, $email, $phone, $municipality)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('INSERT INTO "Admin"("adminUsername","adminPassword") VALUES (?,?)');
+
+        return $stmt->execute(array($username, $password));
+    }
+
     function userExists($userID)
     {
         global $conn;
 
         $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userID" = ?');
         $stmt->execute(array($userID));
+        $user = $stmt->fetch();
+
+        return $user ? true : false;
+    }
+
+    function userUsernameExists($username)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "userUsername" FROM "User" WHERE "userUsername" = ?');
+        $stmt->execute(array($username));
+        $user = $stmt->fetch();
+
+        return $user ? true : false;
+    }
+
+    function adminUsernameExists($username)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "adminUsername" FROM "Admin" WHERE "adminUsername" = ?');
+        $stmt->execute(array($username));
         $user = $stmt->fetch();
 
         return $user ? true : false;

@@ -20,6 +20,11 @@
                 {/foreach}
             {/if}
         </div>
+        {if count($RENTALS) == 0}
+            <h4 class="text-center"> You haven't made any rentals so far. </h4>
+        {else}
+
+
         {$VALUE=1}
         {foreach $RENTALS as $RENTAL}
             {strip}
@@ -35,7 +40,7 @@
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> {$RENTAL.spaceName} </span></label></li>
                                         <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDurationInMinutes} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  {$RENTAL.equipment} </span></label></li>
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
                                                     {if $RENTAL.rentalState == "RESERVED"}
                                                         Reserved
@@ -98,6 +103,7 @@
                 {$VALUE = $VALUE + 1}
             {/strip}
         {/foreach}
+        {/if}
 
         <!------------------------>
 

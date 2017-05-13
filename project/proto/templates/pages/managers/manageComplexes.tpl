@@ -24,6 +24,11 @@
         <a href="{$BASE_URL}pages/managers/addComplex.php" class="addComplexBtn btn btn-primary gradient-red">Add Complex <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         </div>
+        {if count($COMPLEXES) == 0}
+        <h4 > You are not manager of any sport complexes yet. </h4>
+        {else}
+
+
         {$ROW_COUNT = 0}
 
         {foreach $COMPLEXES as $COMPLEX}
@@ -68,6 +73,7 @@
                 {$VALUE = $VALUE + 1}
             {/strip}
             {/foreach}
+        {/if}
 
         </div>
     </div>

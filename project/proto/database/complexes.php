@@ -705,6 +705,21 @@
         return $stmt->fetchAll();
     }
 
+    function getRentalEquipment($rentalID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            SELECT "equipmentName", "rentalEquipmentQuantity"
+            FROM "Rental"
+			JOIN "RentalEquipment"
+            ON "rentalEquipmentRentalID" = "rentalID"
+			JOIN "Equipment"
+			ON "equipmentID" = "rentalEquipmentEquipmentID"
+            WHERE "rentalID" = ?;');
+        $stmt->execute(array($rentalID));
+        return $stmt->fetchAll();
+    }
 
     function resolveIssue($issueID)
     {
@@ -717,4 +732,17 @@
             return false;
         }
         return true;
+    }
+
+    function updateRentalsState()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+          UPDATE "Rental"
+            SET "rentalState" = \'WAITINGUSERFEEDBACK\'::"rentalState"
+            WHERE "rentalState" = \'RESERVED\'::"rentalState"
+            AND ((now() - (("rentalStartTime" + "rentalDate"))) < \'24 hours\'::interval)
+            AND ((now() - (("rentalStartTime" + "rentalDate"))) > \'0\'::interval);');
+        return $stmt->execute(array());
     }

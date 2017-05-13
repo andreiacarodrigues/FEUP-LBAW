@@ -27,7 +27,7 @@
                     <a href="{$BASE_URL}pages/admins/adminRequests.php">Requests</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}pages/admins/admin.php">Log out</a>
+                    <a href="{$BASE_URL}actions/admin/logout.php"">Log out</a>
                 </li>
             </ul>
         </div>
