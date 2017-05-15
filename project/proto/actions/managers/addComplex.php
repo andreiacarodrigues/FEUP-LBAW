@@ -2,17 +2,43 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/complexes.php");
     include_once($BASE_DIR . "database/users.php");
+    include_once($BASE_DIR . "database/validations.php");
 
-    $name = $_POST['name'];
-    $location = $_POST['location'];
-    $municipality = $_POST['municipality'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $description = $_POST['description'];
-    $openingHour = $_POST['openingHour'];
-    $closingHour = $_POST['closingHour'];
-    $openOnWeekends = $_POST['openOnWeekends'];
-    $paypal = $_POST['paypal'];
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
+    $condition1 = isset($_POST['name']);
+    $condition2 = isset($_POST['location']);
+    $condition3 = isset($_POST['municipality']);
+    $condition4 = isset($_POST['email']);
+    $condition5 = isset($_POST['contact']);
+    $condition6 = isset($_POST['description']);
+    $condition7 = isset($_POST['openingHour']);
+    $condition8 = isset($_POST['closingHour']);
+    $condition9 = isset($_POST['openOnWeekends']);
+    $condition10 = isset($_POST['paypal']);
+
+    if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 || !$condition6 || !$condition7 || !$condition8 || !$condition9 || !$condition10)
+    {
+        $_SESSION['error_messages'][] = "Required field wasn't filled.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    $name = strip_tags($_POST['name']);
+    $location = strip_tags($_POST['location']);
+    $municipality = trim(strip_tags($_POST['municipality']));
+    $email = trim(strip_tags($_POST['email']));
+    $contact = trim(strip_tags($_POST['contact']));
+    $description = strip_tags($_POST['description']);
+    $openingHour = strip_tags($_POST['openingHour']);
+    $closingHour = strip_tags($_POST['closingHour']);
+    $openOnWeekends = trim(strip_tags($_POST['openOnWeekends']));
+    $paypal = trim(strip_tags($_POST['paypal']));
 
     $required = [$name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
 
@@ -30,6 +56,22 @@
     {
         $description = '';
     }
+
+    $condition11 = is_name($_POST['name']);
+    $condition12 = is_location($_POST['location']);
+    $condition13 = is_numeric($_POST['municipality']);
+    $condition14 = is_email($_POST['email']);
+    $condition15 = is_numeric($_POST['contact']);
+    $condition16 = is_email($_POST['paypal']);
+
+
+    if(!$condition11 || !$condition12 || !$condition13 || !$condition14 || !$condition15 || !$condition16)
+    {
+        $_SESSION['error_messages'][] = "Invalid field.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
 
     try
     {

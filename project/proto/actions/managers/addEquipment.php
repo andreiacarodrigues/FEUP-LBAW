@@ -4,7 +4,8 @@
 
     if(!isset($_SESSION['userID']))
     {
-        header('Location: ' . $BASE_URL . "pages/home.php");
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }
 
@@ -19,7 +20,8 @@
 
     if(!isComplexManager($complexID, $managerID))
     {
-        header('Location: ' . $BASE_URL . "pages/home.php");
+        $_SESSION['error_messages'][] = "You cannot acess this page.";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }
 
@@ -47,8 +49,6 @@
 
     if(!($check1 && $check2 && $check3))
     {
-        echo $check1.'-'.$check2.'-'.$check3;
-        die();
         $_SESSION['error_messages'][] = "A required field wasn't filled.";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();

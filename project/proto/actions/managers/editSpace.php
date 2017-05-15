@@ -2,17 +2,41 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/complexes.php");
     include_once($BASE_DIR . "database/users.php");
+    include_once($BASE_DIR . "database/validations.php");
 
-    $complexID = $_POST['complexID'];
-    $spaceID = $_POST['spaceID'];
-    $name = $_POST['name'];
-    $surface = $_POST['surface'];
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
+    $userID = $_SESSION['userID'];
+
+    $condition1 = isset($_POST['complexID']);
+    $condition2 = isset($_POST['spaceID']);
+    $condition3 = isset($_POST['name']);
+    $condition4 = isset($_POST['surface']);
+    $condition5 = isset($_POST['price']);
+    $condition6 = isset($_POST['sports']);
+    $condition7 = isset($_POST['isAvailable']);
+    $condition8 = isset($_POST['coverage']);
+
+    if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 || !$condition6 || !$condition7 || !$condition8)
+    {
+        $_SESSION['error_messages'][] = "Required field is not set.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    $complexID = trim(strip_tags($_POST['complexID']));
+    $spaceID = trim(strip_tags($_POST['spaceID']));
+    $name = strip_tags($_POST['name']);
+    $surface = trim(strip_tags($_POST['surface']));
     $coverage = "true";
-    $price = $_POST['price'];
+    $price = trim(strip_tags($_POST['price']));
     $isAvailable = "true";
     $sports = $_POST['sports'];
-
-    //echo $complexID . ' ' . $spaceID . ' ' . $name . ' ' . $surface . ' ' . $_POST['coverage'] . ' ' . $price . ' ' .$_POST['availability'] . ' ' . var_dump($_POST['sports']) ;
 
     $required = [$complexID, $spaceID, $name, $surface, $_POST['coverage'], $_POST['availability'], $price];
 
@@ -28,6 +52,20 @@
         }
     }
 
+    if(!is_available($_POST['isAvailable']) || !is_coverage($_POST['coverage']) || !is_numeric($complexID) || !is_numeric($spaceID)
+        || !is_name($name) || !is_numeric(price))
+    {
+        $_SESSION['error_messages'][] = "Invalid field";
+        header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
+        die();
+    }
+    if($price <= 0)
+    {
+        $_SESSION['error_messages'][] = "Invalid price";
+        header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
+        die();
+    }
+
     if($_POST['isAvailable']=="Unavailable")
         $isAvailable = "false";
 
@@ -36,7 +74,13 @@
 
     try
     {
-        if (editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports))
+        if (!isComplexManager($complexID, $userID))
+        {
+            $_SESSION['error_messages'][] = "You cannot acess this page.";
+            header("Location: " . $BASE_URL . "pages/users/home.php");
+            die();
+        }
+        else if (editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports))
         {
             $_SESSION['success_messages'][] = "Space edited successful";
             header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
@@ -45,6 +89,7 @@
         {
             $_SESSION['error_messages'][] = "Unknown error occurred;";
             header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
+            die();
         }
     }
     catch (PDOException $e)

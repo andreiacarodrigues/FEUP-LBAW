@@ -2,6 +2,14 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
 
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
+
     if(!isset($_SESSION['userID']) || !isset($_POST['rentalID']) || !isset($_POST['complexID']))
     {
         header('Location: ' . $BASE_URL . "pages/users/home.php");
@@ -9,9 +17,8 @@
     }
 
     $userID = $_SESSION['userID'];
-    $rentalID = $_POST['rentalID'];
-    $complexID = $_POST['complexID'];
-
+    $rentalID = trim(strip_tags($_POST['rentalID']));
+    $complexID = trim(strip_tags($_POST['complexID']));
 
     if(empty($userID) || empty($rentalID) || empty($complexID))
     {
@@ -19,6 +26,14 @@
         header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }
+
+    if(!is_numeric($rentalID) || !is_numeric($complexID))
+    {
+        $_SESSION['error_messages'][] = "Invalid variable.";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
     try
     {
         if (!isComplexManager($complexID, $userID))

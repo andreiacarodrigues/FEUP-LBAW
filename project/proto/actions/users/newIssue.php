@@ -3,6 +3,12 @@
     include_once($BASE_DIR . "database/users.php");
     include_once($BASE_DIR . "database/complexes.php");
 
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
 
     $rentalID = null; // rental related issue
     $complexID = null; // complex manager related issue
@@ -14,11 +20,11 @@
     {
         if($condition1)
         {
-            $rentalID = $_POST['id'];
+            $rentalID = trim(strip_tags($_POST['id']));
         }
         else if($condition2)
         {
-            $complexID = $_POST['complexID'];
+            $complexID = trim(strip_tags($_POST['complexID']));
         }
 
         $condition3 = isset($_POST['subject']);
@@ -32,10 +38,10 @@
             header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
         }
 
-        $subject = $_POST['subject'];
-        $to = $_POST['to'];
-        $category = $_POST['category'];
-        $description = $_POST['description'];
+        $subject = strip_tags($_POST['subject']);
+        $to = strip_tags($_POST['to']);
+        $category = strip_tags($_POST['category']);
+        $description = strip_tags($_POST['description']);
 
         $required = [$subject, $to, $category, $description];
 
@@ -53,12 +59,21 @@
         {
             if ($rentalID != null) {
                 if (rentalExists($rentalID)) {
-                    if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
 
-                        $_SESSION['success_messages'][] = "Issue sent sucessfully.";
-                        header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
-                    } else {
-                        $_SESSION['error_messages'][] = "Error sending issue;";
+                    if(rentalConcluded($rentalID))
+                    {
+                        if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
+
+                            $_SESSION['success_messages'][] = "Issue sent sucessfully.";
+                            header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                        } else {
+                            $_SESSION['error_messages'][] = "Error sending issue;";
+                            header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
+                        }
+                    }
+                    else
+                    {
+                        $_SESSION['error_messages'][] = "Rental not finished or has already been concluded;";
                         header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
                     }
                 }
@@ -100,8 +115,6 @@
             else
                 header("Location: " . $BASE_URL . "pages/users/home.php");
         }
-
-
 
     }
     else

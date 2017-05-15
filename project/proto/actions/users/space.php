@@ -2,14 +2,21 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . "database/complexes.php");
 
-if (isset ($_GET["spaceID"] ))
-    $spaceID = trim(strip_tags($_GET['spaceID']));
-else
-{
-    $_SESSION['error_messages'][] = "Complex id is not set.";
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    die();
-}
+    if (isset ($_GET["spaceID"] ))
+        $spaceID = trim(strip_tags($_GET['spaceID']));
+    else
+    {
+        $_SESSION['error_messages'][] = "Space id is not set.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    if(!is_numeric($spaceID))
+    {
+        $_SESSION['error_messages'][] = "Space id is invalid.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
 
 if(!spaceExists($spaceID))
 {

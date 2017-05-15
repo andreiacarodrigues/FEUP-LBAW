@@ -430,17 +430,17 @@ function spacePage(url, spaceID){
 
         $('#rentalInfo').empty();
 
-        if((val1 != "") && (val2 != "") && (val3 != "") && (val2 != '00:00:00') && (val3 != '00:00:00')) {
+        if((date != "") && (startTime != "") && (duration != "")) {
             if ((val1 >= todayDate) && (val2 >= today)) {
 
                 var spaceHours = $('#infoHours').text();
                 spaceHours = spaceHours.split("-");
 
-                /*if((val2 < Date.parse(spaceHours[0]))||((val2 + val3) > Date.parse(spaceHours[1])))
+                if((val2 < Date.parse(date + "T" + spaceHours[0] + "Z"))||((val2) >= Date.parse(date + "T" + spaceHours[1]  + "Z")))
                 {
                     $('#rentalInfo').append('<p> The time are invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
                     return;
-                }*/
+                }
 
                 if (!$.trim($('#rentalInfo').html()).length)
                     $('#rentalInfo').append(

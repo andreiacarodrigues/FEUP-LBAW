@@ -2,6 +2,13 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/complexes.php");
 
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
     if (isset ($_GET["rentalID"] ))
         $rentalID = trim(strip_tags($_GET['rentalID']));
     else

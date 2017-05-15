@@ -1,9 +1,16 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/users.php");
-include_once($BASE_DIR."database/complexes.php");
+    include_once($BASE_DIR."database/complexes.php");
 
-updateRentalsState();
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You dont't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
+    updateRentalsState();
 
     $userRentals = getUserRentals($_SESSION['username'])->fetchAll();
 

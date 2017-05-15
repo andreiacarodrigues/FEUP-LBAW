@@ -11,6 +11,13 @@
         die();
     }
 
+    if(!is_numeric($complexID))
+    {
+        $_SESSION['error_messages'][] = "Complex id is invalid.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
     if(!complexExists($complexID))
     {
         $_SESSION['error_messages'][] = "Complex with id sent doesn't exist.";

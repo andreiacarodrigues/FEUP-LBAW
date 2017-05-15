@@ -3,6 +3,13 @@
     include_once($BASE_DIR."database/complexes.php");
 include_once($BASE_DIR."database/municipalities.php");
 
+    if(!isset($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'][] = "You dont't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
+        die();
+    }
+
     if (isset ($_GET['complexID'] ))
         $complexID = trim(strip_tags($_GET['complexID']));
     else

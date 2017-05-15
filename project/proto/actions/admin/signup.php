@@ -1,10 +1,23 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/validations.php");
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm = $_POST['confirm'];
+    $condition1 = isset( $_POST['username']);
+    $condition2 = isset( $_POST['password']);
+    $condition3 = isset( $_POST['confirm']);
+
+
+    if(!$condition1 || !$condition2 || !$condition3)
+    {
+        $_SESSION['error_messages'][] = "Required field wasn't filled.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    $username = trim(strip_tags($_POST['username']));
+    $password = trim(strip_tags($_POST['password']));
+    $confirm = trim(strip_tags($_POST['confirm']));
 
     $required = [$username, $password, $confirm];
 
@@ -16,6 +29,13 @@
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             die();
         }
+    }
+
+    if(!is_username($username) || !is_password($password) || !is_password($confirm))
+    {
+        $_SESSION['error_messages'][] = "Invalid field.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
     }
 
     try

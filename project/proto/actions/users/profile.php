@@ -2,14 +2,14 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/users.php");
 
-    if (isset ($_SESSION["userID"] ))
-        $userID = $_SESSION["userID"];
-    else
+    if(!isset($_SESSION['userID']))
     {
-        $_SESSION['error_messages'][] = "User id is not set.";
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }
+
+    $userID = $_SESSION["userID"];
 
     if(!userExists($userID))
     {

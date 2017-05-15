@@ -135,6 +135,17 @@
         return $complex ? true : false;
     }
 
+    function rentalConcluded($rentalID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "rentalID" FROM "Rental" WHERE "rentalID" = ? AND  AND "rentalState" = \'WAITINGUSERFEEDBACK\'::"rentalState"');
+        $stmt->execute(array($rentalID));
+        $rental = $stmt->fetch();
+
+        return $rental ? true : false;
+    }
+
     function spaceExists($spaceID)
     {
         global $conn;
@@ -173,6 +184,17 @@
             WHERE "complexID" = ?;');
         $stmt->execute(array($complexID));
         return $stmt->fetchAll();
+    }
+
+    function getRentalIssue($rentalID){
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "issueSubject", "issueDescription", "issueCategory"
+                FROM "Issue"
+                WHERE "issueRentalID" = ?;');
+        $stmt->execute(array($rentalID));
+        return $stmt->fetch();
     }
 
     function getComplexName($complexID){
@@ -745,4 +767,29 @@
             AND ((now() - (("rentalStartTime" + "rentalDate"))) < \'24 hours\'::interval)
             AND ((now() - (("rentalStartTime" + "rentalDate"))) > \'0\'::interval);');
         return $stmt->execute(array());
+    }
+
+
+    function setComplexInactive($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "SportsComplex"
+                SET
+                "complexInactive" = TRUE
+                WHERE
+                "complexID" = ?;');
+        return $stmt->execute(array($complexID));
+    }
+
+    function setComplexActive($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "SportsComplex"
+                SET
+                "complexInactive" = FALSE
+                WHERE
+                "complexID" = ?;');
+        return $stmt->execute(array($complexID));
     }

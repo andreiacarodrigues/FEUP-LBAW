@@ -1,14 +1,30 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/validations.php");
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm = $_POST['confirm'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $municipality = $_POST['municipality'];
+    $condition1 = isset( $_POST['username']);
+    $condition2 = isset( $_POST['password']);
+    $condition3 = isset( $_POST['confirm']);
+    $condition4 = isset( $_POST['name']);
+    $condition5 = isset( $_POST['email']);
+    $condition6 = isset( $_POST['contact']);
+    $condition7 = isset( $_POST['municipality']);
+
+    if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 || !$condition6 || !$condition7)
+    {
+        $_SESSION['error_messages'][] = "Required field wasn't filled.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+
+    $username =  trim(strip_tags($_POST['username']));
+    $password =  trim(strip_tags($_POST['password']));
+    $confirm =  trim(strip_tags($_POST['confirm']));
+    $name =  strip_tags($_POST['name']);
+    $email =  trim(strip_tags($_POST['email']));
+    $contact =  trim(strip_tags($_POST['contact']));
+    $municipality =  trim(strip_tags($_POST['municipality']));
 
     $required = [$username, $password, $name, $email];
 
@@ -20,6 +36,14 @@
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             die();
         }
+    }
+
+    if(!is_username($username) || !is_password($password) || !is_password($confirm) || !is_email($email)
+        || !is_contact($contact) || !is_numeric($municipality) || !is_name($name))
+    {
+        $_SESSION['error_messages'][] = "Invalid field.";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
     }
 
     try

@@ -68,6 +68,17 @@
         return $user ? true : false;
     }
 
+    function userIsBanned($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userID" = ? AND "userIsBanned" == TRUE');
+        $stmt->execute(array($userID));
+        $user = $stmt->fetch();
+
+        return $user ? true : false;
+    }
+
     function userUsernameExists($username)
     {
         global $conn;
@@ -104,6 +115,30 @@
         WHERE
         "userID" = ?;');
         return $stmt->execute(array($name, $email, $username, $contact, $municipality, $userID));
+    }
+
+    function banUser($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "User"
+            SET
+            "userIsBanned" = TRUE
+            WHERE
+            "userID" = ?;');
+        return $stmt->execute(array($userID));
+    }
+
+    function unblockUser($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "User"
+                SET
+                "userIsBanned" = FALSE
+                WHERE
+                "userID" = ?;');
+        return $stmt->execute(array($userID));
     }
 
     function editPassword($userID, $password)
@@ -149,23 +184,6 @@
         ');
 
         $stmt->execute(array($username));
-
-       // $rentals = $stmt->fetchAll();
-        /*$rentalsID = $stmt->fetchAll()['rentalID'];
-        foreach ($rentalsID as $ID) {
-            $stmt = $conn->prepare('
-            Select "equipmentName", "rentalEquipmentQuantity"
-            From "Rental"
-            JOIN "RentalEquipment" ON "rentalID" = "rentalEquipmentRentalID"
-            JOIN "Equipment" ON "rentalEquipmentEquipmentID" = "equipmentID"
-            Where
-            "rentalID" = ?;
-            ');
-            $stmt->execute(array($ID));
-        }
-*/
-
-
         return $stmt;
     }
 
@@ -177,6 +195,16 @@
         $stmt->execute(array($username));
 
         return $stmt->fetch()['userID'];
+    }
+
+    function getAdminID($username)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "adminID" FROM "Admin" WHERE "adminUsername" = ?');
+        $stmt->execute(array($username));
+
+        return $stmt->fetch()['adminID'];
     }
 
     function getUsername($userID)

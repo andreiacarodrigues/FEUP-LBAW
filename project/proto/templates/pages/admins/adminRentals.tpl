@@ -4,6 +4,24 @@
     <div class="admin adminRentals">
 
     <div class="container">
+        <div class="row">
+            {if $SUCCESS_MESSAGES != ""}
+                {foreach $SUCCESS_MESSAGES as $message}
+                    <div class="alert alert-info alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+            {if $ERROR_MESSAGES != ""}
+                {foreach $ERROR_MESSAGES as $message}
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+        </div>
         <div class="form-group">
         <div class="input-group">
             <div class="checkbox checkbox-info">
@@ -16,29 +34,59 @@
         </div>
         </div>
         <br>
+
+        {$VALUE=1}
+        {foreach $RENTALS as $RENTAL}
+        {strip}
+
         <div class="rental thumbnail">
             <div class="row">
                 <div class="container">
                     <div class="col-md-10">
                         <ul class="list-unstyled">
-                            <h4>Rental #<span>1</span></h4>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
+                            <h4>Rental #<span>{$VALUE}</span></h4>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> {$RENTAL.userName} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> {$RENTAL.userPhone} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> {$RENTAL.userEmail} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> {$RENTAL.rentalDate} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> {$RENTAL.complexName} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> {$RENTAL.complexPhone} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> {$RENTAL.complexEmail} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> {$RENTAL.spaceName} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDurationInMinutes} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  {$RENTAL.equipment} </span></label></li>
+                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
+                                                    {if $RENTAL.rentalState == "RESERVED"}
+                                                        Reserved
+                                                    {/if}
+                                        {if $RENTAL.rentalState == "RESERVEDBYMANAGER"}
+                                            Reserved By Manager
+                                        {/if}
+                                        {if $RENTAL.rentalState == "CANCELEDBYUSER"}
+                                            Canceled By User
+                                        {/if}
+                                        {if $RENTAL.rentalState == "CANCELEDBYMANAGER"}
+                                            Canceled By Manager
+                                        {/if}
+                                        {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
+                                            Waiting For User Feedback
+                                        {/if}
+                                        {if $RENTAL.rentalState == "SUSPENDEDBYADMIN"}
+                                            Suspended By An Administrator
+                                        {/if}
+                                        {if $RENTAL.rentalState == "CONCLUDED"}
+                                            Concluded
+                                        {/if}
+                                                </span></label></li>
                         </ul>
                     </div>
                     <div class="col-md-2 text-right mobileFixButtons">
                             <br>
                         <div class="row rentalTabletBtns">
-                            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issuesModal">Issue</button>
+                            {if $RENTAL.issueSubject != "NO_ISSUE"}
+                                <button type="button" class="btn btn-primary gradient-blue" onclick="updateIssueInfo('{$RENTAL.issueSubject}','{$RENTAL.issueDescription}', '{$RENTAL.issueCategory}')" data-toggle="modal" data-target="#issuesModal">Issue</button>
+                            {/if}
                             <button type="button" class="btn btn-primary gradient-yellow">Suspend</button>
                             <button type="button" class="btn btn-primary gradient-red">Remove</button>
                             <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
@@ -48,66 +96,9 @@
             </div>
         </div>
 
-        <div class="rental thumbnail">
-            <div class="row">
-                <div class="container">
-                    <div class="col-md-10">
-                        <ul class="list-unstyled">
-                            <h4>Rental #<span>2</span></h4>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 text-right mobileFixButtons">
-                        <br>
-                        <div class="row rentalTabletBtns">
-                            <button type="button" class="btn btn-primary gradient-yellow">Suspend</button>
-                            <button type="button" class="btn btn-primary gradient-red">Remove</button>
-                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="rental thumbnail">
-            <div class="row">
-                <div class="container">
-                    <div class="col-md-10">
-                        <ul class="list-unstyled">
-                            <h4>Rental #<span>3</span></h4>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Name: <span> Andreia Rodrigues </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Contact: <span> 912345678 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  User Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> Sport Complex 1 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex Contact: <span> 919876543 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> sc1@gmail.com </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> Space 2 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> 12:05 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> 00:30 </span></label></li>
-                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span> Reserved </span></label></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 text-right mobileFixButtons">
-                        <br>
-                        <div class="row rentalTabletBtns">
-                            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issuesModal">Issue</button>
-                            <button type="button" class="btn btn-primary gradient-yellow">Suspend</button>
-                            <button type="button" class="btn btn-primary gradient-red">Remove</button>
-                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
-                        </div>
-                    </div>
-                </div>
+            {$VALUE = $VALUE + 1}
+        {/strip}
+        {/foreach}
             </div>
         </div>
 
@@ -134,10 +125,9 @@
                                 <div class="container">
 
                                         <ul class="list-unstyled">
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> 2017/01/01 </span></label></li>
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Subject: <span> Equipment </span></label></li>
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> Others </span></label></li>
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Description: <span> O relvado estava em mau estado </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Subject: <span id="issueSubject">  </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span id="issueCategory">  </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Description: <span id="issueDescription">  </span></label></li>
                                         </ul>
 
 
@@ -153,3 +143,14 @@
 
 
 {include file='common/footer.tpl'}
+
+
+<script>
+
+   function updateIssueInfo(subject,description,category)
+   {
+       $('#issueSubject').text(subject);
+       $('#issueDescription').text(description);
+       $('#issueCategory').text(category);
+   }
+</script>

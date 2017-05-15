@@ -3,106 +3,66 @@
  <div class="admin-statistics-header">
         <div class="admin adminRentals">
             <div class="container">
+                <div class="row">
+                    {if $SUCCESS_MESSAGES != ""}
+                        {foreach $SUCCESS_MESSAGES as $message}
+                            <div class="alert alert-info alert-dismissable fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>{$message}</strong>
+                            </div>
+                        {/foreach}
+                    {/if}
+                    {if $ERROR_MESSAGES != ""}
+                        {foreach $ERROR_MESSAGES as $message}
+                            <div class="alert alert-danger alert-dismissable fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>{$message}</strong>
+                            </div>
+                        {/foreach}
+                    {/if}
+                </div>
+
+                {$VALUE=1}
+                {foreach $USERS as $USER}
+                {strip}
+
             <div class="rental thumbnail">
                 <div class="row">
                     <div class="container">
                         <div class="col-md-10">
                             <ul class="list-unstyled">
-                                <h4>User #<span>1</span></h4>
-                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Name: <span> Andreia Rodrigues </span></label></li>
-                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Contact: <span> 912345678 </span></label></li>
-                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Email: <span> andreiacarodrigues@gmail.com </span></label></li>
-                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Username: <span> 2017/01/01 </span></label></li>
+                                <h4>User #<span>{$VALUE}</span></h4>
+                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Name: <span> {$USER.userName} </span></label></li>
+                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Contact: <span> {$USER.userPhone}  </span></label></li>
+                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Email: <span> {$USER.userEmail}  </span></label></li>
+                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Username: <span> {$USER.userUsername}  </span></label></li>
                             </ul>
 
                         </div>
                         <div class="col-md-2 text-right mobileFixButtons">
                             <br>
-                            <button type="button" class="btn btn-primary gradient-red">Block</button>
+                            {if $USER.userIsBanned == true}
+                                <form action="{$BASE_URL}actions/admin/unblockUser.php" method="get" class="form-horizontal" role="form">
+                                    <input type="hidden" name="user" value="{$USER.userID}">
+                                    <button type="submit" class="btn btn-primary gradient-blue"><i class="glyphicon glyphicon-remove"></i> Unblock </button>
+                                </form>
+                            {else}
+                                <form action="{$BASE_URL}actions/admin/blockUser.php" method="get" class="form-horizontal" role="form">
+                                    <input type="hidden" name="user" value="{$USER.userID}">
+                                    <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Block </button>
+                                </form>
+                            {/if}
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            {$VALUE = $VALUE + 1}
+            {/strip}
+            {/foreach}
+
             </div>
-               <!-- <div class="row">
-                    <div class="col-md-3">
-
-
-
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                            </a>
-                            <div class="caption">
-                                <h5 class="text-center">Andreia Rodrigues</h5><br>
-
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
-                                </ul>
-
-                                <button type="button" class="btn btn-primary gradient-red">Block</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                            </a>
-                            <div class="caption">
-                                <h5 class="text-center">Eduardo Leite</h5><br>
-
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
-                                </ul>
-
-                                <button type="button" class="btn btn-primary gradient-red">Block</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                            </a>
-                            <div class="caption">
-                                <h5 class="text-center">Francisco Queirós</h5><br>
-
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
-                                </ul>
-
-                                <button type="button" class="btn btn-primary gradient-blue">Unblock</button>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                            </a>
-                            <div class="caption">
-                                <h5 class="text-center">Uiiii</h5><br>
-
-                                <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> aaa@gmail.com </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> 9198765432 </span></label></li>
-                                </ul>
-
-                                <button type="button" class="btn btn-primary gradient-red">Block</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
 
