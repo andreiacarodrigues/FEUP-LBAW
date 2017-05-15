@@ -3,6 +3,25 @@
   <div class="admin-intro-header">
       <div class="container">
           <div class="row">
+              {if $SUCCESS_MESSAGES != ""}
+                  {foreach $SUCCESS_MESSAGES as $message}
+                      <div class="alert alert-info alert-dismissable fade in">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>{$message}</strong>
+                      </div>
+                  {/foreach}
+              {/if}
+              {if $ERROR_MESSAGES != ""}
+                  {foreach $ERROR_MESSAGES as $message}
+                      <div class="alert alert-danger alert-dismissable fade in">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>{$message}</strong>
+                      </div>
+                  {/foreach}
+              {/if}
+          </div>
+
+          <div class="row">
               <div class="intro-message">
                   <h1>Login</h1>
                   <hr class="intro-divider">
@@ -23,9 +42,9 @@
                               </div>
                           </div>
                       </div>
-                      <div class="row errorMessage">
+                      <!--<div class="row errorMessage">
                           <span>{$ERROR_MESSAGES}</span>
-                      </div>
+                      </div>-->
                       <div class="row">
                           <input type="submit" class="btn btn-primary btn-lg gradient-blue" value="Login"/>
                       </div>

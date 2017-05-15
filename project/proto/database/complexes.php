@@ -507,6 +507,32 @@
         return true;
     }
 
+    function concludeRental($rentalID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                            UPDATE "Rental"
+                            SET "rentalState" = \'CONCLUDED\'::"rentalState"
+                            WHERE "rentalID" = ?;');
+        if(!$stmt->execute(array($rentalID))) {
+            return false;
+        }
+        return true;
+    }
+
+    function adminCancelRental($rentalID)
+    {
+        global $conn;
+        $stmt = $conn->prepare('
+                                UPDATE "Rental"
+                                SET "rentalState" = \'CANCELEDBYADMIN\'::"rentalState"
+                                WHERE "rentalID" = ?;');
+        if(!$stmt->execute(array($rentalID))) {
+            return false;
+        }
+        return true;
+    }
+
     function getComplexEquipmentInfo($complexID)
     {
         global $conn;
@@ -522,6 +548,97 @@
         $stmt->execute(array($complexID, 0)); //TODO set pagenumber
         return $stmt->fetchAll();
     }
+
+    function getEquipmentSports($equipmentID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                SELECT "equipmentSportsSportID"
+                FROM "EquipmentSports"
+                WHERE "equipmentSportsEquipmentID" = ?;');
+        $stmt->execute(array($equipmentID));
+        return $stmt->fetchAll();
+    }
+
+
+function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavailable, $price, $sports, $available)
+{
+    global $conn;
+
+    $isAvailable = TRUE;
+
+    if($available == "false")
+    {
+        $isAvailable = FALSE;
+    }
+
+    if(!$conn->beginTransaction())
+    {
+        return false;
+    }
+    $stmt = $conn->prepare('
+             UPDATE "Equipment"
+             SET
+             "equipmentName" = ?,
+             "equipmentQuantity" = ?,
+             "equipmentDetails" = ?,
+              "equipmentPrice" = ?,
+             "equipmentQuantityUnavailable" = ?,
+             "equipmentInactive" = ?
+             WHERE
+             "equipmentID" = ?;');
+
+    if(!$stmt->execute(array($name, $quantity, $details, $price, $quantityUnavailable, $available, $equipmentID)))
+    {
+        $conn->rollBack();
+        return false;
+    }
+
+    $spaceOldSports = getEquipmentSports($equipmentID);
+    $newSpaceOldSports = array();
+
+    foreach ($spaceOldSports as $sport)
+    {
+        $newSpaceOldSports[] = $sport['equipmentSportsSportID'] . '';
+        if(!in_array($sport['equipmentSportsSportID'] . '', $sports)) /* for each sport to delete */
+        {
+            $stmt = $conn->prepare('
+                DELETE
+                FROM "EquipmentSports"
+                WHERE "equipmentSportsEquipmentID" = ? AND
+                "equipmentSportsSportID" = ?;');
+
+            if(!$stmt->execute(array($equipmentID, $sport['equipmentSportsSportID']))) {
+                $stmt = $conn->rollBack();
+                return false;
+            }
+        }
+    }
+
+
+    foreach ($sports as $sport)
+    {
+        if(!in_array($sport, $newSpaceOldSports)) /* for each sport to delete */
+        {
+            $stmt = $conn->prepare('
+               INSERT INTO "EquipmentSports" VALUES(?, ?);');
+
+            if(!$stmt->execute(array($equipmentID, $sport))) {
+                $stmt = $conn->rollBack();
+                return false;
+            }
+        }
+    }
+
+    if(!$conn->commit())
+    {
+        $conn->rollBack();
+        return false;
+    }
+
+    return true;
+}
 
     function editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports){
 
@@ -768,7 +885,6 @@
             AND ((now() - (("rentalStartTime" + "rentalDate"))) > \'0\'::interval);');
         return $stmt->execute(array());
     }
-
 
     function setComplexInactive($complexID)
     {

@@ -27,7 +27,7 @@
 
     if(!($check1 && $check2 && $check3 && $check4 && $check5))
     {
-        header('Location: ' . $BASE_URL . "pages/home.php");
+        header('Location: ' . $BASE_URL . "pages/users/home.php");
         die();
     }
 

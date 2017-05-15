@@ -41,12 +41,23 @@
 
 <div class="manageEquipment">
     <div class="container">
-        <div class="row errorMessage">
-                        <span>
-                            {foreach $ERROR_MESSAGES as $error}
-                                <div class="error">{$error}</div>
-                            {/foreach}
-                        </span>
+        <div class="row">
+            {if $SUCCESS_MESSAGES != ""}
+                {foreach $SUCCESS_MESSAGES as $message}
+                    <div class="alert alert-info alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+            {if $ERROR_MESSAGES != ""}
+                {foreach $ERROR_MESSAGES as $message}
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
         </div>
         <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
@@ -69,7 +80,9 @@
 
               {foreach $EQUIPMENT_INFORMATION as $INFORMATION}
 
-            <form class="tr equipmentForm" action="../users/home.php" method="post" autocomplete="on">
+            <form class="tr equipmentForm" action="{$BASE_URL}actions/managers/editEquipment.php" method="post" autocomplete="on">
+                <input type="hidden" name="complexID" value="{$COMPLEX_ID}"/>
+                <input type="hidden" name="equipmentID" value="{$INFORMATION.id}"/>
                 <span class="td">
                     <img class="img-responsive" src="http://placehold.it/200x200" style="width:100px" alt=""><br>
                     <input type="submit" class="btn btn-primary gradient-yellow" value="Change picture"/>
@@ -98,7 +111,7 @@
                 <span class="td">
                      <div class="form-group">
                               <div class="input-group">
-                                  <textarea class="form-control" rows="5" name="comment">{$INFORMATION.details}</textarea>
+                                  <textarea class="form-control" rows="5" name="details">{$INFORMATION.details}</textarea>
                               </div>
                           </div>
                 </span>
@@ -118,12 +131,11 @@
                                   </select>
                               </div>
                             </div>
-
                 </span>
                 <span class="td">
                        <div class="form-group">
                               <div class="input-group">
-                                  <input class="form-control" type="number" name="points" min="0" step="1" value="{$INFORMATION.quantityUnavailable}">
+                                  <input class="form-control" type="number" name="quantityUnavailable" min="0" step="1" value="{$INFORMATION.quantityUnavailable}">
                               </div>
                           </div>
                 </span>
@@ -131,21 +143,21 @@
                       <div class="form-group">
                               <div class="input-group">
                                   <select class="form-control" name="available">
-                                      <option value="true">Yes</option>
-                                      <option value="false">No</option>
+                                   {if $INFORMATION.inactive}
+                                       <option value="false">Yes</option>
+                                       <option value="true" selected>No</option>
+                                    {else}
+                                      <option value="false" selected>Yes</option>
+                                      <option value="true">No</option>
+                                   {/if}
                                   </select>
                               </div>
                           </div>
                 </span>
                 <span class="td">
-
                        <input type="submit" class="saveEquipmentBtn subBtn btn btn-primary gradient-blue" value="Save"/>
-
                 </span>
             </form>
-
-
-
               {/foreach}
             </div>
 

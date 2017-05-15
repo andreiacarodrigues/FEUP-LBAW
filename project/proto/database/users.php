@@ -68,6 +68,17 @@
         return $user ? true : false;
     }
 
+    function adminExists($adminID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "adminID" FROM "Admin" WHERE "adminID" = ?');
+        $stmt->execute(array($adminID));
+        $admin = $stmt->fetch();
+
+        return $admin ? true : false;
+    }
+
     function userIsBanned($userID)
     {
         global $conn;

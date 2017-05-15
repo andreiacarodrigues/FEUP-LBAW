@@ -2,15 +2,23 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/info.php");
     include_once($BASE_DIR."database/complexes.php");
+include_once($BASE_DIR."database/users.php");
 
     if(!isset($_SESSION['userID']))
     {
-        $_SESSION['error_messages'][] = "You dont't have acess to this page;";
-        header("Location: " . $BASE_URL . "pages/users/home.php");
+        $_SESSION['error_messages'] = "You need to be logged in to acess this page";
+        header("Location: " . $BASE_URL . "pages/admins/admin.php");
         die();
     }
 
-    $rentals = getRentals();
+    if(!adminExists($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'] = "You need to be an admin to acess this page";
+        header("Location: " . $BASE_URL . "pages/admins/admin.php");
+        die();
+    }
+
+$rentals = getRentals();
 
     $final = array();
 

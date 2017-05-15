@@ -87,9 +87,28 @@
                             {if $RENTAL.issueSubject != "NO_ISSUE"}
                                 <button type="button" class="btn btn-primary gradient-blue" onclick="updateIssueInfo('{$RENTAL.issueSubject}','{$RENTAL.issueDescription}', '{$RENTAL.issueCategory}')" data-toggle="modal" data-target="#issuesModal">Issue</button>
                             {/if}
-                            <button type="button" class="btn btn-primary gradient-yellow">Suspend</button>
-                            <button type="button" class="btn btn-primary gradient-red">Remove</button>
-                            <button type="button" class="btn btn-primary gradient-blue">Conclude</button>
+
+                            {if ($RENTAL.rentalState != "CONCLUDED") && ($RENTAL.rentalState != "CANCELEDBYUSER")
+                            && ($RENTAL.rentalState != "CANCELEDBYMANAGER") && ($RENTAL.rentalState != "CANCELEDBYADMIN")}
+                                <!-- se nao estiver concluida ou cancelada -->
+                                    {if $RENTAL.rentalState != "SUSPENDEDBYADMIN"}
+                                        <form class="tr equipmentForm" action="{$BASE_URL}actions/admin/changeStateRental.php" method="post" autocomplete="on">
+                                            <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
+                                            <input type="hidden" value="suspend" name="type"/>
+                                            <button type="submit" class="btn btn-primary gradient-yellow">Suspend</button> <!-- só pode concluir ou cancelar -->
+                                        </form>
+                                    {/if}
+                                <form class="tr equipmentForm" action="{$BASE_URL}actions/admin/changeStateRental.php" method="post" autocomplete="on">
+                                    <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
+                                    <input type="hidden" value="cancel" name="type"/>
+                                    <button type="submit" class="btn btn-primary gradient-red">Cancel</button>  <!-- desaparecem opções -->
+                                </form>
+                                <form class="tr equipmentForm" action="{$BASE_URL}actions/admin/changeStateRental.php" method="post" autocomplete="on">
+                                    <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
+                                    <input type="hidden" value="conclude" name="type"/>
+                                    <button type="submit" class="btn btn-primary gradient-blue">Conclude</button>  <!-- desaparecem opções -->
+                                </form>
+                            {/if}
                         </div>
                     </div>
                 </div>

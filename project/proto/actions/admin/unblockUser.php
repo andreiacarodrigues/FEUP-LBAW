@@ -9,6 +9,13 @@
         die();
     }
 
+    if(!adminExists($_SESSION['userID']))
+    {
+        $_SESSION['error_messages'] = "You need to be an admin to acess this page";
+        header("Location: " . $BASE_URL . "pages/admins/admin.php");
+        die();
+    }
+
     if(!isset($_GET['user']))
     {
         $_SESSION['error_messages'] = "Required variable not set.";

@@ -5,16 +5,24 @@
 
     if(!isset($_SESSION['userID']))
     {
-        $_SESSION['error_messages'][] = "You dont't have acess to this page;";
+        $_SESSION['error_messages'][] = "You can't have acess to this page;";
         header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }
 
-    $complexID = $_GET['complexID'];
+    $complexID = trim(strip_tags($_GET['complexID']));
     $userID = $_SESSION['userID'];
+
+    if(!is_numeric($complexID))
+    {
+        $_SESSION['error_messages'][] = "Invalid complex ID.";
+        header("Location: ".$BASE_URL."pages/users/home.php");
+        die();
+    }
 
     if(!isComplexManager($complexID, $userID))
     {
+        $_SESSION['error_messages'][] = "You cannot access this page.";
         header("Location: ".$BASE_URL."pages/users/home.php");
         die();
     }
@@ -30,6 +38,7 @@
             if (!isset($parsedInformation[$equipmentID]))
             {
                 $info = [];
+                $info['id'] = $row['equipmentID'];
                 $info['name'] = $row['equipmentName'];
                 $info['quantity'] = $row['equipmentQuantity'];
                 $info['price'] = $row['equipmentPrice'];
