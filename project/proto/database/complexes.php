@@ -468,6 +468,17 @@
         return true;
     }
 
+    function addIssueAdmin($subject, $category, $description, $to, $userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                     INSERT INTO "Issue"("issueUserID", "issueSubject", "issueCategory", "issueDescription", "issueForAdmin")
+                    VALUES(?, ?, ?, ?, true);');
+
+        return $stmt->execute(array($userID, $subject, $category, $description));
+    }
+
     function cancelRentalByUser($rentalID)
     {
         global $conn;

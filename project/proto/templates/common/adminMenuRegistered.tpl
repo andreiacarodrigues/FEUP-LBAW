@@ -21,6 +21,9 @@
                     <a href="{$BASE_URL}pages/admins/adminRentals.php">Rentals</a>
                 </li>
                 <li>
+                    <a href="{$BASE_URL}pages/admins/adminIssues.php">Issues</a>
+                </li>
+                <li>
                     <a href="{$BASE_URL}pages/admins/adminStatistics.php">Statistics</a>
                 </li>
                 <li>

@@ -13,6 +13,7 @@
     $rentalID = null; // rental related issue
     $complexID = null; // complex manager related issue
 
+
     $condition1 = isset($_POST['id']);
     $condition2 = isset($_POST['complexID']);
 
@@ -102,7 +103,6 @@
                     header("Location: " . $BASE_URL . "pages/managers/issuesManagement.php?complexID=" . $complexID);
                 }
             }
-
         }
         catch (PDOException $e)
         {

@@ -21,6 +21,21 @@
         return $stmt->fetchAll();
     }
 
+    function getAdminIssues()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "userName", "userUsername", "userEmail", "userPhone", "issueSubject", "issueID", "issueCategory", "issueDescription", "issueResolved"
+                FROM "Issue"
+                    JOIN  "User" ON "userID" = "issueUserID"
+                    WHERE "issueUserID" IS NOT NULL 
+                    AND "issueForAdmin" = true;
+                ');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     function getRentals()
     {
         global $conn;
