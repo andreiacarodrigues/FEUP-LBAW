@@ -22,7 +22,8 @@
                     {/if}
                 </div>
 
-                {$VALUE=1}
+                {$VALUE = 1 + ($PAGE * 10)}
+
                 {foreach $USERS as $USER}
                 {strip}
 
@@ -59,12 +60,39 @@
             </div>
 
             {$VALUE = $VALUE + 1}
+
             {/strip}
             {/foreach}
+
+                {$COUNT = 0}
+
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <ul class="pagination">
+                        {while $COUNT  < count($PAGINATION)}
+                            {$VALUE = $PAGINATION[$COUNT]}
+                        {if $VALUE == ($PAGE + 1)}
+                            <li class="active">
+                                <a href="{$BASE_URL}pages/admins/adminUsers.php?page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="{$BASE_URL}pages/admins/adminUsers.php?page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                        {/if}
+                            {$COUNT = $COUNT + 1}
+
+                        {/while}
+
+                        </ul>
+                    </div>
+                </div>
 
             </div>
             </div>
         </div>
+
 
 
 

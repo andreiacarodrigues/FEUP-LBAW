@@ -128,6 +128,17 @@
 <br>
     <div class="container">
         <hr>
+        <div class="spaceInfo">
+            <span> Insert here your rental information: </span>
+            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#guidanceModal"> <i class="fa fa-question-circle" aria-hidden="true"></i> </button>
+
+            <!-- <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#guidanceModal">How do I make a rental?</button>
+           <!--  <h5> Here is where you can make a rental: <br> <br>
+               </h5>-->
+        </div>
+       <!-- <hr>-->
+        <br>
+
         <form id="rentForm" action='{$BASE_URL}actions/managers/makeRental.php' method="post" autocomplete="on">
             <input name="spaceID" type="hidden" value="{$spaceID}">
             <input name="userID" type="hidden" value="{$userID}">
@@ -166,6 +177,33 @@
 </div>
 
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="guidanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center" id="myModalLabel">
+                   How to make a rental?
+                 </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body text-justify">
+                <p>Insert in the boxes below the date, start time and duration you wish you rent this space. <br> <br>
+                After the insertion you will be presented with a table with the equipment you can rent at the selected time and date.<br> <br>
+                If the equipment you are looking for isn't there, it is unavailable at that particular time.<br> <br>
+                At the bottom, the total cost of your rental will be updated.<br> <br>
+                    When you finish your rental just click on the "Rent Items" button so you can be redirected to the paypal page and proceed with the payment.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

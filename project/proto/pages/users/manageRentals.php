@@ -2,6 +2,7 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/users.php");
     include_once($BASE_DIR."database/complexes.php");
+include_once($BASE_DIR."database/info.php");
 
 
     if(!isset($_SESSION['userID']))
@@ -30,6 +31,8 @@
 
     $numRentals = getUserNrRentals($_SESSION['userID']);
 
+    $pagination = pagination($numRentals, 10, ($page+1), 6);
+
     $final = array();
 
     foreach ($userRentals as $rental)
@@ -55,7 +58,7 @@
 
     $smarty->assign('RENTALS', $final);
 
-    $smarty->assign('NR_RENTALS', $numRentals);
+    $smarty->assign('PAGINATION', $pagination);
 
     $smarty->assign('PAGE', $page);
 

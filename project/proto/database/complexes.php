@@ -139,7 +139,7 @@
     {
         global $conn;
 
-        $stmt = $conn->prepare('SELECT "rentalID" FROM "Rental" WHERE "rentalID" = ? AND  AND "rentalState" = \'WAITINGUSERFEEDBACK\'::"rentalState"');
+        $stmt = $conn->prepare('SELECT "rentalID" FROM "Rental" WHERE "rentalID" = ?  AND "rentalState" = \'WAITINGUSERFEEDBACK\'::"rentalState"');
         $stmt->execute(array($rentalID));
         $rental = $stmt->fetch();
 
@@ -819,7 +819,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         return true;
     }
 
-    function getComplexIssues($complexID) // PARA O MANAGER
+    function getComplexIssues($complexID, $page) // PARA O MANAGER
     {
         global $conn;
 
@@ -836,11 +836,32 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
             "spaceComplexID" = ?
             AND "issueForManager" = TRUE
             LIMIT 10 OFFSET (10 * ?);');
-        $stmt->execute(array($complexID, 0)); //TODO set pagenumber
+        $stmt->execute(array($complexID, $page));
         return $stmt->fetchAll();
     }
 
-    function getComplexIssuesManager($complexID) // PARA O MANAGER
+
+function getComplexIssuesNr($complexID)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('
+            SELECT count("issueID")
+            FROM "Issue"
+            JOIN "Rental"
+            ON "rentalID" = "issueRentalID"
+            JOIN "User"
+            ON "rentalUserID" = "userID"
+            JOIN "Space"
+            ON "spaceID" = "rentalSpaceID"
+            WHERE 
+            "spaceComplexID" = ?
+            AND "issueForManager" = TRUE;');
+    $stmt->execute(array($complexID));
+    return $stmt->fetch()['count'];
+}
+
+    function getComplexIssuesManager($complexID, $page) // PARA O MANAGER
     {
         global $conn;
 
@@ -851,9 +872,23 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
                 "issueComplexID" = ?
                 AND "issueForManager" = TRUE
                 LIMIT 10 OFFSET (10 * ?);');
-        $stmt->execute(array($complexID, 0)); //TODO set pagenumber
+        $stmt->execute(array($complexID, $page));
         return $stmt->fetchAll();
     }
+
+function getComplexIssuesManagerNr($complexID) // PARA O MANAGER
+{
+    global $conn;
+
+    $stmt = $conn->prepare('
+                SELECT count("issueID")
+                FROM "Issue"
+                WHERE 
+                "issueComplexID" = ?
+                AND "issueForManager" = TRUE;');
+    $stmt->execute(array($complexID));
+    return $stmt->fetch()['count'];
+}
 
     function getRentalEquipment($rentalID)
     {

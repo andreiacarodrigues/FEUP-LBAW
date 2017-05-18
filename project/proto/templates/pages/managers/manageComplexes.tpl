@@ -25,7 +25,11 @@
         <hr>
         </div>
         {if count($COMPLEXES) == 0}
-        <h4 > You are not manager of any sport complexes yet. </h4>
+            <h4> You aren't manager of any sport complexes yet. <br><br> If you have your own sport complex business, you can add it to
+            our website in the button above, so you can register spaces and equipment other users can rent at a specific time and date. <br><br>
+            You will have the resources to manage the complex items, rentals, issues and reviews other users may leave after a rental and the
+            opportunity to add other users as managers so the management can be more efficient.</h4>
+
         {else}
 
 

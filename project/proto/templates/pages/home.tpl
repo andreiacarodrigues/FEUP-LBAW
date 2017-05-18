@@ -25,7 +25,10 @@
                 <h1>Sports R Us</h1>
                 <h3>Your favorite place to rent sports complexes!</h3>
                 <hr class="intro-divider">
-                <h4>Here you can find the space you needed to practice your favorite sport. Its just one click away!</h4>
+                    <span>Here you can find the space you needed to practice your favorite sport. Its just one click away!</span>
+                <button class="btn btn-primary gradient-blue" data-toggle="tooltip" data-placement="bottom" title="
+                   Use the search form below to enter your selected keywords to get the perfect sports complex to rent.
+                    "> <i class="fa fa-question-circle" aria-hidden="true"></i> </button>
             </div>
         </div>
         <br><br>
@@ -262,3 +265,8 @@
 
 
 {include file='common/footer.tpl'}
+
+
+<script>
+    $('[data-toggle="tooltip"]').tooltip();
+</script>

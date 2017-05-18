@@ -20,8 +20,12 @@
                 {/foreach}
             {/if}
         </div>
+
         {if count($RENTALS) == 0}
-            <h4 class="text-center"> You haven't made any rentals so far. </h4>
+            <div class="emptyRentals">
+            <h4> You haven't made any rentals so far. <br><br> You can make a rental by choosing a space from your selected
+            sports complex, type in the date, time of start and duration you want your rental to be and select the equipment you'll need. </h4>
+        </div>
         {else}
 
             {$VALUE = 1 + ($PAGE * 10)}
@@ -105,39 +109,33 @@
             {/foreach}
         {/if}
 
-        {$NR_PAGES = ($NR_RENTALS/10)|ceil}
+<br><br>
 
+        {$COUNT = 0}
 
+        <br><br>
         <div class="row">
-            <div class="col-lg-12">
-
-                {$VALUE = 1}
-                <ul class="list-inline text-center">
-                    {if $NR_PAGES > 10}
-                        {while $VALUE <= 10}
+            <div class="col-lg-12 text-center">
+                <ul class="pagination">
+                    {while $COUNT  < count($PAGINATION)}
+                        {$VALUE = $PAGINATION[$COUNT]}
+                        {if $VALUE == ($PAGE + 1)}
+                            <li class="active">
+                                <a href="{$BASE_URL}pages/users/manageRentals.php?page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                        {else}
                             <li>
                                 <a href="{$BASE_URL}pages/users/manageRentals.php?page={$VALUE - 1}">{$VALUE}</a>
                             </li>
-                            {if $VALUE != 10}
-                                <li class="footer-menu-divider">&sdot;</li>
-                            {/if}
-                            {$VALUE = $VALUE + 1}
-                        {/while}
-                    {else}
-                        {while $VALUE <= $NR_PAGES}
-                            <li>
-                                <a href="{$BASE_URL}pages/users/manageRentals.php?page={$VALUE - 1}">{$VALUE}</a>
-                            </li>
-                            {if $VALUE != $NR_PAGES}
-                                <li class="footer-menu-divider">&sdot;</li>
-                            {/if}
-                            {$VALUE = $VALUE + 1}
+                        {/if}
+                        {$COUNT = $COUNT + 1}
 
-                        {/while}
-                    {/if}
+                    {/while}
+
                 </ul>
             </div>
         </div>
+
 
 
 

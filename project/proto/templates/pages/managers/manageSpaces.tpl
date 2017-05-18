@@ -24,6 +24,11 @@
         <a href="{$BASE_URL}pages/managers/addSpace.php/?complexID={$complexID}" class="btn btn-primary gradient-red">Add Space <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         <hr>
         </div>
+        {if count($SPACES) == 0}
+        <h4> You don't have any spaces registered yet. <br><br> Add your sport complex's spaces in the button above,
+            so other users can rent it! </h4>
+
+        {else}
         {$ROW_COUNT = 0}
 
         {foreach $SPACES as $SPACE}
@@ -68,6 +73,7 @@
                 {$VALUE = $VALUE + 1}
             {/strip}
         {/foreach}
+        {/if}
     </div>
 </div>
 

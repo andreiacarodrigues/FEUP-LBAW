@@ -12,7 +12,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.tooltip.bottom, .tooltip.right{
     font-family: 'Montserrat Alternates',"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
@@ -68,11 +69,22 @@ input[type=button]{
 
 .userRentals, .manageComplexes, .manageSpaces, .manageEquipment {
     margin-top: 8%;
-    margin-bottom: 8%;
+    margin-bottom: 3%;
     min-height: 85%;
     font-size:0.95em;
 }
 
+.intro-message-home span{
+    font-size: 18px;
+}
+
+
+.intro-message-home button, .spaceInfo button{
+    padding-top:1px;
+    padding-bottom:1px;
+    padding-left:6px;
+    padding-right:6px;
+}
 .manageEquipment .table input[type="submit"]{
     font-size: 11px;
 }
@@ -91,13 +103,16 @@ input[type=button]{
     margin-bottom:22px !important;
 }
 
-.userRentals h4{
-    font-size:1.4em;
+.userRentals .emptyRentals{
+    padding-top:15%;
+    font-size:16px;
     color:black;
 }
 
-.userRentals button{
-    font-size:0.95em;
+.manageComplexes h4, .manageSpaces h4{
+    padding-top:10%;
+    font-size:16px;
+    color:black;
 }
 
  .searchResults{

@@ -109,7 +109,7 @@
         $('#passwordForm').append(
             "<hr class='divider'>" +
             "<br>" +
-
+            "<p class='text-center'> Your new password must have at least 6 characters/digits. </p>"+
             "<form id='newPasswordForm' action='{$BASE_URL}actions/users/editPassword.php' method='post' autocomplete='on'>" +
             "<div class='row'>" +
             "<div class='col-md-10 col-md-offset-1'>"+
@@ -117,7 +117,7 @@
             "<div class='form-group'>"+
             "<div class='input-group'>"+
             "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>"+
-            "<input type='password' class='form-control' name='password'  placeholder='Enter your Current Password'/>"+
+            "<input type='password' class='form-control' name='password' placeholder='Enter your Current Password'/>"+
             "</div>"+
             "</div>"+
 
@@ -125,8 +125,10 @@
             "<div class='input-group'>"+
             "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>"+
             "<input type='password' class='form-control' name='newPassword' placeholder='Enter your New Password'/>"+
+
+            "</div>" +
             "</div>"+
-            "</div>"+
+
 
             "<div class='form-group'>"+
             "<div class='input-group'>"+
@@ -146,5 +148,8 @@
 
         $('#changePassword').css("visibility", "hidden");
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
 
 </script>
