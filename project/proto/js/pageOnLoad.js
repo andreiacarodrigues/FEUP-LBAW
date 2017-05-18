@@ -442,11 +442,12 @@ function spacePage(url, spaceID){
             var spaceHours2 = moment(date + "T" + spaceHours[1], moment.ISO_8601);
 
 
-            if(moment(val1.date()).isBefore(today.date()))
+            if(moment().diff(val1) > 0)
             {
                 $('#rentalInfo').append('<p> The date is invalid, they must be set in the future. Please enter valid information. </p>');
                 return;
             }
+
               if(moment(val2).isBefore(spaceHours1) || moment(val3).isAfter(spaceHours2)) {
                   $('#rentalInfo').append('<p> The time is invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
                   return;
