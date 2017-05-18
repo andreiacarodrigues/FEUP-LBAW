@@ -24,88 +24,122 @@
             <h4 class="text-center"> You haven't made any rentals so far. </h4>
         {else}
 
+            {$VALUE = 1 + ($PAGE * 10)}
 
-        {$VALUE=1}
-        {foreach $RENTALS as $RENTAL}
-            {strip}
-                {if $VALUE <= count($RENTALS)}
-                    <div class="rental well well-sm">
-                        <div class="row">
-                            <div class="container">
-                                <div class="col-md-8">
-                                    <ul class="list-unstyled">
-                                        <h4 class="mobileFixText">Rental #<span>{$VALUE}</span></h4>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> {$RENTAL.rentalDate|date_format:"%e / %b / %Y"} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> {$RENTAL.complexName} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> {$RENTAL.spaceName} </span></label></li>
-                                        <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDurationInMinutes} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  {$RENTAL.equipment} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
+            {foreach $RENTALS as $RENTAL}
+                {strip}
+                    {if $VALUE <= (count($RENTALS) +  ($PAGE * 10))}
+                        <div class="rental well well-sm">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="col-md-8">
+                                        <ul class="list-unstyled">
+                                            <h4 class="mobileFixText">Rental #<span>{$VALUE}</span></h4>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> {$RENTAL.rentalDate|date_format:"%e / %b / %Y"} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> {$RENTAL.complexName} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> {$RENTAL.spaceName} </span></label></li>
+                                            <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDurationInMinutes} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  {$RENTAL.equipment} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
                                                     {if $RENTAL.rentalState == "RESERVED"}
                                                         Reserved
                                                     {/if}
-                                                    {if $RENTAL.rentalState == "RESERVEDBYMANAGER"}
-                                                        Reserved By Manager
-                                                    {/if}
-                                                    {if $RENTAL.rentalState == "CANCELEDBYUSER"}
-                                                        Canceled By User
-                                                    {/if}
-                                                    {if $RENTAL.rentalState == "CANCELEDBYMANAGER"}
-                                                        Canceled By Manager
-                                                    {/if}
-                                                    {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
-                                                        Waiting For User Feedback
-                                                    {/if}
-                                                    {if $RENTAL.rentalState == "SUSPENDEDBYADMIN"}
-                                                        Suspended By An Administrator
-                                                    {/if}
-                                                    {if $RENTAL.rentalState == "CONCLUDED"}
-                                                        Concluded
-                                                    {/if}
+                                                        {if $RENTAL.rentalState == "RESERVEDBYMANAGER"}
+                                                            Reserved By Manager
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "CANCELEDBYUSER"}
+                                                            Canceled By User
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "CANCELEDBYMANAGER"}
+                                                            Canceled By Manager
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
+                                                            Waiting For User Feedback
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "SUSPENDEDBYADMIN"}
+                                                            Suspended By An Administrator
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "CONCLUDED"}
+                                                            Concluded
+                                                        {/if}
                                                 </span></label></li>
-                                    </ul>
-                                </div>
-                                {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
-                                    <div class="col-md-4 mobileFixButtons">
-                                        <div class="stars">
-                                            <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                            <label class="star star-5" for="star-5"></label>
-                                            <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                            <label class="star star-4" for="star-4"></label>
-                                            <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                            <label class="star star-3" for="star-3"></label>
-                                            <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                            <label class="star star-2" for="star-2"></label>
-                                            <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                            <label class="star star-1" for="star-1"></label>
-                                        </div>
-                                        <br>
-                                        <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" onclick="setIssueRentalID({$RENTAL.rentalID})" data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue </button>
+                                        </ul>
                                     </div>
-                                {else}
-                                    {if $RENTAL.rentalState == "CONCLUDED" || $RENTAL.rentalState == "CANCELEDBYUSER" || $RENTAL.rentalState == "SUSPENDEDBYADMIN" || $RENTAL.rentalState == "CANCELEDBYMANAGER"}
+                                    {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
                                         <div class="col-md-4 mobileFixButtons">
+                                            <div class="stars">
+                                                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                                <label class="star star-5" for="star-5"></label>
+                                                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                                <label class="star star-4" for="star-4"></label>
+                                                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                                <label class="star star-3" for="star-3"></label>
+                                                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                                <label class="star star-2" for="star-2"></label>
+                                                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                                <label class="star star-1" for="star-1"></label>
+                                            </div>
+                                            <br>
+                                            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" onclick="setIssueRentalID({$RENTAL.rentalID})" data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue </button>
                                         </div>
                                     {else}
-                                        <div class="col-md-4 mobileFixButtons">
-                                            <form action="{$BASE_URL}actions/users/cancelRental.php" method="get" class="form-horizontal" role="form">
-                                                <input type="hidden" name="rentalID" value="{$RENTAL.rentalID}">
-                                                <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
-                                            </form>
-                                        </div>
+                                        {if $RENTAL.rentalState == "CONCLUDED" || $RENTAL.rentalState == "CANCELEDBYUSER" || $RENTAL.rentalState == "SUSPENDEDBYADMIN" || $RENTAL.rentalState == "CANCELEDBYMANAGER"}
+                                            <div class="col-md-4 mobileFixButtons">
+                                            </div>
+                                        {else}
+                                            <div class="col-md-4 mobileFixButtons">
+                                                <form action="{$BASE_URL}actions/users/cancelRental.php" method="get" class="form-horizontal" role="form">
+                                                    <input type="hidden" name="rentalID" value="{$RENTAL.rentalID}">
+                                                    <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+                                                </form>
+                                            </div>
+                                        {/if}
                                     {/if}
-                                {/if}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {/if}
-                {$VALUE = $VALUE + 1}
-            {/strip}
-        {/foreach}
+                    {/if}
+                    {$VALUE = $VALUE + 1}
+                {/strip}
+            {/foreach}
         {/if}
 
-        <!------------------------>
+        {$NR_PAGES = ($NR_RENTALS/10)|ceil}
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                {$VALUE = 1}
+                <ul class="list-inline text-center">
+                    {if $NR_PAGES > 10}
+                        {while $VALUE <= 10}
+                            <li>
+                                <a href="{$BASE_URL}pages/users/manageRentals.php?page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                            {if $VALUE != 10}
+                                <li class="footer-menu-divider">&sdot;</li>
+                            {/if}
+                            {$VALUE = $VALUE + 1}
+                        {/while}
+                    {else}
+                        {while $VALUE <= $NR_PAGES}
+                            <li>
+                                <a href="{$BASE_URL}pages/users/manageRentals.php?page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                            {if $VALUE != $NR_PAGES}
+                                <li class="footer-menu-divider">&sdot;</li>
+                            {/if}
+                            {$VALUE = $VALUE + 1}
+
+                        {/while}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+
+
 
         <!-- Modal -->
         <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -156,7 +190,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                         <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
+                                        <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +202,7 @@
     </div>
 </div>
 
-    </div>
+</div>
 </div>
 
 

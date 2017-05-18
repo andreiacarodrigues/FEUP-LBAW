@@ -176,7 +176,7 @@
         return $user ? true : false;
     }
 
-    function getUserRentals($username)
+    function getUserRentals($userID, $page)
     {
         global $conn;
 
@@ -186,17 +186,38 @@
         From "Rental", "User", "Space", "SportsComplex"
         
         Where
-        "userUsername" = ?
+        "userID" = ?
         AND "userID" = "rentalUserID"
         AND "rentalSpaceID" = "spaceID"
         AND "spaceComplexID" = "complexID"
         
-        ORDER BY "rentalDate", "rentalStartTime" DESC;
+        ORDER BY "rentalDate", "rentalStartTime" DESC
+        LIMIT 10 OFFSET (10 * ?);
         ');
 
-        $stmt->execute(array($username));
+        $stmt->execute(array($userID, $page));
         return $stmt;
     }
+
+
+function getUserNrRentals($userID)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('
+       Select count("rentalID")
+               From "Rental", "User", "Space", "SportsComplex"
+        
+               Where
+               "userID" = ?
+                AND "userID" = "rentalUserID"
+                AND "rentalSpaceID" = "spaceID"
+                AND "spaceComplexID" = "complexID";
+        ');
+
+    $stmt->execute(array($userID));
+    return $stmt->fetch()['count'];
+}
 
     function getUserID($username)
     {

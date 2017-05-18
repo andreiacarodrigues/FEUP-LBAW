@@ -3,6 +3,7 @@
     include_once($BASE_DIR."database/users.php");
     include_once($BASE_DIR."database/complexes.php");
 
+
     if(!isset($_SESSION['userID']))
     {
         $_SESSION['error_messages'][] = "You can't have acess to this page;";
@@ -10,9 +11,24 @@
         die();
     }
 
+    $page = 0;
+
+    if(isset($_GET['page']))
+    {
+        $page = trim(strip_tags($_GET['page']));
+        if(!is_numeric($page))
+        {
+            $_SESSION['error_messages'][] = "Invalid page parameter";
+            header("Location: " . $BASE_URL . "pages/users/manageRentals.php?page=0");
+            die();
+        }
+    }
+
     updateRentalsState();
 
-    $userRentals = getUserRentals($_SESSION['username'])->fetchAll();
+    $userRentals = getUserRentals($_SESSION['userID'], $page)->fetchAll();
+
+    $numRentals = getUserNrRentals($_SESSION['userID']);
 
     $final = array();
 
@@ -38,6 +54,10 @@
     }
 
     $smarty->assign('RENTALS', $final);
+
+    $smarty->assign('NR_RENTALS', $numRentals);
+
+    $smarty->assign('PAGE', $page);
 
     $smarty->display('pages/users/manageRentals.tpl');
 ?>

@@ -415,32 +415,42 @@ function spacePage(url, spaceID){
         var startTime = $("input[name='startingTime']").val();
         var duration = $("input[name='duration']").val();
         // Date comparisons
-        var val1 = Date.parse(date);
-        var val2 = date + "T" + startTime + ":00Z";
-        var val3 = date + "T" + duration + ":00Z";
-        val2 =  Date.parse(val2);
-        val3 =  Date.parse(val3);
+        var val2 = date + "T" + startTime;
+        var val3 = date + "T" + duration;
 
-        var today = Date.parse(new Date());
+        var today = moment();
+        var val1 = moment(date);
+        val2 = moment(val2, moment.ISO_8601);
+        val3 = moment(val3, moment.ISO_8601);
 
-        var todayDate = new Date();
-        todayDate.setHours(0, 0, 0, 0);
 
-        todayDate = Date.parse(todayDate);
+        var hoursToAdd = val3.hours();
+        var minutesToAdd = val3.minutes();
+
+        var val3 = val2;
+        val3.add(hoursToAdd, 'hours');
+        val3.add(minutesToAdd, 'minutes');
 
         $('#rentalInfo').empty();
 
         if((date != "") && (startTime != "") && (duration != "")) {
-            if ((val1 >= todayDate) && (val2 >= today)) {
 
-                var spaceHours = $('#infoHours').text();
-                spaceHours = spaceHours.split("-");
+            var spaceHours = $('#infoHours').text();
+            spaceHours = spaceHours.split("-");
 
-                if((val2 < Date.parse(date + "T" + spaceHours[0] + "Z"))||((val2) >= Date.parse(date + "T" + spaceHours[1]  + "Z")))
-                {
-                    $('#rentalInfo').append('<p> The time are invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
-                    return;
-                }
+            var spaceHours1 = moment(date + "T" + spaceHours[0], moment.ISO_8601);
+            var spaceHours2 = moment(date + "T" + spaceHours[1], moment.ISO_8601);
+
+
+            if(moment(val1.date()).isBefore(today.date()))
+            {
+                $('#rentalInfo').append('<p> The date is invalid, they must be set in the future. Please enter valid information. </p>');
+                return;
+            }
+              if(moment(val2).isBefore(spaceHours1) || moment(val3).isAfter(spaceHours2)) {
+                  $('#rentalInfo').append('<p> The time is invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
+                  return;
+              }
 
                 if (!$.trim($('#rentalInfo').html()).length)
                     $('#rentalInfo').append(
@@ -468,13 +478,9 @@ function spacePage(url, spaceID){
                 // faz chamada ajax
                 equipmentInfo(url + 'actions/managers/getEquipment.php',spaceID, date, startTime, duration);
             }
-            else
-            {
-                $('#rentalInfo').append('<p> The date and time are invalid, they must be set in the future. Please enter valid information. </p>');
-                return;
-            }
 
-        }
+
+
     });
 
 

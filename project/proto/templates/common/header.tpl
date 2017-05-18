@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
+    <script src="{$BASE_URL}js/moment.js"></script>
     <script src="{$BASE_URL}js/validations.js"></script>
     <script src="{$BASE_URL}js/pageOnLoad.js"></script>
 

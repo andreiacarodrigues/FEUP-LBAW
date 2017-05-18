@@ -6,11 +6,11 @@
                 <ul class="list-inline">
                     <li>
                         <a href="#">Home</a>
-                          </li>
-                          <li class="footer-menu-divider">&sdot;</li>
-                          <li>
-                              <a href="#" data-target="#issueModal" data-toggle="modal">Contact Administration</a>
-                          </li>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#" data-target="#issueModal" data-toggle="modal">Contact Administration</a>
+                    </li>
                 </ul>
                 <p class="copyright text-muted small">Copyright &copy; LBAW1653. All Rights Reserved</p>
             </div>
