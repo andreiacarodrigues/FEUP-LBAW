@@ -49,7 +49,7 @@
         return $stmt->fetchAll();
     }
 
-    function getRentals()
+    function getRentals($page)
     {
         global $conn;
 
@@ -65,9 +65,26 @@
             JOIN "User"
             ON "userID" = "rentalUserID"
               ORDER BY "rentalDate", "rentalStartTime" DESC
-            /*LIMIT 10 OFFSET (10 * ?)*/;');
-        $stmt->execute(/*array(0)*/);
+            LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($page));
         return $stmt->fetchAll();
+    }
+
+    function getNrRentals()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT count("rentalID")
+                FROM "Rental"
+                JOIN "Space"
+                ON "spaceID" = "rentalSpaceID"
+                JOIN "SportsComplex"
+                ON "complexID" = "spaceComplexID"
+                JOIN "User"
+                ON "userID" = "rentalUserID";');
+        $stmt->execute();
+        return $stmt->fetch()['count'];
     }
 
     function pagination($data, $limit = null, $current = null, $adjacents = null)
