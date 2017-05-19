@@ -36,16 +36,22 @@ include_once($BASE_DIR."database/info.php");
 
         $smarty->assign('complexID', $complexID);
 
-        $issuesType1 = getComplexIssues($complexID, $page);
+        $issues = getAllComplexIssues($complexID, $page);
+
+        /*$issuesType1 = getComplexIssues($complexID, $page);
         $issuesType2 = getComplexIssuesManager($complexID, $page);
 
         $smarty->assign('ISSUES1', $issuesType1);
         $smarty->assign('ISSUES2', $issuesType2);
 
-        $totalIssues = getComplexIssuesManagerNr($complexID) + getComplexIssuesNr($complexID);
+        $totalIssues = getComplexIssuesManagerNr($complexID) + getComplexIssuesNr($complexID);*/
+
+        $totalIssues = getNrAllComplexIssues($complexID);
+
         $pagination = pagination($totalIssues, 10, ($page+1), 6);
 
         $smarty->assign('PAGINATION', $pagination);
+        $smarty->assign('ISSUES', $issues);
 
         $smarty->assign('PAGE', $page);
 

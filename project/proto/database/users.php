@@ -83,7 +83,7 @@
     {
         global $conn;
 
-        $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userID" = ? AND "userIsBanned" == TRUE');
+        $stmt = $conn->prepare('SELECT "userID" FROM "User" WHERE "userID" = ? AND "userIsBanned" = TRUE');
         $stmt->execute(array($userID));
         $user = $stmt->fetch();
 

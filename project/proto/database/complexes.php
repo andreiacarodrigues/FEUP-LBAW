@@ -840,6 +840,64 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         return $stmt->fetchAll();
     }
 
+function getAllComplexIssues($complexID, $page) // PARA O MANAGER
+{
+    global $conn;
+
+    $stmt = $conn->prepare('
+           
+            SELECT "userName", "userPhone", "userEmail", "rentalDate", "rentalState", "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved", "spaceName", "rentalStartTime"
+            FROM "Issue"
+            JOIN "Rental"
+            ON "rentalID" = "issueRentalID"
+            JOIN "User"
+            ON "rentalUserID" = "userID"
+            JOIN "Space"
+            ON "spaceID" = "rentalSpaceID"
+            WHERE 
+            "spaceComplexID" = ?
+            AND "issueForManager" = TRUE
+            UNION
+            SELECT null AS "userName", null AS "userPhone", null AS "userEmail",null AS "rentalDate", null AS "rentalState", "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved",null AS "spaceName", null AS"rentalStartTime"
+             FROM "Issue"
+                WHERE 
+                "issueComplexID" = ?
+                AND "issueForManager" = TRUE
+            ORDER BY "issueID"
+            LIMIT 10 OFFSET (10 * ?);');
+    $stmt->execute(array($complexID, $complexID, $page));
+    return $stmt->fetchAll();
+}
+
+function getNrAllComplexIssues($complexID) // PARA O MANAGER
+{
+    global $conn;
+
+    $stmt = $conn->prepare('
+           SELECT count("issues")
+           FROM
+           (
+            SELECT "userName", "userPhone", "userEmail", "rentalDate", "rentalState", "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved", "spaceName", "rentalStartTime"
+            FROM "Issue"
+            JOIN "Rental"
+            ON "rentalID" = "issueRentalID"
+            JOIN "User"
+            ON "rentalUserID" = "userID"
+            JOIN "Space"
+            ON "spaceID" = "rentalSpaceID"
+            WHERE 
+            "spaceComplexID" = ?
+            AND "issueForManager" = TRUE
+            UNION
+            SELECT null AS "userName", null AS "userPhone", null AS "userEmail",null AS "rentalDate", null AS "rentalState", "issueID", "issueSubject", "issueCategory", "issueDescription", "issueResolved",null AS "spaceName", null AS"rentalStartTime"
+             FROM "Issue"
+                WHERE 
+                "issueComplexID" = ?
+                AND "issueForManager" = TRUE
+          ) AS "issues";');
+    $stmt->execute(array($complexID, $complexID));
+    return $stmt->fetch()['count'];
+}
 
 function getComplexIssuesNr($complexID)
 {

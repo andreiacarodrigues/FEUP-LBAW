@@ -24,9 +24,8 @@
         <a href="#" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issueModal">Add Issue <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
 
         {$VALUE=1 + ($PAGE * 10)}
-        {foreach $ISSUES1 as $ISSUE}
+        {foreach $ISSUES as $ISSUE}
         {strip}
-        {if $VALUE <  10 + ($PAGE * 10)}
         <hr>
         <div class="rental well well-sm">
             <div class="row">
@@ -74,56 +73,10 @@
                 </div>
             </div>
         </div>
-        {/if}
+
             {$VALUE = $VALUE + 1}
         {/strip}
         {/foreach}
-
-        {foreach $ISSUES2 as $ISSUE}
-        {strip}
-        {if $VALUE < 10 + ($PAGE * 10)}
-
-            <hr>
-            <div class="rental well well-sm">
-            <div class="row">
-            <div class="container">
-            <div class="col-md-2">
-                <h4 class="mobileFixText">Issue #<span>{$VALUE}</span></h4>
-            </div>
-            <div class="col-md-8">
-                <ul class="list-unstyled">
-                    <p> Issue Information: </p>
-                    <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Subject: <span> {$ISSUE.issueSubject} </span></label></li>
-                    <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> {$ISSUE.issueCategory} </span></label></li>
-                    <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Description: <span>{$ISSUE.issueDescription} </span></label></li>
-                    <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Resolved: <span>
-                                          {if $ISSUE.issueResolved == true}
-                                             Yes
-                                         {else}
-                                             No
-                                         {/if}
-                            </span></label></li>
-                </ul>
-            </div>
-
-            <div class="col-md-2 mobileFixButtons">
-                {if $ISSUE.issueResolved == false}
-                <form class="tr equipmentForm" action="{$BASE_URL}actions/managers/resolveIssue.php" method="post" autocomplete="on">
-                    <input type="hidden" name="complexID" value="{$complexID}" />
-                    <input type="hidden" name="issueID" value="{$ISSUE.issueID}" />
-                    <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Resolve </button>
-                </form>
-            {/if}
-            </div>
-            </div>
-            </div>
-            </div>
-        {/if}
-            {$VALUE = $VALUE + 1}
-        {/strip}
-        {/foreach}
-
-
 
         {$COUNT = 0}
 
