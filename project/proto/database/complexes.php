@@ -168,7 +168,7 @@
         return $rental ? true : false;
     }
 
-    function getComplexRentals($complexID){
+    function getComplexRentals($complexID, $page){
         global $conn;
 
         $stmt = $conn->prepare(
@@ -181,9 +181,27 @@
             ON "complexID" = "spaceComplexID"
             JOIN "User"
             ON "userID" = "rentalUserID"
-            WHERE "complexID" = ?;');
-        $stmt->execute(array($complexID));
+            WHERE "complexID" = ?
+            LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($complexID, $page));
         return $stmt->fetchAll();
+    }
+
+    function getNrComplexRentals($complexID){
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT count("rentalID")
+                FROM "Rental"
+                JOIN "Space"
+                ON "spaceID" = "rentalSpaceID"
+                JOIN "SportsComplex"
+                ON "complexID" = "spaceComplexID"
+                JOIN "User"
+                ON "userID" = "rentalUserID"
+                WHERE "complexID" = ?;');
+        $stmt->execute(array($complexID));
+        return $stmt->fetch()['count'];
     }
 
     function getRentalIssue($rentalID){
@@ -840,7 +858,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         return $stmt->fetchAll();
     }
 
-function getAllComplexIssues($complexID, $page) // PARA O MANAGER
+    function getAllComplexIssues($complexID, $page) // PARA O MANAGER
 {
     global $conn;
 
@@ -869,7 +887,7 @@ function getAllComplexIssues($complexID, $page) // PARA O MANAGER
     return $stmt->fetchAll();
 }
 
-function getNrAllComplexIssues($complexID) // PARA O MANAGER
+    function getNrAllComplexIssues($complexID)
 {
     global $conn;
 
@@ -899,26 +917,7 @@ function getNrAllComplexIssues($complexID) // PARA O MANAGER
     return $stmt->fetch()['count'];
 }
 
-function getComplexIssuesNr($complexID)
-{
-    global $conn;
-
-    $stmt = $conn->prepare('
-            SELECT count("issueID")
-            FROM "Issue"
-            JOIN "Rental"
-            ON "rentalID" = "issueRentalID"
-            JOIN "User"
-            ON "rentalUserID" = "userID"
-            JOIN "Space"
-            ON "spaceID" = "rentalSpaceID"
-            WHERE 
-            "spaceComplexID" = ?
-            AND "issueForManager" = TRUE;');
-    $stmt->execute(array($complexID));
-    return $stmt->fetch()['count'];
-}
-
+    // VER SE ISTO ESTA A SER USADO EM ALGUM LADO
     function getComplexIssuesManager($complexID, $page) // PARA O MANAGER
     {
         global $conn;
@@ -933,20 +932,6 @@ function getComplexIssuesNr($complexID)
         $stmt->execute(array($complexID, $page));
         return $stmt->fetchAll();
     }
-
-function getComplexIssuesManagerNr($complexID) // PARA O MANAGER
-{
-    global $conn;
-
-    $stmt = $conn->prepare('
-                SELECT count("issueID")
-                FROM "Issue"
-                WHERE 
-                "issueComplexID" = ?
-                AND "issueForManager" = TRUE;');
-    $stmt->execute(array($complexID));
-    return $stmt->fetch()['count'];
-}
 
     function getRentalEquipment($rentalID)
     {

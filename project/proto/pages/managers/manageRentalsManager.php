@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
+    include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -18,7 +19,20 @@
         die();
     }
 
-    $rentals = getComplexRentals($complexID);
+    $page = 0;
+
+    if(isset($_GET['page']))
+    {
+        $page = trim(strip_tags($_GET['page']));
+        if(!is_numeric($page))
+        {
+            $_SESSION['error_messages'][] = "Invalid page parameter";
+            header("Location: " . $BASE_URL . "pages/users/manageRentals.php?page=0");
+            die();
+        }
+    }
+
+    $rentals = getComplexRentals($complexID, $page);
 
 
     $final = array();
@@ -43,6 +57,15 @@
 
         array_push($final,$rental);
     }
+
+
+    $totalRentals = getNrComplexRentals($complexID);
+
+    $pagination = pagination($totalRentals, 10, ($page+1), 6);
+
+    $smarty->assign('PAGINATION', $pagination);
+
+    $smarty->assign('PAGE', $page);
 
     $smarty->assign('RENTALS', $final);
 

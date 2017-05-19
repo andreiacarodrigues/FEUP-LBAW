@@ -23,10 +23,9 @@
 
         <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$complexID}" class="btn btn-primary gradient-blue">Add Rental <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
         <hr>
-        {$VALUE=1}
+        {$VALUE=1 + ($PAGE * 10)}
         {foreach $RENTALS as $RENTAL}
         {strip}
-        {if $VALUE <= count($RENTALS)}
         <div class="rental well well-sm">
             <div class="row">
                 <div class="container">
@@ -88,10 +87,35 @@
                 </div>
             </div>
         </div>
-        {/if}
+
             {$VALUE = $VALUE + 1}
         {/strip}
         {/foreach}
+
+        {$COUNT = 0}
+
+        <br><br>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <ul class="pagination">
+                    {while $COUNT  < count($PAGINATION)}
+                        {$VALUE = $PAGINATION[$COUNT]}
+                        {if $VALUE == ($PAGE + 1)}
+                            <li class="active">
+                                <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$complexID}&page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$complexID}&page={$VALUE - 1}">{$VALUE}</a>
+                            </li>
+                        {/if}
+                        {$COUNT = $COUNT + 1}
+
+                    {/while}
+
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 	
