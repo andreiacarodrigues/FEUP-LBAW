@@ -998,3 +998,16 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
                 "complexID" = ?;');
         return $stmt->execute(array($complexID));
     }
+
+    function getComplexSuggestions()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                SELECT "complexID", "complexName"
+                FROM "SportsComplex"
+                ORDER BY random()
+                LIMIT 4;');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }

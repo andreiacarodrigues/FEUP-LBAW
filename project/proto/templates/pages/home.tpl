@@ -210,51 +210,21 @@
                 <h2 class="section-heading">Sugestions</h2><hr>
                 <div class="container text-center">
                     <div class="row">
+                        {foreach $SUGGESTIONS as $COMPLEX}
+                        {strip}
                         <div class="col-md-3">
                             <div class="thumbnail">
                                 <a href="#">
                                     <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
                                 </a>
                                 <div class="caption">
-                                    <h5> Complex 1 ⭐⭐⭐⭐</h5>
-                                    <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    <h5> {$COMPLEX.complexName} ⭐⭐⭐⭐</h5>
+                                    <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                                </a>
-                                <div class="caption">
-                                    <h5> Complex 1 ⭐⭐⭐⭐</h5>
-                                    <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                                </a>
-                                <div class="caption">
-                                    <h5> Complex 1 ⭐⭐⭐⭐</h5>
-                                    <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                                </a>
-                                <div class="caption">
-                                    <h5> Complex 1 ⭐⭐⭐⭐</h5>
-                                    <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                        {/strip}
+                        {/foreach}
                     </div>
                 </div>
             </div>

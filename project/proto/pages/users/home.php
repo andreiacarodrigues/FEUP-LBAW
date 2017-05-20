@@ -3,6 +3,7 @@
     include_once($BASE_DIR."database/municipalities.php");
     include_once($BASE_DIR."database/sports.php");
     include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/complexes.php");
 
     if(isset($_SESSION['userID']))
     {
@@ -14,6 +15,8 @@
 
     }
 
+    $suggestions = getComplexSuggestions();
+
     $municipalities = getMunicipalitiesList();
 
     $smarty->assign('municipalityIDs',$municipalities[0]);
@@ -23,6 +26,8 @@
 
     $smarty->assign('EQUIPMENT_INFORMATION', $parsedInformation);
     $smarty->assign('SPORTS', $sports);
+
+    $smarty->assign('SUGGESTIONS', $suggestions);
 
 $smarty->display('pages/home.tpl');
 ?>
