@@ -514,6 +514,10 @@ td input{
     font-size: 1em;
 }
 
+.adminRequests button{
+    width: 100px;
+}
+
 .manageComplexes .btn-group-vertical{
     margin-top:3%;
 }

@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
 include_once($BASE_DIR."database/users.php");
+include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -16,6 +17,9 @@ include_once($BASE_DIR."database/users.php");
         die();
     }
 
+    $requests = getAdminRequests();
 
-$smarty->display('pages/admins/adminRequests.tpl');
+    $smarty->assign('REQUESTS', $requests);
+
+    $smarty->display('pages/admins/adminRequests.tpl');
 ?>

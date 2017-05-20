@@ -79,6 +79,30 @@
         return $admin ? true : false;
     }
 
+    function acceptAdmin($adminID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+        UPDATE "Admin"
+        SET
+        "adminAccepted" = true
+        WHERE
+        "adminID" = ?;');
+        return $stmt->execute(array($adminID));
+    }
+
+    function removeRequest($adminID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            DELETE FROM "Admin"
+            WHERE
+            "adminID" = ?;');
+        return $stmt->execute(array($adminID));
+    }
+
     function userIsBanned($userID)
     {
         global $conn;

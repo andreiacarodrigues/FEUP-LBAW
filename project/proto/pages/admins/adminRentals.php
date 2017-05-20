@@ -31,42 +31,84 @@ include_once($BASE_DIR."database/users.php");
         }
     }
 
-    $rentals = getRentals($page);
+    $onlyIssues = -1;
+
+    if(isset($_GET['issues']))
+    {
+        $onlyIssues = trim(strip_tags($_GET['issues']));
+
+        if(!is_numeric($onlyIssues) || $onlyIssues != '1')
+        {
+            $_SESSION['error_messages'][] = "Error loading only rentals with issues.";
+            header("Location: " . $BASE_URL . "pages/admins/adminRentals.php");
+            die();
+        }
+
+        $smarty->assign('ONLYISSUES', $onlyIssues);
+    }
 
     $final = array();
 
-    foreach ($rentals as $rental)
-    {
-        $rentalID = $rental['rentalID'];
+    if($onlyIssues == -1) {
 
-        $result = "";
+        $rentals = getRentals($page);
 
-        $equipmentInfo = getRentalEquipment($rentalID);
+        foreach ($rentals as $rental) {
+            $rentalID = $rental['rentalID'];
 
-        foreach ($equipmentInfo as $equipment)
-        {
-            if($result == "")
-                $result = $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
-            else
-                $result = $result . ", " .  $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
+            $result = "";
+
+            $equipmentInfo = getRentalEquipment($rentalID);
+
+            foreach ($equipmentInfo as $equipment) {
+                if ($result == "")
+                    $result = $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
+                else
+                    $result = $result . ", " . $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
+            }
+
+            $rental['equipment'] = $result;
+
+            $issue = getRentalIssue($rentalID);
+
+            if (!empty($issue)) {
+                $rental['issueSubject'] = $issue['issueSubject'];
+                $rental['issueDescription'] = $issue['issueDescription'];
+                $rental['issueCategory'] = $issue['issueCategory'];
+            } else
+                $rental['issueSubject'] = "NO_ISSUE";
+
+            array_push($final, $rental);
         }
+    }
+    else{
 
-        $rental['equipment'] = $result;
+        $rentals = getRentalsWithIssues($page);
 
-        $issue = getRentalIssue($rentalID);
+        foreach ($rentals as $rental) {
+            $rentalID = $rental['rentalID'];
 
-       if(!empty($issue)) {
-           $rental['issueSubject'] = $issue['issueSubject'];
-           $rental['issueDescription'] = $issue['issueDescription'];
-           $rental['issueCategory'] = $issue['issueCategory'];
-       }
-       else
-           $rental['issueSubject'] = "NO_ISSUE";
+            $result = "";
 
-        array_push($final,$rental);
+            $equipmentInfo = getRentalEquipment($rentalID);
+
+            foreach ($equipmentInfo as $equipment) {
+                if ($result == "")
+                    $result = $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
+                else
+                    $result = $result . ", " . $equipment['equipmentName'] . '(' . $equipment['rentalEquipmentQuantity'] . ')';
+            }
+
+            $rental['equipment'] = $result;
+
+            array_push($final, $rental);
+        }
     }
 
-    $totalRentals = getNrRentals();
+    if($onlyIssues == -1)
+     $totalRentals = getNrRentals();
+    else
+     $totalRentals  = getNrRentalsWithIssues();
 
     $pagination = pagination($totalRentals, 10, ($page+1), 6);
 
@@ -75,6 +117,8 @@ include_once($BASE_DIR."database/users.php");
     $smarty->assign('PAGE', $page);
 
     $smarty->assign('RENTALS', $final);
+
+
 
     $smarty->display('pages/admins/adminRentals.tpl');
 ?>

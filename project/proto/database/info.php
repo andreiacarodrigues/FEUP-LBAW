@@ -23,18 +23,31 @@
     }
 
 
-    function getAllComplexes()
+    function getAllComplexes($page)
     {
         global $conn;
 
         $stmt = $conn->prepare(
             'SELECT "complexID", "complexName", "complexEmail", "complexPhone", "complexInactive"
-            FROM "SportsComplex";');
-        $stmt->execute();
+            FROM "SportsComplex"
+            LIMIT 9 OFFSET (9 * ?);');
+        $stmt->execute(array($page));
         return $stmt->fetchAll();
     }
 
-    function getAdminIssues()
+    function getNrComplexes()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT count("complexID")
+                FROM "SportsComplex"
+                ;');
+        $stmt->execute();
+        return $stmt->fetch()['count'];
+    }
+
+    function getAdminIssues($page)
     {
         global $conn;
 
@@ -43,13 +56,42 @@
                 FROM "Issue"
                     JOIN  "User" ON "userID" = "issueUserID"
                     WHERE "issueUserID" IS NOT NULL 
-                    AND "issueForAdmin" = true;
+                    AND "issueForAdmin" = true
+                     LIMIT 10 OFFSET (10 * ?);;
                 ');
+        $stmt->execute(array($page));
+        return $stmt->fetchAll();
+    }
+
+    function getAdminIssuesNr()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT count("issueID")
+                    FROM "Issue"
+                        JOIN  "User" ON "userID" = "issueUserID"
+                        WHERE "issueUserID" IS NOT NULL 
+                        AND "issueForAdmin" = true;
+                    ');
+        $stmt->execute();
+        return $stmt->fetch()['count'];
+    }
+
+    function getAdminRequests()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "adminID", "adminUsername"
+             FROM "Admin"
+                           
+             WHERE "adminAccepted" = false ; ');
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    function getRentals($page)
+function getRentals($page)
     {
         global $conn;
 
@@ -70,6 +112,30 @@
         return $stmt->fetchAll();
     }
 
+
+    function getRentalsWithIssues($page)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "rentalID","userName", "userPhone", "userEmail", "rentalDate", 
+                "complexName", "complexPhone", "complexEmail", "spaceName", 
+                "rentalStartTime", "rentalDurationInMinutes", "rentalState", "issueSubject", "issueDescription", "issueCategory"
+                FROM "Rental"
+                JOIN "Space"
+                ON "spaceID" = "rentalSpaceID"
+                JOIN "SportsComplex"
+                ON "complexID" = "spaceComplexID"
+                JOIN "User"
+                ON "userID" = "rentalUserID"
+                JOIN "Issue"
+                ON "rentalID" = "issueRentalID"
+                  ORDER BY "rentalDate", "rentalStartTime" DESC
+                LIMIT 10 OFFSET (10 * ?);');
+        $stmt->execute(array($page));
+        return $stmt->fetchAll();
+    }
+
     function getNrRentals()
     {
         global $conn;
@@ -83,6 +149,25 @@
                 ON "complexID" = "spaceComplexID"
                 JOIN "User"
                 ON "userID" = "rentalUserID";');
+        $stmt->execute();
+        return $stmt->fetch()['count'];
+    }
+
+    function getNrRentalsWithIssues()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT count("rentalID")
+                    FROM "Rental"
+                    JOIN "Space"
+                    ON "spaceID" = "rentalSpaceID"
+                    JOIN "SportsComplex"
+                    ON "complexID" = "spaceComplexID"
+                    JOIN "User"
+                    ON "userID" = "rentalUserID"
+                      JOIN "Issue"
+                    ON "rentalID" = "issueRentalID";');
         $stmt->execute();
         return $stmt->fetch()['count'];
     }

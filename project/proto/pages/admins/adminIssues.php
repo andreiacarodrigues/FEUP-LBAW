@@ -18,12 +18,30 @@
         die();
     }
 
+    $page = 0;
 
-    $issues = getAdminIssues();
+    if(isset($_GET['page']))
+    {
+        $page = trim(strip_tags($_GET['page']));
+        if(!is_numeric($page))
+        {
+            $_SESSION['error_messages'][] = "Invalid page parameter";
+            header("Location: " . $BASE_URL . "pages/users/manageRentals.php?page=0");
+            die();
+        }
+    }
+
+    $issues = getAdminIssues($page);
 
     $smarty->assign('ISSUES',$issues);
 
+    $numIssues = getAdminIssuesNr();
 
+    $pagination = pagination($numIssues, 10, ($page+1), 6);
 
-$smarty->display('pages/admins/adminIssues.tpl');
+    $smarty->assign('PAGINATION', $pagination);
+
+    $smarty->assign('PAGE', $page);
+
+    $smarty->display('pages/admins/adminIssues.tpl');
 ?>

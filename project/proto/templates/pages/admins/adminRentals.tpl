@@ -22,17 +22,27 @@
                 {/foreach}
             {/if}
         </div>
+        {if $ONLYISSUES}
+        <form action="{$BASE_URL}pages/admins/adminRentals.php" method="post" autocomplete="on">
+            {else}
+            <form action="{$BASE_URL}pages/admins/adminRentals.php?issues=1" method="post" autocomplete="on">
+            {/if}
         <div class="form-group">
         <div class="input-group">
             <div class="checkbox checkbox-info">
                 <label>
-                    <input type="checkbox" value="">
+                    {if $ONLYISSUES}
+                        <input type="checkbox" onclick="this.form.submit()" checked>
+                    {else}
+                    <input type="checkbox" onclick="this.form.submit()">
+                    {/if}
                     <span>Show only rentals with issue reports</span>
                 </label>
 
             </div>
         </div>
         </div>
+        </form>
         <br>
 
         {$VALUE=1 + ($PAGE * 10)}
@@ -129,21 +139,20 @@
                         {$VALUE = $PAGINATION[$COUNT]}
                         {if $VALUE == ($PAGE + 1)}
                             <li class="active">
-                                <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$complexID}&page={$VALUE - 1}">{$VALUE}</a>
-                            </li>
-                        {else}
+                                {else}
                             <li>
-                                <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$complexID}&page={$VALUE - 1}">{$VALUE}</a>
-                            </li>
                         {/if}
+                            {if $ONLYISSUES}
+                                <a href="{$BASE_URL}pages/admins/adminRentals.php?page={$VALUE - 1}&issues=1">{$VALUE}</a>
+                                {else}
+                                    <a href="{$BASE_URL}pages/admins/adminRentals.php?page={$VALUE - 1}">{$VALUE}</a>
+                                {/if}
+                            </li>
                         {$COUNT = $COUNT + 1}
-
                     {/while}
-
                 </ul>
             </div>
         </div>
-
             </div>
         </div>
 
