@@ -54,7 +54,93 @@
         return $stmt->fetch()['complexID'];
     }
 
-    function editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive)
+    function addComplexPhoto($complexID)
+    {
+        $originalFileName = "../../res/img/originals/complex_$complexID.jpg";
+        $smallFileName = "../../res/img/thumbs_small/complex_$complexID.jpg";
+        $mediumFileName = "../../res/img/thumbs_medium/complex_$complexID.jpg";
+
+        move_uploaded_file($_FILES['photo']['tmp_name'], $originalFileName);
+
+        $original = imagecreatefromjpeg($originalFileName);
+
+        $width = imagesx($original);
+        $height = imagesy($original);
+        $square = min($width, $height);
+
+        // Create small square thumbnail
+        $small = imagecreatetruecolor(100, 100);
+        imagecopyresized($small, $original, 0, 0, ($width > $square) ? ($width - $square) / 2 : 0, ($height > $square) ? ($height - $square) / 2 : 0, 100, 100, $square, $square);
+        imagejpeg($small, $smallFileName);
+
+        $mediumwidth = $width;
+        $mediumheight = $height;
+
+        if ($mediumwidth > 400) {
+            $mediumwidth = 400;
+            $mediumheight = $mediumheight * ($mediumwidth / $width);
+        }
+
+        $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
+        imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
+        imagejpeg($medium, $mediumFileName);
+    }
+
+    function destroyComplexPhoto($complexID)
+    {
+        $originalFileName = "../../res/img/originals/complex_$complexID.jpg";
+        $smallFileName = "../../res/img/originals/complex_$complexID.jpg";
+        $mediumFileName = "../../res/img/originals/complex_$complexID.jpg";
+
+        unlink($originalFileName);
+        unlink($smallFileName);
+        unlink($mediumFileName);
+    }
+
+    function addSpacePhoto($spaceID)
+    {
+        $originalFileName = "../../res/img/originals/space_$spaceID.jpg";
+        $smallFileName = "../../res/img/thumbs_small/space_$spaceID.jpg";
+        $mediumFileName = "../../res/img/thumbs_medium/space_$spaceID.jpg";
+
+        move_uploaded_file($_FILES['photo']['tmp_name'], $originalFileName);
+
+        $original = imagecreatefromjpeg($originalFileName);
+
+        $width = imagesx($original);
+        $height = imagesy($original);
+        $square = min($width, $height);
+
+        // Create small square thumbnail
+        $small = imagecreatetruecolor(100, 100);
+        imagecopyresized($small, $original, 0, 0, ($width > $square) ? ($width - $square) / 2 : 0, ($height > $square) ? ($height - $square) / 2 : 0, 100, 100, $square, $square);
+        imagejpeg($small, $smallFileName);
+
+        $mediumwidth = $width;
+        $mediumheight = $height;
+
+        if ($mediumwidth > 400) {
+            $mediumwidth = 400;
+            $mediumheight = $mediumheight * ($mediumwidth / $width);
+        }
+
+        $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
+        imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
+        imagejpeg($medium, $mediumFileName);
+    }
+
+    function destroySpacePhoto($spaceID)
+    {
+        $originalFileName = "../../res/img/originals/space_$spaceID.jpg";
+        $smallFileName = "../../res/img/originals/space_$spaceID.jpg";
+        $mediumFileName = "../../res/img/originals/space_$spaceID.jpg";
+
+        unlink($originalFileName);
+        unlink($smallFileName);
+        unlink($mediumFileName);
+    }
+
+function editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive)
     {
         global $conn;
 

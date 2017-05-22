@@ -19,11 +19,12 @@
     $condition4 = isset($_POST['surface']);
     $condition5 = isset($_POST['price']);
     $condition6 = isset($_POST['sports']);
-    $condition7 = isset($_POST['isAvailable']);
+    $condition7 = isset($_POST['availability']);
     $condition8 = isset($_POST['coverage']);
 
     if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 || !$condition6 || !$condition7 || !$condition8)
     {
+        echo "." . !$condition1 . "." . ' ' . !$condition2 . "." .' ' . !$condition3 . "." .' ' . !$condition4 . "." .' ' . !$condition5 . "." .' ' . !$condition6 . "." .' ' . !$condition7 . "." .' ' . !$condition8;
         $_SESSION['error_messages'][] = "Required field is not set.";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();
@@ -52,8 +53,8 @@
         }
     }
 
-    if(!is_available($_POST['isAvailable']) || !is_coverage($_POST['coverage']) || !is_numeric($complexID) || !is_numeric($spaceID)
-        || !is_name($name) || !is_numeric(price))
+    if(!is_available($_POST['availability']) || !is_coverage($_POST['coverage']) || !is_numeric($complexID) || !is_numeric($spaceID)
+        || !is_name($name) || !is_numeric($price))
     {
         $_SESSION['error_messages'][] = "Invalid field";
         header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
@@ -66,11 +67,17 @@
         die();
     }
 
-    if($_POST['isAvailable']=="Unavailable")
+    if($_POST['availability']=="Unavailable")
         $isAvailable = "false";
 
     if($_POST['coverage'] == "Uncovered")
         $coverage = "false";
+
+    $condition9 = isset($_FILES['photo']);
+
+    $photo = null;
+    if($condition9)
+        $photo = $_FILES['photo']['tmp_name'];
 
     try
     {
@@ -82,6 +89,15 @@
         }
         else if (editSpace($spaceID, $name, $surface, $coverage, $isAvailable, $price, $sports))
         {
+            if($photo != null)
+            {
+                if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+
+                    destroySpacePhoto($spaceID);
+                    addSpacePhoto($spaceID);
+                }
+            }
+
             $_SESSION['success_messages'][] = "Space edited successful";
             header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
         }

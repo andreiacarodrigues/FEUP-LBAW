@@ -50,6 +50,11 @@
         die();
     }
 
+    $condition6 = isset($_FILES['photo']);
+    $photo = null;
+    if($condition6)
+        $photo = $_FILES['photo']['tmp_name'];
+
     $required = [$name, $surface, $_POST['coverage'], $sports, $price];
 
     foreach ($required as $item)
@@ -73,8 +78,14 @@
         }
         else if ($spaceID = addSpace($complexID, $name, $surface, $coverage, $price, $sports))
         {
-            $_SESSION['success_messages'][] = "Space registry successful";
+            if($photo != null)
+            {
+                if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+                    addSpacePhoto($spaceID);
+                }
+            }
 
+            $_SESSION['success_messages'][] = "Space registry successful";
             header("Location: " . $BASE_URL."pages/managers/manageSpaces.php/?complexID=" . $complexID);
         }
         else

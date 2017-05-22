@@ -47,8 +47,15 @@
                 <div class="col-md-4">
                     <div class="thumbnail">
                         <a href="{$BASE_URL}pages/users/sportComplex.php/?complexID={$COMPLEX.complexID}">
-                            <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
+                            {assign var="filename" value="../../res/img/originals/complex_{$COMPLEX.complexID}.jpg"}
+
+                            {if file_exists($filename)}
+                                <img class="img-responsive" src="{$BASE_URL}res/img/originals/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">
+                            {else}
+                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
+                            {/if}
                         </a>
+
                         <div class="caption text-center">
                             <h5>{$COMPLEX.complexName}</h5>
                             <div class="row">

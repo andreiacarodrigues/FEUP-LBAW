@@ -8,7 +8,7 @@
             <br>
         </div>
         <hr class="divider"><br>
-            <form id="addSpaceForm" action="{$BASE_URL}actions/managers/addSpace.php" method="post" autocomplete="on">
+            <form id="addSpaceForm" action="{$BASE_URL}actions/managers/addSpace.php" method="post" autocomplete="on"  enctype="multipart/form-data">
                 <input type="hidden" name="complexID" value="{$complexID}">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -67,8 +67,22 @@
                             </div>
                         </div>
 
-                        <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
-                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> Select representative picture </span>
+                            </div>
+                            <br>
+
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                                <span class="btn btn-primary gradient-blue">
+                                       Browse&hellip; <input type="file" name="photo" style="display: none;">
+                                </span>
+                                </label>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+
                         <br><br>
                         <div class="row errorMessage text-center">
                         <span>

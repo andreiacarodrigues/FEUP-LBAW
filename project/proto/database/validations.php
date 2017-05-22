@@ -37,7 +37,7 @@
     }
 
     function is_available($availability){
-        if(($availability == "Unavailable") || ($coverage == "Available"))
+        if(($availability == "Unavailable") || ($availability == "Available"))
             return true;
         else
             return false;

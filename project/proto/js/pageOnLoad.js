@@ -54,11 +54,19 @@ function complexSpacesInfo(url, complexID){
                     isCovered = "Not covered";
                 }
 
+                var fileURL = url + 'res/img/originals/space_' + space['id'] + '.jpg';
+
+                var result = UrlExists(fileURL);
+
+                var photoURL = "http://placehold.it/700x400";
+                if(result)
+                    photoURL = url + 'res/img/originals/space_' + space['id'] + '.jpg';
+
                 $('#spaces').append(
                     '<div class="row">' +
                         '<div class="col-md-3">' +
                             '<a href="#">' +
-                            '<img class="img-responsive" src="http://placehold.it/700x400" style="width:300px" alt="">' +
+                            '<img class="img-responsive" src="' + photoURL + '" style="width:300px" alt="">' +
                             '</a>' +
                         '</div>' +
                         '<div class="col-md-9">'+
@@ -76,6 +84,14 @@ function complexSpacesInfo(url, complexID){
                 )
             }
         });
+}
+
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
 }
 
 function addSpace(){
@@ -599,5 +615,29 @@ function adminSignUp(){
         if(error)
             return false;
 
+    });
+}
+
+function imagesInput(doc){
+    doc.on('change', ':file', function() {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+
+    doc.ready( function() {
+        $(':file').on('fileselect', function(event, numFiles, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if( input.length ) {
+                input.val(log);
+            } else {
+                if( log ) alert(log);
+            }
+
+        });
     });
 }

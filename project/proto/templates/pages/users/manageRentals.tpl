@@ -111,6 +111,7 @@
 
 <br><br>
 
+        {if count($RENTALS) != 0}
         {$COUNT = 0}
 
         <br><br>
@@ -136,7 +137,7 @@
             </div>
         </div>
 
-
+{/if}
 
 
         <!-- Modal -->

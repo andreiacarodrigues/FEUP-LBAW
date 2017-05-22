@@ -11,5 +11,14 @@
     }
 
     $smarty->assign('complexID',$complexID);
+
+    if (file_exists($BASE_DIR . 'res/img/originals/complex_' . $complexID . '.jpg')) {
+       $hasPhoto = true;
+    } else {
+        $hasPhoto = false;
+    }
+
+    $smarty->assign('hasPhoto',$hasPhoto);
+
     $smarty->display('pages/users/sportComplex.tpl');
 ?>

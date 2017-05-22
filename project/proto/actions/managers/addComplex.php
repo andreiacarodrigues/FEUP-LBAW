@@ -40,6 +40,12 @@
     $openOnWeekends = trim(strip_tags($_POST['openOnWeekends']));
     $paypal = trim(strip_tags($_POST['paypal']));
 
+    $condition11 = isset($_FILES['photo']);
+
+    $photo = null;
+    if($condition11)
+        $photo = $_FILES['photo']['tmp_name'];
+
     $required = [$name, $location, $municipality, $email, $contact, $openingHour, $closingHour, $openOnWeekends, $paypal];
 
     foreach ($required as $item)
@@ -79,6 +85,15 @@
         if ($complexID = addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal))
         {
             addManager($complexID, $userID);
+
+            if($photo != null)
+            {
+                if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+
+                    addComplexPhoto($complexID);
+                }
+            }
+
             $_SESSION['success_messages'][] = "Complex registry successful";
             header("Location: ".$BASE_URL."pages/managers/manageComplexes.php");
         }

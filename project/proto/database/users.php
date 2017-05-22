@@ -296,3 +296,5 @@ function getUserNrRentals($userID)
 
         return $stmt->fetch()['userID'];
     }
+
+

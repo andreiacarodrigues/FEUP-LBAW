@@ -42,7 +42,14 @@
                         <div class="col-md-4">
                             <div class="thumbnail">
                                 <a href="{$BASE_URL}pages/users/space.php/?spaceID={$SPACE.spaceID}">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
+                                    {assign var="filename" value="../../res/img/originals/space_{$SPACE.spaceID}.jpg"}
+
+                                    {if file_exists($filename)}
+                                        <img class="img-responsive" src="{$BASE_URL}res/img/originals/space_{$SPACE.spaceID}.jpg" style="width:100%" alt="">
+                                    {else}
+                                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
+                                    {/if}
+
                                 </a>
                                 <div class="caption ">
                                     <h5 class="text-center">{$SPACE.spaceName}</h5><br>
@@ -93,13 +100,18 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form id="editSpaceForm" action="{$BASE_URL}actions/managers/editSpace.php" method="post" autocomplete="on" class="form-horizontal" role="form">
+                        <form id="editSpaceForm" action="{$BASE_URL}actions/managers/editSpace.php" method="post" autocomplete="on" class="form-horizontal" role="form"  enctype="multipart/form-data">
                             <input type="hidden" name="complexID" value="{$complexID}"/>
                             <input type="hidden" name="spaceID"/>
                             <input type="hidden" name="name"/>
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1">
                                     <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Name</span>
+                                                <input type="text" class="form-control" name="name"  placeholder=""/>
+                                            </div>
+
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Surface</span>
                                             <select class="form-control" title="" name="surface">
@@ -147,11 +159,19 @@
                                             <span>Hold CTRL key and click on the sports you wish to be added to your space.</span>
                                         </div>
 
-                                        <div class="input-group">
-                                            <input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
-                                            <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon"> Select representative picture </span>
+                                            </div>
+
+
+                                            <div class="input-group">
+                                                <span class="btn btn-primary ">
+                                                      <input type="file" name="photo" style="">
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
+
 
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary gradient-blue">Submit</button>

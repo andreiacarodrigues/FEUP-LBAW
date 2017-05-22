@@ -22,13 +22,19 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><span id="infoName"></span> </h1>
+            <h1 class="page-header"><span id="infoName"></span></h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <img class="img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
+            {if $hasPhoto}
+                <img class="img-responsive" style="width:350px" src="{$BASE_URL}res/img/originals/complex_{$complexID}.jpg" alt="">
+            {else}
+                <img class="img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
+            {/if}
+
+
         </div>
         <div class="col-md-5">
 

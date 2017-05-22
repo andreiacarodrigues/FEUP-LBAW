@@ -66,8 +66,6 @@
     $closingHour = $closingHour . ':00';
 
 
-
-
     if(!is_numeric($complexID) || !is_numeric($municipality) || !is_numeric($contact) ||
     !is_contact($contact) || !is_name($name) || !is_location($location) || !is_email($email) || !is_email($paypal))
     {
@@ -84,6 +82,12 @@
         $description = '';
     }
 
+    $condition10 = isset($_FILES['photo']);
+
+    $photo = null;
+    if($condition10)
+        $photo = $_FILES['photo']['tmp_name'];
+
     try
     {
         if (!isComplexManager($complexID, $userID))
@@ -94,6 +98,15 @@
         }
         else if (editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive))
         {
+            if($photo != null)
+            {
+                if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+
+                    destroyComplexPhoto($complexID);
+                    addComplexPhoto($complexID);
+                }
+            }
+
             $_SESSION['success_messages'][] = "Complex edited successfully";
            header("Location: ".$BASE_URL."pages/managers/manageComplexes.php");
         }

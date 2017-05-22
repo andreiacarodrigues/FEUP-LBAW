@@ -109,7 +109,7 @@ input[type=button]{
     color:black;
 }
 
-.manageComplexes h4, .manageSpaces h4{
+.manageComplexes h4{
     padding-top:10%;
     font-size:16px;
     color:black;
