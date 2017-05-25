@@ -110,5 +110,6 @@
 <script>
     $(function(){
         addSpace();
+        imagesInput($(document));
     });
 </script>

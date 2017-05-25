@@ -143,6 +143,7 @@ input[type=button]{
 .manageComplexes a,.manageComplexManagers a
 #editSpaceForm input, #editSpaceForm btn,
 #equipmentForm input, #equipmentForm textarea, #equipmentForm select, #equipmentForm .btn,
+#editEquipmentForm input, #editEquipmentForm textarea, #editEquipmentForm select, #editEquipmentForm .btn,
 #equipmentModal input, #equipmentModal textarea, #equipmentModal select, #equipmentModal .btn, #equipmentModal span,
 #issueModalinput, #issueModal span, #issueModal textarea, #issueModal select, #issueModal .btn,
 .admin .btn
@@ -554,7 +555,7 @@ td input{
     padding-bottom: 10%;
 }
 
-.manageSpaces .input-group, .userRentals .modal-body .input-group, .manageEquipment #equipmentModal .modal-body .input-group, #issueModal  .modal-body .input-group{
+.manageSpaces .input-group, .userRentals .modal-body .input-group, .manageEquipment #equipmentModal .modal-body .input-group, .manageEquipment #editEquipmentModal .modal-body .input-group, #issueModal  .modal-body .input-group{
     margin:1%;
 }
 
@@ -870,7 +871,8 @@ label.star:before {
 }
 
 #searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
-#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon, #editForm .input-group-addon{
+#addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon, #editForm .input-group-addon,
+#editEquipmentForm .input-group-addon{
     min-width:112px;
 }
 

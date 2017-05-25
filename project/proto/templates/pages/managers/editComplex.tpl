@@ -151,5 +151,6 @@
 <script>
     $(function(){
         complexValidations();
+        imagesInput($(document));
     });
 </script>

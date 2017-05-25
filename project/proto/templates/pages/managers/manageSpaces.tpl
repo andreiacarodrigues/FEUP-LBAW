@@ -195,6 +195,7 @@
 <script src="{$BASE_URL}js/bootstrap-multiselect.js"></script>-->
 
 <script>
+    imagesInput($(document));
     function updateEditSpaceInfo(complexID,spaceID, spaceName, isCovered, surfaceType, price, isAvailable, sports){
         $('#editSpaceForm input[name="spaceID"]').val(spaceID);
         $('#editSpaceForm input[name="complexID"]').val(complexID);
