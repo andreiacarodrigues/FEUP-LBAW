@@ -23,6 +23,12 @@
 
         <a href="#" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issueModal">Add Issue <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
 
+
+        {if count($RENTALS) == 0}
+        <div class="emptyRentals">
+            <h4> This sports complex doesn't have any issues so far. </h4>
+        </div>
+        {else}
         {$VALUE=1 + ($PAGE * 10)}
         {foreach $ISSUES as $ISSUE}
         {strip}
@@ -102,6 +108,7 @@
                 </ul>
             </div>
         </div>
+        {/if}
 
         <!------------------------>
 

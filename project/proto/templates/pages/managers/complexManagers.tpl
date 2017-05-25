@@ -1,12 +1,12 @@
 {include file='common/userHeader.tpl'}
 
-<div class="manageComplexes">
+<div class="manageComplexManagers">
     <div class="container">
         <form action="{$BASE_URL}actions/managers/addManager.php" method="post" autocomplete="on">
             <div class="form-group form-inline">
-                <div class="input-group">
+                <div class="input-group emailInput">
                     <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="managerEmail" placeholder="Enter the manager's email"/>
+                    <input type="text" class="form-control" name="managerEmail" placeholder="Enter the manager's email" />
                 </div>
                 <button type="submit" class="btn btn-primary gradient-yellow">Add Manager <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                 <input type="hidden" name="complexID" value="{$COMPLEX_ID}">
@@ -25,9 +25,6 @@
                 {foreach $MANAGER_INFORMATION as $INFORMATION}
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <a href="#">
-                                <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                            </a>
                             <div class="caption">
                                 <h5 class="text-center">{$INFORMATION.userName}</h5><br>
 

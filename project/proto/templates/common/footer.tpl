@@ -11,6 +11,10 @@
                     <li>
                         <a href="#" data-target="#issueModal" data-toggle="modal">Contact Administration</a>
                     </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="{$BASE_URL}pages/admins/admin.php">Administration Page</a>
+                    </li>
                 </ul>
                 <p class="copyright text-muted small">Copyright &copy; LBAW1653. All Rights Reserved</p>
             </div>

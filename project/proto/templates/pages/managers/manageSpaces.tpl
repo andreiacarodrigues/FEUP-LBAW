@@ -42,12 +42,12 @@
                         <div class="col-md-4">
                             <div class="thumbnail">
                                 <a href="{$BASE_URL}pages/users/space.php/?spaceID={$SPACE.spaceID}">
-                                    {assign var="filename" value="../../res/img/originals/space_{$SPACE.spaceID}.jpg"}
+                                    {assign var="filename" value="../../res/img/thumbs_medium/space_{$SPACE.spaceID}.jpg"}
 
                                     {if file_exists($filename)}
-                                        <img class="img-responsive" src="{$BASE_URL}res/img/originals/space_{$SPACE.spaceID}.jpg" style="width:100%" alt="">
+                                        <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/space_{$SPACE.spaceID}.jpg" style="width:100%" alt="">
                                     {else}
-                                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
+                                        <img class="img-responsive" src="http://placehold.it/600x400" style="width:100%" alt="">
                                     {/if}
 
                                 </a>

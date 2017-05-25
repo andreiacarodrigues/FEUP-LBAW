@@ -23,6 +23,12 @@
 
         <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$complexID}" class="btn btn-primary gradient-blue">Add Rental <i class="fa fa-plus-circle" aria-hidden="true"></i>  </a>
         <hr>
+
+        {if count($RENTALS) == 0}
+            <div class="emptyRentals">
+                <h4> This sports complex doesn't have any rentals so far. </h4>
+            </div>
+        {else}
         {$VALUE=1 + ($PAGE * 10)}
         {foreach $RENTALS as $RENTAL}
         {strip}
@@ -116,8 +122,11 @@
                 </ul>
             </div>
         </div>
+        {/if}
     </div>
 </div>
+
+
 	
 {include file='common/footer.tpl'}
 

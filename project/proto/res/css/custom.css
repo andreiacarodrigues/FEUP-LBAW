@@ -67,12 +67,14 @@ input[type=button]{
      min-height: 85%;
  }
 
-.userRentals, .manageComplexes, .manageSpaces, .manageEquipment {
+.userRentals, .manageComplexes, .manageSpaces, .manageEquipment, .manageComplexManagers {
     margin-top: 8%;
     margin-bottom: 3%;
     min-height: 85%;
     font-size:0.95em;
 }
+
+
 
 .intro-message-home span{
     font-size: 18px;
@@ -138,7 +140,7 @@ input[type=button]{
 .searchResults .btn,
 .sportComplex .btn,
 #rentForm span, #rentForm input, #rentForm select,
-.manageComplexes a,
+.manageComplexes a,.manageComplexManagers a
 #editSpaceForm input, #editSpaceForm btn,
 #equipmentForm input, #equipmentForm textarea, #equipmentForm select, #equipmentForm .btn,
 #equipmentModal input, #equipmentModal textarea, #equipmentModal select, #equipmentModal .btn, #equipmentModal span,
@@ -215,13 +217,19 @@ input[type=button]{
     {
         font-size: 10px;
     }
+
+    .manageComplexManagers .caption a{
+        font-size:10px;
+    }
     .adminRentals .btn{
         font-size: 10px;
         width: auto !important;
         margin-right: auto !important;
         margin-bottom:auto !important;
     }
-
+    .manageComplexManagers .emailInput{
+        width:95%;
+    }
 }
 
 @media(min-width:375px){
@@ -239,6 +247,14 @@ input[type=button]{
     .manageComplexes .caption a
     {
         font-size: 12px;
+    }
+
+    .manageComplexManagers .caption a{
+        font-size: 12px;
+    }
+
+    .manageComplexManagers .emailInput{
+        width:65%;
     }
 }
 
@@ -269,7 +285,7 @@ input[type=button]{
         padding-bottom: 10%;
     }
 
-    .manageComplexes, .manageSpaces, .manageEquipment {
+    .manageComplexes, .manageSpaces, .manageEquipment, .manageComplexManagers {
         padding-top:15%;
         padding-left:2%;
         padding-right:2%;
@@ -281,6 +297,10 @@ input[type=button]{
 
 
     .manageComplexes a{
+        font-size: 0.9em;
+    }
+
+    .manageComplexManagers a{
         font-size: 0.9em;
     }
 
@@ -349,6 +369,10 @@ input[type=button]{
 }
 
 @media(min-width:760px) {
+
+    .manageComplexManagers .emailInput{
+        width:30%;
+    }
 
 .adminRentals .btn{
     margin-right: 20px !important;
@@ -510,7 +534,7 @@ td input{
 }
 
 
-.manageComplexes button{
+.manageComplexes button, .manageComplexManagers button{
     font-size: 1em;
 }
 
@@ -905,4 +929,24 @@ label.star:before {
 
 .backToComplex{
     margin-top: 30px;
+}
+
+.manageComplexes .thumbnail img, .manageSpaces .thumbnail img ,.admin .thumbnail img  {
+    height:200px;
+    width:100%;
+}
+
+.manageComplexes .thumbnail  {
+    height:400px;
+    width:100%;
+}
+
+.manageSpaces .thumbnail  {
+    height:450px;
+    width:100%;
+}
+
+.adminComplexes .thumbnail  {
+    height:380px;
+    width:100%;
 }
