@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" id="mainImage">
             {if $hasPhoto}
                 <img class="img-responsive" style="width:350px" src="{$BASE_URL}res/img/originals/complex_{$complexID}.jpg" alt="">
             {else}

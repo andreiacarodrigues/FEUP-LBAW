@@ -33,7 +33,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" id="mainImage">
             <br>
             {assign var="filename" value="../../res/img/originals/space_{$spaceID}.jpg"}
 

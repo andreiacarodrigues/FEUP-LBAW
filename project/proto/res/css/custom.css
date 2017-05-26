@@ -1028,6 +1028,7 @@ label.star:before {
     width:100%;
 }
 
+<<<<<<< HEAD
 .content-section-b .thumbnail img  {
     height:100px;
     width:100%;
@@ -1035,8 +1036,22 @@ label.star:before {
 
 .manageComplexes .thumbnail  {
     height:400px;
+=======
+.sportComplex #mainImage img {
+    height:250px;
     width:100%;
 }
+
+.sportComplex #spaces img {
+    height:150px;
+>>>>>>> a4f319b84ec64b0ff617e0eac566154d9eed1ab0
+    width:100%;
+}
+
+.manageComplexes .thumbnail  {
+     height:400px;
+     width:100%;
+ }
 
 .manageSpaces .thumbnail  {
     height:450px;
