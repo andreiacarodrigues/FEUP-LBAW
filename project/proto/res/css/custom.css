@@ -32,7 +32,7 @@ input[type=button]{
 }
 
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 78px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
     color: rgb(252, 252, 252);
@@ -231,6 +231,11 @@ input[type=button]{
     .manageComplexManagers .emailInput{
         width:95%;
     }
+    .field{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
 }
 
 @media(min-width:375px){
@@ -240,6 +245,12 @@ input[type=button]{
         width: auto !important;
         margin-right: auto !important;
         margin-bottom:auto !important;
+    }
+
+    .field{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
     }
 
 }
@@ -257,10 +268,22 @@ input[type=button]{
     .manageComplexManagers .emailInput{
         width:65%;
     }
+
+    .field{
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 96%;
+    }
 }
 
 
 @media(max-width:769px) {
+
+    .field{
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 96%;
+    }
 
     #registerWaiting{
         padding-top:90px;
@@ -375,6 +398,12 @@ input[type=button]{
         width:30%;
     }
 
+    .field{
+        margin-left: 15%;
+        margin-right: 15%;
+        width: 70%;
+    }
+
 .adminRentals .btn{
     margin-right: 20px !important;
     margin-bottom: 20px !important;
@@ -417,7 +446,6 @@ input[type=button]{
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -444,6 +472,12 @@ input[type=button]{
 }
 
 @media(max-width:767px) {
+
+    #horizontalScroll{
+        display: none;
+    }
+
+
     .banner h2 {
         margin: 0;
         text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
@@ -472,8 +506,6 @@ input[type=button]{
     .mobileFixButtons, .mobileFixText{
         text-align:center;
     }
-
-
 
 }
 
@@ -684,7 +716,7 @@ td input{
     font-size:0.9em;
 }
 
-.profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img, #editSpaceForm img{
+#horizontalScroll img, #scrollable img, .profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img, #editSpaceForm img{
     border: 2px;
     padding:5px;
     border-style: double;
@@ -809,29 +841,76 @@ label.star:before {
 #scrollable {
     overflow: hidden;
     height:300px;
-
     overflow-y:scroll;
-
 }
+
 .intro-header #scrollable{
     padding-left:2%;
     padding-right:2%;
     background-color: rgba(249, 249, 249, 0.48);
 }
+
 .intro-header #scrollable h4 {
     color: #292929;
     font-size: 1em;
 }
 
+.intro-header #horizontalScroll{
+    background-color: rgba(249, 249, 249, 0.48);
+}
+
+@media (min-width: 765px) {
+    #scrollable {
+        display:none;
+    }
+
+    #horizontalScroll {
+        overflow-x: hidden;
+        width:100%;
+    }
+
+    .searchForm{
+        padding-top: 2%;
+        padding-bottom: 9%;
+    }
+}
+
+#horizontalScroll > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+#horizontalScroll > .row > .col-xs-3 {
+    display: inline-block;
+    float: none;
+}
+
+#horizontalScroll > .row > .col-xs-3 img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
 @media (min-width: 770px){
+
+    #horizontalScroll{
+        margin-top:5%;
+    }
+
+    .searchForm{
+        padding-top: 2%;
+        padding-bottom: 9%;
+    }
+
+    #horizontalScroll {
+        overflow-x: hidden;
+        width:80%;
+    }
 
     .mobileFixButtons{
         text-align:right;
     }
-    #scrollable {
-        width:400px;
-        overflow-y: scroll;
-    }
+
     .navbar-brand img{
         content:url("../img/logo.png");
         width:350px;
@@ -849,6 +928,12 @@ label.star:before {
         width:100px;
     }
 
+    .field{
+        margin-left: 25%;
+        margin-right: 25%;
+        width: 50%;
+    }
+
 
     .backToComplex{
         float:right;
@@ -857,10 +942,11 @@ label.star:before {
 
 }
 
-.intro-header #scrollable{
+.intro-header #scrollable, .intro-header #horizontalScroll {
     border-radius:10px;
 }
-.intro-header #scrollable h1{
+.intro-header #scrollable h1, .intro-header #horizontalScroll h1{
+    padding-top:1%;
     margin: 0;
     text-shadow: 1px 1px 10px rgb(0, 0, 0);
     font-size: 2.5em;
@@ -937,8 +1023,13 @@ label.star:before {
     margin-top: 30px;
 }
 
-.manageComplexes .thumbnail img, .manageSpaces .thumbnail img ,.admin .thumbnail img  {
+.manageComplexes .thumbnail img, .manageSpaces .thumbnail img ,.admin .thumbnail img {
     height:200px;
+    width:100%;
+}
+
+.content-section-b .thumbnail img  {
+    height:100px;
     width:100%;
 }
 
@@ -952,7 +1043,74 @@ label.star:before {
     width:100%;
 }
 
-.adminComplexes .thumbnail  {
+.adminComplexes .thumbnail {
     height:380px;
     width:100%;
+}
+
+.content-section-b .thumbnail  {
+    height:250px;
+    width:100%;
+}
+
+
+
+
+.field {
+    color: black;
+    font-size:1.2em;
+    display:flex;
+    position:relative;
+    flex-direction:row;
+    box-shadow:
+            2px 2px 0 #0d6d89,
+            2px 2px  0 #0d6d89,
+            2px 2px  0 #0d6d89,
+            2px 2px  0 #0d6d89,
+            2px 2px  0 #0d6d89,
+            2px 2px  0 #0d6d89,
+            2px 2px  0 #0d6d89
+;
+}
+
+.field>input[type=text] {
+    flex:1;
+    padding:0.6em;
+    border:0.2em solid rgb(18, 163, 205);
+    border-radius: 2px;
+    background-color: #fbfbfb;
+
+}
+
+.field>input[type=button] {
+    padding:0.6em 0.8em;
+    background-color: rgb(16, 140, 178);
+    color:white;
+    border:none;
+}
+
+
+
+#horizontalScroll > .row::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#horizontalScroll > .row::-webkit-scrollbar
+{
+    height: 7px;
+    background-color: rgba(245, 245, 245, 0);
+}
+
+#horizontalScroll > .row::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(13, 162, 198, 0.77);
+}
+
+#horizontalScroll{
+    margin-bottom:6%;
 }
