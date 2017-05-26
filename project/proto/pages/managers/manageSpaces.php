@@ -34,7 +34,7 @@
 
         foreach ($sports as $sport) {
         if($result == "")
-            $result = $sport['sportName'];
+            $result = $result . $sport['sportName'];
         else
             $result = $result . ", " . $sport['sportName'];
         }

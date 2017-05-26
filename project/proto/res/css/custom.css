@@ -564,6 +564,10 @@ td input{
     height:75%;
 }
 
+#editSpaceModal span{
+    font-size: 13px !important;
+}
+
 .btn-primary.gradient-blue {
     border-color: #34abd2;
     background: -moz-linear-gradient(top, #34b5dc 50%, #00a3d6 50%); /* FF3.6+ */

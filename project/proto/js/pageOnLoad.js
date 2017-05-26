@@ -495,7 +495,7 @@ function spacePage(url, spaceID){
                         "</div>"
                     );
                 // faz chamada ajax
-                equipmentInfo(url + 'actions/managers/getEquipment.php',spaceID, date, startTime, duration);
+                equipmentInfo(url,spaceID, date, startTime, duration);
             }
 
 
@@ -511,7 +511,9 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
 
     $('#equipmentList').empty();
 
-    $.getJSON(url, {spaceID: spaceID, date: date, startTime: startTime, duration: duration} ,
+    var ajaxURL = url + 'actions/managers/getEquipment.php';
+
+    $.getJSON(ajaxURL, {spaceID: spaceID, date: date, startTime: startTime, duration: duration} ,
         function(data){
 
             for(var j = 0; j < data.length; j++)
@@ -519,12 +521,19 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                 var equipment = data[j];
                 var rentalQuantity = 0;
 
+                var fileURL = url + 'res/img/originals/equipment_' + equipment['equipmentID'] + '.jpg';
+                var result = UrlExists(fileURL);
+
+                var photoURL = "http://placehold.it/200x200";
+                if(result)
+                    photoURL = url + 'res/img/thumbs_small/equipment_' + equipment['equipmentID'] + '.jpg';
+
                 if(equipment['rentalQuantity'] != null)
                     rentalQuantity = parseInt(equipment['rentalQuantity']);
                 $('#equipmentList').append(
                     "<tr>" +
                     "<td class='centered'>"+
-                    "<img class='img-responsive' src='http://placehold.it/200x200' style='width:100px' alt=''>"+
+                    '<img class="img-responsive" src="' + photoURL + '" style="width:100px" alt="">' +
                     "</td>" +
                     "<td>" +
                     "<h5>" + equipment['equipmentName'] + "</h5>" +

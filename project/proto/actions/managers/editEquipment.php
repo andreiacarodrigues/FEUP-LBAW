@@ -72,10 +72,8 @@
     $check2 = empty($quantity);
     $check3 = empty($price);
     $check4 = empty($equipmentID);
-    $check5 = empty($quantityUnavailable);
-    $check6 = empty($available);
 
-    if($check1 || $check2 || $check3 || $check4 || $check5 || $check6)
+    if($check1 || $check2 || $check3 || $check4 )
     {
         $_SESSION['error_messages'][] = "A required field wasn't filled.";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -109,13 +107,32 @@
         die();
     }
 
+    $isInavailable = "false";
+    if($available=="false")
+        $isInavailable = "true";
+
+    $check1 = isset($_FILES['photo']);
+    $photo = null;
+    if($check1)
+        $photo = $_FILES['photo']['tmp_name'];
+
     $sports = $_POST['sports'];
 
-    if(!editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavailable, $price, $sports, $available))
+    if(!editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavailable, $price, $sports, $isInavailable))
     {
         $_SESSION['error_messages'][] = "Unknown error occurred.";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();
+    }
+
+    if($photo != null)
+    {
+        if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+
+            if(file_exists("../../res/img/originals/equipment_$equipmentID.jpg"))
+                destroyEquipmentPhoto($equipmentID);
+            addEquipmentPhoto($equipmentID);
+        }
     }
 
     $_SESSION['success_messages'][] = "Equipment edited sucessfully.";

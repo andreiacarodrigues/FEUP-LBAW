@@ -102,7 +102,8 @@
             {
                 if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
 
-                    destroyComplexPhoto($complexID);
+                    if(file_exists("../../res/img/originals/complex_$complexID.jpg"))
+                     destroyComplexPhoto($complexID);
                     addComplexPhoto($complexID);
                 }
             }

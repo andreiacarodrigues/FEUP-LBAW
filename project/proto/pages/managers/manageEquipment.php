@@ -32,11 +32,9 @@
     $parsedInformation = [];
     if(!empty($equipmentInformation))
     {
-        foreach ($equipmentInformation as $row)
-        {
+        foreach ($equipmentInformation as $row) {
             $equipmentID = $row['equipmentID'];
-            if (!isset($parsedInformation[$equipmentID]))
-            {
+            if (!isset($parsedInformation[$equipmentID])) {
                 $info = [];
                 $info['id'] = $row['equipmentID'];
                 $info['name'] = $row['equipmentName'];
@@ -50,6 +48,18 @@
             }
 
             $parsedInformation[$equipmentID]['sports'][] = $row['equipmentSportsSportID'];
+
+            $sportID = "";
+            $result = "";
+
+            foreach ($parsedInformation[$equipmentID]['sports'] as $sport) {
+                if ($result == "")
+                    $result = $result . $sport;
+                else
+                    $result = $result . ", " . $sport;
+            }
+
+            $parsedInformation[$equipmentID]['sportsList'] = $result;
         }
     }
 

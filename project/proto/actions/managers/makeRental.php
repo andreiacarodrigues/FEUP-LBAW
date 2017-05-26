@@ -15,9 +15,8 @@
     $condition3 = isset($_POST['date']);
     $condition4 = isset($_POST['startingTime']);
     $condition5 = isset($_POST['duration']);
-    $condition6 = isset($_POST['IDs']);
 
-    if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 || !$condition6)
+    if(!$condition1 || !$condition2 || !$condition3 || !$condition4 || !$condition5 )
     {
         $_SESSION['error_messages'][] = "Required variables not set.";
         header('Location: ' . $BASE_URL . "pages/users/home.php");
@@ -31,7 +30,7 @@
     $duration = trim(strip_tags($_POST['duration']));
     $equipmentIDs = $_POST['IDs'];
 
-    if(empty($userID) || empty($spaceID) || empty($date) || empty($startTime) || empty($duration) || empty($equipmentIDs))
+    if(empty($userID) || empty($spaceID) || empty($date) || empty($startTime) || empty($duration))
     {
         $_SESSION['error_messages'][] = "Required variables not set.";
         if(!empty($spaceID))

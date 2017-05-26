@@ -160,24 +160,26 @@
                                         </div>
 
 
-                                            <div class="input-group">
-                                                <span class="input-group-addon"> Select representative picture </span>
-                                            </div>
-
-
-                                            <div class="input-group">
-                                                <span class="btn btn-primary ">
-                                                      <input type="file" name="photo" style="">
-                                                </span>
-                                            </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"> Select representative picture </span>
                                         </div>
 
+
+                                        <div class="input-group">
+                                            <label class="input-group-btn">
+                                <span class="btn btn-primary gradient-blue">
+                                       Browse <input type="file" name="photo" style="display: none;">
+                                </span>
+                                            </label>
+                                            <input type="text" class="form-control" readonly>
+                                        </div>
+
+                                    </div>
 
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
                                     </div>
 
-                                </div>
                             </div>
                         </form>
                     </div>

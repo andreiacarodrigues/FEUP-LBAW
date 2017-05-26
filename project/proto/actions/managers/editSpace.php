@@ -93,7 +93,8 @@
             {
                 if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
 
-                    destroySpacePhoto($spaceID);
+                    if(file_exists("../../res/img/originals/space_" . $spaceID . ".jpg"))
+                     destroySpacePhoto($spaceID);
                     addSpacePhoto($spaceID);
                 }
             }

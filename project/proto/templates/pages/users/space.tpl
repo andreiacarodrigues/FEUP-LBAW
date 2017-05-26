@@ -34,7 +34,14 @@
 
     <div class="row">
         <div class="col-md-4">
-            <img class="spaceImg img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
+            <br>
+            {assign var="filename" value="../../res/img/originals/space_{$spaceID}.jpg"}
+
+            {if file_exists($filename)}
+                <img class="img-responsive" src="{$BASE_URL}res/img/originals/space_{$spaceID}.jpg" alt="">
+            {else}
+                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+            {/if}
         </div>
         <div class="col-md-5">
             <h3>Informations:</h3>
@@ -131,12 +138,8 @@
         <div class="spaceInfo">
             <span> Insert here your rental information: </span>
             <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#guidanceModal"> <i class="fa fa-question-circle" aria-hidden="true"></i> </button>
-
-            <!-- <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" data-target="#guidanceModal">How do I make a rental?</button>
-           <!--  <h5> Here is where you can make a rental: <br> <br>
-               </h5>-->
         </div>
-       <!-- <hr>-->
+
         <br>
 
         <form id="rentForm" action='{$BASE_URL}actions/managers/makeRental.php' method="post" autocomplete="on">
@@ -175,7 +178,6 @@
 
     </div>
 </div>
-
     </div>
 
 

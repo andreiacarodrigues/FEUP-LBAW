@@ -41,12 +41,23 @@
 
 <div class="manageEquipment">
     <div class="container">
-        <div class="row errorMessage">
-                        <span>
-                            {foreach $ERROR_MESSAGES as $error}
-                                <div class="error">{$error}</div>
-                            {/foreach}
-                        </span>
+        <div class="row">
+            {if $SUCCESS_MESSAGES != ""}
+                {foreach $SUCCESS_MESSAGES as $message}
+                    <div class="alert alert-info alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
+            {if $ERROR_MESSAGES != ""}
+                {foreach $ERROR_MESSAGES as $message}
+                    <div class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>{$message}</strong>
+                    </div>
+                {/foreach}
+            {/if}
         </div>
         <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#equipmentModal">Add New Equipment <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
@@ -98,19 +109,20 @@
                                             {/foreach}
                             </td>
                             <td>{$INFORMATION.quantityUnavailable} </td>
-                            <td>{if $INFORMATION.equipmentInactive == "true"}
+                            <td>{if $INFORMATION.inactive == "true"}
                                     No
                                 {else}
                                     Yes
                                 {/if}
                             </td>
-                            <td> <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#editEquipmentModal"> Edit Equipment </button></td>
+                            <td> <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#editEquipmentModal" onclick="updateEditEquipmentInfo({$COMPLEX_ID}, {$INFORMATION.id}, '{$INFORMATION.name}', {$INFORMATION.quantity}, '{$INFORMATION.details}', {$INFORMATION.quantityUnavailable}, {$INFORMATION.price}, '{$INFORMATION.inactive}', '{$INFORMATION.sportsList}')"> Edit Equipment </button></td>
                         </tr>
                     {/foreach}
                     </tbody>
                 </table>
             </div>
     </div>
+
     <!-- /.row -->
 
 
@@ -249,9 +261,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Availability</span>
                                         <select class="form-control" name="available" title="">
-                                            <option value="" disabled selected></option>
-                                            <option>Available</option>
-                                            <option>Unavailable</option>
+                                            <option value="true">Available</option>
+                                            <option value="false">Unavailable</option>
                                         </select>
                                     </div>
 
@@ -296,20 +307,48 @@
         </div>
     </div>
 </div>
-
-
-
-
+</div>
 
 	
 {include file='common/footer.tpl'}
-
 
 
 <link rel="stylesheet" href="../../js/bootstrap-multiselect.css" />
 <script src="../../js/bootstrap-multiselect.js"></script>
 
 <script>
-
     manageEquipmentPage($(document));
+    function updateEditEquipmentInfo(complexID, eqID,eqName, eqQuantity, eqDetails, eqQuantityUnavailable, eqPrice, eqInactive, eqSports){
+        $('#editEquipmentForm input[name="complexID"]').val(complexID);
+
+        $('#editEquipmentForm input[name="equipmentID"]').val(eqID);
+
+        $('#editEquipmentForm input[name="itemName"]').val(eqName);
+
+        $('#editEquipmentForm input[name="quantity"]').val(eqQuantity);
+
+        $('#editEquipmentForm input[name="price"]').val(eqPrice);
+
+        $('#editEquipmentForm textarea[name="details"]').text(eqDetails);
+
+        $('#editEquipmentForm input[name="quantityUnavailable"]').val(eqQuantityUnavailable);
+
+        console.log(eqInactive);
+        if(eqInactive == false)
+            $('#editEquipmentForm select[name="available"]').val("true").trigger('chosen:updated');
+        else
+            $('#editEquipmentForm select[name="available"]').val("false").trigger('chosen:updated');
+
+
+        $("#sportsSelect").val([]); // clean the previous selected options
+
+
+        var partsOfStr = eqSports.split(', ');
+        var values = [];
+        for(var i = 0 ; i < partsOfStr.length; i++) {
+            values.push($('#sportsSelect option').filter(function () { return $(this).val() == partsOfStr[i]; }).val());
+        }
+
+        $("#sportsSelect").val(values); // new options
+    }
 </script>

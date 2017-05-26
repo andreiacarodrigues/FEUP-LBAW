@@ -140,6 +140,50 @@
         unlink($mediumFileName);
     }
 
+
+function addEquipmentPhoto($equipmentID)
+{
+    $originalFileName = "../../res/img/originals/equipment_$equipmentID.jpg";
+    $smallFileName = "../../res/img/thumbs_small/equipment_$equipmentID.jpg";
+    $mediumFileName = "../../res/img/thumbs_medium/equipment_$equipmentID.jpg";
+
+    move_uploaded_file($_FILES['photo']['tmp_name'], $originalFileName);
+
+    $original = imagecreatefromjpeg($originalFileName);
+
+    $width = imagesx($original);
+    $height = imagesy($original);
+    $square = min($width, $height);
+
+    // Create small square thumbnail
+    $small = imagecreatetruecolor(100, 100);
+    imagecopyresized($small, $original, 0, 0, ($width > $square) ? ($width - $square) / 2 : 0, ($height > $square) ? ($height - $square) / 2 : 0, 100, 100, $square, $square);
+    imagejpeg($small, $smallFileName);
+
+    $mediumwidth = $width;
+    $mediumheight = $height;
+
+    if ($mediumwidth > 400) {
+        $mediumwidth = 400;
+        $mediumheight = $mediumheight * ($mediumwidth / $width);
+    }
+
+    $medium = imagecreatetruecolor($mediumwidth, $mediumheight);
+    imagecopyresized($medium, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
+    imagejpeg($medium, $mediumFileName);
+}
+
+function destroyEquipmentPhoto($equipmentID)
+{
+    $originalFileName = "../../res/img/originals/equipment_$equipmentID.jpg";
+    $smallFileName = "../../res/img/originals/equipment_$equipmentID.jpg";
+    $mediumFileName = "../../res/img/originals/equipment_$equipmentID.jpg";
+
+    unlink($originalFileName);
+    unlink($smallFileName);
+    unlink($mediumFileName);
+}
+
 function editComplex($complexID, $name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal, $inactive)
     {
         global $conn;
