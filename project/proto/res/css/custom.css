@@ -942,10 +942,20 @@ label.star:before {
     width:100%;
 }
 
-.manageComplexes .thumbnail  {
-    height:400px;
+.sportComplex #mainImage img {
+    height:250px;
     width:100%;
 }
+
+.sportComplex #spaces img {
+    height:150px;
+    width:100%;
+}
+
+.manageComplexes .thumbnail  {
+     height:400px;
+     width:100%;
+ }
 
 .manageSpaces .thumbnail  {
     height:450px;

@@ -10,6 +10,7 @@
         die();
     }
 
+    $userID = $_SESSION['userID'];
     $condition1 = isset($_POST['complexID']);
     $condition2 = isset($_POST['name']);
     $condition3 = isset($_POST['location']);
