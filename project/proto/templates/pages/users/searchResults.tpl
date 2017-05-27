@@ -1,20 +1,20 @@
 {include file='common/userHeader.tpl'}
 
-<div class="container">
+<div class="container searchResultsPage">
 <div class="row">
     <div class="col-md-4">
     <div id="searchResultsForm">
-        <form role="form">
+        <form action="#" method="get" autocomplete="on" role="form">
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Name</span>
-                    <input type="text" class="form-control">
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> Municipality </span>
-                    <select class="form-control"  name="municipality"  title="">
+                    <select class="form-control" name="municipality"  title="">
                         <option value="" name="disabled" disabled selected></option>
                         {html_options values=$municipalityIDs output=$municipalityNames}
                     </select>
@@ -40,44 +40,45 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Date</span>
-                    <input type="date" class="form-control">
+                    <input type="date" name="date" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Starting Time</span>
-                    <input type="time" class="form-control">
+                    <input type="time" name="startingTime" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Duration</span>
-                    <input type="time" class="form-control">
-                </div>
-            </div>
-           <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon primary">Surface</span>
-                    <select class="form-control" title="">
-                        <option value="" disabled selected></option>
-                        <option>Grass</option>
-                        <option>Syntetic Grass</option>
-                        <option>Dirt</option>
-                    </select>
+                    <input type="time" name="duration" class="form-control">
                 </div>
             </div>
             <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon primary">Coverage</span>
-                    <select class="form-control" title="">
-                        <option value="" disabled selected></option>
-                        <option>Covered</option>
-                        <option>Uncovered</option>
-                        <option>Indiferent</option>
-                    </select>
-                </div>
+            <div class="input-group">
+                <span class="input-group-addon primary">Surface</span>
+                <select class="form-control" title="" name="surface">
+                    <option value="" disabled selected></option>
+                    <option>Synthetic</option>
+                    <option>Dirt</option>
+                    <option>Indoors</option>
+                    <option>Other</option>
+                </select>
+            </div>
             </div>
             <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon primary">Coverage</span>
+                <select class="form-control" name="coverage" title="">
+                    <option value="" disabled selected></option>
+                    <option value="true">Covered</option>
+                    <option value="false">Uncovered</option>
+                    <option value="null">Indiferent</option>
+                </select>
+            </div>
+            </div>
+            <div class="form-group text-center">
             <input type="submit" class="btn btn-primary btn-lg gradient-blue" value="Search"/>
             </div>
         </form>
@@ -87,45 +88,71 @@
     <div class="col-md-8">
 <div class="searchResults">
         <div class="searchResultsComplexes">
-        <h1 class="page-header">Search Results: <small> 2 complexes found </small></h1>
-    <div class="row">
-        <div class="col-md-4">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-            </a>
-        </div>
-        <div class="col-md-8">
-            <h4> Complex 1 ⭐⭐⭐⭐</h4>
-            <ul class="list-group">
-                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
-                <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
-                <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
-                <li class="list-group-item"> Description </li>
-            </ul>
-            <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
+        <h1 class="page-header">Search Results: <small id="resultsLength">  </small></h1>
+            <div id="results">
+                {foreach $RESULT as $COMPLEX}
+                {strip}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
 
-    <!-- /.row -->
-    <hr>
-        <div class="row">
-            <div class="col-md-4">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-                </a>
+                            {if file_exists($filename)}
+                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">
+                            {else}
+                                <img class="img-responsive" src="http://placehold.it/600x400" style="width:100%" alt="">
+                            {/if}
+                        </div>
+                        <div class="col-md-8">
+                            <h4 id="complexName"> {$COMPLEX.complexName} ⭐⭐⭐⭐</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> {$COMPLEX.municipalityName}</li>
+                                <li class="list-group-item"> <i class="fa fa-envelope fa"></i>  {$COMPLEX.complexEmail}</li>
+                                <li class="list-group-item"> <i class="fa fa-phone"></i>  {$COMPLEX.complexPhone} </li>
+                            </ul>
+                            <a class="btn btn-primary btn-lg gradient-blue" id="complexRedirect" href="{$BASE_URL}users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                    </div>
+                    <hr>
+                {/strip}
+                {/foreach}
             </div>
-            <div class="col-md-8">
-                <h4> Complex 2 ⭐⭐⭐ </h4>
-                <ul class="list-group">
-                    <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
-                    <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
-                    <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
-                    <li class="list-group-item"> Description </li>
-                </ul>
-                <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <!--  <div class="row">
+                <div class="col-md-4">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <h4 id="complexName"> Complex 1 ⭐⭐⭐⭐</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> <span id="complexLocation"></span></li>
+                        <li class="list-group-item"> <i class="fa fa-envelope fa"></i> <span id="complexEmail"></span> </li>
+                        <li class="list-group-item"> <i class="fa fa-phone"></i> <span id="complexContact"></span> </li>
+                    </ul>
+                    <a class="btn btn-primary btn-lg gradient-blue" id="complexRedirect" href="#">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
             </div>
-        </div>
-    </div>
+                    <hr>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <h4> Complex 2 ⭐⭐⭐ </h4>
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
+                            <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
+                            <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
+                            <li class="list-group-item"> Description </li>
+                        </ul>
+                        <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                </div>/.row -->
+            </div>
 </div>
 </div>
 </div>
@@ -134,3 +161,8 @@
 
 
 {include file='common/footer.tpl'}
+
+
+<script>
+    searchResults('{$BASE_URL}');
+</script>

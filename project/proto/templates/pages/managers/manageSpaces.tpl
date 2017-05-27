@@ -84,6 +84,7 @@
     </div>
 </div>
 
+
         <!-- Modal -->
         <div class="modal fade" id="editSpaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -134,7 +135,7 @@
 
                                             <div class="input-group">
                                                 <span class="input-group-addon primary">Price / hour</span>
-                                                <input class="form-control" type="number" name="price" min="0" max="20" step="1" value="0">
+                                                <input class="form-control" type="number" name="price" min="0" step="1" value="0">
                                             </div>
 
                                         <div class="input-group">
@@ -187,6 +188,7 @@
             </div>
 		</div>
 	</div>
+</div>
 
 
 

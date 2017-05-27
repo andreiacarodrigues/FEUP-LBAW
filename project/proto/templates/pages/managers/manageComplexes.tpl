@@ -50,9 +50,9 @@
                             {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
 
                             {if file_exists($filename)}
-                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:320px" alt="">
+                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">
                             {else}
-                                <img class="img-responsive" src="http://placehold.it/600x400" alt="">
+                                <img class="img-responsive" src="http://placehold.it/600x400" style="width:100%" alt="">
                             {/if}
                         </a>
 

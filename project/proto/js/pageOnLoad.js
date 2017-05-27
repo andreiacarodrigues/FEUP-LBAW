@@ -326,6 +326,79 @@ function manageSpaces(){
     }
 }
 
+function searchResults(url) {
+    $('form').submit(function () {
+
+        var name = $("input[name='name']").val();
+        var municipality = $("select[name='municipality']").val();
+        var sport = $("select[name='sport']").val();
+        var date = $("input[name='date']").val();
+        var startingTime = $("input[name='startingTime']").val();
+        var duration = $("input[name='duration']").val();
+        var surface = $("select[name='surface']").val();
+        var coverage = $("select[name='coverage']").val();
+
+        if(name == '')
+            name = null;
+        if(date == '')
+            date = null;
+        if(startingTime == '')
+            startingTime = null;
+        if(duration == '')
+            duration = null;
+
+        var jsonURL = url + 'actions/users/search.php';
+        $('#results').empty();
+
+        $.getJSON(jsonURL,  {name: name, municipality: municipality, sport:sport, date:date, startingTime:startingTime,
+                duration:duration,surface:surface, coverage:coverage} ,
+            function(data){
+                console.log(data);
+
+                $('#resultsLength').text(data.length + ' complexes found');
+
+                for(var j = 0; j < data.length; j++) {
+                    var complex = data[j];
+
+                    var fileURL = url + 'res/img/originals/complex_' + complex['complexID'] + '.jpg';
+
+                    var result = UrlExists(fileURL);
+
+                    var photoURL = "http://placehold.it/700x400";
+                    if(result)
+                        photoURL = url + 'res/img/originals/complex_' + complex['complexID'] + '.jpg';
+
+                    $('#results').append(
+                    "<div class='row'>" +
+                        "<div class='col-md-4'>" +
+                        "<a href='#'>" +
+                        "<img class='img-responsive' src=" + photoURL + " style='width:400px' alt=''>" +
+                        "</a>" +
+                        "</div>" +
+                        "<div class='col-md-8'>" +
+                        "<h4>" + complex['complexName'] + " ⭐⭐⭐⭐ </h4>" +
+                    "<ul class='list-group'>" +
+                        "<li class='list-group-item'><i class='glyphicon glyphicon-globe'></i>" + complex['municipalityName'] + "</li>" +
+                        "<li class='list-group-item'> <i class='fa fa-envelope fa'></i>" + complex['complexEmail'] + "</li>" +
+                        "<li class='list-group-item'> <i class='fa fa-phone'></i>" + complex['complexPhone'] + "</li>" +
+                        "</ul>" +
+                        "<a class='btn btn-primary btn-lg gradient-blue' href='" + url + 'pages/users/sportComplex.php?complexID=' + complex['complexID'] + "'>Check Complex<span class='glyphicon glyphicon-chevron-right'></span></a>" +
+                        "</div>" +
+                        "</div>"
+                    );
+
+
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                console.log("error " + textStatus);
+                console.log("errorThrown " + errorThrown);
+                console.log("incoming Text " + jqXHR.responseText);
+            });
+        return false;
+    });
+}
+
 function signUp(){
     $('form').submit(function(){
 
@@ -491,9 +564,11 @@ function spacePage(url, spaceID){
                         "</div>" +
                         "<div class='text-right'>" +
                         "<h4> Total(€): <span id='totalRentalCost'> 0 </span> </h4>" +
-                        "<input type='submit' class='btn btn-primary gradient-blue' value='Rent Items'/>" +
                         "</div>"
                     );
+
+            $('#paypal-button-container').css("visibility", "visible");
+            $('#paypal-button-container').css("float", "right");
                 // faz chamada ajax
                 equipmentInfo(url,spaceID, date, startTime, duration);
             }

@@ -98,7 +98,7 @@ function getRentals($page)
         $stmt = $conn->prepare(
             'SELECT "rentalID","userName", "userPhone", "userEmail", "rentalDate", 
             "complexName", "complexPhone", "complexEmail", "spaceName", 
-            "rentalStartTime", "rentalDurationInMinutes", "rentalState"
+            "rentalStartTime", "rentalDuration", "rentalState"
             FROM "Rental"
             JOIN "Space"
             ON "spaceID" = "rentalSpaceID"
@@ -120,7 +120,7 @@ function getRentals($page)
         $stmt = $conn->prepare(
             'SELECT "rentalID","userName", "userPhone", "userEmail", "rentalDate", 
                 "complexName", "complexPhone", "complexEmail", "spaceName", 
-                "rentalStartTime", "rentalDurationInMinutes", "rentalState", "issueSubject", "issueDescription", "issueCategory"
+                "rentalStartTime", "rentalDuration", "rentalState", "issueSubject", "issueDescription", "issueCategory"
                 FROM "Rental"
                 JOIN "Space"
                 ON "spaceID" = "rentalSpaceID"

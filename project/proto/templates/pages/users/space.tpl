@@ -174,6 +174,7 @@
             <hr>
             <div id="rentalInfo">
             </div>
+            <div id='paypal-button-container' style="visibility: hidden"></div>
         </form>
 
     </div>
@@ -214,6 +215,46 @@
 <script>
     $(function(){
         spacePage('{$BASE_URL}', {$spaceID});
+
+        paypal.Button.render({
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+            client: {
+                sandbox:    'AbFTiI89tBcK3Tx0JP3l5IZn7ZPT2x9bnbRtqNmm_UImvOAZuQVsN9LhA-r4Fqkl0JGQ48aSD9Cvr-f5'
+            },
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+
+            // payment() is called when the button is clicked
+            payment: function(data, actions) {
+
+                var total = parseFloat($('#totalRentalCost').text());
+
+                // Make a call to the REST api to create the payment
+                return actions.payment.create({
+                    transactions: [
+                        {
+                            amount: { total: total, currency: 'EUR' }
+                        }
+                    ]
+                });
+            },
+
+            // onAuthorize() is called when the buyer approves the payment
+            onAuthorize: function(data, actions) {
+
+                // Make a call to the REST api to execute the payment
+                return actions.payment.execute().then(function() {
+                    $('#rentForm').submit();
+                });
+            }
+
+        }, '#paypal-button-container');
+
     });
 </script>
 

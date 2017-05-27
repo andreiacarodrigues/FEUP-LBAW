@@ -43,7 +43,7 @@
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Sports Complex: <span> {$RENTAL.complexName} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Space: <span> {$RENTAL.spaceName} </span></label></li>
                                             <li> <label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDurationInMinutes} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Duration: <span> {$RENTAL.rentalDuration} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Equipment: <span>  {$RENTAL.equipment} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
                                                     {if $RENTAL.rentalState == "RESERVED"}

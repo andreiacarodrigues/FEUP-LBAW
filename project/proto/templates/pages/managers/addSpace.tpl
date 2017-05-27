@@ -26,9 +26,9 @@
                                 <span class="input-group-addon primary">Surface</span>
                                 <select class="form-control" title="" name="surface">
                                     <option value="" disabled selected></option>
+                                    <option>Floating Wooden Floor</option>
                                     <option>Synthetic</option>
                                     <option>Dirt</option>
-                                    <option>Indoors</option>
                                     <option>Other</option>
                                 </select>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon primary">Price / hour</span>
-                                <input class="form-control" type="number" name="price" min="0" max="20" step="1" value="0">
+                                <input class="form-control" type="number" name="price" min="0" step="1" value="0">
                             </div>
                         </div>
 

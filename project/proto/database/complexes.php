@@ -18,26 +18,108 @@
         return $stmt;
     }
 
-    // ACABAR ESTE
-    function getHomePageSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration)
+    function getHomePageSearchComplexes($search)
     {
         global $conn;
 
-        $stmt = $conn->prepare('
-        SELECT "complexID"
+        $stmt = $conn->prepare('SELECT "complexID", "complexName", "municipalityName", "complexPhone", "complexEmail"
         FROM "SportsComplex"
+         JOIN "Municipality" ON "complexMunicipalityID" = "municipalityID"
+        WHERE to_tsvector(\'english\', "complexName" || \' \' || "complexLocation" || \' \' || "complexDescription" || \' \' || "municipalityName") @@ to_tsquery(?::VARCHAR )
+        ;');
+        $stmt->execute(array($search));
+        return $stmt->fetchAll();
+    }
+
+    function getSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration, $surface, $coverage)
+    {
+        if($coverage == "true")
+            $coverage = true;
+        else if($coverage == "false")
+            $coverage = false;
+
+        global $conn;
+
+        $stmt = $conn->prepare('
+       SELECT "complexID", "complexName", "municipalityName", "complexPhone", "complexEmail"
+        FROM "SportsComplex"
+        JOIN "Municipality" ON "complexMunicipalityID" = "municipalityID"
         WHERE
-        ($name IS NULL OR "complexName" LIKE ‘%$name%) AND
-        ($municipality IS NULL OR "complexMunicipalityID" = $municipality) AND
-        ($sport IS NULL OR $sport IN
-        (
-        SELECT "spaceSportsSportID"
-        FROM "SpaceSports"
-        JOIN "Space"
-        ON ("spaceID" = "spaceSportsSpaceID" AND "spaceComplexID" = "complexID");
-        ))
+        /* NAME */
+        (to_tsvector(\'english\', "complexName") @@ to_tsquery(?::VARCHAR) OR (?::VARCHAR IS NULL))
+        AND
+        /* MUNICIPALITY */
+          ("municipalityID" = ?::INTEGER OR (?::INTEGER IS NULL))
+        AND
+        /* OPENING TIME */
+         (?::TIME >= "complexOpeningHour" OR ?::TIME IS NULL)
+        AND	
+        /* CLOSING TIME */
+          (((?::TIME + ?::INTERVAL) <= "complexClosingHour") OR ?::TIME IS NULL OR ?::INTERVAL IS NULL)
+        AND
+          (/* WEEKEND */
+          "complexOpenOnWeekends" = TRUE
+          OR
+         (((EXTRACT(DOW FROM ?::DATE + \'00:00:00\'::TIME) > 0 AND EXTRACT(DOW FROM ?::DATE + \'00:00:00\'::TIME) < 6) OR ?::DATE IS NULL)))
+        AND
+         /* COMPLEX ACTIVE */
+          "complexInactive" = FALSE
          AND
-        LIMIT 10 OFFSET (10 * $pageNumber);');
+          EXISTS
+            (SELECT "spaceID"
+            FROM "Space"
+            WHERE
+            "spaceComplexID" = "complexID"
+            AND
+            /* SPORT */
+            EXISTS
+                    (SELECT "sportID"
+                    FROM "Sport"
+                    JOIN "SpaceSports" ON "sportID" = "spaceSportsSportID"
+                    WHERE
+                    "spaceID" = "spaceSportsSpaceID"
+                    AND
+                    ("sportID" = ?::INTEGER OR ?::INTEGER IS NULL))
+             AND
+             /* AVAILABILITY */
+            "spaceIsAvailable" = TRUE
+              AND
+             NOT EXISTS
+            (SELECT "rentalID"
+            FROM "Rental"
+            WHERE
+            "spaceID" = "rentalSpaceID"
+            AND
+            "rentalState" = \'RESERVED\'::"rentalState"
+            AND(
+              ("rentalDate" + "rentalStartTime" = (?::DATE + ?::TIME))
+              OR
+              (("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME))
+                        AND ("rentalDate" + "rentalStartTime" + "rentalDuration" > (?::DATE + ?::TIME)))
+                    OR
+                    (("rentalDate" + "rentalStartTime" > (?::DATE + ?::TIME))
+                        AND ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME + ?::TIME))))
+                    OR
+                    (?::DATE IS NULL OR ?::TIME IS NULL OR ?::TIME IS NULL))	
+            AND
+            /* SURFACE TYPE */
+            ("spaceSurfaceType" = ?::"surfaceType" OR ?::"surfaceType" IS NULL)
+            AND
+            /* COVERAGE */
+            ("spaceIsCovered" = ?::BOOLEAN OR ?::BOOLEAN IS NULL))
+           ;');
+        $stmt->execute(array($name, $name, $municipality, $municipality, $startingTime, $startingTime, $startingTime,
+            $duration, $startingTime, $duration, $date, $date, $date, $sport, $sport, $date, $startingTime,
+            $date, $startingTime, $date, $startingTime, $date, $startingTime, $date, $startingTime, $duration,
+            $date,
+            $startingTime,
+            $duration,
+            $surface,
+            $surface,
+            $coverage,
+            $coverage));
+        return $stmt->fetchAll();
+
     }
 
     function addComplex($name, $location, $municipality, $email, $contact, $description, $openingHour, $closingHour, $openOnWeekends, $paypal)
@@ -303,7 +385,7 @@ function editComplex($complexID, $name, $location, $municipality, $email, $conta
 
         $stmt = $conn->prepare(
             'SELECT "userUsername", "userName", "userPhone", "userEmail", "rentalDate", 
-             "spaceName", "rentalStartTime", "rentalDurationInMinutes", "rentalState", "rentalID"
+             "spaceName", "rentalStartTime", "rentalDuration", "rentalState", "rentalID"
             FROM "Rental"
             JOIN "Space"
             ON "spaceID" = "rentalSpaceID"
@@ -455,7 +537,7 @@ function editComplex($complexID, $name, $location, $municipality, $email, $conta
                     ("rentalDate" + "rentalStartTime" = (?::DATE + ?::TIME))
                     OR (
                         ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME))
-                        AND ("rentalDate" + "rentalStartTime" + "rentalDurationInMinutes" > (?::DATE + ?::TIME))
+                        AND ("rentalDate" + "rentalStartTime" + "rentalDuration" > (?::DATE + ?::TIME))
                         )
                     OR (
                         ("rentalDate" + "rentalStartTime" > (?::DATE + ?::TIME))
@@ -934,7 +1016,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         }
 
         $stmt = $conn->prepare('
-           INSERT INTO "Rental" ("rentalUserID", "rentalSpaceID", "rentalDate", "rentalStartTime", "rentalDurationInMinutes", "rentalState") 
+           INSERT INTO "Rental" ("rentalUserID", "rentalSpaceID", "rentalDate", "rentalStartTime", "rentalDuration", "rentalState") 
           VALUES (?, ?, ?, ?, ?,?)
           RETURNING "rentalID";
         ');

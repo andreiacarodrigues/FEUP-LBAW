@@ -119,7 +119,6 @@ input[type=button]{
 
  .searchResults{
     margin-top: 3%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    margin-bottom: 10%;
     min-height: 85%;
 }
 .sportComplex{
@@ -1029,7 +1028,7 @@ label.star:before {
 }
 
 .content-section-b .thumbnail img  {
-    height:100px;
+    height:130px;
     width:100%;
 }
 
@@ -1039,6 +1038,10 @@ label.star:before {
 .sportComplex #mainImage img {
     height:250px;
     width:100%;
+}
+
+.searchResultsPage{
+    padding-bottom: 6%;
 }
 
 .sportComplex #spaces img {

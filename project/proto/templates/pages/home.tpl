@@ -32,17 +32,17 @@
             </div>
         </div>
         <br><br>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="searchForm" action="{$BASE_URL}pages/users/searchResults.php" method="get" autocomplete="on">
+                    <div class="field">
+                        <input type="text" id="searchPost" name="search">
+                        <input class="btn-primary gradient-blue" type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
 		{if isset($USERNAME)}
-		     <div class="row">
-                <div class="col-md-12">
-                    <form class="searchForm" action="searchResults.php" method="post" autocomplete="on">
-                            <div class="field">
-                                <input type="text" id="searchPost">
-                                <input class="btn-primary gradient-blue" type="submit" value="Search">
-                            </div>
-                    </form>
-                </div>
-             </div>
         <hr class="intro-divider">
         <div class="row">
                 <div class="col-md-12">
@@ -129,18 +129,6 @@
             </div>
     </div>
     </div>
-		{else}
-
-        <div class="row">
-            <div class="col-md-12">
-                <form class="searchForm" action="searchResults.php" method="post" autocomplete="on">
-                    <div class="field">
-                        <input type="text" id="searchPost">
-                        <input class="btn-primary gradient-blue" type="submit" value="Search">
-                    </div>
-                </form>
-            </div>
-        </div>
 		{/if}
     </div>
 </div>
@@ -159,9 +147,13 @@
                         {strip}
                         <div class="col-sm-3">
                             <div class="thumbnail">
-                                <a href="#">
-                                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:100%" alt="">
-                                </a>
+                                {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
+
+                                {if file_exists($filename)}
+                                    <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">
+                                {else}
+                                    <img class="img-responsive" src="http://placehold.it/600x400" style="width:100%" alt="">
+                                {/if}
                                 <div class="caption">
                                     <h5> {$COMPLEX.complexName} ⭐⭐⭐⭐</h5>
                                     <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
