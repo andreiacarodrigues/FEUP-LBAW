@@ -7,7 +7,7 @@
         $stmt->execute(array($username));
         $user = $stmt->fetch();
 
-        return ($user !== false && $password == $user['userPassword']);
+        return ($user !== false && password_verify($password, $user['userPassword']));
     }
 
     function verifyAdmin($username, $password)
@@ -18,7 +18,7 @@
         $stmt->execute(array($username));
         $admin = $stmt->fetch();
 
-        return ($admin !== false && $password == $admin['adminPassword']);
+        return ($admin !== false && password_verify($password, $admin['adminPassword']));
     }
 
     function adminAccepted($username, $password)
@@ -29,7 +29,7 @@
         $stmt->execute(array($username));
         $admin = $stmt->fetch();
 
-        return ($admin !== false && $password == $admin['adminPassword']);
+        return ($admin !== false && password_verify($password, $admin['adminPassword']));
     }
 
     function registerUser($username, $password, $name, $email, $phone, $municipality)
@@ -45,16 +45,20 @@
 
         $stmt = $conn->prepare('INSERT INTO "User"("userUsername","userPassword","userName","userEmail","userPhone", "userMunicipalityID") VALUES (?,?,?,?,?,?)');
 
-        return $stmt->execute(array($username, $password, $name, $email, $phone, $municipality));
+        $options = ['cost' => 10];
+
+        return $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT, $options), $name, $email, $phone, $municipality));
     }
 
-    function registerAdmin($username, $password, $name, $email, $phone, $municipality)
+    function registerAdmin($username, $password)
     {
         global $conn;
 
         $stmt = $conn->prepare('INSERT INTO "Admin"("adminUsername","adminPassword") VALUES (?,?)');
 
-        return $stmt->execute(array($username, $password));
+        $options = ['cost' => 10];
+
+        return $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT, $options)));
     }
 
     function userExists($userID)
