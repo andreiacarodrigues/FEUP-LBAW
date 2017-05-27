@@ -15,7 +15,7 @@ function is_password(element) {
 }
 
 function is_name(element) {
-    return /^[a-zA-Z0-9º'\\/, ]{2,30}$/.test(element);
+    return /([ \u00c0-\u01ffa-zA-Z'\-]){0,64}/.test(element);
 }
 
 function is_username(element) {

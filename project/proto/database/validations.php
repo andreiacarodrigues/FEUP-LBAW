@@ -20,7 +20,7 @@
     }
 
     function is_name($name){
-        $pattern = '/^[a-zA-Z0-9º\'\\/, ]{2,30}$/';
+        $pattern = '/([\p{L} ]){0,64}/u';
         return preg_match($pattern,$name);
     }
 
