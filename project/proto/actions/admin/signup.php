@@ -71,7 +71,7 @@
         {
             $_SESSION['success_messages'][] = "Your register was sent sucessfully. An already registered admin will check on your request to register and you will have access to the administration of the
                     website once you are accepted.";
-            header("Location: ".$BASE_URL."pages/admin/adminSignup.php");
+            header("Location: ".$BASE_URL."pages/admins/adminSignup.php");
         }
         else
         {
