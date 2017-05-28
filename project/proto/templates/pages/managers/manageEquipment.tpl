@@ -145,7 +145,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <form id="equipmentForm" action="{$BASE_URL}actions/managers/addEquipment.php" method="post" autocomplete="on" class="form-horizontal" role="form">
+                <form id="equipmentForm" action="{$BASE_URL}actions/managers/addEquipment.php" method="post" autocomplete="on" enctype="multipart/form-data" class="form-horizontal" role="form">
                     <input type="hidden" name="complexID" value="{$COMPLEX_ID}">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -181,27 +181,29 @@
                                     </div>
 
 
-                                    <div class="input-group">
-                                        <span class="input-group-addon"> Select representative picture </span>
-                                    </div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"> Select representative picture </span>
+                                </div>
 
 
-                                    <div class="input-group">
-                                        <label class="input-group-btn">
+                                <div class="input-group">
+                                    <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
                                        Browse&hellip; <input type="file" name="photo" style="display: none;">
                                 </span>
-                                        </label>
-                                        <input type="text" class="form-control" readonly>
-                                    </div>
+                                    </label>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
 
+                                <br>
+                                <br>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
+                                </div>
 
                             </div>
-                            <br>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary gradient-blue">Submit</button>
-                            </div>
-                        </div>
 
                     </div>
                 </form>
@@ -209,6 +211,7 @@
         </div>
     </div>
 </div>
+
 
 
     <!-- Modal -->
@@ -306,6 +309,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 

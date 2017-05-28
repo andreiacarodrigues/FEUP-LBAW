@@ -38,10 +38,10 @@
         die();
     }
 
-    $name = $_POST['name'];
-    $quantity = $_POST['quantity'];
-    $details = $_POST['details'];
-    $price = $_POST['price'];
+    $name = strip_tags($_POST['name']);
+    $quantity = trim(strip_tags($_POST['quantity']));
+    $details = strip_tags($_POST['details']);
+    $price = trim(strip_tags($_POST['price']));
 
     $check1 = !empty($name);
     $check2 = !empty($quantity);
@@ -74,10 +74,10 @@
     }
 
     $check1 = isset($_FILES['photo']);
+
     $photo = null;
     if($check1)
         $photo = $_FILES['photo']['tmp_name'];
-
 
     $sports = $_POST['sports'];
 
@@ -91,7 +91,7 @@
             }
         }
 
-        $_SESSION['success_messages'][] = "Success!";
+        $_SESSION['success_messages'][] = "Equipment added successfully!";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();
     }
