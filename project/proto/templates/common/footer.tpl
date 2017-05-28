@@ -80,3 +80,16 @@
 </body>
 
 </html>
+
+<script src="{$BASE_URL}js/notify.js"></script>
+
+<script>
+    setInterval(function(){
+        var url = '{$BASE_URL}actions/users/notifications.php';
+        $.getJSON(url,function(data){
+            for(var i = 0; i < data.length; i++) {
+                $.notify(data[i]['notificationText'], "info");
+            }
+        });
+    }, 15000);
+</script>

@@ -43,6 +43,9 @@
     {
         try {
             if (banUser($userID)) {
+
+                addNotification($userID, "Your account was banned. You can no longer make any rentals. For more information contact administration.");
+
                 $_SESSION['success_messages'] = "User was blocked sucessfully.";
                 header("Location: " . $BASE_URL . "pages/admins/adminUsers.php");
             } else {

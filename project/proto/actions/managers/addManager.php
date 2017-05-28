@@ -46,4 +46,7 @@
     }
 
     addManager($complexID, $managerID);
+
+    addNotification($managerID, "You added as manager of the complex with the id " + $complexID + ".");
+
     header("Location: ".$_SERVER['HTTP_REFERER']);

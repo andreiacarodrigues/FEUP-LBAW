@@ -91,6 +91,17 @@
         return $stmt->fetchAll();
     }
 
+    function getAdmins()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare(
+            'SELECT "adminID"
+                 FROM "Admin";');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 function getRentals($page)
     {
         global $conn;
@@ -192,4 +203,17 @@ function getRentals($page)
         }
 
         return $result;
+    }
+
+    function addNotification($userID, $message)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+            INSERT INTO
+            "Notification"("notificationUserID","notificationText")
+            VALUES (?,?)
+            RETURNING "complexID";');
+
+        return $stmt->execute(array($userID, $message));
     }

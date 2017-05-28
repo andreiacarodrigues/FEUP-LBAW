@@ -51,6 +51,13 @@ try
 {
     if (addIssueAdmin($subject, $category, $description, $to, $userID)) {
 
+        $admins = getAdmins();
+
+        foreach($admins as $admin)
+        {
+            addNotification($admin['adminID'], "You recently received a new issue with the subject: " . $subject . ".");
+        }
+
         $_SESSION['success_messages'][] = "Message to administration sent sucessfully.";
         header("Location: " . $BASE_URL . "pages/users/home.php");
     } else {

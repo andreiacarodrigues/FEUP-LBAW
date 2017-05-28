@@ -1,8 +1,8 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
-include_once($BASE_DIR."database/users.php");
-
+    include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -44,6 +44,14 @@ include_once($BASE_DIR."database/users.php");
     {
         try {
             if (setComplexInactive($complexID)) {
+
+                $managers = getManagersInformation($complexID);
+
+                foreach($managers as $manager)
+                {
+                    addNotification($manager['managerID'], "Your complex with the id " . $complexID . " was recently blocked by the website administrator.");
+                }
+
                 $_SESSION['success_messages'] = "Complex was blocked sucessfully.";
                 header("Location: " . $BASE_URL . "pages/admins/adminComplexes.php");
             } else {

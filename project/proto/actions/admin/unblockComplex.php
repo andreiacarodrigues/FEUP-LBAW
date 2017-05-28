@@ -44,6 +44,14 @@ include_once($BASE_DIR."database/users.php");
     {
         try {
             if (setComplexActive($complexID)) {
+
+                $managers = getManagersInformation($complexID);
+
+                foreach($managers as $manager)
+                {
+                    addNotification($manager['managerID'], "Your complex with the id " . $complexID . " was recently unblocked by the website administrator.");
+                }
+
                 $_SESSION['success_messages'] = "Complex was blocked sucessfully.";
                 header("Location: " . $BASE_URL . "pages/admins/adminComplexes.php");
             } else {

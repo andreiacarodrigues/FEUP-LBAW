@@ -41,6 +41,9 @@ include_once($BASE_DIR."database/users.php");
     try
     {
         removeManager($complexID, $managerID);
+
+        addNotification($managerID, "You were removed from manager of the complex with the id " . $complexID . ".");
+
         header("Location: ".$_SERVER['HTTP_REFERER']);
     }
     catch (PDOException $e)

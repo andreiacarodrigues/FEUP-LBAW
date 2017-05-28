@@ -24,6 +24,13 @@
         {
             if(cancelRentalByUser($rentalID))
             {
+                $managers = getManagersInformation($complexID);
+
+                foreach($managers as $manager)
+                {
+                    addNotification($manager['managerID'], "Your complex with the id " . $complexID . " was recently blocked by the website administrator.");
+                }
+
                 $_SESSION['success_messages'][] = "Rental cancelled sucessfully.";
                 header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
             }

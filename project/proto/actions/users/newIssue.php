@@ -64,6 +64,14 @@
                     if(rentalConcluded($rentalID))
                     {
                         if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
+
+                            $managers = getManagersInformation($complexID);
+
+                            foreach($managers as $manager)
+                            {
+                                addNotification($manager['managerID'], "Your complex with the id " . $complexID . " recently received a new issue with the subject: " . $subject . ".");
+                            }
+
                             $_SESSION['success_messages'][] = "Issue sent sucessfully.";
                             header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
                         } else {

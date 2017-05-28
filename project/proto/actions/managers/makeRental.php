@@ -77,6 +77,14 @@
 
                 if(makeRental($spaceID, $userID, $date, $startTime, $duration, $equipment))
                 {
+
+                    $managers = getManagersInformation($complexID);
+
+                    foreach($managers as $manager)
+                    {
+                        addNotification($manager['managerID'], "Your complex with the id " . $complexID . " just received a new rental!");
+                    }
+
                     $_SESSION['success_messages'][] = "Rental made successfully";
                     header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
                 }

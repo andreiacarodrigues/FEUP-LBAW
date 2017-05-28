@@ -42,6 +42,9 @@
     {
         try {
             if (unblockUser($userID)) {
+
+                addNotification($userID, "Your account is active again. You can now make rentals. For more information contact administration.");
+
                 $_SESSION['success_messages'] = "User was unblocked sucessfully.";
                 header("Location: " . $BASE_URL . "pages/admins/adminUsers.php");
             } else {

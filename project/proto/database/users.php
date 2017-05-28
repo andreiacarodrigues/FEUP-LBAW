@@ -312,4 +312,21 @@ function getUserNrRentals($userID)
         return $stmt->fetch()['userID'];
     }
 
+    function getNotifications($userID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT "notificationText" FROM "Notification" WHERE "notificationUserID" = ?');
+        $stmt->execute(array($userID));
+
+        $notifications = $stmt->fetchAll();
+
+        $stmt = $conn->prepare('DELETE FROM "Notification" WHERE "notificationUserID" = ?');
+        $stmt->execute(array($userID));
+        return $notifications;
+    }
+
+
+
+
 
