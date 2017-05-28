@@ -51,7 +51,7 @@
                         <ul class="list-unstyled">
                             <p> Reservation Information: </p>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Date: <span> {$RENTAL.rentalDate} </span></label></li>
-                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <span> {$RENTAL.spaceName} </span></label></li>
+                            <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label></li>
                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
                             <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration: <span> {$RENTAL.rentalDuration} </span></label></li>
                             <li> <label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment: <span> {$RENTAL.equipment} </span></label></li>

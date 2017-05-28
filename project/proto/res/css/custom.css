@@ -256,9 +256,9 @@ input[type=button]{
 
 @media(min-width:765px){
 
-    #rating{
+   /* #rating{
         padding-top:80px;
-    }
+    }*/
     .manageComplexes .caption a
     {
         font-size: 12px;

@@ -302,7 +302,7 @@
 
         $stmt = $conn->prepare(
             'SELECT "userUsername", "userName", "userPhone", "userEmail", "rentalDate", 
-             "spaceName", "rentalStartTime", "rentalDuration", "rentalState", "rentalID"
+             "spaceName", "rentalStartTime", "rentalDuration", "rentalState", "rentalID", "spaceID"
             FROM "Rental"
             JOIN "Space"
             ON "spaceID" = "rentalSpaceID"
@@ -1155,7 +1155,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         $stmt = $conn->prepare('
                     SELECT "complexID", "complexName"
                     FROM "SportsComplex"
-                    WHERE "complexMunicipalityID"  ? 
+                    WHERE "complexMunicipalityID" = ? 
                     ORDER BY random()
                     LIMIT ?;');
         $stmt->execute(array($municipality, $num));

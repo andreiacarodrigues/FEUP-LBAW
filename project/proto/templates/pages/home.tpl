@@ -42,7 +42,7 @@
                 </form>
             </div>
         </div>
-		{if isset($USERNAME)}
+		{*if isset($USERNAME)}
         <hr class="intro-divider">
         <div class="row">
                 <div class="col-md-12">
@@ -129,7 +129,7 @@
             </div>
     </div>
     </div>
-		{/if}
+		{/if*}
     </div>
 </div>
 

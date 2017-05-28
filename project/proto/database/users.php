@@ -209,7 +209,7 @@
         global $conn;
 
         $stmt = $conn->prepare('
-        Select "rentalID", "rentalDate", "rentalDuration", "rentalState", "spaceName", "complexName", "rentalStartTime", "rentalRating"
+        Select "rentalID", "rentalDate", "rentalDuration", "rentalState", "spaceName", "complexName", "rentalStartTime", "rentalRating", "complexID", "spaceID"
 
         From "Rental", "User", "Space", "SportsComplex"
         

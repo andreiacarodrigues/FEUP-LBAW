@@ -3,7 +3,7 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-PQ-WOp9-fxyiuidvq_sPUAxbJviiLdA">
 </script>
-{*<div class="sportComplex">
+<div class="sportComplex">
 <div class="container">
     <div class="row">
         {if $SUCCESS_MESSAGES != ""}
@@ -57,10 +57,9 @@
                     <div class="ratingNum" id="rating">
 
                     </div>
+                    <br>
+                    <div id="map" style="height:150px; width:300px;"></div>
                 </div>
-            <!--<div class="row">
-                <div id="map"></div>
-            </div>-->
          </div>
 
 
@@ -68,7 +67,7 @@
 
 </div>
 
-    *}<div id="map" style="height:100%"></div>{*
+
 
 <br>
     <div class="container" id="spaces">
@@ -76,7 +75,7 @@
     </div>
 </div>
 
-{include file='common/footer.tpl'}*}
+{include file='common/footer.tpl'}
 
 <script>
     $(function(){
