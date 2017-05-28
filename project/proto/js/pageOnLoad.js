@@ -23,8 +23,36 @@ function complexInfo(url, complexID){
             $('#infoDescription').text(data['description']);
             $('#infoHours').text(data['openingHour'] + "-" + data['closingHour']);
 
+            initMap(data['location']);
+
             addRating(data);
         });
+}
+
+function initMap(address)
+{
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+        'address': address
+    },
+        function(results, status)
+    {
+        if (status === 'OK')
+        {
+            var myOptions = {
+                zoom: 16,
+                center: results[0].geometry.location,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map($("#map")[0], myOptions);
+
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+        }
+    });
 }
 
 function addRating(data){
