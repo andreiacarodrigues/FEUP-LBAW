@@ -78,7 +78,7 @@
         if (registerUser($username, $password, $name, $email, $contact, $municipality))
         {
             $_SESSION['success_messages'][] = "Sign up successful";
-            header("Location: ".$BASE_URL."pages/users/home.php");
+            header("Location: ".$BASE_URL."pages/authentication/login.php");
         }
         else
         {

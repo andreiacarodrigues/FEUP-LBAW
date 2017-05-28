@@ -443,7 +443,7 @@ function signUp(){
 
         if(!is_username(username)) {
             error = true;
-            $('#invalidUsername').text("Invalid username.");
+            $('#invalidUsername').text("Invalid username. Must have 4 or more characters and no spaces.");
         }
 
         if(!is_contact(contact)){
@@ -473,7 +473,7 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
             $('#infoLocation').text(data['complexLocation']);
 
             var openOnWeekends = "yes";
-            if(data['complexOpenOnWeekends'] == "false")
+            if(data['complexOpenOnWeekends'] == false)
                 openOnWeekends = "no";
 
             $('#infoOpenOnWeekends').text(openOnWeekends);
@@ -541,6 +541,16 @@ function spacePage(url, spaceID){
 
               if(moment(val2).isBefore(spaceHours1) || moment(val3).isAfter(spaceHours2)) {
                   $('#rentalInfo').append('<p> The time is invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
+                  return;
+              }
+
+              var openOnWeekends = true;
+                  if($('#infoOpenOnWeekends').text() == "no")
+                      openOnWeekends = false;
+
+                  console.log(val1.isoWeekday());
+              if((val1.isoWeekday() == 6 || val1.isoWeekday() == 7) && !openOnWeekends){
+                  $('#rentalInfo').append('<p> The date you chose is on a weekend and this space is closed on weekends. Please enter valid information. </p>');
                   return;
               }
 

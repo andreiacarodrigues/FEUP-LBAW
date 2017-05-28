@@ -1,7 +1,7 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
-include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/users.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -36,7 +36,6 @@ include_once($BASE_DIR."database/users.php");
 
         if(!empty($equipment))
         {
-
             echo json_encode($equipment);
         }
     }

@@ -40,7 +40,6 @@
                 'closingHour' => $complexInfo['complexClosingHour']
             );
             echo json_encode($infoArray);
-           // $_SESSION['success_messages'] = "Complex page sucessfully loaded.";
         }
         else
             echo 'ERROR';

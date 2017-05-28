@@ -128,10 +128,9 @@
     if($photo != null)
     {
         if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
-
             if(file_exists("../../res/img/originals/equipment_$equipmentID.jpg"))
-                destroyEquipmentPhoto($equipmentID);
-            addEquipmentPhoto($equipmentID);
+                destroyPhoto($equipmentID, 'equipment');
+            addPhoto($equipmentID, 'equipment');
         }
     }
 

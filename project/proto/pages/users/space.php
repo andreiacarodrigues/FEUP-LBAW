@@ -12,5 +12,12 @@
 
     $smarty->assign('spaceID',$spaceID);
 
+    if(isset($_SESSION['userID']))
+    {
+        $userID = $_SESSION['userID'];
+        $smarty->assign('userID', $userID);
+    }
+
+
     $smarty->display('pages/users/space.tpl');
 ?>

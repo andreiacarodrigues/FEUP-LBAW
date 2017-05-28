@@ -135,6 +135,7 @@
 <br>
     <div class="container">
         <hr>
+        {if $userID}
         <div class="spaceInfo">
             <span> Insert here your rental information: </span>
             <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#guidanceModal"> <i class="fa fa-question-circle" aria-hidden="true"></i> </button>
@@ -176,6 +177,10 @@
             </div>
             <div id='paypal-button-container' style="visibility: hidden"></div>
         </form>
+        {else}
+            <span> To make a rental, please login with your username and password here:  <a href="{$BASE_URL}pages/authentication/login.php" style="color:black">Login Page</a> </span>
+
+        {/if}
 
     </div>
 </div>

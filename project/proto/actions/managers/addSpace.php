@@ -81,7 +81,7 @@
             if($photo != null)
             {
                 if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
-                    addSpacePhoto($spaceID);
+                    addPhoto($spaceID, 'space');
                 }
             }
 

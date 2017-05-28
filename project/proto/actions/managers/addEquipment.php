@@ -73,15 +73,34 @@
         die();
     }
 
+    $check1 = isset($_FILES['photo']);
+    $photo = null;
+    if($check1)
+        $photo = $_FILES['photo']['tmp_name'];
+
+
     $sports = $_POST['sports'];
 
-    if(!addEquipment($complexID, $name, $quantity, $details, $price, $sports))
+
+    if($equipmentID = addEquipment($complexID, $name, $quantity, $details, $price, $sports, $photo))
     {
+        if($photo != null)
+        {
+            if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+                addPhoto($equipmentID, 'equipment');
+            }
+        }
+
+        $_SESSION['success_messages'][] = "Success!";
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        die();
+    }
+    else{
         $_SESSION['error_messages'][] = "Unknown error occurred.";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         die();
     }
 
-    $_SESSION['success_messages'][] = "Success!";
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    die();
+
+
+

@@ -90,7 +90,7 @@
             {
                 if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
 
-                    addComplexPhoto($complexID);
+                    addPhoto($complexID, 'complex');
                 }
             }
 
