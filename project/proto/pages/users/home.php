@@ -15,7 +15,40 @@
 
     }
 
-    $suggestions = getComplexSuggestions();
+    if(isset($_SESSION['userID']))
+    {
+        $userMunicipality = getUserInfo($_SESSION['userID'])['userMunicipalityID'];
+
+        $suggestionsWithRating = array();
+
+        $suggestions = getComplexUserSuggestions($userMunicipality);
+
+        if(count($suggestions) < 4) {
+            $otherSuggestions = getOtherComplexSuggestions($userMunicipality, (4 - count($suggestions)));
+            $suggestions = array_merge($suggestions, $otherSuggestions);
+        }
+
+        $suggestionsWithRating = array();
+
+        foreach($suggestions as $suggestion) {
+            $rating = getComplexRating($suggestion['complexID']);
+            $suggestion['rating'] = $rating['avg'];
+            array_push($suggestionsWithRating, $suggestion);
+        }
+    }
+    else
+    {
+        $suggestions = getComplexSuggestions();
+
+        $suggestionsWithRating = array();
+
+        foreach($suggestions as $suggestion) {
+            $rating = getComplexRating($suggestion['complexID']);
+            $suggestion['rating'] = $rating['avg'];
+            array_push($suggestionsWithRating, $suggestion);
+        }
+    }
+
 
     $municipalities = getMunicipalitiesList();
 
@@ -27,7 +60,7 @@
     $smarty->assign('EQUIPMENT_INFORMATION', $parsedInformation);
     $smarty->assign('SPORTS', $sports);
 
-    $smarty->assign('SUGGESTIONS', $suggestions);
+    $smarty->assign('SUGGESTIONS', $suggestionsWithRating);
 
 $smarty->display('pages/home.tpl');
 ?>

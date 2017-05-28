@@ -155,7 +155,13 @@
                                     <img class="img-responsive" src="http://placehold.it/600x400" style="width:100%" alt="">
                                 {/if}
                                 <div class="caption">
-                                    <h5> {$COMPLEX.complexName} ⭐⭐⭐⭐</h5>
+                                    <h5> {$COMPLEX.complexName}
+                                        {$COUNT = 0}
+                                        {while $COUNT < $COMPLEX.rating}
+                                            ⭐
+                                            {$COUNT = $COUNT + 1}
+                                        {/while}
+                                    </h5>
                                     <a class="btn btn-primary btn-sm gradient-blue" href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                 </div>
                             </div>

@@ -27,6 +27,8 @@
     {
         $complexInfo = getComplexInfo($complexID);
 
+        $rating = getComplexRating($complexID);
+
         if(!empty($complexInfo))
         {
             $infoArray = array(
@@ -37,7 +39,9 @@
                 'contact' => $complexInfo['complexPhone'],
                 'description' => $complexInfo['complexDescription'],
                 'openingHour' => $complexInfo['complexOpeningHour'],
-                'closingHour' => $complexInfo['complexClosingHour']
+                'closingHour' => $complexInfo['complexClosingHour'],
+                'rating' => $rating['avg'],
+                'ratingCount' => $rating['count']
             );
             echo json_encode($infoArray);
         }

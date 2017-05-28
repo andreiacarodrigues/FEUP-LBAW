@@ -22,6 +22,9 @@
     </div>
 </footer>
 
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGN7kjfIootMAJVsMqrNWQYnKjH6vbI_Q&callback=initMap">
+</script>-->
+
 <!-- Modal -->
 <div class="modal fade" id="issueModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -20,6 +20,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+
+
     <script src="{$BASE_URL}js/moment.js"></script>
     <script src="{$BASE_URL}js/validations.js"></script>
     <script src="{$BASE_URL}js/pageOnLoad.js"></script>

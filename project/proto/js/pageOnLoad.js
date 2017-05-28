@@ -22,7 +22,35 @@ function complexInfo(url, complexID){
             $('#infoContact').text(data['contact']);
             $('#infoDescription').text(data['description']);
             $('#infoHours').text(data['openingHour'] + "-" + data['closingHour']);
+
+            addRating(data);
         });
+}
+
+function addRating(data){
+    if(data['rating'] != null)
+    {
+        var stars = "";
+
+        var rating = parseInt(data['rating']);
+
+        for(var k = 0; k < rating.toFixed(0); k++) {
+            stars += "<span class='glyphicon glyphicon-star'></span>";
+        }
+        for(var k = 0; k < (5 - rating.toFixed(0)); k++) {
+            stars += "<span class='glyphicon glyphicon-star-empty'></span>";
+        }
+
+        $('#rating').append(
+            "<div class='text-center' >" +
+            "<h1 class='rating-num'>" + rating.toFixed(1) + "</h1>" +
+            "<div class='rating'>" +
+            stars +
+            "</div>" +
+            "<span class='glyphicon glyphicon-user'></span> " + data['ratingCount'] + " total" +
+            "<div>"
+        );
+    }
 }
 
 function complexManagers() {
@@ -44,10 +72,15 @@ function complexSpacesInfo(url, complexID){
             {
                 var space = data[j];
                 var rating = "";
-                if(space['rating'] != null){
-                    for(var i = 0; i < space['rating']; i++)
+
+                var spaceRating = parseInt(space['rating']['avg']);
+                console.log(spaceRating);
+                if(spaceRating != null){
+                    for(var i = 0; i < spaceRating.toFixed(0); i++)
                         rating += '⭐';
                 }
+
+                console.log(rating);
 
                 var isCovered = "Covered";
                 if(space['isCovered'] == "false"){
@@ -492,6 +525,7 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
 
             $('.backToComplex').attr("href", urlRedirect + '/?complexID=' + data['spaceComplexID']);
 
+            addRating(data);
         });
 }
 
@@ -808,3 +842,59 @@ function manageEquipmentPage(doc){
         }
     });
 }
+
+function submitRating(url, rentalID, num) {
+    var jsonURL = url + 'actions/users/rentalRating.php';
+    $.get(jsonURL, {rentalID: rentalID, rating: num},
+        function (data) {
+        alert(data);
+            alert('Rating submited sucessfully. Thank you for your feedback!');
+        })
+        .fail(function() {
+            alert('Error submiting rating!');
+        });
+}
+
+
+/*function initialize(doc, myadress)
+{
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(53.3496, -6.3263);
+    var mapOptions =
+        {
+            zoom: 8,
+            center: latlng
+        }
+    map = new google.maps.Map(doc.getElementById('map'), mapOptions);
+    codeAddress(myadress);//call the function
+}
+
+function codeAddress(address)
+{
+    geocoder.geocode( {address:address}, function(results, status)
+    {
+        if (status == google.maps.GeocoderStatus.OK)
+        {
+            map.setCenter(results[0].geometry.location);//center the map over the result
+            //place a marker at the location
+            var marker = new google.maps.Marker(
+                {
+                    map: map,
+                    position: results[0].geometry.location
+                });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
+function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map($('#map'), {
+        zoom: 4,
+        center: uluru
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
+}*/

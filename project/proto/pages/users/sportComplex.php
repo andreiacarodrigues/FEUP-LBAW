@@ -18,6 +18,7 @@
         $hasPhoto = false;
     }
 
+
     $smarty->assign('hasPhoto',$hasPhoto);
 
     $smarty->display('pages/users/sportComplex.tpl');

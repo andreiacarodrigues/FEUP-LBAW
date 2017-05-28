@@ -9,13 +9,6 @@
         die();
     }
 
-    if(!adminExists($_SESSION['userID']))
-    {
-        $_SESSION['error_messages'] = "You need to be an admin to acess this page";
-        header("Location: " . $BASE_URL . "pages/admins/admin.php");
-        die();
-    }
-
     if(!isset($_POST['rentalID']) || !isset($_POST['type']))
     {
         $_SESSION['error_messages'][] = "Requested variables not set.";
@@ -46,6 +39,13 @@
 
             if($type == "suspend")
             {
+                if(!adminExists($_SESSION['userID']))
+                {
+                    $_SESSION['error_messages'] = "You need to be an admin to acess this page";
+                    header("Location: " . $BASE_URL . "pages/admins/admin.php");
+                    die();
+                }
+
                 if(adminSuspendRental($rentalID))
                 {
                     $_SESSION['success_messages'][] = "Rental sucessfully suspended.";
@@ -63,17 +63,24 @@
                 if(concludeRental($rentalID))
                 {
                     $_SESSION['success_messages'][] = "Rental sucessfully concluded.";
-                    header("Location: " . $BASE_URL . "pages/admins/adminRentals.php");
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
                 else
                 {
                     $_SESSION['error_messages'][] = "Error concluding rental.";
-                    header("Location: " . $BASE_URL . "pages/admins/adminRentals.php");
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                     die();
                 }
             }
             else if($type == "cancel")
             {
+                if(!adminExists($_SESSION['userID']))
+                {
+                    $_SESSION['error_messages'] = "You need to be an admin to acess this page";
+                    header("Location: " . $BASE_URL . "pages/admins/admin.php");
+                    die();
+                }
+
                 if(adminCancelRental($rentalID))
                 {
                     $_SESSION['success_messages'][] = "Rental sucessfully canceled.";

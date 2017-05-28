@@ -72,21 +72,64 @@
                                     </div>
                                     {if $RENTAL.rentalState == "WAITINGUSERFEEDBACK"}
                                         <div class="col-md-4 mobileFixButtons">
+                                        {if $RENTAL.rentalRating != NULL}
                                             <div class="stars">
-                                                <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                                <label class="star star-5" for="star-5"></label>
-                                                <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                                <label class="star star-4" for="star-4"></label>
-                                                <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                                <label class="star star-3" for="star-3"></label>
-                                                <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                                <label class="star star-2" for="star-2"></label>
-                                                <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                                <label class="star star-1" for="star-1"></label>
+                                                {if $RENTAL.rentalRating == 5}
+                                                    <input class="star star-5" id="star{$RENTAL.rentalID}-5" type="radio" onclick="submitRating('{$BASE_URL}',{$RENTAL.rentalID}, 5)" name="star" checked/>
+                                                {else}
+                                                    <input class="star star-5" id="star{$RENTAL.rentalID}-5" type="radio" onclick="submitRating('{$BASE_URL}',{$RENTAL.rentalID}, 5)" name="star"/>
+                                                {/if}
+                                                <label class="star star-5" for="star{$RENTAL.rentalID}-5"></label>
+                                                {if $RENTAL.rentalRating == 4}
+                                                    <input class="star star-4" id="star{$RENTAL.rentalID}-4" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 4)" name="star" checked/>
+                                                {else}
+                                                    <input class="star star-4" id="star{$RENTAL.rentalID}-4" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 4)" name="star"/>
+                                                {/if}
+                                                <label class="star star-4" for="star{$RENTAL.rentalID}-4"></label>
+                                                {if $RENTAL.rentalRating == 3}
+                                                    <input class="star star-3" id="star{$RENTAL.rentalID}-3" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 3)" name="star" checked/>
+                                                {else}
+                                                    <input class="star star-3" id="star{$RENTAL.rentalID}-3" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 3)" name="star"/>
+                                                {/if}
+                                                <label class="star star-3" for="star{$RENTAL.rentalID}-3"></label>
+                                                {if $RENTAL.rentalRating == 2}
+                                                    <input class="star star-2" id="star{$RENTAL.rentalID}-2" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 2)" name="star" checked/>
+                                                {else}
+                                                    <input class="star star-2" id="star{$RENTAL.rentalID}-2" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 2)" name="star"/>
+                                                {/if}
+                                                <label class="star star-2" for="star{$RENTAL.rentalID}-2"></label>
+                                                {if $RENTAL.rentalRating == 1}
+                                                    <input class="star star-1" id="star{$RENTAL.rentalID}-1" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 1)" name="star" checked/>
+                                                {else}
+                                                    <input class="star star-1" id="star{$RENTAL.rentalID}-1" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 1)" name="star"/>
+                                                {/if}
+                                                <label class="star star-1" for="star{$RENTAL.rentalID}-1"></label>
                                             </div>
+                                        {else}
+                                            <div class="stars">
+                                                <input class="star star-5" id="star{$RENTAL.rentalID}-5" type="radio" onclick="submitRating('{$BASE_URL}',{$RENTAL.rentalID}, 5)" name="star"/>
+                                                <label class="star star-5" for="star{$RENTAL.rentalID}-5"></label>
+                                                <input class="star star-4" id="star{$RENTAL.rentalID}-4" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 4)" name="star"/>
+                                                <label class="star star-4" for="star{$RENTAL.rentalID}-4"></label>
+                                                <input class="star star-3" id="star{$RENTAL.rentalID}-3" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 3)" name="star"/>
+                                                <label class="star star-3" for="star{$RENTAL.rentalID}-3"></label>
+                                                <input class="star star-2" id="star{$RENTAL.rentalID}-2" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 2)" name="star"/>
+                                                <label class="star star-2" for="star{$RENTAL.rentalID}-2"></label>
+                                                <input class="star star-1" id="star{$RENTAL.rentalID}-1" type="radio" onclick="submitRating('{$BASE_URL}', {$RENTAL.rentalID}, 1)" name="star"/>
+                                                <label class="star star-1" for="star{$RENTAL.rentalID}-1"></label>
+                                            </div>
+                                        {/if}
+
                                             <br>
-                                            <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" onclick="setIssueRentalID({$RENTAL.rentalID})" data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue </button>
+                                            <button type="button" class="btn btn-primary gradient-yellow" data-toggle="modal" onclick="setIssueRentalID({$RENTAL.rentalID})" data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue </button>
+                                            <br><br>
+                                            <form class="tr equipmentForm" action="{$BASE_URL}actions/admin/changeStateRental.php" method="post" autocomplete="on">
+                                                <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
+                                                <input type="hidden" value="conclude" name="type"/>
+                                                <button type="submit" class="btn btn-primary gradient-blue">Conclude</button>  <!-- desaparecem opções -->
+                                            </form>
                                         </div>
+
                                     {else}
                                         {if $RENTAL.rentalState == "CONCLUDED" || $RENTAL.rentalState == "CANCELEDBYUSER" || $RENTAL.rentalState == "SUSPENDEDBYADMIN" || $RENTAL.rentalState == "CANCELEDBYMANAGER"}
                                             <div class="col-md-4 mobileFixButtons">

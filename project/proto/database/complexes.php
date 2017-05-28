@@ -366,7 +366,7 @@
         global $conn;
 
         $stmt = $conn->prepare('
-        SELECT AVG("rentalRating")
+        SELECT AVG("rentalRating"), count("rentalRating")
         FROM "Rental" 
         WHERE "rentalSpaceID" = ?');
         $stmt->execute(array($spaceID));
@@ -377,12 +377,14 @@
         global $conn;
 
         $stmt = $conn->prepare('
-           SELECT AVG("rentalRating")
+           SELECT AVG("rentalRating"), count("rentalRating")
            FROM "Rental"
            JOIN "Space"
            ON "rentalSpaceID" = "spaceID"
+          JOIN "SportsComplex"
+           ON "spaceComplexID" = "complexID"
            WHERE
-           "spaceComplexID" = ?');
+           "complexID" = ?');
         $stmt->execute(array($complexID));
         return $stmt->fetch();
     }
@@ -600,15 +602,6 @@
                     $stmt = $conn->rollBack();
                     return false;
                 }
-            }
-
-            $stmt = $conn->prepare('
-                UPDATE "Rental"
-                SET "rentalState" = \'CONCLUDED\'::"rentalState"
-                WHERE "rentalID" = ?;');
-            if(!$stmt->execute(array($rentalID))) {
-                $stmt = $conn->rollBack();
-                return false;
             }
         }
         $stmt = $conn->commit();
@@ -1138,5 +1131,33 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
                 ORDER BY random()
                 LIMIT 4;');
         $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    function getComplexUserSuggestions($municipality)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                SELECT "complexID", "complexName"
+                FROM "SportsComplex"
+                WHERE "complexMunicipalityID" = ? 
+                ORDER BY random()
+                LIMIT 4;');
+        $stmt->execute(array($municipality));
+        return $stmt->fetchAll();
+    }
+
+    function getOtherComplexSuggestions($municipality, $num)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                    SELECT "complexID", "complexName"
+                    FROM "SportsComplex"
+                    WHERE "complexMunicipalityID" <> ? 
+                    ORDER BY random()
+                    LIMIT ?;');
+        $stmt->execute(array($municipality, $num));
         return $stmt->fetchAll();
     }

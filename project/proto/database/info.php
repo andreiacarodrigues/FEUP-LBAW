@@ -136,6 +136,8 @@ function getRentals($page)
         return $stmt->fetchAll();
     }
 
+
+
     function getNrRentals()
     {
         global $conn;

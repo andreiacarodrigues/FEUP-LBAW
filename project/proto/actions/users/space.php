@@ -28,6 +28,8 @@ else
     $spaceInfo = getSpaceInfo($spaceID);
     $spaceSportsInfo = getSpaceSports($spaceID);
 
+    $rating = getSpaceRating($spaceID);
+
     if(!empty($spaceInfo))
     {
         $sports = getSpaceSports($spaceID);
@@ -41,6 +43,8 @@ else
         }
 
         $spaceInfo['spaceSports'] = $result;
+        $spaceInfo['rating'] = $rating['avg'];
+        $spaceInfo['ratingCount'] = $rating['count'];
 
         echo json_encode($spaceInfo);
     }

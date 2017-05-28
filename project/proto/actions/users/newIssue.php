@@ -64,7 +64,6 @@
                     if(rentalConcluded($rentalID))
                     {
                         if (addIssue($rentalID, $subject, $category, $description, $to, $complexID)) {
-
                             $_SESSION['success_messages'][] = "Issue sent sucessfully.";
                             header("Location: " . $BASE_URL . "pages/users/manageRentals.php");
                         } else {

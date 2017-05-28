@@ -209,7 +209,7 @@
         global $conn;
 
         $stmt = $conn->prepare('
-        Select "rentalID", "rentalDate", "rentalDuration", "rentalState", "spaceName", "complexName", "rentalStartTime"
+        Select "rentalID", "rentalDate", "rentalDuration", "rentalState", "spaceName", "complexName", "rentalStartTime", "rentalRating"
 
         From "Rental", "User", "Space", "SportsComplex"
         
@@ -227,6 +227,17 @@
         return $stmt;
     }
 
+
+    function addRentalRating($rentalID, $rating){
+        global $conn;
+
+        $stmt = $conn->prepare('UPDATE "Rental"
+            SET
+            "rentalRating" = ?
+            WHERE
+            "rentalID" = ?;');
+        return $stmt->execute(array($rating, $rentalID));
+    }
 
 function getUserNrRentals($userID)
 {
