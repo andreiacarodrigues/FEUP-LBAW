@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/info.php");
 
 
     if(!isset($_SESSION['userID']))
@@ -58,6 +59,6 @@
         {
             echo $e;
             $_SESSION['error_messages'] = "Unknown error occurred;";
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            //header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }

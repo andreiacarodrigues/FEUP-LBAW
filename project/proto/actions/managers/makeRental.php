@@ -2,6 +2,7 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
     include_once($BASE_DIR."database/users.php");
+    include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {

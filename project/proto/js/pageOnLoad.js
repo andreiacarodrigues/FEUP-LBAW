@@ -855,6 +855,11 @@ function submitRating(url, rentalID, num) {
         });
 }
 
+function addNotification(text){
+    $.notify(text,
+        { className:'info', autoHide: false});
+}
+
 
 /*function initialize(doc, myadress)
 {

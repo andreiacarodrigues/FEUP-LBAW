@@ -212,8 +212,7 @@ function getRentals($page)
         $stmt = $conn->prepare('
             INSERT INTO
             "Notification"("notificationUserID","notificationText")
-            VALUES (?,?)
-            RETURNING "complexID";');
+            VALUES (?,?);');
 
         return $stmt->execute(array($userID, $message));
     }
