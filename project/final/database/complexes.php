@@ -7,7 +7,6 @@
         Select "complexName", "complexID"
         
         From "SportsComplex", "User", "Manager"
-        
         Where
         "complexID" = "managerComplexID"
         AND "managerID" = "userID"
@@ -22,11 +21,16 @@
     {
         global $conn;
 
-        $stmt = $conn->prepare('SELECT "complexID", "complexName", "municipalityName", "complexPhone", "complexEmail"
+        $stmt = $conn->prepare('
+        SELECT "complexID", "complexName", "complexPhone", "complexEmail", "complexLocation"
         FROM "SportsComplex"
-         JOIN "Municipality" ON "complexMunicipalityID" = "municipalityID"
-        WHERE to_tsvector(\'english\', "complexName" || \' \' || "complexLocation" || \' \' || "complexDescription" || \' \' || "municipalityName") @@ to_tsquery(?::VARCHAR )
-        ;');
+        WHERE
+        setweight(to_tsvector(\'english\', "complexName"), \'A\')
+        || \' \' ||
+        setweight(to_tsvector(\'english\', "complexLocation"), \'B\')
+        || \' \' ||
+        setweight(to_tsvector(\'english\', "complexDescription"), \'C\')
+        @@ to_tsquery(?::VARCHAR);');
         $stmt->execute(array($search));
         return $stmt->fetchAll();
     }
@@ -84,7 +88,7 @@
              /* AVAILABILITY */
             "spaceIsAvailable" = TRUE
               AND
-             NOT EXISTS
+             (NOT EXISTS
             (SELECT "rentalID"
             FROM "Rental"
             WHERE
@@ -98,9 +102,10 @@
                         AND ("rentalDate" + "rentalStartTime" + "rentalDuration" > (?::DATE + ?::TIME)))
                     OR
                     (("rentalDate" + "rentalStartTime" > (?::DATE + ?::TIME))
-                        AND ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME + ?::TIME))))
-                    OR
+                        AND ("rentalDate" + "rentalStartTime" < (?::DATE + ?::TIME + ?::TIME)))))
+                          OR
                     (?::DATE IS NULL OR ?::TIME IS NULL OR ?::TIME IS NULL))	
+                  
             AND
             /* SURFACE TYPE */
             ("spaceSurfaceType" = ?::"surfaceType" OR ?::"surfaceType" IS NULL)
@@ -1155,9 +1160,63 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         $stmt = $conn->prepare('
                     SELECT "complexID", "complexName"
                     FROM "SportsComplex"
-                    WHERE "complexMunicipalityID" != ? 
+                    WHERE "complexMunicipalityID" = ? 
                     ORDER BY random()
                     LIMIT ?;');
         $stmt->execute(array($municipality, $num));
         return $stmt->fetchAll();
     }
+
+
+    function getSpaceWithMostReservations($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                       Select "spaceName", count(*) as spaceRents
+                        From "SportsComplex"
+                        Join "Space" ON "complexID" = "spaceComplexID"
+                        Join "Rental" ON "spaceID" = "rentalSpaceID"
+                        Where "complexID" = ?
+                        Group By "spaceName"
+                        Order By spaceRents desc
+                        limit 1;
+                        ');
+        $stmt->execute(array($complexID));
+        return $stmt->fetch['spaceName'];
+    }
+
+    function getUserWithMostRentals($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                          Select "userName", count(*) as spaceRents
+                            From "SportsComplex"
+                            Join "Space" ON "complexID" = "spaceComplexID"
+                            Join "Rental" ON "spaceID" = "rentalSpaceID"
+                            Join "User" ON "rentalUserID" = "userID"
+                            Where "complexID" = ?
+                            Group By "userName"
+                            Order By spaceRents desc
+                            limit 1
+                            ;');
+        $stmt->execute(array($complexID));
+        return $stmt->fetch['username'];
+    }
+
+    function getAVGRentalTime($complexID)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                Select avg("rentalDuration") as averageDuration
+                From "SportsComplex"
+                Join "Space" ON "complexID" = "spaceComplexID"
+                Join "Rental" ON "spaceID" = "rentalSpaceID"
+                Where "complexID" = ?
+                ;');
+        $stmt->execute(array($complexID));
+        return $stmt->fetch['rentalDuration'];
+    }
+

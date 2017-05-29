@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
     include_once($BASE_DIR . "database/complexes.php");
+include_once($BASE_DIR . "database/info.php");
 
        $name = $_GET['name'];
        $municipality = $_GET['municipality'];
@@ -23,16 +24,28 @@
             $startingTime = null;
         if($duration == '')
             $duration = null;
-    if($surface == '')
-        $surface = null;
+        if($surface == '')
+            $surface = null;
         if($coverage == '')
             $coverage = null;
 
        // validações php
 
+
         $complexes = getSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration, $surface, $coverage);
 
-        echo json_encode($complexes);
+
+        $complexesWithRating = array();
+
+        foreach($complexes as $complex) {
+            $rating = getComplexRating($complex['complexID']);
+            $complex['rating'] = $rating;
+            array_push($complexesWithRating, $complex);
+        }
+
+        echo json_encode($complexesWithRating);
+
+
 
 
 

@@ -103,13 +103,21 @@
                             {/if}
                         </div>
                         <div class="col-md-8">
-                            <h4 id="complexName"> {$COMPLEX.complexName} ⭐⭐⭐⭐</h4>
+                            <h4 id="complexName"> {$COMPLEX.complexName}
+                                {if $COMPLEX.rating != null}
+                                    {$COUNT = 0}
+                                    {while $COUNT < $COMPLEX.rating}
+                                        ⭐
+                                        {$COUNT = $COUNT + 1}
+                                    {/while}
+                                {/if}
+                            </h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> {$COMPLEX.municipalityName}</li>
+                                <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> {$COMPLEX.complexLocation} </li>
                                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i>  {$COMPLEX.complexEmail}</li>
                                 <li class="list-group-item"> <i class="fa fa-phone"></i>  {$COMPLEX.complexPhone} </li>
                             </ul>
-                            <a class="btn btn-primary btn-lg gradient-blue" id="complexRedirect" href="{$BASE_URL}users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <a class="btn btn-primary btn-lg gradient-blue" id="complexRedirect" href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
                     </div>
                     <hr>

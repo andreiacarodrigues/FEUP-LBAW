@@ -33,9 +33,9 @@
         <div class="col-md-4" id="mainImage">
             <br>
             {if $hasPhoto}
-                <img class="img-responsive" style="width:350px" src="{$BASE_URL}res/img/originals/complex_{$complexID}.jpg" alt="">
+                <img class="img-responsive" style="width:350px" src="{$BASE_URL}res/img/originals/complex_{$complexID}.jpg" alt="Image of the sports complex">
             {else}
-                <img class="img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="">
+                <img class="img-responsive" style="width:350px" src="http://placehold.it/750x500" alt="No image">
             {/if}
 
         </div>

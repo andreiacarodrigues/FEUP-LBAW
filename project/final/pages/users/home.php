@@ -12,7 +12,6 @@
             header("Location: " . $BASE_URL . "actions/authentication/logout.php");
             die();
         }
-
     }
 
     if(isset($_SESSION['userID']))

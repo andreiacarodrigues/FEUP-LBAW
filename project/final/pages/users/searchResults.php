@@ -16,11 +16,18 @@ include_once($BASE_DIR."database/complexes.php");
         $search = $_GET['search'];
         if ($search != ''){
             $complexes = getHomePageSearchComplexes($search);
-            $smarty->assign('RESULT', $complexes);
+
+            $complexesWithRating = array();
+
+            foreach($complexes as $complex) {
+                $rating = getComplexRating($complex['complexID']);
+                $complex['rating'] = $rating['avg'];
+                array_push($complexesWithRating, $complex);
+            }
+            $smarty->assign('RESULT', $complexesWithRating);
         }
     }
 
-    $smarty->assign('EQUIPMENT_INFORMATION', $parsedInformation);
     $smarty->assign('SPORTS', $sports);
-    $smarty->display('pages/users/searchResults.tpl');
+   $smarty->display('pages/users/searchResults.tpl');
 ?>

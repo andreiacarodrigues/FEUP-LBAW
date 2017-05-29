@@ -108,8 +108,6 @@ function complexSpacesInfo(url, complexID){
                         rating += '⭐';
                 }
 
-                console.log(rating);
-
                 var isCovered = "Covered";
                 if(space['isCovered'] == "false"){
                     isCovered = "Not covered";
@@ -429,6 +427,14 @@ function searchResults(url) {
                     if(result)
                         photoURL = url + 'res/img/originals/complex_' + complex['complexID'] + '.jpg';
 
+                    var rating = '';
+                    var spaceRating = parseInt(complex['rating']['avg']);
+                    if(spaceRating != null){
+                        for(var i = 0; i < spaceRating.toFixed(0); i++)
+                            rating += '⭐';
+                    }
+
+
                     $('#results').append(
                     "<div class='row'>" +
                         "<div class='col-md-4'>" +
@@ -437,7 +443,7 @@ function searchResults(url) {
                         "</a>" +
                         "</div>" +
                         "<div class='col-md-8'>" +
-                        "<h4>" + complex['complexName'] + " ⭐⭐⭐⭐ </h4>" +
+                        '<br><h4>' + complex['complexName'] + " " + rating + '</h4>'+
                     "<ul class='list-group'>" +
                         "<li class='list-group-item'><i class='glyphicon glyphicon-globe'></i>" + complex['municipalityName'] + "</li>" +
                         "<li class='list-group-item'> <i class='fa fa-envelope fa'></i>" + complex['complexEmail'] + "</li>" +
@@ -445,7 +451,7 @@ function searchResults(url) {
                         "</ul>" +
                         "<a class='btn btn-primary btn-lg gradient-blue' href='" + url + 'pages/users/sportComplex.php?complexID=' + complex['complexID'] + "'>Check Complex<span class='glyphicon glyphicon-chevron-right'></span></a>" +
                         "</div>" +
-                        "</div>"
+                        "</div>" +  "<hr>"
                     );
 
 
@@ -563,6 +569,13 @@ function spacePage(url, spaceID){
     var urlRedirect = url +'pages/users/sportComplex.php';
     spaceInfo(urlInfo, urlRedirect, spaceID);
 
+    $("input[name='duration']").blur(function(){
+        var total = 0;
+        var hoursMinutes = $(this).val().split(":");
+        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+        $('#totalRentalCost').text(total.toFixed(2));
+    });
+
     $(".checkInput input").blur(function(){
         var date = $("input[name='date']").val();
         var startTime = $("input[name='startingTime']").val();
@@ -595,7 +608,7 @@ function spacePage(url, spaceID){
             var spaceHours2 = moment(date + "T" + spaceHours[1], moment.ISO_8601);
 
 
-            if(moment().diff(val1) > 0)
+            if((moment().diff(val1) >= 0))
             {
                 $('#rentalInfo').append('<p> The date is invalid, they must be set in the future. Please enter valid information. </p>');
                 return;
@@ -717,12 +730,7 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
         });
 
 
-    $("input[name='duration']").blur(function(){
-        var total = 0;
-        var hoursMinutes = $(this).val().split(":");
-        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
-        $('#totalRentalCost').text(total.toFixed(2));
-    });
+
 
 }
 

@@ -38,9 +38,9 @@
             {assign var="filename" value="../../res/img/originals/space_{$spaceID}.jpg"}
 
             {if file_exists($filename)}
-                <img class="img-responsive" src="{$BASE_URL}res/img/originals/space_{$spaceID}.jpg" alt="">
+                <img class="img-responsive" src="{$BASE_URL}res/img/originals/space_{$spaceID}.jpg" alt="Image of the space">
             {else}
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                <img class="img-responsive" src="http://placehold.it/750x500" alt="No image">
             {/if}
         </div>
         <div class="col-md-5">
