@@ -11,11 +11,11 @@
         </div>
         <div class="thumbnail">
         <ul class="list-unstyled list-statistics">
-            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered over the current month: <span>100</span> users</label></li>
-            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered over the current year: <span>200</span> users</label></li>
-            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered: <span>300</span> users</label></li>
-            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total complexes registered: <span>50</span></label></li>
-            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total reservations made: <span>550</span></label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total users registered: <span>{$numUsers}</span> users</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total complexes registered: <span>{$numComplexes}</span> complexes</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total number of reservations: <span>{$numReservations}</span> reservations</label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Total spaces registered: <span>{$numSpaces}</span> spaces </label></li>
+            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Most practiced sport: <span>{$sport}</span></label></li>
 
         </ul>
         </div>

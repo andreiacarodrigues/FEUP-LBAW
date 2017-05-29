@@ -8,12 +8,9 @@
         </div>
         <div class="thumbnail well">
         <ul class="list-unstyled list-statistics">
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Total reservations over the current month: <span>50</span> reservations</label></li>
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Total reservations over the current year: <span>80</span> reservations</label></li>
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Medium reservation time length: <span>30</span> minutes</label></li>
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Day of the week with most afluence: <span>Saturday</span></label></li>
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User with most reservations: <span>Andreia Rodrigues</span></label></li>
-            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Space with most reservations: <span> Space 1 </span></label></li>
+            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Space with the most reservations: <span>{$space.spaceName} with {$space.spaceRents} reservations </span></label></li>
+            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User with most reservations: <span>{$user.userName} with {$user.spaceRents} reservations</label></li>
+            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Average time per rental: <span>{$rentalTime}</span></label></li>
         </ul>
         </div>
     </div>

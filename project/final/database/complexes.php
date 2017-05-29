@@ -30,7 +30,7 @@
         setweight(to_tsvector(\'english\', "complexLocation"), \'B\')
         || \' \' ||
         setweight(to_tsvector(\'english\', "complexDescription"), \'C\')
-        @@ to_tsquery(?::VARCHAR);');
+        @@ plainto_tsquery(?::VARCHAR);');
         $stmt->execute(array($search));
         return $stmt->fetchAll();
     }
@@ -50,7 +50,7 @@
         JOIN "Municipality" ON "complexMunicipalityID" = "municipalityID"
         WHERE
         /* NAME */
-        (to_tsvector(\'english\', "complexName") @@ to_tsquery(?::VARCHAR) OR (?::VARCHAR IS NULL))
+        (to_tsvector(\'english\', "complexName") @@ plainto_tsquery(?::VARCHAR) OR (?::VARCHAR IS NULL))
         AND
         /* MUNICIPALITY */
           ("municipalityID" = ?::INTEGER OR (?::INTEGER IS NULL))
@@ -1160,7 +1160,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         $stmt = $conn->prepare('
                     SELECT "complexID", "complexName"
                     FROM "SportsComplex"
-                    WHERE "complexMunicipalityID" = ? 
+                    WHERE "complexMunicipalityID" != ? 
                     ORDER BY random()
                     LIMIT ?;');
         $stmt->execute(array($municipality, $num));
@@ -1173,17 +1173,17 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         global $conn;
 
         $stmt = $conn->prepare('
-                       Select "spaceName", count(*) as spaceRents
+                       Select "spaceName", count(*) as "spaceRents"
                         From "SportsComplex"
                         Join "Space" ON "complexID" = "spaceComplexID"
                         Join "Rental" ON "spaceID" = "rentalSpaceID"
                         Where "complexID" = ?
                         Group By "spaceName"
-                        Order By spaceRents desc
+                        Order By "spaceRents" desc
                         limit 1;
                         ');
         $stmt->execute(array($complexID));
-        return $stmt->fetch['spaceName'];
+        return $stmt->fetch();
     }
 
     function getUserWithMostRentals($complexID)
@@ -1191,18 +1191,18 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         global $conn;
 
         $stmt = $conn->prepare('
-                          Select "userName", count(*) as spaceRents
+                          Select "userName", count(*) as "spaceRents"
                             From "SportsComplex"
                             Join "Space" ON "complexID" = "spaceComplexID"
                             Join "Rental" ON "spaceID" = "rentalSpaceID"
                             Join "User" ON "rentalUserID" = "userID"
                             Where "complexID" = ?
                             Group By "userName"
-                            Order By spaceRents desc
+                            Order By "spaceRents" desc
                             limit 1
                             ;');
         $stmt->execute(array($complexID));
-        return $stmt->fetch['username'];
+        return $stmt->fetch();
     }
 
     function getAVGRentalTime($complexID)
@@ -1210,13 +1210,13 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         global $conn;
 
         $stmt = $conn->prepare('
-                Select avg("rentalDuration") as averageDuration
+                Select avg("rentalDuration") 
                 From "SportsComplex"
                 Join "Space" ON "complexID" = "spaceComplexID"
                 Join "Rental" ON "spaceID" = "rentalSpaceID"
                 Where "complexID" = ?
                 ;');
         $stmt->execute(array($complexID));
-        return $stmt->fetch['rentalDuration'];
+        return $stmt->fetch()['avg'];
     }
 

@@ -223,11 +223,11 @@ function getRentals($page)
         global $conn;
 
         $stmt = $conn->prepare('
-                        Select count(*) as totalUsers
+                        Select count(*)
                         FROM "User"
                         ;');
         $stmt->execute();
-        return $stmt->fetch['count'];
+        return $stmt->fetch()['count'];
     }
 
     function getNumRegisteredComplexes()
@@ -235,12 +235,12 @@ function getRentals($page)
         global $conn;
 
         $stmt = $conn->prepare('
-                        Select count(*) as totalComplexes
+                        Select count(*)
                         FROM "SportsComplex"
                         ;
                         ');
         $stmt->execute();
-        return $stmt->fetch['count'];
+        return $stmt->fetch()['count'];
     }
 
     function getNumReservations()
@@ -248,12 +248,12 @@ function getRentals($page)
         global $conn;
 
         $stmt = $conn->prepare('
-                            Select count(*) as totalRents
+                            Select count(*)
                             FROM "Rental"
                             ;
                             ');
         $stmt->execute();
-        return $stmt->fetch['count'];
+        return $stmt->fetch()['count'];
     }
 
     function getNumSpacesRegistered()
@@ -261,12 +261,12 @@ function getRentals($page)
         global $conn;
 
         $stmt = $conn->prepare('
-                   Select count(*) as totalSpaces
+                   Select count(*)
                     FROM "Space"
                     ;
                                 ');
         $stmt->execute();
-        return $stmt->fetch['count'];
+        return $stmt->fetch()['count'];
     }
 
 
@@ -286,5 +286,5 @@ function getRentals($page)
                         ;
                                     ');
         $stmt->execute();
-        return $stmt->fetch['sportName'];
+        return $stmt->fetch()['sportName'];
     }

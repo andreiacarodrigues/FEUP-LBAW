@@ -1,6 +1,7 @@
 <?php
     include_once('../../config/init.php');
 include_once($BASE_DIR."database/users.php");
+include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -17,5 +18,25 @@ include_once($BASE_DIR."database/users.php");
     }
 
 
-$smarty->display('pages/admins/adminStatistics.tpl');
+    $numUsers = getNumRegisteredUsers();
+
+    $numComplexes = getNumRegisteredComplexes();
+
+    $numReservations = getNumReservations();
+
+    $numSpaces = getNumSpacesRegistered();
+
+    $sport = getMostPracticedSport();
+
+    $smarty->assign('numUsers', $numUsers);
+
+    $smarty->assign('numComplexes', $numComplexes);
+
+    $smarty->assign('numReservations', $numReservations);
+
+    $smarty->assign('numSpaces', $numSpaces);
+
+    $smarty->assign('sport', $sport);
+
+    $smarty->display('pages/admins/adminStatistics.tpl');
 ?>
