@@ -216,3 +216,75 @@ function getRentals($page)
 
         return $stmt->execute(array($userID, $message));
     }
+
+
+    function getNumRegisteredUsers()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                        Select count(*) as totalUsers
+                        FROM "User"
+                        ;');
+        $stmt->execute();
+        return $stmt->fetch['count'];
+    }
+
+    function getNumRegisteredComplexes()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                        Select count(*) as totalComplexes
+                        FROM "SportsComplex"
+                        ;
+                        ');
+        $stmt->execute();
+        return $stmt->fetch['count'];
+    }
+
+    function getNumReservations()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                            Select count(*) as totalRents
+                            FROM "Rental"
+                            ;
+                            ');
+        $stmt->execute();
+        return $stmt->fetch['count'];
+    }
+
+    function getNumSpacesRegistered()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                   Select count(*) as totalSpaces
+                    FROM "Space"
+                    ;
+                                ');
+        $stmt->execute();
+        return $stmt->fetch['count'];
+    }
+
+
+    function getMostPracticedSport()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('
+                       Select "sportName", count("sportID") as sportCount
+                        From "Rental"
+                        Join "Space" ON "rentalSpaceID" = "spaceID"
+                        Join "SpaceSports" ON "spaceSportsSpaceID" = "spaceID"
+                        Join "Sport" ON "spaceSportsSportID" = "sportID"
+                        Group By "sportName"
+                        Order By sportCount desc
+                        limit 1
+                        ;
+                                    ');
+        $stmt->execute();
+        return $stmt->fetch['sportName'];
+    }
