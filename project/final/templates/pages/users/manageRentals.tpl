@@ -44,15 +44,13 @@
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date:
                                                     <span> {$RENTAL.rentalDate|date_format:"%e / %b / %Y"} </span></label>
                                             </li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports
-                                                     Complex: <a
-                                                            href="{$BASE_URL}pages/users/sportComplex.php?complexID={$RENTAL.complexID}"> {$RENTAL.complexName} </a></label>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sport Complex:
+                                                    <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$RENTAL.complexID}"> {$RENTAL.complexName} </a></label>
                                             </li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a
                                                             href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
                                             </li>
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of
-                                                     Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration:
                                                     <span> {$RENTAL.rentalDuration} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment:

@@ -554,10 +554,10 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
             $('#infoOpenOnWeekends').text(openOnWeekends);
 
             var covered = "yes";
-            if(data['spaceIsCovered'] == "false")
+            if(data['spaceIsCovered'] == false)
                 covered = "no";
 
-            $('#infoCoverage').text(data['spaceIsCovered']);
+            $('#infoCoverage').text(covered);
             $('#infoSports').text(data['spaceSports']);
             $('#infoSurface').text(data['spaceSurfaceType']);
             $('#infoPrice').text(data['spacePrice']);
@@ -577,13 +577,6 @@ function spacePage(url, spaceID){
     var urlRedirect = url +'pages/users/sportComplex.php';
     spaceInfo(urlInfo, urlRedirect, spaceID);
 
-    $("input[name='duration']").blur(function(){
-        var total = 0;
-        var hoursMinutes = $(this).val().split(":");
-        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
-        $('#totalRentalCost').text(total.toFixed(2));
-    });
-
     $(".checkInput input").blur(function(){
         var date = $("input[name='date']").val();
         var startTime = $("input[name='startingTime']").val();
@@ -601,7 +594,7 @@ function spacePage(url, spaceID){
         var hoursToAdd = val3.hours();
         var minutesToAdd = val3.minutes();
 
-        var val3 = val2;
+        var val3 = val2.clone();
         val3.add(hoursToAdd, 'hours');
         val3.add(minutesToAdd, 'minutes');
 
@@ -614,7 +607,6 @@ function spacePage(url, spaceID){
 
             var spaceHours1 = moment(date + "T" + spaceHours[0], moment.ISO_8601);
             var spaceHours2 = moment(date + "T" + spaceHours[1], moment.ISO_8601);
-
 
             if((moment().diff(val1) >= 0))
             {
@@ -727,7 +719,7 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
 
             $(".quantity").blur(function(){
                 var total = 0;
-                $('#equipmentList tr').each(function(){
+                $('#equipmentList .tr').each(function(){
                     total += (parseInt($(this).find('.quantity').val()) * (parseInt($(this).find('.price').text())));
                 });
                 var hoursMinutes = duration.split(":");
@@ -736,6 +728,13 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
             });
 
         });
+
+    $("input[name='duration']").blur(function(){
+        var total = 0;
+        var hoursMinutes = $(this).val().split(":");
+        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+        $('#totalRentalCost').text(total.toFixed(2));
+    });
 
 
 
