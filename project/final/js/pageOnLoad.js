@@ -406,16 +406,12 @@ function searchResults(url) {
         if(duration == '')
             duration = null;
 
-
-        if(coverage == '')
-            coverage = null;
-        else if(coverage == "false")
-            coverage = false;
-        else if(coverage == "true")
-            coverage = true;
-
         console.log(coverage);
 
+        if(coverage == null)
+        {
+            coverage = "null";
+        }
 
 
         var jsonURL = url + 'actions/users/search.php';

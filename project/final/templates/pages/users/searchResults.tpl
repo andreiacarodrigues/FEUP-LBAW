@@ -71,10 +71,10 @@
             <div class="input-group">
                 <span class="input-group-addon primary">Coverage</span>
                 <select class="form-control" name="coverage" title="Space coverage">
-                    <option value="" disabled selected>Coverage</option>
+                    <option value="null" disabled selected>Coverage</option>
                     <option value="true">Covered</option>
                     <option value="false">Uncovered</option>
-                    <option value="">Indiferent</option>
+                    <option value="null">Indiferent</option>
                 </select>
             </div>
             </div>

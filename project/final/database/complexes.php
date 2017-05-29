@@ -37,13 +37,6 @@
 
     function getSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration, $surface, $coverage)
     {
-        if($coverage == true)
-            $coverage = "true";
-        else if($coverage == false)
-            $coverage = "false";
-        else
-            $coverage = NULL;
-
         global $conn;
 
         $stmt = $conn->prepare('

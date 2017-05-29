@@ -27,12 +27,10 @@ include_once($BASE_DIR . "database/info.php");
         if($surface == '')
             $surface = null;
 
-        if($coverage == "true")
-            $coverage = true;
-        else if($coverage == "false")
-            $coverage = false;
-        else if($coverage == '')
+        if($coverage == 'null')
+        {
             $coverage = null;
+        }
 
        // validações php
 
