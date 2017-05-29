@@ -56,16 +56,16 @@
                 </div>
             </div>
             <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon primary">Surface</span>
-                <select class="form-control" title="Surface type" name="surface">
-                    <option value="" disabled selected>Surface type</option>
-                    <option>Synthetic</option>
-                    <option>Dirt</option>
-                    <option>Indoors</option>
-                    <option>Other</option>
-                </select>
-            </div>
+                <div class="input-group">
+                    <span class="input-group-addon primary">Surface</span>
+                    <select class="form-control" title="Surface type" name="surface">
+                        <option value="" disabled selected>Surface</option>
+                        {foreach $SURFACES as $SURFACE}
+                            <option value="{$SURFACE.unnest}"
+                            >{$SURFACE.unnest}</option>
+                        {/foreach}
+                    </select>
+                </div>
             </div>
             <div class="form-group">
             <div class="input-group">
@@ -103,7 +103,7 @@
                             {/if}
                         </div>
                         <div class="col-md-8">
-                            <h4 id="complexName"> {$COMPLEX.complexName}
+                            <h2 id="complexName"> {$COMPLEX.complexName}
                                 {if $COMPLEX.rating != null}
                                     {$COUNT = 0}
                                     {while $COUNT < $COMPLEX.rating}
@@ -111,7 +111,7 @@
                                         {$COUNT = $COUNT + 1}
                                     {/while}
                                 {/if}
-                            </h4>
+                            </h2>
                             <ul class="list-group">
                                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> {$COMPLEX.complexLocation} </li>
                                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i>  {$COMPLEX.complexEmail}</li>

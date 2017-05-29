@@ -40,36 +40,27 @@
                                     <h4 class="mobileFixText">Rental #<span>{$VALUE}</span></h4>
                                 </div>
                                 <div class="col-md-4">
+                                    <p> User Information: </p>
                                     <ul class="list-unstyled">
-                                        <p> User Information: </p>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User:
-                                                <span> {$RENTAL.userUsername} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Name:
-                                                <span> {$RENTAL.userName} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Contact:
-                                                <span> {$RENTAL.userPhone} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Email:
-                                                <span> {$RENTAL.userEmail} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User: <span> {$RENTAL.userUsername} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Name: <span> {$RENTAL.userName} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Contact: <span> {$RENTAL.userPhone} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Email: <span> {$RENTAL.userEmail} </span></label></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
+                                    <p> Reservation Information: </p>
                                     <ul class="list-unstyled">
-                                        <p> Reservation Information: </p>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date:
-                                                <span> {$RENTAL.rentalDate} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a
-                                                        href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> {$RENTAL.rentalDate} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
                                         </li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start:
-                                                <span> {$RENTAL.rentalStartTime} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration:
-                                                <span> {$RENTAL.rentalDuration} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment:
-                                                <span> {$RENTAL.equipment} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration: <span> {$RENTAL.rentalDuration} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment: <span> {$RENTAL.equipment} </span></label></li>
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> State: <span>
-                                       {if $RENTAL.rentalState == "RESERVED"}
-                                           Reserved
-                                       {/if}
+                                                   {if $RENTAL.rentalState == "RESERVED"}
+                                                       Reserved
+                                                   {/if}
                                                     {if $RENTAL.rentalState == "RESERVEDBYMANAGER"}
                                                         Reserved By Manager
                                                     {/if}

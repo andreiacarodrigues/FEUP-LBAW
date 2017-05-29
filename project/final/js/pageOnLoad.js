@@ -1,4 +1,4 @@
-function profilePage(url){
+function profilePage(url) {
 
     $(function () {
         var urlInfo = url + 'actions/users/profile.php';
@@ -63,7 +63,7 @@ function setIssueRentalID(rentalID) {
     $("#reportForm input[type='hidden']").val(rentalID);
 }
 
-function sportComplexPage(url, complexID){
+function sportComplexPage(url, complexID) {
     complexInfo(url, complexID);
     complexSpacesInfo(url, complexID);
 }
@@ -103,16 +103,16 @@ function updateEditSpaceInfo(complexID, spaceID, spaceName, isCovered, surfaceTy
     $("#sportsSelect").val(values);
 }
 
-function complexInfo(url, complexID){
+function complexInfo(url, complexID) {
 
     var ajaxURL = url + 'actions/users/sportComplex.php';
-    $.getJSON(ajaxURL,  {complexID: complexID} ,
-        function(data){
+    $.getJSON(ajaxURL, {complexID: complexID},
+        function (data) {
             $('#infoName').text(data['name']);
             $('#infoLocation').text(data['location']);
             var openOnWeekends = "yes";
 
-            if(data['openOnWeekends'] + '' == "false")
+            if (data['openOnWeekends'] + '' == "false")
                 openOnWeekends = "no";
 
             $('#infoOpenOnWeekends').text(openOnWeekends);
@@ -127,43 +127,39 @@ function complexInfo(url, complexID){
         });
 }
 
-function initMap(address)
-{
+function initMap(address) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
-        'address': address
-    },
-        function(results, status)
-    {
-        if (status === 'OK')
-        {
-            var myOptions = {
-                zoom: 16,
-                center: results[0].geometry.location,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+            'address': address
+        },
+        function (results, status) {
+            if (status === 'OK') {
+                var myOptions = {
+                    zoom: 16,
+                    center: results[0].geometry.location,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
 
-            var map = new google.maps.Map($("#map")[0], myOptions);
+                var map = new google.maps.Map($("#map")[0], myOptions);
 
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-        }
-    });
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            }
+        });
 }
 
-function addRating(data){
-    if(data['rating'] != null)
-    {
+function addRating(data) {
+    if (data['rating'] != null) {
         var stars = "";
 
         var rating = parseInt(data['rating']);
 
-        for(var k = 0; k < rating.toFixed(0); k++) {
+        for (var k = 0; k < rating.toFixed(0); k++) {
             stars += "<span class='glyphicon glyphicon-star'></span>";
         }
-        for(var k = 0; k < (5 - rating.toFixed(0)); k++) {
+        for (var k = 0; k < (5 - rating.toFixed(0)); k++) {
             stars += "<span class='glyphicon glyphicon-star-empty'></span>";
         }
 
@@ -181,33 +177,29 @@ function addRating(data){
 
 function complexManagers() {
     var buttons = $('.remove-button');
-    buttons.each(function()
-    {
+    buttons.each(function () {
         var id = $(this).attr('id');
         var result = id.match(/remove-(\d*)/);
-        console.log(result);
     });
 }
 
-function complexSpacesInfo(url, complexID){
+function complexSpacesInfo(url, complexID) {
     var ajaxURL = url + 'actions/users/complexSpaces.php';
 
-    $.getJSON(ajaxURL,  {complexID: complexID} ,
-        function(data){
-            for(var j = 0; j < data.length; j++)
-            {
+    $.getJSON(ajaxURL, {complexID: complexID},
+        function (data) {
+            for (var j = 0; j < data.length; j++) {
                 var space = data[j];
                 var rating = "";
 
                 var spaceRating = parseInt(space['rating']['avg']);
-                console.log(spaceRating);
-                if(spaceRating != null){
-                    for(var i = 0; i < spaceRating.toFixed(0); i++)
+                if (spaceRating != null) {
+                    for (var i = 0; i < spaceRating.toFixed(0); i++)
                         rating += '⭐';
                 }
 
                 var isCovered = "Covered";
-                if(space['isCovered'] == false){
+                if (space['isCovered'] == false) {
                     isCovered = "Not covered";
                 }
 
@@ -216,26 +208,26 @@ function complexSpacesInfo(url, complexID){
                 var result = UrlExists(fileURL);
 
                 var photoURL = "http://placehold.it/700x400";
-                if(result)
+                if (result)
                     photoURL = url + 'res/img/originals/space_' + space['id'] + '.jpg';
 
                 $('#spaces').append(
                     '<div class="row">' +
-                        '<div class="col-md-3">' +
-                            '<a href="#">' +
-                            '<img class="img-responsive" src="' + photoURL + '" style="width:300px" alt="Image of a space">' +
-                            '</a>' +
-                        '</div>' +
-                        '<div class="col-md-9">'+
+                    '<div class="col-md-3">' +
+                    '<a href="#">' +
+                    '<img class="img-responsive" src="' + photoURL + '" style="width:300px" alt="Image of a space">' +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="col-md-9">' +
 
-                            '<br><h3>' + space['name'] + " " + rating + '</h3>'+
-                            '<ul class="list-group">' +
-                                '<li class="list-group-item"> <i class="fa fa-cloud"></i> ' + isCovered + ' </li>'+
-                                '<li class="list-group-item"><i class="fa fa-tree"></i> ' + space['surfaceType'] + ' </li>'+
-                                '<li class="list-group-item"> <i class="fa fa-eur"></i> ' + space['price'] + ' <span> per hour </span></li>'+
-                            '</ul>'+
-                            '<a class="btn btn-primary btn-lg gradient-blue" href="' + url + 'pages/users/space.php/?spaceID=' + space['id'] + '">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>'+
-                        '</div>'+
+                    '<br><h3>' + space['name'] + " " + rating + '</h3>' +
+                    '<ul class="list-group">' +
+                    '<li class="list-group-item"> <i class="fa fa-cloud"></i> ' + isCovered + ' </li>' +
+                    '<li class="list-group-item"><i class="fa fa-tree"></i> ' + space['surfaceType'] + ' </li>' +
+                    '<li class="list-group-item"> <i class="fa fa-eur"></i> ' + space['price'] + ' <span> per hour </span></li>' +
+                    '</ul>' +
+                    '<a class="btn btn-primary btn-lg gradient-blue" href="' + url + 'pages/users/space.php/?spaceID=' + space['id'] + '">Rent Space<span class="glyphicon glyphicon-chevron-right"></span></a>' +
+                    '</div>' +
                     '</div>' +
                     '<hr>'
                 )
@@ -243,16 +235,15 @@ function complexSpacesInfo(url, complexID){
         });
 }
 
-function UrlExists(url)
-{
+function UrlExists(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
     http.send();
-    return http.status!=404;
+    return http.status != 404;
 }
 
-function addSpace(){
-    $('form').submit(function() {
+function addSpace() {
+    $('form').submit(function () {
         var error = false;
 
         var name = $("input[name='name']").val();
@@ -260,18 +251,17 @@ function addSpace(){
         $('#invalidName').text("");
         $('.errorMessage').text("");
 
-        if (name == "")
-        {
+        if (name == "") {
             $('.errorMessage').text("Required field wasn't filled.");
             return false;
         }
 
-        if(!is_name(name)) {
+        if (!is_name(name)) {
             error = true;
             $('#invalidName').text("Invalid name.");
         }
 
-        if(error)
+        if (error)
             return false;
     });
 
@@ -279,20 +269,20 @@ function addSpace(){
         .find('[name="sports[]"]')
         .multiselect({
             includeSelectAllOption: true,
-            onChange: function(element, checked) {
+            onChange: function (element, checked) {
                 adjustByScrollHeight();
             },
-            onDropdownShown: function(e) {
+            onDropdownShown: function (e) {
                 adjustByScrollHeight();
             },
-            onDropdownHidden: function(e) {
+            onDropdownHidden: function (e) {
                 adjustByHeight();
             }
         })
         .end();
 
     function adjustByHeight() {
-        var $body   = $('body'),
+        var $body = $('body'),
             $iframe = $body.data('iframe.fv');
         if ($iframe) {
             // Adjust the height of iframe when hiding the picker
@@ -301,7 +291,7 @@ function addSpace(){
     }
 
     function adjustByScrollHeight() {
-        var $body  = $('body'),
+        var $body = $('body'),
             $iframe = $body.data('iframe.fv');
         if ($iframe) {
             // Adjust the height of iframe when showing the picker
@@ -310,8 +300,8 @@ function addSpace(){
     }
 }
 
-function addComplex(){
-    $('form').submit(function(){
+function addComplex() {
+    $('form').submit(function () {
 
         // Prevents from submiting
 
@@ -339,48 +329,48 @@ function addComplex(){
         $('.errorMessage').text("");
 
 
-        if(name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
+        if (name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
             $('.errorMessage').text("Required field wasn't filled.");
             return false;
         }
 
-        if(openingHour > closingHour) {
+        if (openingHour > closingHour) {
             error = true;
             $('#invalidHours').text("Invalid hours. Closing time must be after opening time.");
         }
-        if(!is_name(name)) {
+        if (!is_name(name)) {
             error = true;
             $('#invalidName').text("Invalid name.");
         }
 
-        if(!is_location(location)) {
+        if (!is_location(location)) {
             error = true;
             $('#invalidLocation').text("Invalid location.");
         }
 
-        if(!is_email(email)){
+        if (!is_email(email)) {
             error = true;
             $('#invalidEmail').text("Invalid email. Should be in the form xxx@yyy.zzz.");
         }
 
-        if(!is_contact(contact)){
+        if (!is_contact(contact)) {
             error = true;
             $('#invalidContact').text("Invalid phone number. It should be 9 digits in the form xxxxxxxxx or xxx-xxx-xxx.");
         }
 
-        if(!is_email(paypal)){
+        if (!is_email(paypal)) {
             error = true;
             $('#invalidPaypal').text("Invalid paypal email. Should be in the form xxx@yyy.zzz.");
         }
 
-        if(error)
+        if (error)
             return false;
 
     });
 }
 
-function complexValidations(){
-    $('form').submit(function(){
+function complexValidations() {
+    $('form').submit(function () {
         // Prevents from submiting
 
         var error = false;
@@ -407,65 +397,65 @@ function complexValidations(){
         $('.errorMessage').text("");
 
 
-        if(name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
+        if (name == "" || location == "" || email == "" || contact == "" || municipality == null || openingHour == "" || closingHour == "" || paypal == "") {
             $('.errorMessage').text("Required field wasn't filled.");
             return false;
         }
 
-        if(openingHour > closingHour) {
+        if (openingHour > closingHour) {
             error = true;
             $('#invalidHours').text("Invalid hours. Closing time must be after opening time.");
         }
-        if(!is_name(name)) {
+        if (!is_name(name)) {
             error = true;
             $('#invalidName').text("Invalid name.");
         }
 
-        if(!is_location(location)) {
+        if (!is_location(location)) {
             error = true;
             $('#invalidLocation').text("Invalid location.");
         }
 
-        if(!is_email(email)){
+        if (!is_email(email)) {
             error = true;
             $('#invalidEmail').text("Invalid email. Should be in the form xxx@yyy.zzz.");
         }
 
-        if(!is_contact(contact)){
+        if (!is_contact(contact)) {
             error = true;
             $('#invalidContact').text("Invalid phone number. It should be 9 digits in the form xxxxxxxxx or xxx-xxx-xxx.");
         }
 
-        if(!is_email(paypal)){
+        if (!is_email(paypal)) {
             error = true;
             $('#invalidPaypal').text("Invalid paypal email. Should be in the form xxx@yyy.zzz.");
         }
 
-        if(error)
+        if (error)
             return false;
 
     });
 }
 
-function manageSpaces(){
+function manageSpaces() {
     $('#editSpaceForm')
         .find('[name="sports[]"]')
         .multiselect({
             includeSelectAllOption: true,
-            onChange: function(element, checked) {
+            onChange: function (element, checked) {
                 adjustByScrollHeight();
             },
-            onDropdownShown: function(e) {
+            onDropdownShown: function (e) {
                 adjustByScrollHeight();
             },
-            onDropdownHidden: function(e) {
+            onDropdownHidden: function (e) {
                 adjustByHeight();
             }
         })
         .end();
 
     function adjustByHeight() {
-        var $body   = $('body'),
+        var $body = $('body'),
             $iframe = $body.data('iframe.fv');
         if ($iframe) {
             // Adjust the height of iframe when hiding the picker
@@ -474,7 +464,7 @@ function manageSpaces(){
     }
 
     function adjustByScrollHeight() {
-        var $body   = $('body'),
+        var $body = $('body'),
             $iframe = $body.data('iframe.fv');
         if ($iframe) {
             // Adjust the height of iframe when showing the picker
@@ -495,19 +485,17 @@ function searchResults(url) {
         var surface = $("select[name='surface']").val();
         var coverage = $("select[name='coverage']").val();
 
-        if(name == '')
+        if (name == '')
             name = null;
-        if(date == '')
+        if (date == '')
             date = null;
-        if(startingTime == '')
+        if (startingTime == '')
             startingTime = null;
-        if(duration == '')
+        if (duration == '')
             duration = null;
 
-        console.log(coverage);
 
-        if(coverage == null)
-        {
+        if (coverage == null) {
             coverage = "null";
         }
 
@@ -515,14 +503,15 @@ function searchResults(url) {
         var jsonURL = url + 'actions/users/search.php';
         $('#results').empty();
 
-        $.getJSON(jsonURL,  {name: name, municipality: municipality, sport:sport, date:date, startingTime:startingTime,
-                duration:duration,surface:surface, coverage:coverage} ,
-            function(data){
-                console.log(data);
+        $.getJSON(jsonURL, {
+                name: name, municipality: municipality, sport: sport, date: date, startingTime: startingTime,
+                duration: duration, surface: surface, coverage: coverage
+            },
+            function (data) {
 
                 $('#resultsLength').text(data.length + ' complexes found');
 
-                for(var j = 0; j < data.length; j++) {
+                for (var j = 0; j < data.length; j++) {
                     var complex = data[j];
 
                     var fileURL = url + 'res/img/originals/complex_' + complex['complexID'] + '.jpg';
@@ -530,40 +519,40 @@ function searchResults(url) {
                     var result = UrlExists(fileURL);
 
                     var photoURL = "http://placehold.it/700x400";
-                    if(result)
+                    if (result)
                         photoURL = url + 'res/img/originals/complex_' + complex['complexID'] + '.jpg';
 
                     var rating = '';
                     var spaceRating = parseInt(complex['rating']['avg']);
-                    if(spaceRating != null){
-                        for(var i = 0; i < spaceRating.toFixed(0); i++)
+                    if (spaceRating != null) {
+                        for (var i = 0; i < spaceRating.toFixed(0); i++)
                             rating += '⭐';
                     }
 
 
                     $('#results').append(
-                    "<div class='row'>" +
+                        "<div class='row'>" +
                         "<div class='col-md-4'>" +
                         "<a href='#'>" +
                         "<img class='img-responsive' src=" + photoURL + " style='width:400px' alt=''>" +
                         "</a>" +
                         "</div>" +
                         "<div class='col-md-8'>" +
-                        '<br><h4>' + complex['complexName'] + " " + rating + '</h4>'+
-                    "<ul class='list-group'>" +
+                        '<br><h4>' + complex['complexName'] + " " + rating + '</h4>' +
+                        "<ul class='list-group'>" +
                         "<li class='list-group-item'><i class='glyphicon glyphicon-globe'></i>" + complex['municipalityName'] + "</li>" +
                         "<li class='list-group-item'> <i class='fa fa-envelope fa'></i>" + complex['complexEmail'] + "</li>" +
                         "<li class='list-group-item'> <i class='fa fa-phone'></i>" + complex['complexPhone'] + "</li>" +
                         "</ul>" +
                         "<a class='btn btn-primary btn-lg gradient-blue' href='" + url + 'pages/users/sportComplex.php?complexID=' + complex['complexID'] + "'>Check Complex<span class='glyphicon glyphicon-chevron-right'></span></a>" +
                         "</div>" +
-                        "</div>" +  "<hr>"
+                        "</div>" + "<hr>"
                     );
 
 
                 }
             })
-            .fail(function(jqXHR, textStatus, errorThrown) {
+            .fail(function (jqXHR, textStatus, errorThrown) {
                 console.log("error " + textStatus);
                 console.log("errorThrown " + errorThrown);
                 console.log("incoming Text " + jqXHR.responseText);
@@ -572,8 +561,8 @@ function searchResults(url) {
     });
 }
 
-function signUp(){
-    $('form').submit(function(){
+function signUp() {
+    $('form').submit(function () {
 
         // Prevents from submiting
 
@@ -599,60 +588,60 @@ function signUp(){
         $('#invalidConfirmation').text("");
         $('.errorMessage').text("");
 
-        if(name == "" || email == "" || username == "" || contact == "" || municipality == null || password == "" || confirm == "") {
+        if (name == "" || email == "" || username == "" || contact == "" || municipality == null || password == "" || confirm == "") {
             $('.errorMessage').text("Required field wasn't filled.");
             return false;
         }
 
-        if(!is_name(name)) {
+        if (!is_name(name)) {
             error = true;
             $('#invalidName').text("Invalid name.");
         }
 
-        if(!is_email(email)){
+        if (!is_email(email)) {
             error = true;
             $('#invalidEmail').text("Invalid email. Should be in the form xxx@yyy.zzz.");
         }
 
-        if(!is_username(username)) {
+        if (!is_username(username)) {
             error = true;
             $('#invalidUsername').text("Invalid username. Must have 4 or more characters and no spaces.");
         }
 
-        if(!is_contact(contact)){
+        if (!is_contact(contact)) {
             error = true;
             $('#invalidContact').text("Invalid phone number. It should be 9 digits in the form xxxxxxxxx or xxx-xxx-xxx.");
         }
 
-        if(!is_password(password)){
+        if (!is_password(password)) {
             error = true;
             $('#invalidPassword').text("Invalid password. Should have more than 6 characters.");
         }
-        else if(password != confirm){
+        else if (password != confirm) {
             error = true;
             $('#invalidConfirmation').text("Passwords do not match.");
         }
 
-        if(error)
+        if (error)
             return false;
 
     });
 }
 
-function spaceInfo(urlInfo, urlRedirect, spaceID){
-    $.getJSON(urlInfo,  {spaceID: spaceID} ,
-        function(data){
+function spaceInfo(urlInfo, urlRedirect, spaceID) {
+    $.getJSON(urlInfo, {spaceID: spaceID},
+        function (data) {
             $('#infoName').text(data['spaceName']);
             $('#infoLocation').text(data['complexLocation']);
 
             var openOnWeekends = "yes";
-            if(data['complexOpenOnWeekends'] == false)
+            if (data['complexOpenOnWeekends'] == false)
                 openOnWeekends = "no";
 
             $('#infoOpenOnWeekends').text(openOnWeekends);
 
             var covered = "yes";
-            if(data['spaceIsCovered'] == false)
+            if (data['spaceIsCovered'] == false)
                 covered = "no";
 
             $('#infoCoverage').text(covered);
@@ -669,13 +658,13 @@ function spaceInfo(urlInfo, urlRedirect, spaceID){
         });
 }
 
-function spacePage(url, spaceID){
+function spacePage(url, spaceID) {
 
     var urlInfo = url + 'actions/users/space.php';
-    var urlRedirect = url +'pages/users/sportComplex.php';
+    var urlRedirect = url + 'pages/users/sportComplex.php';
     spaceInfo(urlInfo, urlRedirect, spaceID);
 
-    $(".checkInput input").blur(function(){
+    $(".checkInput input").blur(function () {
         var date = $("input[name='date']").val();
         var startTime = $("input[name='startingTime']").val();
         var duration = $("input[name='duration']").val();
@@ -698,7 +687,7 @@ function spacePage(url, spaceID){
 
         $('#rentalInfo').empty();
 
-        if((date != "") && (startTime != "") && (duration != "")) {
+        if ((date != "") && (startTime != "") && (duration != "")) {
 
             var spaceHours = $('#infoHours').text();
             spaceHours = spaceHours.split("-");
@@ -706,54 +695,51 @@ function spacePage(url, spaceID){
             var spaceHours1 = moment(date + "T" + spaceHours[0], moment.ISO_8601);
             var spaceHours2 = moment(date + "T" + spaceHours[1], moment.ISO_8601);
 
-            if((moment().diff(val1) >= 0))
-            {
+            if ((moment().diff(val1) >= 0)) {
                 $('#rentalInfo').append('<p> The date is invalid, they must be set in the future. Please enter valid information. </p>');
                 return;
             }
 
-              if(moment(val2).isBefore(spaceHours1) || moment(val3).isAfter(spaceHours2)) {
-                  $('#rentalInfo').append('<p> The time is invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
-                  return;
-              }
+            if (moment(val2).isBefore(spaceHours1) || moment(val3).isAfter(spaceHours2)) {
+                $('#rentalInfo').append('<p> The time is invalid, they must be set within the opening and closing hours of the space. Please enter valid information. </p>');
+                return;
+            }
 
-              var openOnWeekends = true;
-                  if($('#infoOpenOnWeekends').text() == "no")
-                      openOnWeekends = false;
+            var openOnWeekends = true;
+            if ($('#infoOpenOnWeekends').text() == "no")
+                openOnWeekends = false;
 
-                  console.log(val1.isoWeekday());
-              if((val1.isoWeekday() == 6 || val1.isoWeekday() == 7) && !openOnWeekends){
-                  $('#rentalInfo').append('<p> The date you chose is on a weekend and this space is closed on weekends. Please enter valid information. </p>');
-                  return;
-              }
+            if ((val1.isoWeekday() == 6 || val1.isoWeekday() == 7) && !openOnWeekends) {
+                $('#rentalInfo').append('<p> The date you chose is on a weekend and this space is closed on weekends. Please enter valid information. </p>');
+                return;
+            }
 
-                if (!$.trim($('#rentalInfo').html()).length)
-                    $('#rentalInfo').append(
-                        "<div class='table-responsive'>" +
-                        "<div class='table text-center'>" +
-                        "<div class='thead thead-default'>" +
-                        "<span class='td'><h4>Item</h4></span>" +
-                        "<span class='td'><h4>Name</h4></span>" +
-                        "<span class='td'><h4>Quantity To Rent</h4></span>" +
-                        "<span class='td'><h4>Available</h4></span>" +
-                        "<span class='td'><h4>Price / hour (€)</h4></span>" +
-                        '<input type="hidden" name="IDs" id="IDs"/>'+
-                        "</div>" +
-                        "<div class='tbody' id='equipmentList'>" +
-                        " </div>" +
-                        " </div>" +
-                        " </div>" +
-                        "<div class='text-right'>" +
-                        "<h3> Total(€): <span id='totalRentalCost'> 0 </span> </h3>" +
-                        "</div>"
-                    );
+            if (!$.trim($('#rentalInfo').html()).length)
+                $('#rentalInfo').append(
+                    "<div class='table-responsive'>" +
+                    "<div class='table text-center'>" +
+                    "<div class='thead thead-default'>" +
+                    "<span class='td'><h4>Item</h4></span>" +
+                    "<span class='td'><h4>Name</h4></span>" +
+                    "<span class='td'><h4>Quantity To Rent</h4></span>" +
+                    "<span class='td'><h4>Available</h4></span>" +
+                    "<span class='td'><h4>Price / hour (€)</h4></span>" +
+                    '<input type="hidden" name="IDs" id="IDs"/>' +
+                    "</div>" +
+                    "<div class='tbody' id='equipmentList'>" +
+                    " </div>" +
+                    " </div>" +
+                    " </div>" +
+                    "<div class='text-right'>" +
+                    "<h3> Total(€): <span id='totalRentalCost'> 0 </span> </h3>" +
+                    "</div>"
+                );
 
             $('#paypal-button-container').css("visibility", "visible");
             $('#paypal-button-container').css("float", "right");
-                // faz chamada ajax
-                equipmentInfo(url,spaceID, date, startTime, duration);
-            }
-
+            // faz chamada ajax
+            equipmentInfo(url, spaceID, date, startTime, duration);
+        }
 
 
     });
@@ -761,7 +747,7 @@ function spacePage(url, spaceID){
 
 }
 
-function equipmentInfo(url, spaceID, date, startTime, duration){
+function equipmentInfo(url, spaceID, date, startTime, duration) {
 
     $('#IDs').val("");
 
@@ -769,11 +755,10 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
 
     var ajaxURL = url + 'actions/managers/getEquipment.php';
 
-    $.getJSON(ajaxURL, {spaceID: spaceID, date: date, startTime: startTime, duration: duration} ,
-        function(data){
+    $.getJSON(ajaxURL, {spaceID: spaceID, date: date, startTime: startTime, duration: duration},
+        function (data) {
 
-            for(var j = 0; j < data.length; j++)
-            {
+            for (var j = 0; j < data.length; j++) {
                 var equipment = data[j];
                 var rentalQuantity = 0;
 
@@ -781,14 +766,14 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                 var result = UrlExists(fileURL);
 
                 var photoURL = "http://placehold.it/200x200";
-                if(result)
+                if (result)
                     photoURL = url + 'res/img/thumbs_small/equipment_' + equipment['equipmentID'] + '.jpg';
 
-                if(equipment['rentalQuantity'] != null)
+                if (equipment['rentalQuantity'] != null)
                     rentalQuantity = parseInt(equipment['rentalQuantity']);
                 $('#equipmentList').append(
                     "<div class='tr'>" +
-                    "<span class='td centered'>"+
+                    "<span class='td centered'>" +
                     '<img  src="' + photoURL + '" style="width:100px" alt=""/>' +
                     "</span>" +
                     "<span class='td'>" +
@@ -798,11 +783,11 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                     "<div class='form-group'>" +
                     "<div class='input-group'>" +
                     "<input class='form-control quantity' type='number' name='quantity" + equipment['equipmentID'] + "' min='0' max='" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "' title='Equipment quantity' step='1' value='0'>" +
-                    "</div>"+
-                    "</div>"+
+                    "</div>" +
+                    "</div>" +
                     "</span>" +
                     "<span class='td'>" +
-                    "<span>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "</span>" +
+                    "<span>" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "</span>" +
                     "</span>" +
                     "<span class='td'>" +
                     "<span class='price'>" + equipment['equipmentPrice'] + "</span>" +
@@ -815,33 +800,31 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
 
             }
 
-            $(".quantity").blur(function(){
+            $(".quantity").blur(function () {
                 var total = 0;
-                $('#equipmentList .tr').each(function(){
+                $('#equipmentList .tr').each(function () {
                     total += (parseInt($(this).find('.quantity').val()) * (parseInt($(this).find('.price').text())));
                 });
                 var hoursMinutes = duration.split(":");
-                total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+                total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1] / 60))));
                 $('#totalRentalCost').text(total.toFixed(2));
             });
 
         });
 
-    $("input[name='duration']").blur(function(){
+    $("input[name='duration']").blur(function () {
         var total = 0;
         var hoursMinutes = $(this).val().split(":");
-        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1]/60))));
+        total += (parseInt($('#infoPrice').text()) * (parseInt(hoursMinutes[0]) + parseFloat((hoursMinutes[1] / 60))));
         $('#totalRentalCost').text(total.toFixed(2));
     });
-
-
 
 
 }
 
 
-function adminSignUp(){
-    $('form').submit(function(){
+function adminSignUp() {
+    $('form').submit(function () {
 
         // Prevents from submiting
 
@@ -860,77 +843,84 @@ function adminSignUp(){
         $('#invalidConfirmation').text("");
         $('.errorMessage').text("");
 
-        if(username == "" || password == "" || confirm == "") {
+        if (username == "" || password == "" || confirm == "") {
             $('.errorMessage').text("Required field wasn't filled.");
             return false;
         }
 
-        if(!is_username(username)) {
+        if (!is_username(username)) {
             error = true;
             $('#invalidUsername').text("Invalid username.");
         }
 
-        if(!is_password(password)){
+        if (!is_password(password)) {
             error = true;
             $('#invalidPassword').text("Invalid password. Should have more than 6 characters.");
         }
-        else if(password != confirm){
+        else if (password != confirm) {
             error = true;
             $('#invalidConfirmation').text("Passwords do not match.");
         }
 
-        if(error)
+        if (error)
             return false;
 
     });
 }
 
-function imagesInput(doc){
-    doc.on('change', ':file', function() {
+function imagesInput(doc) {
+    doc.on('change', ':file', function () {
         var input = $(this),
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
     });
 
-    doc.ready( function() {
-        $(':file').on('fileselect', function(event, numFiles, label) {
+    doc.ready(function () {
+        $(':file').on('fileselect', function (event, numFiles, label) {
 
             var input = $(this).parents('.input-group').find(':text'),
                 log = numFiles > 1 ? numFiles + ' files selected' : label;
 
-            if( input.length ) {
+            if (input.length) {
                 input.val(log);
             } else {
-                if( log ) alert(log);
+                if (log) alert(log);
             }
 
         });
     });
 }
 
-function manageEquipmentPage(doc){
+function updateIssueInfo(subject, description, category) {
+    $('#issueSubject').text(subject);
+    $('#issueDescription').text(description);
+    $('#issueCategory').text(category);
+}
+
+
+function manageEquipmentPage(doc) {
     imagesInput(doc);
 
-    $(doc).ready(function() {
+    $(doc).ready(function () {
         $('.modal-body #equipmentForm')
             .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
-                onChange: function(element, checked) {
+                onChange: function (element, checked) {
                     adjustByScrollHeight();
                 },
-                onDropdownShown: function(e) {
+                onDropdownShown: function (e) {
                     adjustByScrollHeight();
                 },
-                onDropdownHidden: function(e) {
+                onDropdownHidden: function (e) {
                     adjustByHeight();
                 }
             })
             .end();
 
         function adjustByHeight() {
-            var $body   = $('body'),
+            var $body = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when hiding the picker
@@ -939,31 +929,32 @@ function manageEquipmentPage(doc){
         }
 
         function adjustByScrollHeight() {
-            var $body   = $('body'),
+            var $body = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when showing the picker
                 $iframe.height($body.get(0).scrollHeight);
             }
         }
+
         $('.equipmentForm')
             .find('[name="sports[]"]')
             .multiselect({
                 includeSelectAllOption: true,
-                onChange: function(element, checked) {
+                onChange: function (element, checked) {
                     adjustByScrollHeight();
                 },
-                onDropdownShown: function(e) {
+                onDropdownShown: function (e) {
                     adjustByScrollHeight();
                 },
-                onDropdownHidden: function(e) {
+                onDropdownHidden: function (e) {
                     adjustByHeight();
                 }
             })
             .end();
 
         function adjustByHeight() {
-            var $body   = $('body'),
+            var $body = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when hiding the picker
@@ -972,7 +963,7 @@ function manageEquipmentPage(doc){
         }
 
         function adjustByScrollHeight() {
-            var $body   = $('body'),
+            var $body = $('body'),
                 $iframe = $body.data('iframe.fv');
             if ($iframe) {
                 // Adjust the height of iframe when showing the picker
@@ -987,7 +978,7 @@ function submitRating(url, rentalID, num) {
     $.get(jsonURL, {rentalID: rentalID, rating: num},
         function (data) {
         })
-        .fail(function() {
+        .fail(function () {
             alert('Error submiting rating!');
         });
 }
@@ -1015,7 +1006,6 @@ function updateEditEquipmentInfo(complexID, eqID, eqName, eqQuantity, eqDetails,
 
     $("#sportsSelect").val([]);
 
-
     var partsOfStr = eqSports.split(', ');
     var values = [];
     for (var i = 0; i < partsOfStr.length; i++) {
@@ -1027,51 +1017,7 @@ function updateEditEquipmentInfo(complexID, eqID, eqName, eqQuantity, eqDetails,
     $("#sportsSelect").val(values);
 }
 
-function addNotification(text){
+function addNotification(text) {
     $.notify(text,
-        { className:'info', autoHide: false});
+        {className: 'info', autoHide: false});
 }
-
-
-/*function initialize(doc, myadress)
-{
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(53.3496, -6.3263);
-    var mapOptions =
-        {
-            zoom: 8,
-            center: latlng
-        }
-    map = new google.maps.Map(doc.getElementById('map'), mapOptions);
-    codeAddress(myadress);//call the function
-}
-
-function codeAddress(address)
-{
-    geocoder.geocode( {address:address}, function(results, status)
-    {
-        if (status == google.maps.GeocoderStatus.OK)
-        {
-            map.setCenter(results[0].geometry.location);//center the map over the result
-            //place a marker at the location
-            var marker = new google.maps.Marker(
-                {
-                    map: map,
-                    position: results[0].geometry.location
-                });
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
-}
-function initMap() {
-    var uluru = {lat: -25.363, lng: 131.044};
-    var map = new google.maps.Map($('#map'), {
-        zoom: 4,
-        center: uluru
-    });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-    });
-}*/

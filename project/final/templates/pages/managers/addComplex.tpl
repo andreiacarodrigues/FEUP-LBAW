@@ -6,7 +6,6 @@
             <h1>Add Complex</h1>
             <br>
         </div>
-
         <hr class="divider">
         <br>
         <form id="addComplexForm" action="{$BASE_URL}actions/managers/addComplex.php" method="post" autocomplete="on"
@@ -69,7 +68,8 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon primary"> Description </span>
-                            <textarea class="form-control" rows="2" name="description" title="Complex description" placeholder="Describe what services your complex provides."></textarea>
+                            <textarea class="form-control" rows="2" name="description" title="Complex description"
+                                      placeholder="Describe what services your complex provides."></textarea>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="innerErrorMessage">
-                        <span id="invalidHours"></span> <!-- closing < que openning-->
+                        <span id="invalidHours"></span>
                     </div>
 
                     <div class="form-group">
@@ -119,7 +119,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
-                                       Browse&hellip; <input type="file" name="photo" title="Complex image" style="display: none;">
+                                       Browse&hellip; <input type="file" name="photo" title="Complex image"
+                                                             style="display: none;">
                                 </span>
                             </label>
                             <input type="text" class="form-control" title="Selected file name" readonly>
@@ -134,14 +135,13 @@
                             {/foreach}
                         </span>
                     </div>
-                    <div class="text-center"">
-                        <input type="submit" class="btn btn-primary gradient-blue" value="Register Complex"/>
-                    </div>
+                    <div class="text-center">
+                    <input type="submit" class="btn btn-primary gradient-blue" value="Register Complex"/>
                 </div>
             </div>
         </form>
-
     </div>
+</div>
 </div>
 
 <script>

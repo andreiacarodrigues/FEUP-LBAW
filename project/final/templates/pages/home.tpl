@@ -75,8 +75,7 @@
                                                 {/while}
                                             </h3>
                                             <a class="btn btn-primary btn-sm gradient-blue"
-                                               href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check
-                                                Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
+                                               href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
                                         </div>
                                     </div>
                                 </div>

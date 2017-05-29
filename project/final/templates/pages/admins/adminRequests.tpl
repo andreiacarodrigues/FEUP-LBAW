@@ -1,6 +1,6 @@
 {include file='common/adminHeader.tpl'}
 
-  <div class="admin-statistics-header">
+<div class="admin-statistics-header">
     <div class="admin adminRequests">
         <div class="container">
             <div class="row">
@@ -23,32 +23,35 @@
             </div>
 
             {foreach $REQUESTS as $REQUEST}
-            {strip}
-            <div class="row">
-                <div class="container thumbnail">
-                    <div class="col-md-6">
-                        <ul class="list-unstyled">
-                            <br><li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Username: <span> {$REQUEST.adminUsername} </span></label></li>
-                        </ul>
+                {strip}
+                    <div class="row">
+                        <div class="container thumbnail">
+                            <div class="col-md-6">
+                                <br>
+                                <ul class="list-unstyled">
+                                    <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Username: <span> {$REQUEST.adminUsername} </span></label></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-right mobileFixButtons">
+
+                                <form class="form-inline" action="{$BASE_URL}actions/admin/adminRequests.php"
+                                      method="post" autocomplete="on">
+                                    <input type="hidden" value="{$REQUEST.adminID}" name="adminID"/>
+                                    <input type="hidden" value="accept" name="todo"/>
+                                    <button type="submit" class="btn btn-primary gradient-blue">Accept</button>
+                                </form>
+
+                                <form class="form-inline" action="{$BASE_URL}actions/admin/adminRequests.php"
+                                      method="post" autocomplete="on">
+                                    <input type="hidden" value="{$REQUEST.adminID}" name="adminID"/>
+                                    <input type="hidden" value="remove" name="todo"/>
+                                    <button type="submit" class="btn btn-primary gradient-red">Remove</button>
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="col-md-6 text-right mobileFixButtons">
-
-                        <form class="form-inline" action="{$BASE_URL}actions/admin/adminRequests.php" method="post" autocomplete="on">
-                            <input type="hidden" value="{$REQUEST.adminID}" name="adminID"/>
-                            <input type="hidden" value="accept" name="todo"/>
-                            <button type="submit" class="btn btn-primary gradient-blue">Accept</button>
-                        </form>
-
-                        <form  class="form-inline" action="{$BASE_URL}actions/admin/adminRequests.php" method="post" autocomplete="on">
-                            <input type="hidden" value="{$REQUEST.adminID}" name="adminID"/>
-                            <input type="hidden" value="remove" name="todo"/>
-                            <button type="submit" class="btn btn-primary gradient-red">Remove</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            {/strip}
+                {/strip}
             {/foreach}
 
         </div>

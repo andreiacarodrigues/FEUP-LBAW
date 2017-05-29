@@ -39,32 +39,23 @@
                                     <h4 class="mobileFixText">Issue #<span>{$VALUE}</span></h4>
                                 </div>
                                 <div class="col-md-4">
+                                    <p> User and Rental Information: </p>
                                     <ul class="list-unstyled">
-                                        <p> User and Rental Information: </p>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Name:
-                                                <span> {$ISSUE.userName} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Contact:
-                                                <span> {$ISSUE.userPhone} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Email:
-                                                <span> {$ISSUE.userEmail} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Name: <span> {$ISSUE.userName} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Contact: <span> {$ISSUE.userPhone} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> User Email: <span> {$ISSUE.userEmail} </span></label></li>
 
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Date:
-                                                <span> {$ISSUE.rentalDate} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Start
-                                                Time: <span> {$ISSUE.rentalStartTime} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Space:
-                                                <span> {$ISSUE.spaceName} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental State:
-                                                <span> {$ISSUE.rentalState} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Date: <span> {$ISSUE.rentalDate} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Start Time: <span> {$ISSUE.rentalStartTime} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental Space: <span> {$ISSUE.spaceName} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Rental State: <span> {$ISSUE.rentalState} </span></label></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4">
+                                    <p> Issue Information: </p>
                                     <ul class="list-unstyled">
-                                        <p> Issue Information: </p>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Subject:
-                                                <span> {$ISSUE.issueSubject} </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Category:
-                                                <span>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Subject: <span> {$ISSUE.issueSubject} </span></label></li>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Category: <span>
                                                 {if $ISSUE.issueCategory == "COMPLEXISSUES"}
                                                     Complex Issues
                                                 {/if}
@@ -75,10 +66,8 @@
                                                         Last Minute Cancelation
                                                     {/if}
                                         </span></label></li>
-                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Description:
-                                                <span>{$ISSUE.issueDescription} </span></label></li>
-                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Resolved:
-                                                <span>
+                                        <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Description: <span>{$ISSUE.issueDescription} </span></label></li>
+                                        <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i> Resolved: <span>
                                          {if $ISSUE.issueResolved == true}
                                              Yes
                                          {else}
@@ -124,9 +113,7 @@
                                 </li>
                             {/if}
                             {$COUNT = $COUNT + 1}
-
                         {/while}
-
                     </ul>
                 </div>
             </div>

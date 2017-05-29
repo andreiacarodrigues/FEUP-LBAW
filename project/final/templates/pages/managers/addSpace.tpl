@@ -48,10 +48,10 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon primary">Price / hour</span>
-                            <input class="form-control" type="number" title="Price per hour" name="price" min="0" step="1" value="0">
+                            <input class="form-control" type="number" title="Price per hour" name="price" min="0"
+                                   step="1" value="0">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon primary">Sports</span>
@@ -68,23 +68,21 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"> Select representative picture </span>
                         </div>
                         <br>
-
                         <div class="input-group">
                             <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
-                                       Browse&hellip; <input type="file" name="photo" title="Space image" style="display: none;">
+                                       Browse&hellip; <input type="file" name="photo" title="Space image"
+                                                             style="display: none;">
                                 </span>
                             </label>
                             <input type="text" class="form-control" title="Selected file name" readonly>
                         </div>
                     </div>
-
                     <br><br>
                     <div class="row errorMessage text-center">
                         <span>

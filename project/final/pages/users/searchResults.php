@@ -2,7 +2,8 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/municipalities.php");
     include_once($BASE_DIR."database/sports.php");
-include_once($BASE_DIR."database/complexes.php");
+    include_once($BASE_DIR."database/complexes.php");
+    include_once($BASE_DIR."database/info.php");
 
 
     $municipalities = getMunicipalitiesList();
@@ -28,6 +29,10 @@ include_once($BASE_DIR."database/complexes.php");
         }
     }
 
+    $surfaces = getSurfaceList();
+
+    $smarty->assign('SURFACES', $surfaces);
+
     $smarty->assign('SPORTS', $sports);
-   $smarty->display('pages/users/searchResults.tpl');
+    $smarty->display('pages/users/searchResults.tpl');
 ?>
