@@ -619,21 +619,19 @@ function spacePage(url, spaceID){
                 if (!$.trim($('#rentalInfo').html()).length)
                     $('#rentalInfo').append(
                         "<div class='table-responsive'>" +
-                        "<table class='table table-striped table-sm'>" +
-                        "<thead class='thead-default'>" +
-                        "<tr>" +
-                        "<th>Item</th>" +
-                        "<th>Name</th>" +
-                        "<th>Quantity To Rent</th>" +
-                        "<th>Available</th>" +
-                        "<th>Price / hour (€)</th>" +
-                        "</tr>" +
-                        "</thead>" +
+                        "<div class='table text-center'>" +
+                        "<div class='thead thead-default'>" +
+                        "<span class='td'><h4>Item</h4></span>" +
+                        "<span class='td'><h4>Name</h4></span>" +
+                        "<span class='td'><h4>Quantity To Rent</h4></span>" +
+                        "<span class='td'><h4>Available</h4></span>" +
+                        "<span class='td'><h4>Price / hour (€)</h4></span>" +
                         '<input type="hidden" name="IDs" id="IDs"/>'+
-                        "<tbody id='equipmentList'>" +
-                        " </tbody>" +
-                        "</table>" +
                         "</div>" +
+                        "<div class='tbody' id='equipmentList'>" +
+                        " </div>" +
+                        " </div>" +
+                        " </div>" +
                         "<div class='text-right'>" +
                         "<h3> Total(€): <span id='totalRentalCost'> 0 </span> </h3>" +
                         "</div>"
@@ -678,27 +676,27 @@ function equipmentInfo(url, spaceID, date, startTime, duration){
                 if(equipment['rentalQuantity'] != null)
                     rentalQuantity = parseInt(equipment['rentalQuantity']);
                 $('#equipmentList').append(
-                    "<tr>" +
-                    "<td class='centered'>"+
-                    '<img class="img-responsive" src="' + photoURL + '" style="width:100px" alt="">' +
-                    "</td>" +
-                    "<td>" +
-                    "<h3>" + equipment['equipmentName'] + "</h3>" +
-                    "</td>" +
-                    "<td>" +
+                    "<div class='tr'>" +
+                    "<span class='td centered'>"+
+                    '<img  src="' + photoURL + '" style="width:100px" alt=""/>' +
+                    "</span>" +
+                    "<span class='td'>" +
+                    "<span>" + equipment['equipmentName'] + "</span>" +
+                    "</span>" +
+                    "<span class='td tdWithInput'>" +
                     "<div class='form-group'>" +
                     "<div class='input-group'>" +
                     "<input class='form-control quantity' type='number' name='quantity" + equipment['equipmentID'] + "' min='0' max='" + (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "' title='Equipment quantity' step='1' value='0'>" +
                     "</div>"+
                     "</div>"+
-                    "</td>" +
-                    "<td>" +
-                    "<h3>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "</h3>" +
-                    "</td>" +
-                    "<td>" +
-                    "<h3 class='price'>" + equipment['equipmentPrice'] + "</h3>" +
-                    "</td>" +
-                    "</tr>"
+                    "</span>" +
+                    "<span class='td'>" +
+                    "<span>" +  (parseInt(equipment['equipmentQuantity']) - parseInt(equipment['equipmentQuantityUnavailable']) - rentalQuantity) + "</span>" +
+                    "</span>" +
+                    "<span class='td'>" +
+                    "<span class='price'>" + equipment['equipmentPrice'] + "</span>" +
+                    "</span>" +
+                    "</div>"
                 );
 
                 var currentIDs = $('#IDs').val();

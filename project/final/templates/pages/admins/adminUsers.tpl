@@ -22,6 +22,13 @@
                     {/if}
                 </div>
 
+                {if count($USERS) == 0}
+                <div class="empty text-center">
+                    <h4> No users were registered so far. </h4>
+                </div>
+                {else}
+
+
                 {$VALUE = 1 + ($PAGE * 10)}
 
                 {foreach $USERS as $USER}
@@ -88,6 +95,7 @@
                         </ul>
                     </div>
                 </div>
+                {/if}
 
             </div>
             </div>

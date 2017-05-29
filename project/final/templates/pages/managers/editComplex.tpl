@@ -148,9 +148,8 @@
                             {/foreach}
                         </span>
                         </div>
-                        <div style="text-align: center;">
-                            <input type="submit" class="btn btn-primary gradient-blue" value="Register Complex"/>
-                            <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-primary gradient-blue" value="Edit Complex"/>
                         </div>
                     </div>
                 </div>

@@ -22,6 +22,12 @@
                     {/if}
                 </div>
 
+                {if count($ISSUES) == 0}
+                <div class="empty text-center">
+                    <h4> No issues were sent so far. </h4>
+                </div>
+                {else}
+
                 {$VALUE=1 + ($PAGE * 10)}
                 {foreach $ISSUES as $ISSUE}
                 {strip}
@@ -90,6 +96,7 @@
                         </ul>
                     </div>
                 </div>
+                {/if}
             </div>
             </div>
         </div>

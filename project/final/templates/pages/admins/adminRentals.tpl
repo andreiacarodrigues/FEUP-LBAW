@@ -48,6 +48,12 @@
                 </form>
                 <br>
 
+                {if count($RENTALS) == 0}
+                <div class="empty text-center">
+                    <h4> No rentals were made so far. </h4>
+                </div>
+                {else}
+
                 {$VALUE=1 + ($PAGE * 10)}
                 {foreach $RENTALS as $RENTAL}
                     {strip}
@@ -184,6 +190,7 @@
                         </ul>
                     </div>
                 </div>
+                {/if}
         </div>
     </div>
 

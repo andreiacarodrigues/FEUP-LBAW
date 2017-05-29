@@ -92,7 +92,7 @@
         {/if}
     </div>
 </div>
-
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="editSpaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSpaces"
@@ -234,7 +234,7 @@
             }).val());
         }
 
-        $("#sportsSelect").val(values); // new options
+        $("#sportsSelect").val(values);
     }
 </script>
 

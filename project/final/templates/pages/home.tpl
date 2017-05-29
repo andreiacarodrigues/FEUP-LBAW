@@ -43,94 +43,6 @@
                 </form>
             </div>
         </div>
-        {*if isset($USERNAME)}
-        <hr class="intro-divider">
-        <div class="row">
-                <div class="col-md-12">
-                        <div class="row">
-                            <div id="lastVisited">
-                            <div class="col-md-8 col-md-offset-2" id="scrollable">
-                                <h1> Last Visited </h1> <hr>
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-10  col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                                <br><div class="row">
-                                    <div class="col-md-10  col-md-offset-1">
-                                        <a href="#">
-                                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px; float:left;" alt="">
-                                        </a>
-                                        <h4> Complex 1 ⭐⭐⭐⭐</h4>
-                                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-12">
-                <div class="container" id="horizontalScroll">
-                <div class="row text-center">
-                    <h1 style="position: relative;"> Last Visited </h1><br>
-                        <div class="col-xs-3">
-                            <a href="#">
-                                <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px" alt="">
-                            </a>
-                            <h5> Complex 1 ⭐⭐⭐⭐</h5>
-                            <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                        <div class="col-xs-3"> <a href="#">
-                                <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px" alt="">
-                            </a>
-                            <h5> Complex 2 ⭐⭐⭐⭐</h5>
-                            <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                        <div class="col-xs-3"> <a href="#">
-                                <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px" alt="">
-                            </a>
-                            <h5> Complex 3 ⭐⭐⭐⭐</h5>
-                            <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                        <div class="col-xs-3"> <a href="#">
-                                <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px" alt="">
-                            </a>
-                            <h5> Complex 4 ⭐⭐⭐⭐</h5>
-                            <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-
-                    <div class="col-xs-3"> <a href="#">
-                            <img class="img-responsive " src="http://placehold.it/700x400" style="width:150px" alt="">
-                        </a>
-                        <h5> Complex 5 ⭐⭐⭐⭐</h5>
-                        <a class="btn btn-primary btn-sm gradient-blue" href="sportComplex.php">Check<span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
-                    </div>
-
-                </div>
-            </div>
-            </div>
-    </div>
-    </div>
-        {/if*}
     </div>
 </div>
 
@@ -147,8 +59,7 @@
                             {strip}
                                 <div class="col-sm-3">
                                     <div class="thumbnail">
-                                        {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
-
+                                        {assign var="filename" value="../../res/img/originals/complex_{$COMPLEX.complexID}.jpg"}
                                         {if file_exists($filename)}
                                             <img class="img-responsive"
                                                  src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">

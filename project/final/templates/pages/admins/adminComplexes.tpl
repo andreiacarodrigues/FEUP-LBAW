@@ -22,6 +22,12 @@
                 {/if}
             </div>
 
+            {if count($COMPLEXES) == 0}
+            <div class="empty text-center">
+                <h4> No complexes were registered so far. </h4>
+            </div>
+            {else}
+
             {$ROW_COUNT = 0}
 
             {foreach $COMPLEXES as $COMPLEX}
@@ -40,7 +46,7 @@
                             {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
 
                             {if file_exists($filename)}
-                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:320px" alt="Image of the complex">
+                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="Image of the complex">
                             {else}
                                 <img class="img-responsive" src="http://placehold.it/600x400" alt="Placeholder image for the complex (no image was given)">
                             {/if}
@@ -99,7 +105,7 @@
                     </ul>
                 </div>
             </div>
-
+        {/if}
         </div>
 
         </div>

@@ -1155,7 +1155,7 @@ function editEquipment($equipmentID, $name, $quantity, $details, $quantityUnavai
         $stmt = $conn->prepare('
                     SELECT "complexID", "complexName"
                     FROM "SportsComplex"
-                    WHERE "complexMunicipalityID" = ? 
+                    WHERE "complexMunicipalityID" != ? 
                     ORDER BY random()
                     LIMIT ?;');
         $stmt->execute(array($municipality, $num));

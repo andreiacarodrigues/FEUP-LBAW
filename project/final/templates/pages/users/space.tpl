@@ -59,7 +59,7 @@
         </div>
 
         <div class="col-md-3">
-            <div class="row">
+            <div class="row" id="spaceRating">
                 <div class="ratingNum" id="rating">
                 </div>
             </div>
@@ -73,9 +73,7 @@
             <span> Insert here your rental information: </span>
             <button type="button" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#guidanceModal"> <i class="fa fa-question-circle" aria-hidden="true"></i> </button>
         </div>
-
         <br>
-
         <form id="rentForm" action='{$BASE_URL}actions/managers/makeRental.php' method="post" autocomplete="on">
             <input name="spaceID" type="hidden" value="{$spaceID}">
             <input name="userID" type="hidden" value="{$userID}">
@@ -112,12 +110,12 @@
         </form>
         {else}
             <span> To make a rental, please login with your username and password here:  <a href="{$BASE_URL}pages/authentication/login.php" style="color:black">Login Page</a> </span>
-
         {/if}
 
     </div>
 </div>
     </div>
+
 
 
 <!-- Modal -->
@@ -145,6 +143,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     $(function(){

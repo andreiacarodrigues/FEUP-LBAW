@@ -29,8 +29,8 @@
                                 <h5 class="text-center">{$INFORMATION.userName}</h5><br>
 
                                 <ul class="list-unstyled">
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Email: <span> {$INFORMATION.userEmail} </span></label></li>
-                                    <li><i class="fa fa-chevron-right" aria-hidden="true"></i> <label> Contact: <span> {$INFORMATION.userPhone} </span></label></li>
+                                    <label> <li><i class="fa fa-chevron-right" aria-hidden="true"></i>  Email: <span> {$INFORMATION.userEmail} </span></label></li>
+                                    <label><li><i class="fa fa-chevron-right" aria-hidden="true"></i>  Contact: <span> {$INFORMATION.userPhone} </span></label></li>
                                 </ul>
 
                                 <div class="text-center">

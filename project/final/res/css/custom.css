@@ -111,10 +111,20 @@ input[type=button]{
     color:black;
 }
 
+.admin .empty{
+    padding-top:15%;
+    font-size:16px;
+    color:white;
+}
+
 .manageComplexes h4{
     padding-top:10%;
     font-size:16px;
     color:black;
+}
+
+legend{
+    display: none;
 }
 
  .searchResults{
@@ -194,7 +204,11 @@ input[type=button]{
 .intro-message > h2, .intro-message-home > h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.81);
-    font-size: 3em;
+    font-size: 2em;
+}
+
+.content-section-b h3{
+    font-size:1em !important;
 }
 
 .intro-add-complex > h2 {
@@ -256,9 +270,9 @@ input[type=button]{
 
 @media(min-width:765px){
 
-   /* #rating{
+    #spaceRating{
         padding-top:80px;
-    }*/
+    }
     .manageComplexes .caption a
     {
         font-size: 12px;
@@ -278,7 +292,6 @@ input[type=button]{
         width: 96%;
     }
 }
-
 
 @media(max-width:769px) {
 
@@ -373,10 +386,6 @@ input[type=button]{
 
     .intro-divider {
         width: 100%;
-    }
-
-    #scrollable{
-        width:100%;
     }
 
     #lastVisited{
@@ -475,11 +484,6 @@ input[type=button]{
 }
 
 @media(max-width:767px) {
-
-    #horizontalScroll{
-        display: none;
-    }
-
 
     .banner h2 {
         margin: 0;
@@ -710,7 +714,7 @@ td input{
     font-size:0.9em;
 }
 
-#horizontalScroll img, #scrollable img, .profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img, #editSpaceForm img{
+.profile img, .sportComplex img, .searchResults img, .addComplex img, .editComplex img, .addSpace img, .manageEquipment img, #editSpaceForm img{
     border: 2px;
     padding:5px;
     border-style: double;
@@ -828,77 +832,18 @@ label.star:before {
 .rating-desc .col-md-3 {padding-right: 0px;}
 .sr-only { margin-left: 5px;overflow: visible;clip: auto; }
 
-
-
-/*--------------*/
-
-#scrollable {
-    overflow: hidden;
-    height:300px;
-    overflow-y:scroll;
-}
-
-.intro-header #scrollable{
-    padding-left:2%;
-    padding-right:2%;
-    background-color: rgba(249, 249, 249, 0.48);
-}
-
-.intro-header #scrollable h4 {
-    color: #292929;
-    font-size: 1em;
-}
-
-.intro-header #horizontalScroll{
-    background-color: rgba(249, 249, 249, 0.48);
-}
-
 @media (min-width: 765px) {
-    #scrollable {
-        display:none;
-    }
-
-    #horizontalScroll {
-        overflow-x: hidden;
-        width:100%;
-    }
-
     .searchForm{
         padding-top: 2%;
         padding-bottom: 9%;
     }
 }
-
-#horizontalScroll > .row {
-    overflow-x: auto;
-    white-space: nowrap;
-}
-#horizontalScroll > .row > .col-xs-3 {
-    display: inline-block;
-    float: none;
-}
-
-#horizontalScroll > .row > .col-xs-3 img {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 
 @media (min-width: 770px){
 
-    #horizontalScroll{
-        margin-top:5%;
-    }
-
     .searchForm{
         padding-top: 2%;
         padding-bottom: 9%;
-    }
-
-    #horizontalScroll {
-        overflow-x: hidden;
-        width:80%;
     }
 
     .mobileFixButtons{
@@ -928,35 +873,14 @@ label.star:before {
         width: 50%;
     }
 
-
     .backToComplex{
         float:right;
     }
-
-
-}
-
-.intro-header #scrollable, .intro-header #horizontalScroll {
-    border-radius:10px;
-}
-.intro-header #scrollable h1, .intro-header #horizontalScroll h1{
-    padding-top:1%;
-    margin: 0;
-    text-shadow: 1px 1px 10px rgb(0, 0, 0);
-    font-size: 2.5em;
-    color: #fafafa;
-
-}
-
-.intro-header #scrollable{
-    padding-top:10px;
-    padding-bottom:10px;
-    text-align:center;
 }
 
 #searchResultsForm .input-group-addon, .searchForm .input-group-addon, #reportForm .input-group-addon,
 #addSpaceForm .input-group-addon, #editSpaceForm .input-group-addon, #issueForm .input-group-addon, #editForm .input-group-addon,
-#editEquipmentForm .input-group-addon{
+#editEquipmentForm .input-group-addon , #issueFormManagement .input-group-addon{
     min-width:112px;
 }
 
@@ -1100,26 +1024,58 @@ label.star:before {
     border:none;
 }
 
-#horizontalScroll > .row::-webkit-scrollbar-track
+
+DIV.table
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
+    display:table;
+
+}
+FORM.tr, DIV.tr
+{
+    display:table-row;
+}
+SPAN.td
+{
+    display:table-cell;
 }
 
-#horizontalScroll > .row::-webkit-scrollbar
+DIV.thead
 {
-    height: 7px;
-    background-color: rgba(245, 245, 245, 0);
+    display: table-header-group;
+    background-color: rgba(99, 99, 99, 0.13);
 }
 
-#horizontalScroll > .row::-webkit-scrollbar-thumb
+DIV.tbody
 {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: rgba(13, 162, 198, 0.77);
+    display: table-row-group;
+
+    background-color: rgba(99, 99, 99, 0.02);
+}
+DIV.tbody .td{
+    border: solid;
+
+    border-width:thin;
+
+    border-color: #dedede;
+    padding: 10px;
 }
 
-#horizontalScroll{
-    margin-bottom:6%;
+DIV.thead .td {
+    min-width: 200px;
+}
+
+DIV .tbody .tdWithInput{
+    padding-top: 30px;
+    padding-left: 70px;
+}
+
+@media(min-width:769px) {
+    DIV.tbody .td {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    DIV.tbody .tdWithInput{
+        padding-left: 70px!important;
+    }
 }

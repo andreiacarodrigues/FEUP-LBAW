@@ -110,9 +110,6 @@
                         <span id="invalidPaypal"></span>
                     </div>
 
-                    <!--<input type="submit" class="btn btn-primary gradient-yellow" value="Upload representative picture"/>
-                    <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">-->
-
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"> Select representative picture </span>
@@ -137,9 +134,8 @@
                             {/foreach}
                         </span>
                     </div>
-                    <div style="text-align: center;">
+                    <div class="text-center"">
                         <input type="submit" class="btn btn-primary gradient-blue" value="Register Complex"/>
-                        <input type="submit" class="btn btn-primary gradient-blue" value="Cancel"/>
                     </div>
                 </div>
             </div>
