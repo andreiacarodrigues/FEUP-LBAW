@@ -1,43 +1,5 @@
 {include file='common/userHeader.tpl'}
 
-{*<style>
-    DIV.table
-    {
-        display:table;
-
-    }
-    FORM.tr, DIV.tr
-    {
-
-        display:table-row;
-    }
-    SPAN.td
-    {
-
-        display:table-cell;
-    }
-
-    DIV.thead
-    {
-        display: table-header-group;
-        background-color: rgba(99, 99, 99, 0.13);
-    }
-
-    DIV.tbody
-    {
-        display: table-row-group;
-
-        background-color: rgba(99, 99, 99, 0.02);
-    }
-    DIV.tbody .td{
-        border-top: solid;
-        border-top-width:thin;
-        border-color: #dedede;
-        padding: 10px;
-    }
-
-</style>*}
-
 <div class="manageEquipment">
     <div class="container">
         <div class="row">
@@ -132,17 +94,11 @@
         </div>
     </div>
 
-    <!-- /.row -->
 
-
-    <!-- *********************** -->
-
-    <!-- Modal -->
     <div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEquipment2"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Modal Header -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
@@ -151,8 +107,6 @@
                         New Equipment
                     </h4>
                 </div>
-
-                <!-- Modal Body -->
                 <div class="modal-body">
                     <form id="equipmentForm" action="{$BASE_URL}actions/managers/addEquipment.php" method="post"
                           autocomplete="on" enctype="multipart/form-data" class="form-horizontal">
@@ -172,13 +126,14 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Details</span>
-                                        <textarea class="form-control" rows="5" id="comment" title="Details" name="details"></textarea>
+                                        <textarea class="form-control" rows="5" id="comment" title="Details"
+                                                  name="details"></textarea>
                                     </div>
-
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Price/h</span>
-                                        <input class="form-control" type="number" name="price" title="Price" min="0" step="0.01"
+                                        <input class="form-control" type="number" name="price" title="Price" min="0"
+                                               step="0.01"
                                                value="0">
                                     </div>
 
@@ -200,7 +155,8 @@
                                     <div class="input-group">
                                         <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
-                                       Browse&hellip; <input type="file" title="Image" name="photo" style="display: none;">
+                                       Browse&hellip; <input type="file" title="Image" name="photo"
+                                                             style="display: none;">
                                 </span>
                                         </label>
                                         <input type="text" class="form-control" readonly title="Selected file name">
@@ -224,7 +180,6 @@
     </div>
 
 
-    <!-- Modal -->
     <div class="modal fade" id="editEquipmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEquipment"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -238,8 +193,6 @@
                         Edit Equipment <span id="equipmentName"></span>
                     </h4>
                 </div>
-
-                <!-- Modal Body -->
                 <div class="modal-body">
                     <form id="editEquipmentForm" action="{$BASE_URL}actions/managers/editEquipment.php" method="post"
                           autocomplete="on" class="form-horizontal" enctype="multipart/form-data">
@@ -255,22 +208,26 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Stock</span>
-                                        <input class="form-control" type="number" name="quantity" title="Stock" min="0" step="1"/>
+                                        <input class="form-control" type="number" name="quantity" title="Stock" min="0"
+                                               step="1"/>
                                     </div>
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Price / hour</span>
-                                        <input class="form-control" type="number" name="price" title="Price per hour" min="0" step="0.01"/>
+                                        <input class="form-control" type="number" name="price" title="Price per hour"
+                                               min="0" step="0.01"/>
                                     </div>
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Description</span>
-                                        <textarea class="form-control" rows="5" title="Description" name="details"></textarea>
+                                        <textarea class="form-control" rows="5" title="Description"
+                                                  name="details"></textarea>
                                     </div>
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Unavailable</span>
-                                        <input class="form-control" type="number" title="Amount unavailable" name="quantityUnavailable" min="0"
+                                        <input class="form-control" type="number" title="Amount unavailable"
+                                               name="quantityUnavailable" min="0"
                                                step="1">
                                     </div>
 
@@ -284,7 +241,8 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon primary">Sports</span>
-                                        <select id="sportsSelect" class="form-control " title="Sports" name="sports[]" multiple>
+                                        <select id="sportsSelect" class="form-control " title="Sports" name="sports[]"
+                                                multiple>
                                             {foreach $SPORTS as $SPORT}
                                                 <option value="{$SPORT.sportID}">{$SPORT.sportName}</option>
                                             {/foreach}
@@ -298,11 +256,11 @@
                                         <span class="input-group-addon"> Select representative picture </span>
                                     </div>
 
-
                                     <div class="input-group">
                                         <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
-                                       Browse&hellip; <input type="file" name="photo" title="Equipment image" style="display: none;">
+                                       Browse&hellip; <input type="file" name="photo" title="Equipment image"
+                                                             style="display: none;">
                                 </span>
                                         </label>
                                         <input type="text" class="form-control" readonly title="Selected filename">
@@ -330,41 +288,6 @@
 
 <script>
     manageEquipmentPage($(document));
-    function updateEditEquipmentInfo(complexID, eqID, eqName, eqQuantity, eqDetails, eqQuantityUnavailable, eqPrice, eqInactive, eqSports) {
-        $('#editEquipmentForm input[name="complexID"]').val(complexID);
-
-        $('#editEquipmentForm input[name="equipmentID"]').val(eqID);
-
-        $('#editEquipmentForm input[name="itemName"]').val(eqName);
-
-        $('#editEquipmentForm input[name="quantity"]').val(eqQuantity);
-
-        $('#editEquipmentForm input[name="price"]').val(eqPrice);
-
-        $('#editEquipmentForm textarea[name="details"]').text(eqDetails);
-
-        $('#editEquipmentForm input[name="quantityUnavailable"]').val(eqQuantityUnavailable);
-
-        console.log(eqInactive);
-        if (eqInactive == false)
-            $('#editEquipmentForm select[name="available"]').val("true").trigger('chosen:updated');
-        else
-            $('#editEquipmentForm select[name="available"]').val("false").trigger('chosen:updated');
-
-
-        $("#sportsSelect").val([]); // clean the previous selected options
-
-
-        var partsOfStr = eqSports.split(', ');
-        var values = [];
-        for (var i = 0; i < partsOfStr.length; i++) {
-            values.push($('#sportsSelect option').filter(function () {
-                return $(this).val() == partsOfStr[i];
-            }).val());
-        }
-
-        $("#sportsSelect").val(values); // new options
-    }
 </script>
 
 {include file='common/footer.tpl'}

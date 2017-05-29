@@ -1,8 +1,106 @@
+function profilePage(url){
 
+    $(function () {
+        var urlInfo = url + 'actions/users/profile.php';
+        $.getJSON(urlInfo,
+            function (data) {
+                $('input[name="name"]').attr("value", data['userName']);
+                $('input[name="username"]').attr("value", data['userUsername']);
+                $('input[name="tel"]').attr("value", data['userPhone']);
+                $('input[name="email"]').attr("value", data['userEmail']);
+                $('select[name="municipality"]').val(data['userMunicipalityID']);
+            });
+    });
+
+    $('#changePassword').click(function () {
+        $('#passwordForm').append(
+            "<hr class='divider'>" +
+            "<br>" +
+            "<p class='text-center'> Your new password must have at least 6 characters/digits. </p>" +
+            "<form id='newPasswordForm' action='" + url + "actions/users/editPassword.php' method='post' autocomplete='on'>" +
+            "<div class='row'>" +
+            "<div class='col-md-10 col-md-offset-1'>" +
+
+            "<div class='form-group'>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>" +
+            "<input type='password' class='form-control' name='password' title='Current Password' placeholder='Enter your Current Password'/>" +
+            "</div>" +
+            "</div>" +
+
+            "<div class='form-group'>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>" +
+            "<input type='password' class='form-control' name='newPassword' title='New Password' placeholder='Enter your New Password'/>" +
+
+            "</div>" +
+            "</div>" +
+
+
+            "<div class='form-group'>" +
+            "<div class='input-group'>" +
+            "<span class='input-group-addon'><i class='fa fa-lock fa-lg' aria-hidden='true'></i></span>" +
+            "<input type='password' class='form-control' name='newPasswordConfirm' title='Password Confirmation' placeholder='Confirm your New Password'/>" +
+            "</div>" +
+            "</div>" +
+
+            "<div style='text-align: center;'>" +
+            "<br>" +
+            "<input type='submit' class='btn btn-primary gradient-blue' value='Change Password'/>" +
+            "</div>" +
+            "</div>" +
+            "</form>" +
+            "<br>" + "<br>"
+        );
+
+        $('#changePassword').css("visibility", "hidden");
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+}
+
+function setIssueRentalID(rentalID) {
+    $("#reportForm input[type='hidden']").val(rentalID);
+}
 
 function sportComplexPage(url, complexID){
     complexInfo(url, complexID);
     complexSpacesInfo(url, complexID);
+}
+
+function updateEditSpaceInfo(complexID, spaceID, spaceName, isCovered, surfaceType, price, isAvailable, sports) {
+    $('#editSpaceForm input[name="spaceID"]').val(spaceID);
+    $('#editSpaceForm input[name="complexID"]').val(complexID);
+
+    $('#editSpaceForm input[name="name"]').val(spaceName);
+
+    $('#spaceName').text(spaceName);
+
+    if (isCovered == "Yes")
+        $('#editSpaceForm select[name="coverage"]').val("Covered").trigger('chosen:updated');
+    else
+        $('#editSpaceForm select[name="coverage"]').val("Uncovered").trigger('chosen:updated');
+
+    $('#editSpaceForm select[name="surface"]').val(surfaceType).trigger('chosen:updated');
+    $('#editSpaceForm input[name="price"]').val(price);
+
+    if (isAvailable == "Yes")
+        $('#editSpaceForm select[name="availability"]').val("Available").trigger('chosen:updated');
+    else
+        $('#editSpaceForm select[name="availability"]').val("Unavailable").trigger('chosen:updated');
+
+
+    $("#sportsSelect").val([]); // clean the previous selected options
+
+    var partsOfStr = sports.split(', ');
+    var values = [];
+    for (var i = 0; i < partsOfStr.length; i++) {
+        values.push($('#sportsSelect option').filter(function () {
+            return $(this).html() == partsOfStr[i];
+        }).val());
+    }
+
+    $("#sportsSelect").val(values);
 }
 
 function complexInfo(url, complexID){
@@ -888,12 +986,45 @@ function submitRating(url, rentalID, num) {
     var jsonURL = url + 'actions/users/rentalRating.php';
     $.get(jsonURL, {rentalID: rentalID, rating: num},
         function (data) {
-        alert(data);
-            alert('Rating submited sucessfully. Thank you for your feedback!');
         })
         .fail(function() {
             alert('Error submiting rating!');
         });
+}
+
+function updateEditEquipmentInfo(complexID, eqID, eqName, eqQuantity, eqDetails, eqQuantityUnavailable, eqPrice, eqInactive, eqSports) {
+    $('#editEquipmentForm input[name="complexID"]').val(complexID);
+
+    $('#editEquipmentForm input[name="equipmentID"]').val(eqID);
+
+    $('#editEquipmentForm input[name="itemName"]').val(eqName);
+
+    $('#editEquipmentForm input[name="quantity"]').val(eqQuantity);
+
+    $('#editEquipmentForm input[name="price"]').val(eqPrice);
+
+    $('#editEquipmentForm textarea[name="details"]').text(eqDetails);
+
+    $('#editEquipmentForm input[name="quantityUnavailable"]').val(eqQuantityUnavailable);
+
+    if (eqInactive == false)
+        $('#editEquipmentForm select[name="available"]').val("true").trigger('chosen:updated');
+    else
+        $('#editEquipmentForm select[name="available"]').val("false").trigger('chosen:updated');
+
+
+    $("#sportsSelect").val([]);
+
+
+    var partsOfStr = eqSports.split(', ');
+    var values = [];
+    for (var i = 0; i < partsOfStr.length; i++) {
+        values.push($('#sportsSelect option').filter(function () {
+            return $(this).val() == partsOfStr[i];
+        }).val());
+    }
+
+    $("#sportsSelect").val(values);
 }
 
 function addNotification(text){

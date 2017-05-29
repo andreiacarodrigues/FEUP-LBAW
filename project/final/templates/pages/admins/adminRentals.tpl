@@ -65,31 +65,20 @@
                                             <li><h4>Rental #<span>{$VALUE}</span></h4></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Name:
                                                     <span> {$RENTAL.userName} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User
-                                                    Contact: <span> {$RENTAL.userPhone} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User
-                                                    Email: <span> {$RENTAL.userEmail} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date:
-                                                    <span> {$RENTAL.rentalDate} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports
-                                                    Complex: <a
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Contact: <span> {$RENTAL.userPhone} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> User Email: <span> {$RENTAL.userEmail} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date: <span> {$RENTAL.rentalDate} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex: <a
                                                             href="{$BASE_URL}pages/users/sportComplex.php?complexID={$RENTAL.complexID}"> {$RENTAL.complexName} </a></label>
                                             </li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports
-                                                    Complex Contact: <span> {$RENTAL.complexPhone} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports
-                                                    Complex Email: <span> {$RENTAL.complexEmail} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space:<a
-                                                            href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Contact: <span> {$RENTAL.complexPhone} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sports Complex Email: <span> {$RENTAL.complexEmail} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
                                             </li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of
-                                                    Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration:
-                                                    <span> {$RENTAL.rentalDuration} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment:
-                                                    <span>  {$RENTAL.equipment} </span></label></li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> State:
-                                                    <span>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration: <span> {$RENTAL.rentalDuration} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment: <span>  {$RENTAL.equipment} </span></label></li>
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> State: <span>
                                                     {if $RENTAL.rentalState == "RESERVED"}
                                                         Reserved
                                                     {/if}
@@ -98,6 +87,9 @@
                                                         {/if}
                                                         {if $RENTAL.rentalState == "CANCELEDBYUSER"}
                                                             Canceled By User
+                                                        {/if}
+                                                        {if $RENTAL.rentalState == "CANCELEDBYADMIN"}
+                                                            Canceled By Admin
                                                         {/if}
                                                         {if $RENTAL.rentalState == "CANCELEDBYMANAGER"}
                                                             Canceled By Manager
@@ -152,9 +144,8 @@
                                                       method="post" autocomplete="on">
                                                     <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
                                                     <input type="hidden" value="conclude" name="type"/>
-                                                    <button type="submit" class="btn btn-primary gradient-blue">
-                                                        Conclude
-                                                    </button>  <!-- desaparecem opções -->
+                                                    <button type="submit" class="btn btn-primary gradient-blue"> Conclude
+                                                    </button>
                                                 </form>
                                             {/if}
                                         </div>

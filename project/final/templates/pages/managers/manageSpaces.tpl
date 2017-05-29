@@ -94,12 +94,10 @@
 </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="editSpaceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSpaces"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
@@ -108,8 +106,6 @@
                     Edit Space <span id="spaceName"></span>
                 </h4>
             </div>
-
-            <!-- Modal Body -->
             <div class="modal-body">
                 <form id="editSpaceForm" action="{$BASE_URL}actions/managers/editSpace.php" method="post"
                       autocomplete="on" class="form-horizontal" enctype="multipart/form-data">
@@ -127,11 +123,11 @@
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Surface</span>
                                     <select class="form-control" title="Surface type" name="surface">
-                                        <option value="" disabled selected>Please insert a surface type</option>
-                                        <option>Synthetic</option>
-                                        <option>Dirt</option>
-                                        <option>Indoors</option>
-                                        <option>Other</option>
+                                        <option value="" disabled selected>Please select a surface option</option>
+                                        {foreach $SURFACES as $SURFACE}
+                                            <option value="{$SURFACE.unnest}"
+                                            >{$SURFACE.unnest}</option>
+                                        {/foreach}
                                     </select>
                                 </div>
 
@@ -146,7 +142,8 @@
 
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Price / hour</span>
-                                    <input class="form-control" type="number" title="Price per hour" name="price" min="0" step="1" value="0">
+                                    <input class="form-control" type="number" title="Price per hour" name="price"
+                                           min="0" step="1" value="0">
                                 </div>
 
                                 <div class="input-group">
@@ -160,7 +157,8 @@
 
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Sports</span>
-                                    <select id="sportsSelect" class="form-control" title="Sports" name="sports[]" multiple>
+                                    <select id="sportsSelect" class="form-control" title="Sports" name="sports[]"
+                                            multiple>
                                         {foreach $SPORTS as $SPORT}
                                             <option value="{$SPORT.sportID}">{$SPORT.sportName}</option>
                                         {/foreach}
@@ -180,7 +178,8 @@
                                 <div class="input-group">
                                     <label class="input-group-btn">
                                 <span class="btn btn-primary gradient-blue">
-                                       Browse <input type="file" title="Space image" name="photo" style="display: none;">
+                                       Browse <input type="file" title="Space image" name="photo"
+                                                     style="display: none;">
                                 </span>
                                     </label>
                                     <input type="text" class="form-control" title="Selected file name" readonly>
@@ -202,40 +201,6 @@
 
 <script>
     imagesInput($(document));
-    function updateEditSpaceInfo(complexID, spaceID, spaceName, isCovered, surfaceType, price, isAvailable, sports) {
-        $('#editSpaceForm input[name="spaceID"]').val(spaceID);
-        $('#editSpaceForm input[name="complexID"]').val(complexID);
-
-        $('#editSpaceForm input[name="name"]').val(spaceName);
-
-        $('#spaceName').text(spaceName);
-
-        if (isCovered == "Yes")
-            $('#editSpaceForm select[name="coverage"]').val("Covered").trigger('chosen:updated');
-        else
-            $('#editSpaceForm select[name="coverage"]').val("Uncovered").trigger('chosen:updated');
-
-        $('#editSpaceForm select[name="surface"]').val(surfaceType).trigger('chosen:updated');
-        $('#editSpaceForm input[name="price"]').val(price);
-
-        if (isAvailable == "Yes")
-            $('#editSpaceForm select[name="availability"]').val("Available").trigger('chosen:updated');
-        else
-            $('#editSpaceForm select[name="availability"]').val("Unavailable").trigger('chosen:updated');
-
-
-        $("#sportsSelect").val([]); // clean the previous selected options
-
-        var partsOfStr = sports.split(', ');
-        var values = [];
-        for (var i = 0; i < partsOfStr.length; i++) {
-            values.push($('#sportsSelect option').filter(function () {
-                return $(this).html() == partsOfStr[i];
-            }).val());
-        }
-
-        $("#sportsSelect").val(values);
-    }
 </script>
 
 {include file='common/footer.tpl'}

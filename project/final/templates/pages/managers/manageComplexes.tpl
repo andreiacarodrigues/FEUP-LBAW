@@ -40,17 +40,14 @@
 
         {foreach $COMPLEXES as $COMPLEX}
             {strip}
-
                 {if $ROW_COUNT == 0}
                     <div class="row">
                 {/if}
-
                 {$ROW_COUNT = $ROW_COUNT + 1}
                 <div class="col-md-4">
                     <div class="thumbnail">
                         <a href="{$BASE_URL}pages/users/sportComplex.php/?complexID={$COMPLEX.complexID}">
                             {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
-
                             {if file_exists($filename)}
                                 <img class="img-responsive"
                                      src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"
@@ -60,21 +57,28 @@
                                      alt="Placeholder image of the complex (image not given)">
                             {/if}
                         </a>
-
                         <div class="caption text-center">
                             <h5>{$COMPLEX.complexName}</h5>
                             <div class="row">
                                 <div class="col-6 btn-group-vertical">
-                                    <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">View Information </a>
-                                    <a href="{$BASE_URL}pages/managers/editComplex.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Edit Information </a>
-                                    <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Manage Rentals </a>
-                                    <a href="{$BASE_URL}pages/managers/manageSpaces.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Manage Spaces </a>
+                                    <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">View Information </a>
+                                    <a href="{$BASE_URL}pages/managers/editComplex.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Edit Information </a>
+                                    <a href="{$BASE_URL}pages/managers/manageRentalsManager.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Manage Rentals </a>
+                                    <a href="{$BASE_URL}pages/managers/manageSpaces.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Manage Spaces </a>
                                 </div>
                                 <div class="col-6 btn-group-vertical">
-                                    <a href="{$BASE_URL}pages/managers/manageEquipment.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Manage Equipment </a>
-                                    <a href="{$BASE_URL}pages/managers/issuesManagement.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Issue Reports </a>
-                                    <a href="{$BASE_URL}pages/managers/complexManagers.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Manage Managers </a>
-                                    <a href="{$BASE_URL}pages/managers/managerStatistics.php?complexID={$COMPLEX.complexID}" class="btn btn-primary gradient-blue">Statistics </a>
+                                    <a href="{$BASE_URL}pages/managers/manageEquipment.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Manage Equipment </a>
+                                    <a href="{$BASE_URL}pages/managers/issuesManagement.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Issue Reports </a>
+                                    <a href="{$BASE_URL}pages/managers/complexManagers.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Manage Managers </a>
+                                    <a href="{$BASE_URL}pages/managers/managerStatistics.php?complexID={$COMPLEX.complexID}"
+                                       class="btn btn-primary gradient-blue">Statistics </a>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +88,6 @@
                     </div>
                     {$ROW_COUNT == 0}
                 {/if}
-
                 {$VALUE = $VALUE + 1}
             {/strip}
         {/foreach}
@@ -92,7 +95,6 @@
     </div>
     {/if}
     {/if}
-
 </div>
 </div>
 

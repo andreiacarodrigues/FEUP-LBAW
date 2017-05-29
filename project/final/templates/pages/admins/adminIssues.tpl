@@ -46,7 +46,17 @@
                                 <br>
                                 <h5> Issue: </h5>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Subject: <span> {$ISSUE.issueSubject}  </span></label></li>
-                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span> {$ISSUE.issueCategory}  </span></label></li>
+                                <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Category: <span>
+                                            {if $ISSUE.issueCategory == "COMPLEXISSUES"}
+                                                Complex Issues
+                                            {/if}
+                                            {if $ISSUE.issueCategory == "REFUNDS"}
+                                                Refunds
+                                            {/if}
+                                            {if $ISSUE.issueCategory == "LASTMINUTECANCELLATION"}
+                                                Last Minute Cancelation
+                                            {/if}
+                                            </span></label></li>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Description: <span> {$ISSUE.issueDescription}  </span></label></li>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  State: <span>
                                             {if $ISSUE.issueResolved}

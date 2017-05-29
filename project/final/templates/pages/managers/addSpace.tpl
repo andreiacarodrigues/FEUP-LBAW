@@ -27,11 +27,11 @@
                         <div class="input-group">
                             <span class="input-group-addon primary">Surface</span>
                             <select class="form-control" title="Surface type" name="surface">
-                                <option value="" disabled selected>Please select surface type</option>
-                                <option>Floating Wooden Floor</option>
-                                <option>Synthetic</option>
-                                <option>Dirt</option>
-                                <option>Other</option>
+                                <option value="" disabled selected>Please select a surface option</option>
+                                {foreach $SURFACES as $SURFACE}
+                                    <option value="{$SURFACE.unnest}"
+                                    >{$SURFACE.unnest}</option>
+                                {/foreach}
                             </select>
                         </div>
                     </div>

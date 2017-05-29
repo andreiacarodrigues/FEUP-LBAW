@@ -2,6 +2,7 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
     include_once($BASE_DIR."database/sports.php");
+    include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -58,6 +59,10 @@
     $smarty->assign('SPACES', $resultSpaces);
 
     $sports = getAllSports();
+
+    $surfaces = getSurfaceList();
+
+    $smarty->assign('SURFACES', $surfaces);
 
     $smarty->assign('EQUIPMENT_INFORMATION', $parsedInformation);
     $smarty->assign('SPORTS', $sports);

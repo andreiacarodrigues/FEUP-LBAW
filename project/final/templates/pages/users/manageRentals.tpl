@@ -44,13 +44,15 @@
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Date:
                                                     <span> {$RENTAL.rentalDate|date_format:"%e / %b / %Y"} </span></label>
                                             </li>
-                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sport Complex:
+                                            <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Sport
+                                                    Complex:
                                                     <a href="{$BASE_URL}pages/users/sportComplex.php?complexID={$RENTAL.complexID}"> {$RENTAL.complexName} </a></label>
                                             </li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Space: <a
                                                             href="{$BASE_URL}pages/users/space.php?spaceID={$RENTAL.spaceID}"> {$RENTAL.spaceName} </a></label>
                                             </li>
-                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
+                                            <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Time of
+                                                    Start: <span> {$RENTAL.rentalStartTime} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Duration:
                                                     <span> {$RENTAL.rentalDuration} </span></label></li>
                                             <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Equipment:
@@ -182,13 +184,12 @@
                                                     data-target="#reportModal"><i class="fa fa-ban"> </i> Report Issue
                                             </button>
                                             <br><br>
-                                            <form class="tr equipmentForm"
+                                            <form class="equipmentForm"
                                                   action="{$BASE_URL}actions/admin/changeStateRental.php" method="post"
                                                   autocomplete="on">
                                                 <input type="hidden" value="{$RENTAL.rentalID}" name="rentalID"/>
                                                 <input type="hidden" value="conclude" name="type"/>
-                                                <button type="submit" class="btn btn-primary gradient-blue">Conclude
-                                                </button>  <!-- desaparecem opções -->
+                                                <input type="submit" class="btn btn-primary gradient-blue" value="Conclude"/>
                                             </form>
                                         </div>
                                     {else}
@@ -215,9 +216,7 @@
                 {/strip}
             {/foreach}
         {/if}
-
         <br><br>
-
         {if count($RENTALS) != 0}
             {$COUNT = 0}
             <br>
@@ -245,13 +244,10 @@
             </div>
         {/if}
 
-
-        <!-- Modal -->
         <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelRentals"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
@@ -260,8 +256,6 @@
                             Report
                         </h4>
                     </div>
-
-                    <!-- Modal Body -->
                     <div class="modal-body">
                         <form id="reportForm" action="{$BASE_URL}actions/users/newIssue.php" method="post"
                               autocomplete="on" class="form-horizontal">
@@ -271,7 +265,8 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Subject</span>
-                                            <input type="text" name="subject" title="Issue subject" class="form-control">
+                                            <input type="text" name="subject" title="Issue subject"
+                                                   class="form-control">
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon primary">To</span>
@@ -284,16 +279,17 @@
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Category</span>
-                                            <select class="form-control" name="category" title="Category">
+                                            <select class="form-control" name="category" title="Issue category">
                                                 <option value="" disabled selected>Please select a category</option>
-                                                <option>COMPLEXISSUES</option>
-                                                <option>REFUNDS</option>
-                                                <option>LASTMINUTECANCELLATION</option>
+                                                <option value="COMPLEXISSUES">Complex Issues</option>
+                                                <option value="REFUNDS">Refund</option>
+                                                <option value="LASTMINUTECANCELLATION">Last Minute Cancelation</option>
                                             </select>
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Description</span>
-                                            <textarea class="form-control" rows="5" title="Description" name="description"></textarea>
+                                            <textarea class="form-control" rows="5" title="Description"
+                                                      name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-center">
@@ -308,13 +304,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    function setIssueRentalID(rentalID) {
-        $("#reportForm input[type='hidden']").val(rentalID);
-    }
-
-
-</script>
 
 {include file='common/footer.tpl'}

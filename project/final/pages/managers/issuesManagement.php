@@ -19,6 +19,15 @@ include_once($BASE_DIR."database/info.php");
         die();
     }
 
+    $userID = $_SESSION['userID'];
+
+    if(!isComplexManager($complexID, $userID))
+    {
+        $_SESSION['error_messages'][] = "You cannot access this page.";
+        header("Location: ".$BASE_URL."pages/users/home.php");
+        die();
+    }
+
     if(complexExists($complexID)) {
 
         $page = 0;

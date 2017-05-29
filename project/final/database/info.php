@@ -288,3 +288,12 @@ function getRentals($page)
         $stmt->execute();
         return $stmt->fetch()['sportName'];
     }
+
+    function getSurfaceList()
+    {
+        global $conn;
+
+        $stmt = $conn->prepare('SELECT unnest(enum_range(NULL::"surfaceType"));');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }

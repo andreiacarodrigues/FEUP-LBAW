@@ -80,75 +80,7 @@
 </div>
 
 <script>
-    $(function () {
-        var urlInfo = '{$BASE_URL}actions/users/profile.php';
-        $.getJSON(urlInfo,
-            function (data) {
-                $('input[name="name"]').attr("value", data['userName']);
-                $('input[name="username"]').attr("value", data['userUsername']);
-                $('input[name="tel"]').attr("value", data['userPhone']);
-                $('input[name="email"]').attr("value", data['userEmail']);
-                $('select[name="municipality"]').val(data['userMunicipalityID']);
-                /* $('#infoLocation').text(data['location']);
-                 var openOnWeekends = "yes";
-                 if(data['openOnWeekends'] == "false")
-                 openOnWeekends = "no";
-
-                 $('#infoOpenOnWeekends').text(openOnWeekends);
-                 $('#infoEmail').text(data['email']);
-                 $('#infoContact').text(data['contact']);
-                 $('#infoDescription').text(data['description']);
-                 $('#infoHours').text(data['openingHour'] + "-" + data['closingHour']);*/
-            });
-    });
-
-    $('#changePassword').click(function () {
-        $('#passwordForm').append(
-            "<hr class='divider'>" +
-            "<br>" +
-            "<p class='text-center'> Your new password must have at least 6 characters/digits. </p>" +
-            "<form id='newPasswordForm' action='{$BASE_URL}actions/users/editPassword.php' method='post' autocomplete='on'>" +
-            "<div class='row'>" +
-            "<div class='col-md-10 col-md-offset-1'>" +
-
-            "<div class='form-group'>" +
-            "<div class='input-group'>" +
-            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>" +
-            "<input type='password' class='form-control' name='password' title='Current Password' placeholder='Enter your Current Password'/>" +
-            "</div>" +
-            "</div>" +
-
-            "<div class='form-group'>" +
-            "<div class='input-group'>" +
-            "<span class='input-group-addon'> <i class='fa fa-lock fa-lg'></i></span>" +
-            "<input type='password' class='form-control' name='newPassword' title='New Password' placeholder='Enter your New Password'/>" +
-
-            "</div>" +
-            "</div>" +
-
-
-            "<div class='form-group'>" +
-            "<div class='input-group'>" +
-            "<span class='input-group-addon'><i class='fa fa-lock fa-lg' aria-hidden='true'></i></span>" +
-            "<input type='password' class='form-control' name='newPasswordConfirm' title='Password Confirmation' placeholder='Confirm your New Password'/>" +
-            "</div>" +
-            "</div>" +
-
-            "<div style='text-align: center;'>" +
-            "<br>" +
-            "<input type='submit' class='btn btn-primary gradient-blue' value='Change Password'/>" +
-            "</div>" +
-            "</div>" +
-            "</form>" +
-            "<br>" + "<br>"
-        );
-
-        $('#changePassword').css("visibility", "hidden");
-    });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-
+    profilePage('{$BASE_URL}');
 </script>
 
 {include file='common/footer.tpl'}

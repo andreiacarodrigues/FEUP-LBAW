@@ -56,9 +56,9 @@
                                     <span class="input-group-addon primary">Category</span>
                                     <select class="form-control" name="category" title="Issue category">
                                         <option value="" disabled selected>Please select a category</option>
-                                        <option>COMPLEXISSUES</option>
-                                        <option>REFUNDS</option>
-                                        <option>LASTMINUTECANCELLATION</option>
+                                        <option value="COMPLEXISSUES">Complex Issues</option>
+                                        <option value="REFUNDS">Refund</option>
+                                        <option value="LASTMINUTECANCELLATION">Last Minute Cancelation</option>
                                     </select>
                                 </div>
                                 <div class="input-group">

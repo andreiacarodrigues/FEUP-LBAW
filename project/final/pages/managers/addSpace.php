@@ -2,6 +2,7 @@
     include_once('../../config/init.php');
     include_once($BASE_DIR."database/complexes.php");
     include_once($BASE_DIR."database/sports.php");
+    include_once($BASE_DIR."database/info.php");
 
     if(!isset($_SESSION['userID']))
     {
@@ -15,6 +16,10 @@
     $smarty->assign('complexID',$complexID);
 
     $complexName = getComplexName($complexID);
+
+    $surfaces = getSurfaceList();
+
+    $smarty->assign('SURFACES', $surfaces);
 
     $smarty->assign('complexName', $complexName);
 

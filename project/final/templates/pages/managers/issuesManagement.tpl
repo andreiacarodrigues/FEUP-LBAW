@@ -20,12 +20,10 @@
                 {/foreach}
             {/if}
         </div>
-
-        <a href="#" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issueModalManagement">Add Issue <i
+        <a href="#" class="btn btn-primary gradient-blue" data-toggle="modal" data-target="#issueModalManagement">Add
+            Issue <i
                     class="fa fa-plus-circle" aria-hidden="true"></i> </a>
-
-
-        {if count($RENTALS) == 0}
+        {if count($ISSUES) == 0}
             <div class="emptyRentals">
                 <h4> This sports complex doesn't have any issues so far. </h4>
             </div>
@@ -66,7 +64,17 @@
                                         <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Subject:
                                                 <span> {$ISSUE.issueSubject} </span></label></li>
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Category:
-                                                <span> {$ISSUE.issueCategory} </span></label></li>
+                                                <span>
+                                                {if $ISSUE.issueCategory == "COMPLEXISSUES"}
+                                                    Complex Issues
+                                                {/if}
+                                                    {if $ISSUE.issueCategory == "REFUNDS"}
+                                                        Refunds
+                                                    {/if}
+                                                    {if $ISSUE.issueCategory == "LASTMINUTECANCELLATION"}
+                                                        Last Minute Cancelation
+                                                    {/if}
+                                        </span></label></li>
                                         <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i> Description:
                                                 <span>{$ISSUE.issueDescription} </span></label></li>
                                         <li><label> <i class="fa fa-chevron-right" aria-hidden="true"></i>Resolved:
@@ -98,7 +106,6 @@
                     {$VALUE = $VALUE + 1}
                 {/strip}
             {/foreach}
-
             {$COUNT = 0}
             <br>
             <br>
@@ -125,14 +132,11 @@
             </div>
         {/if}
 
-        <!--*******************-->
-
-        <!-- Modal -->
-        <div class="modal fade" id="issueModalManagement" tabindex="-1" role="dialog" aria-labelledby="myModalLabelIssues"
+        <div class="modal fade" id="issueModalManagement" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabelIssues"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <!-- Modal Header -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
@@ -142,7 +146,6 @@
                         </h4>
                     </div>
 
-                    <!-- Modal Body -->
                     <div class="modal-body">
                         <form id="issueFormManagement" action="{$BASE_URL}actions/users/newIssue.php" method="post"
                               autocomplete="on" class="form-horizontal">
@@ -152,21 +155,23 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Subject</span>
-                                            <input type="text" name="subject" title="Issue subject" class="form-control">
+                                            <input type="text" name="subject" title="Issue subject"
+                                                   class="form-control">
                                         </div>
                                         <input type="hidden" name="to" value="forManager"/>
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Category</span>
                                             <select class="form-control" name="category" title="Issue category">
                                                 <option value="" disabled selected>Please select a category</option>
-                                                <option>COMPLEXISSUES</option>
-                                                <option>REFUNDS</option>
-                                                <option>LASTMINUTECANCELLATION</option>
+                                                <option value="COMPLEXISSUES">Complex Issues</option>
+                                                <option value="REFUNDS">Refund</option>
+                                                <option value="LASTMINUTECANCELLATION">Last Minute Cancelation</option>
                                             </select>
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon primary">Description</span>
-                                            <textarea class="form-control" title="Issue description" rows="5" name="description"></textarea>
+                                            <textarea class="form-control" title="Issue description" rows="5"
+                                                      name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="text-center">
