@@ -74,7 +74,7 @@
                     <option value="" disabled selected>Coverage</option>
                     <option value="true">Covered</option>
                     <option value="false">Uncovered</option>
-                    <option value="null">Indiferent</option>
+                    <option value="">Indiferent</option>
                 </select>
             </div>
             </div>
@@ -94,7 +94,7 @@
                 {strip}
                     <div class="row">
                         <div class="col-md-4">
-                            {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
+                            {assign var="filename" value="../../res/img/originals/complex_{$COMPLEX.complexID}.jpg"}
 
                             {if file_exists($filename)}
                                 <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:100%" alt="">
@@ -124,42 +124,6 @@
                 {/strip}
                 {/foreach}
             </div>
-            <!--  <div class="row">
-                <div class="col-md-4">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-                    </a>
-                </div>
-                <div class="col-md-8">
-                    <h4 id="complexName"> Complex 1 ⭐⭐⭐⭐</h4>
-                    <ul class="list-group">
-                        <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> <span id="complexLocation"></span></li>
-                        <li class="list-group-item"> <i class="fa fa-envelope fa"></i> <span id="complexEmail"></span> </li>
-                        <li class="list-group-item"> <i class="fa fa-phone"></i> <span id="complexContact"></span> </li>
-                    </ul>
-                    <a class="btn btn-primary btn-lg gradient-blue" id="complexRedirect" href="#">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                </div>
-            </div>
-                    <hr>
-
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/700x400" style="width:400px" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <h4> Complex 2 ⭐⭐⭐ </h4>
-                        <ul class="list-group">
-                            <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Here goes the location </li>
-                            <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Here goes the email </li>
-                            <li class="list-group-item"> <i class="fa fa-phone"></i> Here goes the phone number </li>
-                            <li class="list-group-item"> Description </li>
-                        </ul>
-                        <a class="btn btn-primary btn-lg gradient-blue" href="sportComplex.php">Check Complex<span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
-                </div>/.row -->
             </div>
 </div>
 </div>

@@ -109,7 +109,7 @@ function complexSpacesInfo(url, complexID){
                 }
 
                 var isCovered = "Covered";
-                if(space['isCovered'] == "false"){
+                if(space['isCovered'] == false){
                     isCovered = "Not covered";
                 }
 
@@ -405,6 +405,18 @@ function searchResults(url) {
             startingTime = null;
         if(duration == '')
             duration = null;
+
+
+        if(coverage == '')
+            coverage = null;
+        else if(coverage == "false")
+            coverage = false;
+        else if(coverage == "true")
+            coverage = true;
+
+        console.log(coverage);
+
+
 
         var jsonURL = url + 'actions/users/search.php';
         $('#results').empty();

@@ -37,10 +37,12 @@
 
     function getSearchComplexes($name, $municipality, $sport, $date, $startingTime, $duration, $surface, $coverage)
     {
-        if($coverage == "true")
-            $coverage = true;
-        else if($coverage == "false")
-            $coverage = false;
+        if($coverage == true)
+            $coverage = "true";
+        else if($coverage == false)
+            $coverage = "false";
+        else
+            $coverage = NULL;
 
         global $conn;
 
@@ -111,7 +113,7 @@
             ("spaceSurfaceType" = ?::"surfaceType" OR ?::"surfaceType" IS NULL)
             AND
             /* COVERAGE */
-            ("spaceIsCovered" = ?::BOOLEAN OR ?::BOOLEAN IS NULL))
+            ("spaceIsCovered" = ?::boolean OR ?::boolean IS NULL))
            ;');
         $stmt->execute(array($name, $name, $municipality, $municipality, $startingTime, $startingTime, $startingTime,
             $duration, $startingTime, $duration, $date, $date, $date, $sport, $sport, $date, $startingTime,
