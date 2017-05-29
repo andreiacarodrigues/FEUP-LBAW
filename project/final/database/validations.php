@@ -10,7 +10,7 @@
     }
 
     function is_location($location){
-        $pattern = '/^[\w\',-\\/.\sº]+$/';
+        $pattern = '/([\p{L} ]){0,256}/u';
         return preg_match($pattern,$location);
     }
 

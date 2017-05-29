@@ -7,7 +7,7 @@ function is_email(element) {
     return re.test(element);
 }
 function is_location(element) {
-    return /^[\w',-\\/.\sº]+$/.test(element);
+    return /([ \u00c0-\u01ffa-zA-Z'\-]){0,256}/.test(element);
 }
 
 function is_password(element) {
