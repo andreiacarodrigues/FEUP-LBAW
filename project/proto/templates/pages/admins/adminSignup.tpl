@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" name="username" placeholder="Enter your Username"/>
+                                        <input type="text" class="form-control" name="username" title="Username" placeholder="Enter your Username"/>
                                     </div>
                                 </div>
                                 <div class="outerErrorMessage">
@@ -39,13 +39,13 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="password"  placeholder="Enter your Password"/>
+                                        <input type="password" class="form-control" name="password" title="Password"  placeholder="Enter your Password"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="confirm"  placeholder="Confirm your Password"/>
+                                        <input type="password" class="form-control" name="confirm" title="Password Confirmation"  placeholder="Confirm your Password"/>
                                     </div>
                                 </div>
                                 <div class="outerErrorMessage">
@@ -70,12 +70,11 @@
         </div>
     </div>
 
-
-
-{include file='common/footer.tpl'}
-
 <script>
     $(function(){
         adminSignUp();
     });
 </script>
+
+{include file='common/footer.tpl'}
+

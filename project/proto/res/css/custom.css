@@ -413,7 +413,7 @@ input[type=button]{
     width:100px !important;
 }
 .adminRentals .rentalTabletBtns{
-    text-align:center; !important;
+    text-align:center !important;
 }
 
 }
@@ -611,7 +611,6 @@ td input{
     background: -o-linear-gradient(top,  #34b5dc 50%,#00a3d6 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #34b5dc 50%,#00a3d6 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #34b5dc 50%,#00a3d6 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34b5dc', endColorstr='#00a3d6',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-blue:hover, .btn-primary.gradient-blue:focus, .btn-primary.gradient-blue:active, .btn-primary.gradient-blue.active, .open > .dropdown-toggle.btn-primary {
@@ -621,7 +620,6 @@ td input{
     background: -o-linear-gradient(top,  #77c6e0 50%,#34b3da 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #77c6e0 50%,#34b3da 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #77c6e0 50%,#34b3da 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77c6e0', endColorstr='#34b3da',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-blue:active, .btn-primary.gradient-blue.active {
@@ -631,18 +629,16 @@ td input{
     background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-yellow {
     border-color: #ffb738;
     background: -moz-linear-gradient(top, #fba723 50%, #f98515 50%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#fba723), color-stop(50%,#f98515)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #fba723 50%,#f98515 50%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #fba723 50%,#f98515 50%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #fba723 50%,#f98515 50%); /* IE10+ */
-    background: linear-gradient(to bottom,  #fba723 50%,#f98515 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba723', endColorstr='#f98515',GradientType=0 ); /* IE6-9 */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #fba723), color-stop(50%, #f98515)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fba723 50%, #f98515 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fba723 50%, #f98515 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fba723 50%, #f98515 50%); /* IE10+ */
+    background: linear-gradient(to bottom, #fba723 50%, #f98515 50%); /* W3C */
 }
 
 .btn-primary.gradient-yellow:hover, .btn-primary.gradient-yellow:focus, .btn-primary.gradient-yellow:active, .btn-primary.gradient-yellow.active, .open > .dropdown-toggle.btn-primary {
@@ -652,17 +648,15 @@ td input{
     background: -o-linear-gradient(top,  #fbc245 50%,#f9a140 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #fbc245 50%,#f9a140 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #fbc245 50%,#f9a140 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbc245', endColorstr='#f9a140',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-yellow:active, .btn-primary.gradient-yellow.active {
     background: -moz-linear-gradient(top, #d5a719 50%, #b1730d 50%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#d5a719), color-stop(50%,#b1730d)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #d5a719 50%,#b1730d 50%); /* IE10+ */
-    background: linear-gradient(to bottom,  #d5a719 50%,#b1730d 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5a719', endColorstr='#b1730d',GradientType=0 ); /* IE6-9 */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #d5a719), color-stop(50%, #b1730d)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d5a719 50%, #b1730d 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d5a719 50%, #b1730d 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d5a719 50%, #b1730d 50%); /* IE10+ */
+    background: linear-gradient(to bottom, #d5a719 50%, #b1730d 50%); /* W3C */
 }
 
 
@@ -674,7 +668,6 @@ td input{
     background: -o-linear-gradient(top,  #f83527 50%,#e20215 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #f83527 50%,#e20215 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #f83527 50%,#e20215 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f83527', endColorstr='#e20215',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-red:hover, .btn-primary.gradient-red:focus, .btn-primary.gradient-red:active, .btn-primary.gradient-red.active, .open > .dropdown-toggle.btn-primary {
@@ -684,7 +677,6 @@ td input{
     background: -o-linear-gradient(top,  #ff5c52 50%,#e9423f 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #ff5c52 50%,#e9423f 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #ff5c52 50%,#e9423f 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5c52', endColorstr='#e9423f',GradientType=0 ); /* IE6-9 */
 }
 
 .btn-primary.gradient-red:active, .btn-primary.gradient-red.active {
@@ -694,7 +686,6 @@ td input{
     background: -o-linear-gradient(top,  #ce2d20 50%,#b20211 50%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #ce2d20 50%,#b20211 50%); /* IE10+ */
     background: linear-gradient(to bottom,  #ce2d20 50%,#b20211 50%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce2d20', endColorstr='#b20211',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -997,7 +988,7 @@ label.star:before {
 }
 
 .list-group-item{
-    border:0; !important;
+    border:0 !important;
 }
 
 .errorMessage{

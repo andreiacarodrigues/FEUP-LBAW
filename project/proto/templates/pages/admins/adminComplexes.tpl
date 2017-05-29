@@ -40,9 +40,9 @@
                             {assign var="filename" value="../../res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg"}
 
                             {if file_exists($filename)}
-                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:320px" alt="">
+                                <img class="img-responsive" src="{$BASE_URL}res/img/thumbs_medium/complex_{$COMPLEX.complexID}.jpg" style="width:320px" alt="Image of the complex">
                             {else}
-                                <img class="img-responsive" src="http://placehold.it/600x400" alt="">
+                                <img class="img-responsive" src="http://placehold.it/600x400" alt="Placeholder image for the complex (no image was given)">
                             {/if}
                         </a>
                         <div class="caption">
@@ -55,12 +55,12 @@
 
 
                             {if $COMPLEX.complexInactive == true}
-                                <form action="{$BASE_URL}actions/admin/unblockComplex.php" method="get" class="form-horizontal" role="form">
+                                <form action="{$BASE_URL}actions/admin/unblockComplex.php" method="get" class="form-horizontal">
                                     <input type="hidden" name="complex" value="{$COMPLEX.complexID}">
                                     <button type="submit" class="btn btn-primary gradient-blue"><i class="glyphicon glyphicon-remove"></i> Unblock </button>
                                 </form>
                             {else}
-                                <form action="{$BASE_URL}actions/admin/blockComplex.php" method="get" class="form-horizontal" role="form">
+                                <form action="{$BASE_URL}actions/admin/blockComplex.php" method="get" class="form-horizontal">
                                     <input type="hidden" name="complex" value="{$COMPLEX.complexID}">
                                     <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Block </button>
                                 </form>

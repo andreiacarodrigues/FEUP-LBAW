@@ -6,7 +6,7 @@
             <div class="form-group form-inline">
                 <div class="input-group emailInput">
                     <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="managerEmail" placeholder="Enter the manager's email" />
+                    <input type="text" class="form-control" name="managerEmail" placeholder="Enter the manager's email" title="New manager's email address" />
                 </div>
                 <button type="submit" class="btn btn-primary gradient-yellow">Add Manager <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                 <input type="hidden" name="complexID" value="{$COMPLEX_ID}">

@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-10">
-            <h1><span id="infoName"></span></h1>
+            <h1><span id="infoName">Name</span></h1>
         </div>
         <div class="col-md-2">
             <a href="#" class="backToComplex btn btn-primary gradient-yellow">Back To Complex</a>
@@ -44,7 +44,7 @@
             {/if}
         </div>
         <div class="col-md-5">
-            <h3>Informations:</h3>
+            <h2>Informations:</h2>
             <ul class="list-group">
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <div class="input-group checkInput">
                             <span class="input-group-addon primary">Date</span>
-                            <input name="date" type="date" class="form-control">
+                            <input name="date" type="date" title="Date" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <div class="input-group checkInput">
                             <span class="input-group-addon primary">Starting Time</span>
-                            <input name="startingTime" type="time" class="form-control">
+                            <input name="startingTime" title="Starting time" type="time" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     <div class="form-group">
                         <div class="input-group checkInput">
                             <span class="input-group-addon primary">Duration</span>
-                            <input name="duration" type="time" class="form-control">
+                            <input name="duration" title="Duration" type="time" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="guidanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="guidanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSpace" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -129,9 +129,9 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title text-center" id="myModalLabel">
+                <h3 class="modal-title text-center" id="myModalLabelSpace">
                    How to make a rental?
-                 </h4>
+                 </h3>
             </div>
 
             <!-- Modal Body -->
@@ -145,10 +145,6 @@
         </div>
     </div>
 </div>
-
-
-
-{include file='common/footer.tpl'}
 
 <script>
     $(function(){
@@ -195,4 +191,8 @@
 
     });
 </script>
+
+{include file='common/footer.tpl'}
+
+
 

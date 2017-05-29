@@ -32,7 +32,7 @@
                     <div class="container">
                         <div class="col-md-10">
                             <ul class="list-unstyled">
-                                <h4>User #<span>{$VALUE}</span></h4>
+                                <li><h4>User #<span>{$VALUE}</span></h4></li>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Name: <span> {$USER.userName} </span></label></li>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Contact: <span> {$USER.userPhone}  </span></label></li>
                                 <li><label><i class="fa fa-chevron-right" aria-hidden="true"></i>  Email: <span> {$USER.userEmail}  </span></label></li>
@@ -43,12 +43,12 @@
                         <div class="col-md-2 text-right mobileFixButtons">
                             <br>
                             {if $USER.userIsBanned == true}
-                                <form action="{$BASE_URL}actions/admin/unblockUser.php" method="get" class="form-horizontal" role="form">
+                                <form action="{$BASE_URL}actions/admin/unblockUser.php" method="get" class="form-horizontal">
                                     <input type="hidden" name="user" value="{$USER.userID}">
                                     <button type="submit" class="btn btn-primary gradient-blue"><i class="glyphicon glyphicon-remove"></i> Unblock </button>
                                 </form>
                             {else}
-                                <form action="{$BASE_URL}actions/admin/blockUser.php" method="get" class="form-horizontal" role="form">
+                                <form action="{$BASE_URL}actions/admin/blockUser.php" method="get" class="form-horizontal">
                                     <input type="hidden" name="user" value="{$USER.userID}">
                                     <button type="submit" class="btn btn-primary gradient-red"><i class="glyphicon glyphicon-remove"></i> Block </button>
                                 </form>

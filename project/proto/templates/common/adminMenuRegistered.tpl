@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top topnav">
     <div class="container topnav">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="{$BASE_URL}pages/users/home.php"> <img src="{$BASE_URL}res/img/logo.png" ></a>
+            <a class="navbar-brand topnav" href="{$BASE_URL}pages/users/home.php"> <img alt="Website logo" src="{$BASE_URL}res/img/logo.png" ></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -30,7 +30,7 @@
                     <a href="{$BASE_URL}pages/admins/adminRequests.php">Requests</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}actions/admin/logout.php"">Log out</a>
+                    <a href="{$BASE_URL}actions/admin/logout.php">Log out</a>
                 </li>
             </ul>
         </div>

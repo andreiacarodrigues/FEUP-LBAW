@@ -64,9 +64,17 @@ include_once($BASE_DIR."database/municipalities.php");
 
     $municipalities = getMunicipalitiesList();
 
-    $smarty->assign('municipalityIDs',$municipalities[0]);
-    $smarty->assign('municipalityNames',$municipalities[1]);
+    //$smarty->assign('municipalityIDs',$municipalities[0]);
+    //$smarty->assign('municipalityNames',$municipalities[1]);
 
+    $out = [];
+
+    for($i = 0; $i < count($municipalities[0]); $i++)
+    {
+        $out[$municipalities[0][$i]] = $municipalities[1][$i];
+    }
+
+    $smarty->assign('municipalityInfo', $out);
     $smarty->assign('complexID',$complexID);
     $smarty->assign('COMPLEX',$infoArray);
 

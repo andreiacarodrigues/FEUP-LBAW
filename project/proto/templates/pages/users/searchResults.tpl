@@ -4,18 +4,18 @@
 <div class="row">
     <div class="col-md-4">
     <div id="searchResultsForm">
-        <form action="#" method="get" autocomplete="on" role="form">
+        <form action="#" method="get" autocomplete="on">
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Name</span>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" title="Name" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> Municipality </span>
-                    <select class="form-control" name="municipality"  title="">
-                        <option value="" name="disabled" disabled selected></option>
+                    <select class="form-control" name="municipality"  title="Municipality">
+                        <option value="" disabled selected>Municipality</option>
                         {html_options values=$municipalityIDs output=$municipalityNames}
                     </select>
                 </div>
@@ -23,8 +23,8 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"> Sport </span>
-                    <select class="form-control" name="sport">
-                        <option value="" name="disabled" disabled selected></option>
+                    <select class="form-control" title="Sport" name="sport">
+                        <option value="" disabled selected>Sports</option>
                         {foreach $SPORTS as $SPORT}
                             <option value="{$SPORT.sportID}"
                                     {foreach $INFORMATION.sports as $EQUIPMENT_SPORT}
@@ -40,26 +40,26 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Date</span>
-                    <input type="date" name="date" class="form-control">
+                    <input type="date" title="Date" name="date" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Starting Time</span>
-                    <input type="time" name="startingTime" class="form-control">
+                    <input type="time" name="startingTime" title="Starting time" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon primary">Duration</span>
-                    <input type="time" name="duration" class="form-control">
+                    <input type="time" name="duration" title="Duration" class="form-control">
                 </div>
             </div>
             <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon primary">Surface</span>
-                <select class="form-control" title="" name="surface">
-                    <option value="" disabled selected></option>
+                <select class="form-control" title="Surface type" name="surface">
+                    <option value="" disabled selected>Surface type</option>
                     <option>Synthetic</option>
                     <option>Dirt</option>
                     <option>Indoors</option>
@@ -70,8 +70,8 @@
             <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon primary">Coverage</span>
-                <select class="form-control" name="coverage" title="">
-                    <option value="" disabled selected></option>
+                <select class="form-control" name="coverage" title="Space coverage">
+                    <option value="" disabled selected>Coverage</option>
                     <option value="true">Covered</option>
                     <option value="false">Uncovered</option>
                     <option value="null">Indiferent</option>

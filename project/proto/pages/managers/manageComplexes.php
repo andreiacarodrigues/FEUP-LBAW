@@ -4,7 +4,7 @@
 
     if(!isset($_SESSION['userID']))
     {
-        $_SESSION['error_messages'][] = "You can't have acess to this page;";
+        $_SESSION['error_messages'][] = "You can't have access to this page;";
         header("Location: " . $BASE_URL . "pages/users/home.php");
         die();
     }

@@ -34,28 +34,28 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title text-center" id="myModalLabel">
+                <h2 class="modal-title text-center" id="myModalLabel">
                     Contact Administration
-                </h4>
+                </h2>
             </div>
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <form id="issueForm" action="{$BASE_URL}actions/users/newIssueAdmin.php" method="post" autocomplete="on" class="form-horizontal" role="form">
+                <form id="issueForm" action="{$BASE_URL}actions/users/newIssueAdmin.php" method="post" autocomplete="on" class="form-horizontal">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Subject</span>
-                                    <input type="text" name="subject" class="form-control">
+                                    <input type="text" name="subject" class="form-control" title="Issue subject">
                                 </div>
 
                                 <input type="hidden" name="to" value="forAdmin" />
 
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Category</span>
-                                    <select class="form-control" name="category" title="">
-                                        <option value="" disabled selected></option>
+                                    <select class="form-control" name="category" title="Issue category">
+                                        <option value="" disabled selected>Please select a category</option>
                                         <option>COMPLEXISSUES</option>
                                         <option>REFUNDS</option>
                                         <option>LASTMINUTECANCELLATION</option>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon primary">Description</span>
-                                    <textarea class="form-control" rows="5" name="description"></textarea>
+                                    <textarea class="form-control" rows="5" name="description" title="Issue description"></textarea>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -77,10 +77,6 @@
     </div>
 </div>
 
-</body>
-
-</html>
-
 <script src="{$BASE_URL}js/notify.js"></script>
 
 <script>
@@ -93,3 +89,7 @@
         });
     }, 15000);
 </script>
+
+</body>
+
+</html>

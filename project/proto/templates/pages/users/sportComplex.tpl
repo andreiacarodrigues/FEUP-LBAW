@@ -25,7 +25,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><span id="infoName"></span></h1>
+            <h1 class="page-header"><span id="infoName">Complex Name</span></h1>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-5">
 
-            <h3>Informations:</h3>
+            <h2>Informations:</h2>
             <ul class="list-group">
                 <li class="list-group-item"><i class="glyphicon glyphicon-globe"></i> Location: <span id="infoLocation"></span> </li>
                 <li class="list-group-item"> <i class="fa fa-envelope fa"></i> Email: <span id="infoEmail"></span> </li>
@@ -75,10 +75,11 @@
     </div>
 </div>
 
-{include file='common/footer.tpl'}
-
 <script>
     $(function(){
         sportComplexPage('{$BASE_URL}', {$complexID});
     });
 </script>
+
+{include file='common/footer.tpl'}
+

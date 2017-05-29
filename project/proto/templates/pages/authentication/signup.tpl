@@ -12,7 +12,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="name" placeholder="Enter your Name"/>
+                                    <input type="text" class="form-control" name="name" title="Name" placeholder="Enter your Name"/>
                                 </div>
                             </div>
                             <div class="outerErrorMessage">
@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" placeholder="Enter your Email"/>
+                                    <input type="text" class="form-control" name="email" title="Email" placeholder="Enter your Email"/>
                                 </div>
                             </div>
                             <div class="outerErrorMessage">
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="username" placeholder="Enter your Username"/>
+                                    <input type="text" class="form-control" name="username" title="Username" placeholder="Enter your Username"/>
                                 </div>
                             </div>
                             <div class="outerErrorMessage">
@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="contact" placeholder="Enter your Phone Number"/>
+                                    <input type="text" class="form-control" name="contact" title="Phone Number" placeholder="Enter your Phone Number"/>
                                 </div>
                             </div>
                             <div class="outerErrorMessage">
@@ -48,8 +48,8 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"> <i class="glyphicon glyphicon-globe"></i></span>
-                                    <select class="form-control"  name="municipality"  title="">
-                                        <option value="" name="disabled" disabled selected></option>
+                                    <select class="form-control"  name="municipality"  title="Municipality">
+                                        <option value="" disabled selected>Please select a municipality</option>
                                         {html_options values=$municipalityIDs output=$municipalityNames}
                                     </select>
                                 </div>
@@ -60,13 +60,13 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="password"  placeholder="Enter your Password"/>
+                                    <input type="password" class="form-control" name="password" title="Password"  placeholder="Enter your Password"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                    <input type="password" class="form-control" name="confirm"  placeholder="Confirm your Password"/>
+                                    <input type="password" class="form-control" name="confirm" title="Password Confirmation"  placeholder="Confirm your Password"/>
                                 </div>
                             </div>
                             <div class="outerErrorMessage">
@@ -91,11 +91,10 @@
     </div>
 </div>
 
-{include file='common/footer.tpl'}
-
-
 <script>
     $(function(){
         signUp();
     });
 </script>
+
+{include file='common/footer.tpl'}
